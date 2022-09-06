@@ -22,8 +22,7 @@ function App() {
     <div className="App">
       <h1>Bouncr</h1>
       <h3>Social Media for Music Fans</h3>
-      <AlbumItem artist={reviews[0].artist} album={reviews[0].album} date={reviews[0].date} rating={reviews[0].rating} />
-      <AlbumItem artist={reviews[1].artist} album={reviews[1].album} date={reviews[1].date} rating={reviews[1].rating} />
+      {reviews.map(review => <AlbumItem artist={review.artist} album={review.album} date={review.date} rating={review.rating} />)}
     </div>
   );
 }
