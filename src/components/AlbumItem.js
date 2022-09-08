@@ -1,4 +1,5 @@
 import './AlbumItem.css'
+import Card from './Card'
 
 const AlbumItem = props => {
     const month = props.date.toLocaleString('en-US', { month: 'long' })
@@ -6,7 +7,7 @@ const AlbumItem = props => {
     const year = props.date.getFullYear()
 
     return(
-        <div className="album-item">
+        <Card className="album-item">
             <div className="album-description">
                 <div className="album-month">{month}</div>
                 <div className="album-day">{day}</div>
@@ -19,7 +20,7 @@ const AlbumItem = props => {
             <div className="album-item-info">
                 <p>{props.rating}</p>
             </div>
-        </div>
+        </Card>
     )
 }
 
