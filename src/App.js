@@ -22,7 +22,9 @@ function App() {
     <div className="App">
       <h1>Bouncr</h1>
       <h3>Social Media for Music Fans</h3>
-      {reviews.map(review => <AlbumItem artist={review.artist} album={review.album} date={review.date} rating={review.rating} />)}
+      <div className='albums'>
+        {reviews.map(review => <AlbumItem artist={review.artist} album={review.album} date={review.date} rating={review.rating} />)}
+      </div>
     </div>
   );
 }
