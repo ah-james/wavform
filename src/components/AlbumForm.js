@@ -25,8 +25,22 @@ const AlbumForm = props => {
         setDate(event.target.value)
     }
 
+    // create function to handle form submission
+    const handleSubmit = event => {
+        event.preventDefault()
+
+        const albumData = {
+            artist: artist,
+            album: album,
+            rating: rating,
+            date: new Date(date)
+        }
+
+        console.log(albumData)
+    }
+
     return(
-        <form>
+        <form onSubmit={handleSubmit} >
             <div className="new-album-controls">
                 <div className="new-album-control">
                     <label>Artist</label>
