@@ -52,7 +52,7 @@ const AlbumForm = props => {
                 </div>
                 <div className="new-album-control">
                     <label>Rating</label>
-                    <input type='text' onChange={handleRatingChange} />
+                    <input type='number' min='0' max='10' onChange={handleRatingChange} />
                 </div>
                 <div className="new-album-control">
                     <label>Date</label>
