@@ -37,6 +37,11 @@ const AlbumForm = props => {
         }
 
         console.log(albumData)
+        // reset form input fields on submission
+        setArtist('')
+        setAlbum('')
+        setRating('')
+        setDate('')
     }
 
     return(
@@ -44,19 +49,19 @@ const AlbumForm = props => {
             <div className="new-album-controls">
                 <div className="new-album-control">
                     <label>Artist</label>
-                    <input type='text' onChange={handleArtistChange} />
+                    <input type='text' value={artist} onChange={handleArtistChange} />
                 </div>
                 <div className="new-album-control">
                     <label>Album</label>
-                    <input type='text' onChange={handleAlbumChange} />
+                    <input type='text' value={album} onChange={handleAlbumChange} />
                 </div>
                 <div className="new-album-control">
                     <label>Rating</label>
-                    <input type='number' min='0' max='10' onChange={handleRatingChange} />
+                    <input type='number' min='0' max='10' value={rating} onChange={handleRatingChange} />
                 </div>
                 <div className="new-album-control">
                     <label>Date</label>
-                    <input type='date' onChange={handleDateChange} />
+                    <input type='date' value={date} onChange={handleDateChange} />
                 </div>
             </div>
             <div className="new-album-actions">
