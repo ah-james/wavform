@@ -19,12 +19,17 @@ function App() {
     }
   ]
 
+  const handleAddAlbum = album => {
+    console.log('here')
+    console.log(album)
+  }
+
 
   return (
     <div className="App">
       <h1>Bouncr</h1>
       <h3>Social Media for Music Fans</h3>
-      <NewAlbum />
+      <NewAlbum onAddAlbum={handleAddAlbum} />
       <Card className='albums'>
         {reviews.map(review => <AlbumItem artist={review.artist} album={review.album} date={review.date} rating={review.rating} />)}
       </Card>

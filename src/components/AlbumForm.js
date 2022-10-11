@@ -36,7 +36,7 @@ const AlbumForm = props => {
             date: new Date(date)
         }
 
-        console.log(albumData)
+        props.onSaveAlbum(albumData)
         // reset form input fields on submission
         setArtist('')
         setAlbum('')
