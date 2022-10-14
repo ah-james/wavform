@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import './App.css';
 import AlbumFilter from './components/AlbumFilter';
 import AlbumItem from './components/AlbumItem';
@@ -5,6 +6,8 @@ import Card from './components/Card';
 import NewAlbum from './components/NewAlbum';
 
 function App() {
+  const [filteredYear, setFilteredYear] = useState('2020')
+
   const reviews = [
     {
         artist: 'Pinegrove',
@@ -25,14 +28,18 @@ function App() {
     console.log(album)
   }
 
+  const handleFilterChange = selectedYear => {
+    setFilteredYear(selectedYear)
+  }
+
 
   return (
     <div className="App">
       <h1>Bouncr</h1>
       <h3>Social Media for Music Fans</h3>
       <NewAlbum onAddAlbum={handleAddAlbum} />
-      <AlbumFilter />
       <Card className='albums'>
+      <AlbumFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
         {reviews.map(review => <AlbumItem artist={review.artist} album={review.album} date={review.date} rating={review.rating} />)}
       </Card>
     </div>
