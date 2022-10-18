@@ -19,7 +19,7 @@ const AlbumItem = props => {
                 <h2>{props.album}</h2>
             </div>
             <div className="album-item-info">
-                <p>{props.rating}</p>
+                <p>{props.rating}/10</p>
             </div>
         </Card>
     )

@@ -5,27 +5,29 @@ import AlbumItem from './components/AlbumItem';
 import Card from './components/Card';
 import NewAlbum from './components/NewAlbum';
 
+const DUMMY_DATA = [
+  {
+      artist: 'Pinegrove',
+      album: '11:11',
+      date: new Date(2022, 1, 28),
+      rating: '8'
+  },
+  {
+    artist: 'Hot Mulligan',
+    album: `you'll be fine`,
+    date: new Date(2020, 3, 6),
+    rating: '10',
+  }
+]
+
 function App() {
+  const [reviews, setReviews] = useState(DUMMY_DATA)
   const [filteredYear, setFilteredYear] = useState('2020')
 
-  const reviews = [
-    {
-        artist: 'Pinegrove',
-        album: '11:11',
-        date: new Date(2022, 1, 28),
-        rating: '8/10'
-    },
-    {
-      artist: 'Hot Mulligan',
-      album: `you'll be fine`,
-      date: new Date(2020, 3, 6),
-      rating: '10/10',
-    }
-  ]
-
   const handleAddAlbum = album => {
-    console.log('here')
-    console.log(album)
+    setReviews((prevReviews) => {
+      return [album, ...prevReviews]
+    })
   }
 
   const handleFilterChange = selectedYear => {
