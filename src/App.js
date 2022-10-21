@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 import './App.css';
-import AlbumFilter from './components/Albums/AlbumFilter';
-import AlbumItem from './components/Albums/AlbumItem';
-import Card from './components/UI/Card';
+
 import NewAlbum from './components/NewAlbum/NewAlbum';
+import Albums from './components/Albums/Albums';
 
 const DUMMY_DATA = [
   {
@@ -24,7 +23,6 @@ const DUMMY_DATA = [
 
 function App() {
   const [reviews, setReviews] = useState(DUMMY_DATA)
-  const [filteredYear, setFilteredYear] = useState()
 
   const handleAddAlbum = album => {
     setReviews((prevReviews) => {
@@ -32,20 +30,12 @@ function App() {
     })
   }
 
-  const handleFilterChange = selectedYear => {
-    setFilteredYear(selectedYear)
-  }
-
-
   return (
     <div className="App">
       <h1>Bouncr</h1>
       <h3>Social Media for Music Fans</h3>
       <NewAlbum onAddAlbum={handleAddAlbum} />
-      <Card className='albums'>
-      <AlbumFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
-        {reviews.map((review) => <AlbumItem key={review.id} artist={review.artist} album={review.album} date={review.date} rating={review.rating} />)}
-      </Card>
+      <Albums reviews={reviews} />
     </div>
   );
 }
