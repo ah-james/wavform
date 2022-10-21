@@ -1,5 +1,5 @@
 import './AlbumItem.css'
-import Card from './Card'
+import Card from '../UI/Card'
 
 const AlbumItem = props => {
 

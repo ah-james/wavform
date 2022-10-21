@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './App.css';
-import AlbumFilter from './components/AlbumFilter';
-import AlbumItem from './components/AlbumItem';
-import Card from './components/Card';
-import NewAlbum from './components/NewAlbum';
+import AlbumFilter from './components/Albums/AlbumFilter';
+import AlbumItem from './components/Albums/AlbumItem';
+import Card from './components/UI/Card';
+import NewAlbum from './components/NewAlbum/NewAlbum';
 
 const DUMMY_DATA = [
   {
@@ -24,7 +24,7 @@ const DUMMY_DATA = [
 
 function App() {
   const [reviews, setReviews] = useState(DUMMY_DATA)
-  const [filteredYear, setFilteredYear] = useState('2020')
+  const [filteredYear, setFilteredYear] = useState()
 
   const handleAddAlbum = album => {
     setReviews((prevReviews) => {
