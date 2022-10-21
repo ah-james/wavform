@@ -7,12 +7,14 @@ import NewAlbum from './components/NewAlbum';
 
 const DUMMY_DATA = [
   {
-      artist: 'Pinegrove',
-      album: '11:11',
-      date: new Date(2022, 1, 28),
-      rating: '8'
+    id: '1',
+    artist: 'Pinegrove',
+    album: '11:11',
+    date: new Date(2022, 1, 28),
+    rating: '8'
   },
   {
+    id: '2',
     artist: 'Hot Mulligan',
     album: `you'll be fine`,
     date: new Date(2020, 3, 6),
@@ -42,7 +44,7 @@ function App() {
       <NewAlbum onAddAlbum={handleAddAlbum} />
       <Card className='albums'>
       <AlbumFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
-        {reviews.map(review => <AlbumItem artist={review.artist} album={review.album} date={review.date} rating={review.rating} />)}
+        {reviews.map((review) => <AlbumItem key={review.id} artist={review.artist} album={review.album} date={review.date} rating={review.rating} />)}
       </Card>
     </div>
   );
