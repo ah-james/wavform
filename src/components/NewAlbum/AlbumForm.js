@@ -8,7 +8,6 @@ const AlbumForm = props => {
     const [album, setAlbum] = useState('')
     const [rating, setRating] = useState('')
     const [date, setDate] = useState('')
-    const [form, setForm] = useState(false)
 
     const handleArtistChange = (event) => {
         setArtist(event.target.value)
@@ -43,45 +42,33 @@ const AlbumForm = props => {
         setAlbum('')
         setRating('')
         setDate('')
-        setForm(current => !current)
     }
 
-    const handleClick = () => {
-        setForm(current => !current)
-    }
-
-    if (form) {
-        return(
-            <form onSubmit={handleSubmit} >
-                <div className="new-album-controls">
-                    <div className="new-album-control">
-                        <label>Artist</label>
-                        <input type='text' value={artist} onChange={handleArtistChange} />
-                    </div>
-                    <div className="new-album-control">
-                        <label>Album</label>
-                        <input type='text' value={album} onChange={handleAlbumChange} />
-                    </div>
-                    <div className="new-album-control">
-                        <label>Rating</label>
-                        <input type='number' min='0' max='10' value={rating} onChange={handleRatingChange} />
-                    </div>
-                    <div className="new-album-control">
-                        <label>Date</label>
-                        <input type='date' value={date} onChange={handleDateChange} />
-                    </div>
+    return(
+        <form onSubmit={handleSubmit} >
+            <div className="new-album-controls">
+                <div className="new-album-control">
+                    <label>Artist</label>
+                    <input type='text' value={artist} onChange={handleArtistChange} />
                 </div>
-                <div className="new-album-actions">
-                    <button onClick={handleClick}>Cancel</button>
-                    <button type="submit">Add Album</button>
+                <div className="new-album-control">
+                    <label>Album</label>
+                    <input type='text' value={album} onChange={handleAlbumChange} />
                 </div>
-            </form>
-        )
-    }
-    return (
-        <div>
-            <button onClick={handleClick}>Add an Album</button>
-        </div>
+                <div className="new-album-control">
+                    <label>Rating</label>
+                    <input type='number' min='0' max='10' value={rating} onChange={handleRatingChange} />
+                </div>
+                <div className="new-album-control">
+                    <label>Date</label>
+                    <input type='date' value={date} onChange={handleDateChange} />
+                </div>
+            </div>
+            <div className="new-album-actions">
+                <button type='button' onClick={props.handleClick}>Cancel</button>
+                <button type="submit">Add Album</button>
+            </div>
+        </form>
     )
 }
 
