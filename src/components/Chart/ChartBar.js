@@ -1,3 +1,4 @@
+import './ChartBar.css'
 
 const ChartBar = props => {
     // calculate bar fill height with variable that will help set CSS
