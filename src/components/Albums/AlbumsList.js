@@ -1,5 +1,5 @@
 import AlbumItem from "./AlbumItem"
-import './AlbumsList.css'
+import styles from './AlbumsList.module.css'
 
 const AlbumsList = props => {
     // set text shown on page if filteredAlbums is empty
@@ -8,7 +8,7 @@ const AlbumsList = props => {
     }
 
     return(
-        <ul className="albums-list">
+        <ul className={styles["albums-list"]}>
             {props.albums.map((filteredReview) => 
             <AlbumItem key={filteredReview.id} artist={filteredReview.artist} album={filteredReview.album} date={filteredReview.date} rating={filteredReview.rating} />
             )}

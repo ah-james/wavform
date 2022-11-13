@@ -1,6 +1,6 @@
 import React from 'react'
 
-import './AlbumFilter.css'
+import styles from './AlbumFilter.module.css'
 
 const AlbumFilter = props => {
     const handleChange = (event) => {
@@ -8,8 +8,8 @@ const AlbumFilter = props => {
     }
 
     return (
-        <div className='album-filter'>
-            <div className='album-filter-control'>
+        <div className={styles['album-filter']}>
+            <div className={styles['album-filter-control']}>
                 <label>Filter by Year</label>
                 <select value={props.selectedYear} onChange={handleChange}>
                     <option value=''>Select a Year</option>

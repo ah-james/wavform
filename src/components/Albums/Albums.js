@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 
-import './Albums.css'
+import styles from './Albums.module.css'
 
 import AlbumFilter from '../Albums/AlbumFilter';
 import Card from '../UI/Card';
@@ -22,7 +22,7 @@ const Albums = props => {
     })
 
     return(
-        <Card className='albums'>
+        <Card className={styles.albums}>
             <AlbumFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
             {/* Add chart to page, pass in filteredExpenses as a prop */}
             <AlbumsChart albums={filteredAlbums} />

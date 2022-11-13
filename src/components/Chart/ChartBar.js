@@ -1,4 +1,4 @@
-import './ChartBar.css'
+import styles from './ChartBar.module.css'
 
 const ChartBar = props => {
     // calculate bar fill height with variable that will help set CSS
@@ -11,14 +11,14 @@ const ChartBar = props => {
     }
 
     return(
-        <div className="chart-bar">
-            <div className="chart-bar-inner">
+        <div className={styles["chart-bar"]}>
+            <div className={styles["chart-bar-inner"]}>
                 {/* dynamically adjust height with barFill variable in style react prop */}
                 {/* value is a javascript object */}
-                <div className="chart-bar-fill" style={{height: barFill}} ></div>
+                <div className={styles["chart-bar-fill"]} style={{height: barFill}} ></div>
             </div>
             {/* put label from props in this one */}
-            <div className="chart-bar-label">{props.label}</div>
+            <div className={styles["chart-bar-label"]}>{props.label}</div>
         </div>
     )
 }

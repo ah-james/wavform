@@ -1,5 +1,5 @@
 import ChartBar from './ChartBar'
-import './Chart.css'
+import styles from './Chart.module.css'
 
 const Chart = props => {
     // get array of the values from all 12 months in AlbumsChart.js with .map
@@ -8,7 +8,7 @@ const Chart = props => {
     const maxValue = Math.max(...monthValues)
 
     return(
-        <div className='chart'>
+        <div className={styles.chart}>
             {props.dataPoints.map((dataPoint) => (
                 <ChartBar key={dataPoint.label} value={dataPoint.value} maxValue={maxValue} label={dataPoint.label} />
             ))}

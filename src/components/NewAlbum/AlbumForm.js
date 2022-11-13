@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import './AlbumForm.css'
+import styles from './AlbumForm.module.css'
 
 const AlbumForm = props => {
     // manage state
@@ -65,26 +65,26 @@ const AlbumForm = props => {
 
     return(
         <form onSubmit={handleSubmit} >
-            <div className="new-album-controls">
+            <div className={styles["new-album-controls"]}>
                 {/* dynamic style to determine invalid inputs */}
-                <div className={`new-album-control ${!isValid ? 'invalid' : ''}`}>
+                <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
                     <label>Artist</label>
                     <input type='text' value={artist} onChange={handleArtistChange} />
                 </div>
-                <div className={`new-album-control ${!isValid ? 'invalid' : ''}`}>
+                <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
                     <label>Album</label>
                     <input type='text' value={album} onChange={handleAlbumChange} />
                 </div>
-                <div className={`new-album-control ${!isValid ? 'invalid' : ''}`}>
+                <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
                     <label>Rating</label>
                     <input type='number' min='0' max='10' value={rating} onChange={handleRatingChange} />
                 </div>
-                <div className={`new-album-control ${!isValid ? 'invalid' : ''}`}>
+                <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
                     <label>Date</label>
                     <input type='date' value={date} onChange={handleDateChange} />
                 </div>
             </div>
-            <div className="new-album-actions">
+            <div className={styles["new-album-actions"]}>
                 <button type='button' onClick={props.handleClick}>Cancel</button>
                 <button type="submit">Add Album</button>
             </div>

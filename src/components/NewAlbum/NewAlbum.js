@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 
-import './NewAlbum.css'
+import styles from './NewAlbum.module.css'
 import AlbumForm from "./AlbumForm"
 
 const NewAlbum = (props) => {
@@ -22,14 +22,14 @@ const NewAlbum = (props) => {
 
     if (mountForm) {
         return(
-            <div className="new-album">
+            <div className={styles["new-album"]}>
                 <AlbumForm handleClick={handleClick} onSaveAlbum={handleSaveAlbum} />
             </div>
         )
     }
 
     return (
-        <div className='new-album'>
+        <div className={styles['new-album']}>
             <button onClick={handleClick}>Add an Album</button>
         </div>
     )
