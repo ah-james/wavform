@@ -20,6 +20,25 @@
     width: 20rem;
     max-width: 100%;
   }
+
+  /* if new album control is invalid make label color red */
+  .new-album-control.invalid label {
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
+    color: red
+  }
+
+  .new-album-control.invalid input {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    width: 20rem;
+    max-width: 100%;
+    border-color: red;
+    background-color: salmon;
+  }
   
   .new-album-actions {
     text-align: right;
