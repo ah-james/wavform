@@ -1,47 +1,22 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 import styles from './AlbumForm.module.css'
 import ErrorModal from '../UI/ErrorModal'
 
 const AlbumForm = props => {
-    // manage state
-    const [artist, setArtist] = useState('')
-    const [album, setAlbum] = useState('')
-    const [rating, setRating] = useState('')
-    const [date, setDate] = useState('')
+    // create refs with useRef hook so that state updates when form is submitted
+    // one for each input, ref prop in each html input element
+    const artistInputRef = useRef()
+    const albumInputRef = useRef()
+    const ratingInputRef = useRef()
+    const dateInputRef = useRef()
+
     // portion of state to deterimine if user input is valid (not empty)
     const [isValid, setIsValid] = useState(true)
     // state to handle errors
     const [error, setError] = useState()
 
-    // all of this is super repetitive and it makes me mad but I'll change it later
-    const handleArtistChange = (event) => {
-        if (event.target.value.length > 0) {
-            setIsValid(true)
-        }
-        setArtist(event.target.value)
-    }
-
-    const handleAlbumChange = event => {
-        if (event.target.value.length > 0) {
-            setIsValid(true)
-        }
-        setAlbum(event.target.value)
-    }
-
-    const handleRatingChange = (event) => {
-        if (event.target.value.length > 0) {
-            setIsValid(true)
-        }
-        setRating(event.target.value)
-    }
-
-    const handleDateChange = (event) => {
-        if (event.target.value.length > 0) {
-            setIsValid(true)
-        }
-        setDate(event.target.value)
-    }
+    // no longer need change handler functions because of refs
 
     const handleError = () => {
         setError(null)
@@ -50,7 +25,13 @@ const AlbumForm = props => {
     // create function to handle form submission
     const handleSubmit = event => {
         event.preventDefault()
-        if (artist.length === 0 || album.length === 0 || rating.length === 0 || date.length === 0) {
+        // save current values of input refs and use them in error handling
+        const enteredArtist = artistInputRef.current.value
+        const enteredAlbum = albumInputRef.current.value
+        const enteredRating = ratingInputRef.current.value
+        const enteredDate = dateInputRef.current.value
+
+        if (enteredArtist.length === 0 || enteredAlbum.length === 0 || enteredRating.length === 0 || enteredDate.length === 0) {
             // set errors
             setError({
                 title: 'You missed a spot!',
@@ -61,18 +42,18 @@ const AlbumForm = props => {
             return
         }
         const albumData = {
-            artist: artist,
-            album: album,
-            rating: rating,
-            date: new Date(date)
+            artist: enteredArtist,
+            album: enteredAlbum,
+            rating: enteredRating,
+            date: new Date(enteredDate)
         }
 
         props.onSaveAlbum(albumData)
-        // reset form input fields on submission
-        setArtist('')
-        setAlbum('')
-        setRating('')
-        setDate('')
+        // reset by manipulating DOM current value without react (DON'T DO THIS ANYWHERE ELSE)
+        artistInputRef.current.value = ''
+        albumInputRef.current.value = ''
+        ratingInputRef.current.value = ''
+        dateInputRef.current.value = ''
     }
 
     return(
@@ -82,20 +63,20 @@ const AlbumForm = props => {
                 <div className={styles["new-album-controls"]}>
                     {/* dynamic style to determine invalid inputs */}
                     <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
-                        <label>Artist</label>
-                        <input type='text' value={artist} onChange={handleArtistChange} />
+                        <label htmlFor="artist">Artist</label>
+                        <input id="artist" type='text' ref={artistInputRef} />
                     </div>
                     <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
-                        <label>Album</label>
-                        <input type='text' value={album} onChange={handleAlbumChange} />
+                        <label htmlFor="album">Album</label>
+                        <input id="album" type='text' ref={albumInputRef}/>
                     </div>
                     <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
-                        <label>Rating</label>
-                        <input type='number' min='0' max='10' value={rating} onChange={handleRatingChange} />
+                        <label htmlFor="rating">Rating</label>
+                        <input id="rating" type='number' min='0' max='10' ref={ratingInputRef} />
                     </div>
                     <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
-                        <label>Date</label>
-                        <input type='date' value={date} onChange={handleDateChange} />
+                        <label htmlFor="date">Date</label>
+                        <input id="date" type='date' ref={dateInputRef} />
                     </div>
                 </div>
                 <div className={styles["new-album-actions"]}>
