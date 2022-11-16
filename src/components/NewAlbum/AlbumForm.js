@@ -76,7 +76,7 @@ const AlbumForm = props => {
     }
 
     return(
-        <div>
+        <>
             {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-album-controls"]}>
@@ -103,7 +103,7 @@ const AlbumForm = props => {
                     <button type="submit">Add Album</button>
                 </div>
             </form>
-        </div>
+        </>
     )
 }
 

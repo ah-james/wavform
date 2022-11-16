@@ -48,7 +48,7 @@ const AddUser = props => {
 
     // return form for username and password
     return(
-        <div>
+        <>
             {/* if an error exists conditionally render ErrorModal using && operator */}
             {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
             {/* add input class to card for styling */}
@@ -67,7 +67,7 @@ const AddUser = props => {
                     <button type="submit">Create</button>
                 </form>
             </Card>
-        </div>
+        </>
     )
 }
 
