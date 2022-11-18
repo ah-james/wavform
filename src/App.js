@@ -3,6 +3,8 @@ import './App.css';
 
 import NewAlbum from './components/NewAlbum/NewAlbum';
 import Albums from './components/Albums/Albums';
+import Login from './components/Users/Login'
+import Home from './components/Users/Home';
 
 const DUMMY_DATA = [
   {
@@ -23,11 +25,20 @@ const DUMMY_DATA = [
 
 function App() {
   const [reviews, setReviews] = useState(DUMMY_DATA)
+  const [loggedIn, setLoggedIn] = useState(false)
 
   const handleAddAlbum = album => {
     setReviews((prevReviews) => {
       return [album, ...prevReviews]
     })
+  }
+
+  const handleLogin = (email, password) => {
+    setLoggedIn(true)
+  }
+
+  const handleLogout = () => {
+    setLoggedIn(false)
   }
 
   return (
@@ -36,6 +47,8 @@ function App() {
       <h3>Social Media for Music Fans</h3>
       <NewAlbum onAddAlbum={handleAddAlbum} />
       <Albums reviews={reviews} />
+      {!loggedIn && <Login onLogin={handleLogin} />}
+      {loggedIn && <Home onLogout={handleLogout} />}
     </div>
   );
 }
