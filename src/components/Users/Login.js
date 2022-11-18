@@ -20,6 +20,7 @@ const Login = props => {
     const handleLoginSubmit = (event) => {
         event.preventDefault()
         // prop to handle user login
+        props.handleLogin(username, password)
     }
 
     return(
