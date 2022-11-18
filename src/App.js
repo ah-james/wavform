@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
 
 import NewAlbum from './components/NewAlbum/NewAlbum';
@@ -33,11 +33,26 @@ function App() {
     })
   }
 
+  // useEffect hook to handle sideeffect of storing logged in user
+  // code is ran whenever dependencies are changed
+  // ex. run check on localStorage when app starts up, then again if state dependency is updated
+  useEffect(() => {
+    const savedData = localStorage.getItem('isLoggedIn')
+
+    if (savedData === '1') {
+      setLoggedIn(true)
+    }
+  }, [])
+
   const handleLogin = (email, password) => {
+    // use localStorage.setItem to dummy storiing loggin in
+    localStorage.setItem('isLoggedIn', '1')
     setLoggedIn(true)
   }
 
   const handleLogout = () => {
+    // localstorage.removeitem to remove dummy
+    localStorage.removeItem('isLoggedIn')
     setLoggedIn(false)
   }
 
@@ -47,8 +62,8 @@ function App() {
       <h3>Social Media for Music Fans</h3>
       <NewAlbum onAddAlbum={handleAddAlbum} />
       <Albums reviews={reviews} />
-      {!loggedIn && <Login onLogin={handleLogin} />}
-      {loggedIn && <Home onLogout={handleLogout} />}
+      {!loggedIn && <Login handleLogin={handleLogin} />}
+      {loggedIn && <Home handleLogout={handleLogout} />}
     </div>
   );
 }
