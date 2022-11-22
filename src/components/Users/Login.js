@@ -7,14 +7,7 @@ import styles from './Login.module.css'
 // username reducer function (outside component function because isn't being used to interact with any parts of state)
 // action.type if statements
 const reducer = (state, action) => {
-    if (action.type === 'USER_CHANGE') {
-        return {
-            value: action.value,
-            isValid: action.value.length > 6
-        }
-    }
-
-    if (action.type === 'PASS_CHANGE') {
+    if (action.type === 'INPUT_CHANGE') {
         return {
             value: action.value,
             isValid: action.value.length > 6
@@ -49,21 +42,27 @@ const Login = props => {
         isValid: undefined
     })
 
+    // pull out isValid property and save them as constants to use in useEffect
+    // won't update every time useReducer updates this way
+
+    const { isValid: userIsValid } = userState
+    const { isValid: passwordIsValid } = passwordState
+
     // add useEffect to handle form validations
     useEffect(() => {
         setValidForm(
-            userState.isValid && passwordState.isValid
+            userIsValid && passwordIsValid
         )
-        // don't need to add state updating functions, no setValidForm
-    }, [userState, passwordState])
+        // don't use userState etc objects in dependencies, effect function will rerun whenever any property of this changes
+    }, [userIsValid, passwordIsValid])
 
     const handleUsernameChange = event => {
         // dispatchUsername with keys of type (string explaining what's happening) and value (event.target.value)
-        dispatchUser({type: "USER_CHANGE", value: event.target.value})
+        dispatchUser({type: "INPUT_CHANGE", value: event.target.value})
     }
 
     const handlePasswordChange = event => {
-        dispatchPassword({type: 'PASS_CHANGE', value: event.target.value})
+        dispatchPassword({type: 'INPUT_CHANGE', value: event.target.value})
     }
 
     const handleValidateUsername = () => {
