@@ -67,13 +67,13 @@ const Login = props => {
     }
 
     const handleValidateUsername = () => {
-        // dispatchUsername with keys of type (string explaining what's happening) and value (event.target.value)
+        // dispatchUsername with keys of type (string explaining what's happening for reducer)
         dispatchUser({type: 'INPUT_BLUR'});
-      };
+    };
     
       const handleValidatePassword = () => {
         dispatchPassword({type: 'INPUT_BLUR'});
-      };
+    };
 
     const handleLoginSubmit = (event) => {
         event.preventDefault()

@@ -5,6 +5,7 @@ import NewAlbum from './components/NewAlbum/NewAlbum';
 import Albums from './components/Albums/Albums';
 import Login from './components/Users/Login'
 import Home from './components/Users/Home';
+import AddUser from './components/Users/AddUser';
 
 const DUMMY_DATA = [
   {
@@ -64,6 +65,7 @@ function App() {
       <Albums reviews={reviews} />
       {!loggedIn && <Login handleLogin={handleLogin} />}
       {loggedIn && <Home handleLogout={handleLogout} />}
+      <AddUser />
     </div>
   );
 }
