@@ -50,9 +50,16 @@ const Login = props => {
 
     // add useEffect to handle form validations
     useEffect(() => {
-        setValidForm(
-            userIsValid && passwordIsValid
-        )
+        // I think I have a memory leak and I've been told this might help I'm sorry for what I'm about to do
+        const identifier = setTimeout(() => {
+            setValidForm(
+                userIsValid && passwordIsValid
+            )
+        }, 500)
+        return () => {
+            clearTimeout(identifier)
+        }
+
         // don't use userState etc objects in dependencies, effect function will rerun whenever any property of this changes
     }, [userIsValid, passwordIsValid])
 
