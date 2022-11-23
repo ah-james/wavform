@@ -5,6 +5,7 @@ import NewAlbum from './components/NewAlbum/NewAlbum';
 import Albums from './components/Albums/Albums';
 import Login from './components/Users/Login'
 import Home from './components/Users/Home';
+import AuthContext from './store/auth-context';
 
 const DUMMY_DATA = [
   {
@@ -57,14 +58,18 @@ function App() {
   }
 
   return (
-    <div className="App">
-      <h1>Bouncr</h1>
-      <h3>Social Media for Music Fans</h3>
+    <AuthContext.Provider 
+      value={{
+        loggedIn: loggedIn
+      }}
+    >
+      <h1 className="App">Bouncr</h1>
+      <h3 className="App">Social Media for Music Fans</h3>
       <NewAlbum onAddAlbum={handleAddAlbum} />
       <Albums reviews={reviews} />
       {!loggedIn && <Login handleLogin={handleLogin} />}
       {loggedIn && <Home handleLogout={handleLogout} />}
-    </div>
+    </AuthContext.Provider>
   );
 }
 
