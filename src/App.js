@@ -6,6 +6,7 @@ import Albums from './components/Albums/Albums';
 import Login from './components/Users/Login'
 import Home from './components/Users/Home';
 import AuthContext from './store/auth-context';
+import Header from './components/Header/Header';
 
 const DUMMY_DATA = [
   {
@@ -63,8 +64,7 @@ function App() {
         loggedIn: loggedIn
       }}
     >
-      <h1 className="App">Bouncr</h1>
-      <h3 className="App">Social Media for Music Fans</h3>
+      <Header handleLogout={handleLogout} />
       <NewAlbum onAddAlbum={handleAddAlbum} />
       <Albums reviews={reviews} />
       {!loggedIn && <Login handleLogin={handleLogin} />}
