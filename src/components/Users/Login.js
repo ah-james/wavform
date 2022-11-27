@@ -1,6 +1,7 @@
 import { useContext, useEffect, useReducer, useState } from "react"
 import AuthContext from "../../store/auth-context"
 import Card from "../UI/Card"
+import Input from "../UI/Input"
 import styles from './Login.module.css'
 
 // finish this when I have the router up and running
@@ -94,16 +95,8 @@ const Login = props => {
     return(
         <Card className={styles.login}>
             <form onSubmit={handleLoginSubmit}>
-                <div className={`${styles.control} ${userState.isValid === false ? styles.invalid : ''}`}>
-                    {/* label and input for username */}
-                    <label htmlFor="username">Username</label>
-                    <input id='username' value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
-                </div>
-                <div className={`${styles.control} ${passwordState.isValid === false ? styles.invalid : ''}`}>
-                    {/* label and input for password */}
-                    <label htmlFor="password">Password</label>
-                    <input id='password' value={passwordState.value} type='password' onChange={handlePasswordChange} onBlur={handleValidatePassword} />
-                </div>
+                <Input id="username" label="Username" isValid={userIsValid} value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
+                <Input type="password" id='password' label="Password" isValid={passwordIsValid} value={passwordState.value} onChange={handlePasswordChange} onBlur={handleValidatePassword} />
                 <div className={styles.actions}>
                     {/* button for submit */}
                     <button type="submit" disabled={!validForm}>Login</button>
