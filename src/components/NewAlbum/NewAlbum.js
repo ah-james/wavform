@@ -2,6 +2,7 @@ import React, { useState } from "react"
 
 import styles from './NewAlbum.module.css'
 import AlbumForm from "./AlbumForm"
+import Button from "../UI/Button"
 
 const NewAlbum = (props) => {
     const [mountForm, setMountForm] = useState(false)
@@ -30,7 +31,7 @@ const NewAlbum = (props) => {
 
     return (
         <div className={styles['new-album']}>
-            <button onClick={handleClick}>Add an Album</button>
+            <Button handleClick={handleClick}>Add an Album</Button>
         </div>
     )
 

@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import AuthContext from "../../store/auth-context";
+import Button from "../UI/Button";
 
 import Card from "../UI/Card";
 import styles from './Home.module.css'
@@ -12,7 +13,7 @@ const Home = props => {
     return(
         <Card className={styles.home}>
             <h1>Welcome back!</h1>
-            <button onClick={ctx.handleLogout}>Logout</button>
+            <Button onClick={ctx.handleLogout}>Logout</Button>
         </Card>
     )
 }

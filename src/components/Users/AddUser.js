@@ -1,4 +1,5 @@
 import { useState, useReducer, useEffect } from "react"
+import Button from "../UI/Button"
 import Card from "../UI/Card"
 import ErrorModal from "../UI/ErrorModal"
 import styles from './AddUser.module.css'
@@ -127,7 +128,7 @@ const AddUser = props => {
                     <label>Password</label>
                     <input id='password' value={passwordState.value} type='password' onChange={handlePasswordChange} onBlur={handleValidatePassword} />
                     {/* button for submit */}
-                    <button type="submit">Create</button>
+                    <Button type='submit'>Create</Button>
                 </form>
             </Card>
         </>

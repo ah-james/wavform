@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 
 import styles from './AlbumForm.module.css'
 import ErrorModal from '../UI/ErrorModal'
+import Button from "../UI/Button";
 
 const AlbumForm = props => {
     // create refs with useRef hook so that state updates when form is submitted
@@ -80,8 +81,8 @@ const AlbumForm = props => {
                     </div>
                 </div>
                 <div className={styles["new-album-actions"]}>
-                    <button type='button' onClick={props.handleClick}>Cancel</button>
-                    <button type="submit">Add Album</button>
+                    <Button type='button' handleClick={props.handleClick}>Cancel</Button>
+                    <Button type="submit">Add Album</Button>
                 </div>
             </form>
         </>

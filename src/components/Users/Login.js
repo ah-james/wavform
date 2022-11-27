@@ -2,6 +2,7 @@ import { useContext, useEffect, useReducer, useState } from "react"
 import AuthContext from "../../store/auth-context"
 import Card from "../UI/Card"
 import Input from "../UI/Input"
+import Button from '../UI/Button'
 import styles from './Login.module.css'
 
 // finish this when I have the router up and running
@@ -99,7 +100,7 @@ const Login = props => {
                 <Input type="password" id='password' label="Password" isValid={passwordIsValid} value={passwordState.value} onChange={handlePasswordChange} onBlur={handleValidatePassword} />
                 <div className={styles.actions}>
                     {/* button for submit */}
-                    <button type="submit" disabled={!validForm}>Login</button>
+                    <Button type='submit' disabled={!validForm}>Login</Button>
                 </div>
             </form>
         </Card>
