@@ -94,10 +94,16 @@ const Login = props => {
     }
 
     return(
-        <Card className={styles.login}>
+        <Card className={styles["new-user"]}>
             <form onSubmit={handleLoginSubmit}>
-                <Input id="username" label="Username" isValid={userIsValid} value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
-                <Input type="password" id='password' label="Password" isValid={passwordIsValid} value={passwordState.value} onChange={handlePasswordChange} onBlur={handleValidatePassword} />
+                <div className={styles['new-user-control']}>
+                    <label htmlFor="username">Username</label>
+                    <Input id="username" isValid={userIsValid} value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
+                </div>
+                <div className={styles['new-user-control']}>
+                    <label htmlFor="password">Password</label>
+                    <Input type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={handlePasswordChange} onBlur={handleValidatePassword} />
+                </div>
                 <div className={styles.actions}>
                     {/* button for submit */}
                     <Button type='submit' disabled={!validForm}>Login</Button>

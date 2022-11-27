@@ -13,7 +13,7 @@ const Home = props => {
     return(
         <Card className={styles.home}>
             <h1>Welcome back!</h1>
-            <Button onClick={ctx.handleLogout}>Logout</Button>
+            <Button handleClick={ctx.handleLogout}>Logout</Button>
         </Card>
     )
 }
