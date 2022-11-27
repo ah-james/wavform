@@ -1,4 +1,5 @@
-import { useEffect, useReducer, useState } from "react"
+import { useContext, useEffect, useReducer, useState } from "react"
+import AuthContext from "../../store/auth-context"
 import Card from "../UI/Card"
 import styles from './Login.module.css'
 
@@ -42,6 +43,9 @@ const Login = props => {
         isValid: undefined
     })
 
+    // useContext to manage state
+    const ctx = useContext(AuthContext)
+
     // pull out isValid property and save them as constants to use in useEffect
     // won't update every time useReducer updates this way
 
@@ -84,7 +88,7 @@ const Login = props => {
     const handleLoginSubmit = (event) => {
         event.preventDefault()
         // prop to handle user login
-        props.handleLogin(userState.value, passwordState.value)
+        ctx.handleLogin(userState.value, passwordState.value)
     }
 
     return(

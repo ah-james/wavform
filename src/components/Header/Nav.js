@@ -17,7 +17,7 @@ const Nav = props => {
                 )}
                 {ctx.loggedIn && (
                     <li>
-                        <button onClick={props.handleLogout}>Logout</button>
+                        <button onClick={ctx.handleLogout}>Logout</button>
                     </li>
                 )}
             </ul>
