@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './App.css';
 
 import NewAlbum from './components/NewAlbum/NewAlbum';
 import Albums from './components/Albums/Albums';
 import Login from './components/Users/Login'
 import Home from './components/Users/Home';
-import AuthContext from './store/auth-context';
 import Header from './components/Header/Header';
+import AuthContext from './store/auth-context';
 
 const DUMMY_DATA = [
   {
@@ -27,7 +27,9 @@ const DUMMY_DATA = [
 
 function App() {
   const [reviews, setReviews] = useState(DUMMY_DATA)
-  const [loggedIn, setLoggedIn] = useState(false)
+
+  // useContext hook to manage state 
+  const ctx = useContext(AuthContext)
 
   const handleAddAlbum = album => {
     setReviews((prevReviews) => {
@@ -35,41 +37,15 @@ function App() {
     })
   }
 
-  // useEffect hook to handle sideeffect of storing logged in user
-  // code is ran whenever dependencies are changed
-  // ex. run check on localStorage when app starts up, then again if state dependency is updated
-  useEffect(() => {
-    const savedData = localStorage.getItem('isLoggedIn')
-
-    if (savedData === '1') {
-      setLoggedIn(true)
-    }
-  }, [])
-
-  const handleLogin = (email, password) => {
-    // use localStorage.setItem to dummy storiing loggin in
-    localStorage.setItem('isLoggedIn', '1')
-    setLoggedIn(true)
-  }
-
-  const handleLogout = () => {
-    // localstorage.removeitem to remove dummy
-    localStorage.removeItem('isLoggedIn')
-    setLoggedIn(false)
-  }
-
   return (
-    <AuthContext.Provider 
-      value={{
-        loggedIn: loggedIn
-      }}
-    >
-      <Header handleLogout={handleLogout} />
+    <React.Fragment>
+      <Header />
       <NewAlbum onAddAlbum={handleAddAlbum} />
       <Albums reviews={reviews} />
-      {!loggedIn && <Login handleLogin={handleLogin} />}
-      {loggedIn && <Home handleLogout={handleLogout} />}
-    </AuthContext.Provider>
+      {/* managing handleLogin & logout functions in auth context now */}
+      {!ctx.loggedIn && <Login />}
+      {ctx.loggedIn && <Home />}
+    </React.Fragment>
   );
 }
 
