@@ -21,7 +21,7 @@
     background-color: #a892ee;
     padding: 1rem;
     margin: 7rem auto;
-    width: 50rem;
+    width: 25rem;
     max-width: 95%;
     border-radius: 12px;
     text-align: center;
@@ -39,4 +39,8 @@
     font-weight: bold;
     display: block;
     margin-bottom: .05rem;
+}
+
+.controls {
+    text-align: left;
 }

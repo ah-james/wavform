@@ -43,8 +43,8 @@ function App() {
       <NewAlbum onAddAlbum={handleAddAlbum} />
       <Albums reviews={reviews} />
       {/* managing handleLogin & logout functions in auth context now */}
-      {!ctx.loggedIn && <Login />}
-      {ctx.loggedIn && <Home />}
+      {/* {!ctx.loggedIn && <Login />}
+      {ctx.loggedIn && <Home />} */}
     </React.Fragment>
   );
 }
