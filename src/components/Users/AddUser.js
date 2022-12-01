@@ -120,14 +120,11 @@ const AddUser = props => {
             <Card className={styles.input}>
                 <form onSubmit={handleAddUser}>
                     {/* label and input for email */}
-                    <label htmlFor="email">Email</label>
-                    <Input id='email' type='email' value={emailState.value} onChange={handleEmailChange} onBlur={handleValidateEmail} />
+                    <Input label="Email" id='email' type='email' value={emailState.value} onChange={handleEmailChange} onBlur={handleValidateEmail} />
                     {/* label and input for username */}
-                    <label htmlFor="username">Username</label>
-                    <Input id='username' value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
+                    <Input label="Username" id='username' value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
                     {/* label and input for password */}
-                    <label>Password</label>
-                    <Input id='password' value={passwordState.value} type='password' onChange={handlePasswordChange} onBlur={handleValidatePassword} />
+                    <Input label="Password" id='password' value={passwordState.value} type='password' onChange={handlePasswordChange} onBlur={handleValidatePassword} />
                     {/* button for submit */}
                     <Button type='submit'>Create</Button>
                 </form>
