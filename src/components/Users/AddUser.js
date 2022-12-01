@@ -2,6 +2,7 @@ import { useState, useReducer, useEffect } from "react"
 import Button from "../UI/Button"
 import Card from "../UI/Card"
 import ErrorModal from "../UI/ErrorModal"
+import Input from "../UI/Input"
 import styles from './AddUser.module.css'
 
 const reducer = (state, action) => {
@@ -120,13 +121,13 @@ const AddUser = props => {
                 <form onSubmit={handleAddUser}>
                     {/* label and input for email */}
                     <label htmlFor="email">Email</label>
-                    <input id='email' type='email' value={emailState.value} onChange={handleEmailChange} onBlur={handleValidateEmail} />
+                    <Input id='email' type='email' value={emailState.value} onChange={handleEmailChange} onBlur={handleValidateEmail} />
                     {/* label and input for username */}
                     <label htmlFor="username">Username</label>
-                    <input id='username' value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
+                    <Input id='username' value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
                     {/* label and input for password */}
                     <label>Password</label>
-                    <input id='password' value={passwordState.value} type='password' onChange={handlePasswordChange} onBlur={handleValidatePassword} />
+                    <Input id='password' value={passwordState.value} type='password' onChange={handlePasswordChange} onBlur={handleValidatePassword} />
                     {/* button for submit */}
                     <Button type='submit'>Create</Button>
                 </form>
