@@ -3,6 +3,7 @@ import React, { useState, useRef } from "react";
 import styles from './AlbumForm.module.css'
 import ErrorModal from '../UI/ErrorModal'
 import Button from "../UI/Button";
+import Input from '../UI/Input'
 
 const AlbumForm = props => {
     // create refs with useRef hook so that state updates when form is submitted
@@ -63,22 +64,26 @@ const AlbumForm = props => {
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-album-controls"]}>
                     {/* dynamic style to determine invalid inputs */}
-                    <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
+                    {/* <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
                         <label htmlFor="artist">Artist</label>
                         <input id="artist" type='text' ref={artistInputRef} />
-                    </div>
-                    <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
+                    </div> */}
+                    <Input id="artist" type='text' label="Artist" ref={artistInputRef} />
+                    {/* <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
                         <label htmlFor="album">Album</label>
                         <input id="album" type='text' ref={albumInputRef}/>
-                    </div>
-                    <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
+                    </div> */}
+                    <Input id="album" type='text' label='Album' ref={albumInputRef} />
+                    {/* <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
                         <label htmlFor="rating">Rating</label>
                         <input id="rating" type='number' min='0' max='10' ref={ratingInputRef} />
-                    </div>
-                    <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
+                    </div> */}
+                    <Input id='rating' type='number' label="Rating" ref={ratingInputRef} />
+                    {/* <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
                         <label htmlFor="date">Date</label>
                         <input id="date" type='date' ref={dateInputRef} />
-                    </div>
+                    </div> */}
+                    <Input id='date' type='date' label='date' ref={dateInputRef} />
                 </div>
                 <div className={styles["new-album-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>
