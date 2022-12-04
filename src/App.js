@@ -27,25 +27,6 @@ const DUMMY_DATA = [
 
 function App() {
   const [reviews, setReviews] = useState(DUMMY_DATA)
-  const [albums, setAlbums] = useState()
-
-  // adding fetch request for spotify api to get albums
-  function handleFetchAlbums() {
-    fetch('https://api.spotify.com/v1/albums')
-      .then((response) => {
-        return response.json()
-      })
-      .then((data) => {
-        const transformedAlbums = data.albums.map(albumData => {
-          return {
-            id: albumData.id,
-            album: albumData.name,
-            artist: albumData.artists.name,
-          }
-        })
-        setAlbums(data.results)
-      })
-  }
 
   // useContext hook to manage state 
   const ctx = useContext(AuthContext)
