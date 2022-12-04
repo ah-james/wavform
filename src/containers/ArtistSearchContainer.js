@@ -34,17 +34,13 @@ const ArtistSearchContainer = props => {
             }
         }
 
-        const artistID = await fetch(`https://api.spotify.com/v1/search?q=${search}&type=artist`, searchParameters)
-        .then(response => response.json())
-        .then((data) => {
-            return data.artists.items[0].id
-        })
+        const response = await fetch(`https://api.spotify.com/v1/search?q=${search}&type=artist`, searchParameters)
+        const artistData = await response.json()
+        const artistID =  artistData.artists.items[0].id
 
         const returnedAlbums = await fetch(`https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=US&limit=25`, searchParameters)
-        .then(response => response.json())
-        .then(data => {
-            setAlbums(data.items)
-        })
+        const albumResponse = await returnedAlbums.json()
+        setAlbums(albumResponse.items)
     }
 
 
