@@ -6,7 +6,10 @@ const ArtistSearchContainer = props => {
     const [search, setSearch] = useState('')
     const [accessToken, setAccessToken] = useState('')
     const [albums, setAlbums] = useState([])
+    // bit of state to check if content is currently loading, starting false
+    const [loading, setLoading] = useState(false)
 
+    // Spotify API requires specific parameters for an access token to use their API, run that when component loads
     useEffect(() => {
         const authParameters = {
             method: 'POST',
@@ -25,6 +28,8 @@ const ArtistSearchContainer = props => {
     // adding fetch request for spotify api to get albums
     async function searchArtists(event) {
         event.preventDefault()
+        // setLoading to true
+        setLoading(true)
 
         const searchParameters = {
             method: 'GET',
@@ -34,13 +39,19 @@ const ArtistSearchContainer = props => {
             }
         }
 
+        // GET an artist via search
         const response = await fetch(`https://api.spotify.com/v1/search?q=${search}&type=artist`, searchParameters)
         const artistData = await response.json()
+        // want to eventually have a suggestion box that autofills when user starts typing, for now use top artist ID
+        // ID not name to add to string to find artist's albums
         const artistID =  artistData.artists.items[0].id
 
-        const returnedAlbums = await fetch(`https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=US&limit=25`, searchParameters)
+        // GET all albums by an artist
+        const returnedAlbums = await fetch(`https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=US&limit=50`, searchParameters)
         const albumResponse = await returnedAlbums.json()
         setAlbums(albumResponse.items)
+        // setLoading to false
+        setLoading(false)
     }
 
 
@@ -48,6 +59,8 @@ const ArtistSearchContainer = props => {
         <form onSubmit={searchArtists}>
             <input type='text' onChange={event => setSearch(event.target.value)}></input>
             <button type='submit'>Search</button>
+            {!loading && albums.length === 0 && <p>No Albums Found</p>}
+            {loading && <p>Loading...</p>}
             {albums.map(album => 
                 <div>
                     <p>{album.name}</p>
