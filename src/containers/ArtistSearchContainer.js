@@ -68,20 +68,31 @@ const ArtistSearchContainer = props => {
         setLoading(false)
     }
 
+    let content = <p>No Albums Found</p>
+
+    if (loading) {
+        content = <p>Loading...</p>
+    }
+
+    if (error) {
+        content = <p>{error}</p>
+    }
+
+    if (albums.length > 0) {
+        content = albums.map(
+            album => 
+            <div key={album.id}>
+                <p>{album.name}</p>
+                <img src={album.images[1].url}></img> 
+            </div>
+        )
+    }
 
     return(
         <form onSubmit={searchArtists}>
             <input type='text' onChange={event => setSearch(event.target.value)}></input>
             <button type='submit'>Search</button>
-            {!loading && albums.length === 0 && !error && <p>No Albums Found</p>}
-            {loading && <p>Loading...</p>}
-            {!loading && error && <p>{error}</p>}
-            {albums.map(album => 
-                <div key={album.id}>
-                    <p>{album.name}</p>
-                    <img src={album.images[1].url}></img> 
-                </div>
-            )}
+            <div>{content}</div>
         </form>
     )
 }
