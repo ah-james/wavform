@@ -52,6 +52,12 @@ const ArtistSearchContainer = props => {
         <form onSubmit={searchArtists}>
             <input type='text' onChange={event => setSearch(event.target.value)}></input>
             <button type='submit'>Search</button>
+            {albums.map(album => 
+                <div>
+                    <p>{album.name}</p>
+                    <img src={album.images[1].url}></img> 
+                </div>
+            )}
         </form>
     )
 }
