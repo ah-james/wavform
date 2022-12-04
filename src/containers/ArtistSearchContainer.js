@@ -1,22 +1,49 @@
+import { useEffect, useState } from "react"
 
+const CLIENT_ID = 'ba847002581743b9975e657bd8ced12b'
 
 const ArtistSearchContainer = props => {
+    const [search, setSearch] = useState('')
+    const [accessToken, setAccessToken] = useState('')
+    const [albums, setAlbums] = useState([])
+
+    useEffect(() => {
+        const authParameters = {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: `grant_type=client_credentials&client_id=${CLIENT_ID}&client_secret=${process.env.REACT_APP_SPOTIFY_KEY}`
+        }
+
+        fetch('http://accounts.spotify.com/api/token', authParameters)
+        .then(result => result.json())
+        .then(data => setAccessToken(data.access_token))
+    }, [])
+
 
     // adding fetch request for spotify api to get albums
-    const searchArtists = (event) => {
-        fetch('https://api.spotify.com/v1/search')
-        .then((response) => {
-            return response.json()
-        })
-        .then((data) => {
-            const transformedAlbums = data.albums.map(albumData => {
-            return {
-                id: albumData.id,
-                album: albumData.name,
-                artist: albumData.artists.name,
+    async function searchArtists(event) {
+        event.preventDefault()
+
+        const searchParameters = {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
             }
-            })
-            console.log(data.results)
+        }
+
+        const artistID = await fetch(`https://api.spotify.com/v1/search?q=${search}&type=artist`, searchParameters)
+        .then(response => response.json())
+        .then((data) => {
+            return data.artists.items[0].id
+        })
+
+        const returnedAlbums = await fetch(`https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=US&limit=25`, searchParameters)
+        .then(response => response.json())
+        .then(data => {
+            setAlbums(data.items)
         })
     }
 
@@ -28,3 +55,5 @@ const ArtistSearchContainer = props => {
         </form>
     )
 }
+
+export default ArtistSearchContainer

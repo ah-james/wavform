@@ -8,6 +8,8 @@ import Home from './components/Users/Home';
 import Header from './components/Header/Header';
 import AuthContext from './store/auth-context';
 
+import ArtistSearchContainer from './containers/ArtistSearchContainer';
+
 const DUMMY_DATA = [
   {
     id: '1',
@@ -26,25 +28,26 @@ const DUMMY_DATA = [
 ]
 
 function App() {
-  const [reviews, setReviews] = useState(DUMMY_DATA)
+  // const [reviews, setReviews] = useState(DUMMY_DATA)
 
-  // useContext hook to manage state 
-  const ctx = useContext(AuthContext)
+  // // useContext hook to manage state 
+  // const ctx = useContext(AuthContext)
 
-  const handleAddAlbum = album => {
-    setReviews((prevReviews) => {
-      return [album, ...prevReviews]
-    })
-  }
+  // const handleAddAlbum = album => {
+  //   setReviews((prevReviews) => {
+  //     return [album, ...prevReviews]
+  //   })
+  // }
 
   return (
     <React.Fragment>
-      <Header />
+      {/* <Header />
       <NewAlbum onAddAlbum={handleAddAlbum} />
-      <Albums reviews={reviews} />
+      <Albums reviews={reviews} /> */}
       {/* managing handleLogin & logout functions in auth context now */}
-      {!ctx.loggedIn && <Login />}
-      {ctx.loggedIn && <Home />}
+      {/* {!ctx.loggedIn && <Login />}
+      {ctx.loggedIn && <Home />} */}
+      <ArtistSearchContainer />
     </React.Fragment>
   );
 }
