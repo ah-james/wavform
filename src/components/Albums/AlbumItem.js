@@ -2,10 +2,11 @@ import styles from './AlbumItem.module.css'
 import Card from '../UI/Card'
 
 const AlbumItem = props => {
+    const date = new Date(props.date)
 
-    const month = props.date.toLocaleString('en-US', { month: 'long' })
-    const day = props.date.toLocaleString('en-US', { day: '2-digit' })
-    const year = props.date.getFullYear()
+    const month = date.toLocaleString('en-US', { month: 'long' })
+    const day = date.toLocaleString('en-US', { day: '2-digit' })
+    const year = date.getFullYear()
 
     return(
         <li>

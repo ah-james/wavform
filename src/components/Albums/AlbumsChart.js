@@ -19,8 +19,9 @@ const AlbumsChart = props => {
 
     // for loop through props.expenses from filteredAlbums in Albums.js
     // update value of each month in data points to reflect number of albums from that month
-    for (const album of props.albums) {
-        const albumMonth = album.date.getMonth()
+    for (const review of props.reviews) {
+        const date = new Date(review.date)
+        const albumMonth = date.getMonth()
         dataPoints[albumMonth].value += 1
     }
 

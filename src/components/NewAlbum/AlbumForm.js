@@ -47,7 +47,7 @@ const AlbumForm = props => {
             artist: enteredArtist,
             album: enteredAlbum,
             rating: enteredRating,
-            date: new Date(enteredDate)
+            date: enteredDate
         }
 
         props.onSaveAlbum(albumData)
