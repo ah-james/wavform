@@ -7,14 +7,24 @@ import Button from "../UI/Button"
 const NewAlbum = (props) => {
     const [mountForm, setMountForm] = useState(false)
 
-    const handleSaveAlbum = (data) => {
-        const savedData = {
-            ...data,
-            id: Math.random().toString()
-        }
+    const handleSaveAlbum = async (review) => {
+        // const savedData = {
+        //     ...review,
+        //     id: Math.random().toString()
+        // }
 
-        props.onAddAlbum(savedData)
-        setMountForm(false)
+        // props.onAddReview(savedData)
+        // setMountForm(false)
+
+        const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/reviews.json', {
+            method: 'POST',
+            body: JSON.stringify(review),
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        })
+        const data = await response.json()
+        console.log(data)
     }
 
     const handleClick = () => {
