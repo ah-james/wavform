@@ -83,7 +83,7 @@ const ArtistSearchContainer = props => {
             album => 
             <div key={album.id}>
                 <p>{album.name}</p>
-                <img src={album.images[1].url}></img> 
+                <img alt={album.name} src={album.images[1].url}></img> 
             </div>
         )
     }

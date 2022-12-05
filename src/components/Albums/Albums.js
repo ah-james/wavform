@@ -14,7 +14,7 @@ const Albums = props => {
         setFilteredYear(selectedYear)
     }
 
-    const filteredAlbums = props.reviews.filter(review => {
+    const filteredReviews = props.reviews.filter(review => {
         if (filteredYear === '') {
             return props.reviews
         }
@@ -25,8 +25,8 @@ const Albums = props => {
         <Card className={styles.albums}>
             <AlbumFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
             {/* Add chart to page, pass in filteredExpenses as a prop */}
-            <AlbumsChart albums={filteredAlbums} />
-            <AlbumsList albums={filteredAlbums} />
+            <AlbumsChart reviews={filteredReviews} />
+            <AlbumsList reviews={filteredReviews} />
         </Card>
     )
 }
