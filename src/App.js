@@ -7,45 +7,43 @@ import Login from './components/Users/Login'
 import Home from './components/Users/Home';
 import Header from './components/Header/Header';
 import AuthContext from './store/auth-context';
+import styles from './components/Albums/AlbumsList.module.css'
 
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
 
-const DUMMY_DATA = [
-  {
-    id: '1',
-    artist: 'Pinegrove',
-    album: '11:11',
-    date: new Date(2022, 1, 28),
-    rating: '8'
-  },
-  {
-    id: '2',
-    artist: 'Hot Mulligan',
-    album: `you'll be fine`,
-    date: new Date(2020, 3, 6),
-    rating: '10',
-  }
-]
-
 function App() {
   const [reviews, setReviews] = useState([])
+  const [error, setError] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const handleFetchReviews = useCallback(async () => {
-    const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/reviews.json')
-    const data = await response.json()
-    const loadedReviews = []
+    setLoading(true)
+    try {
+      const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/reviews.json')
 
-    for (const key in data) {
-      loadedReviews.push({
-        id: key,
-        artist: data[key].artist,
-        album: data[key].album,
-        date: data[key].date,
-        rating: data[key].rating
-      })
+      if (!response.ok) {
+        throw new Error('Something went wrong.')
+      }
+
+      const data = await response.json()
+      const loadedReviews = []
+  
+      for (const key in data) {
+        loadedReviews.push({
+          id: key,
+          artist: data[key].artist,
+          album: data[key].album,
+          date: data[key].date,
+          rating: data[key].rating
+        })
+      }
+
+      setReviews(loadedReviews)
+
+    } catch (error) {
+      setError(error.message)
     }
-
-    setReviews(loadedReviews)
+    setLoading(false)
   }, [])
 
   useEffect(() => {
@@ -55,17 +53,25 @@ function App() {
   // useContext hook to manage state 
   const ctx = useContext(AuthContext)
 
-  const handleAddReview = review => {
-    setReviews((prevReviews) => {
-      return [review, ...prevReviews]
-    })
+  let content = <p className={styles["albums-list-fallback"]}>No content found.</p>
+
+  if (error) {
+    content = <p className={styles["albums-list-fallback"]}>{error}</p>
+  }
+
+  if (loading) {
+    content = <p className={styles["albums-list-fallback"]}>Loading...</p>
+  }
+
+  if (reviews.length > 0) {
+    content = <Albums reviews={reviews} />
   }
 
   return (
     <React.Fragment>
       <Header />
-      <NewAlbum onAddReview={handleAddReview} />
-      <Albums reviews={reviews} />
+      <NewAlbum />
+      {content}
       {/* managing handleLogin & logout functions in auth context now */}
       {!ctx.loggedIn && <Login />}
       {ctx.loggedIn && <Home />}
