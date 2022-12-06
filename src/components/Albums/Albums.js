@@ -15,10 +15,11 @@ const Albums = props => {
     }
 
     const filteredReviews = props.reviews.filter(review => {
+        const date = new Date(review.date)
         if (filteredYear === '') {
             return props.reviews
         }
-        return review.date.getFullYear().toString() === filteredYear
+        return date.getFullYear().toString() === filteredYear
     })
 
     return(
