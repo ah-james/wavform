@@ -33,6 +33,7 @@ const ArtistSearchContainer = props => {
         // setLoading to true
         setLoading(true)
         // reset errors to null
+        setError(null)
 
         const searchParameters = {
             method: 'GET',
