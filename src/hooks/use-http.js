@@ -1,10 +1,12 @@
-import {useState } from "react"
+import {useCallback, useState } from "react"
 
-const useHttp = (requestConfig, applyData) => {
+const useHttp = () => {
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
 
-    const sendRequest = async () => {
+    // move requestConfig and applyData to sendRequest instead of useHttp so app component doesn't rerender constantly
+    // since it's the function where both are being called
+    const sendRequest = useCallback(async (requestConfig, applyData) => {
         // event.preventDefault()
         // setLoading to true
         setLoading(true)
@@ -35,7 +37,7 @@ const useHttp = (requestConfig, applyData) => {
         }
         // setLoading to false
         setLoading(false)
-    }
+    }, [])
 
     return {
         loading,

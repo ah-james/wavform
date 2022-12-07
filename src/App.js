@@ -8,64 +8,35 @@ import Home from './components/Users/Home';
 import Header from './components/Header/Header';
 import AuthContext from './store/auth-context';
 import styles from './components/Albums/AlbumsList.module.css'
-
-import ArtistSearchContainer from './containers/ArtistSearchContainer';
 import useHttp from './hooks/use-http';
+
+// import ArtistSearchContainer from './containers/ArtistSearchContainer';
 
 function App() {
   const [reviews, setReviews] = useState([])
 
-  const loadReviews = reviewsObj => {
-    const loadedReviews = []
-  
-    for (const key in reviewsObj) {
-      loadedReviews.push({
-        id: key,
-        artist: reviewsObj[key].artist,
-        album: reviewsObj[key].album,
-        date: reviewsObj[key].date,
-        rating: reviewsObj[key].rating
-      })
-    }
-
-    setReviews(loadedReviews)
-  }
-
-  const { loading, error, sendRequest: handleFetchReviews } = useHttp({url: 'https://react-bouncr-default-rtdb.firebaseio.com/reviews.json'}, loadReviews)
-
-  // const handleFetchReviews = useCallback(async () => {
-  //   setLoading(true)
-  //   try {
-  //     const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/reviews.json')
-
-  //     if (!response.ok) {
-  //       throw new Error('Something went wrong.')
-  //     }
-
-  //     const data = await response.json()
-  //     const loadedReviews = []
-  
-  //     for (const key in data) {
-  //       loadedReviews.push({
-  //         id: key,
-  //         artist: data[key].artist,
-  //         album: data[key].album,
-  //         date: data[key].date,
-  //         rating: data[key].rating
-  //       })
-  //     }
-
-  //     setReviews(loadedReviews)
-
-  //   } catch (error) {
-  //     setError(error.message)
-  //   }
-  //   setLoading(false)
-  // }, [])
+  // move url object and loadReviews function to useEffect to control constant rerender 
+  const { loading, error, sendRequest: handleFetchReviews } = useHttp()
 
   useEffect(() => {
-    handleFetchReviews()
-  }, [])
+    // use loadReviews in here to reduce hook bloat
+    const loadReviews = reviewsObj => {
+      const loadedReviews = []
+    
+      for (const key in reviewsObj) {
+        loadedReviews.push({
+          id: key,
+          artist: reviewsObj[key].artist,
+          album: reviewsObj[key].album,
+          date: reviewsObj[key].date,
+          rating: reviewsObj[key].rating
+        })
+      }
+      setReviews(loadedReviews)
+    }
+
+    handleFetchReviews({url: 'https://react-bouncr-default-rtdb.firebaseio.com/reviews.json'}, loadReviews)
+  }, [handleFetchReviews])
 
   // useContext hook to manage state 
   const ctx = useContext(AuthContext)
@@ -92,7 +63,7 @@ function App() {
       {/* managing handleLogin & logout functions in auth context now */}
       {!ctx.loggedIn && <Login />}
       {ctx.loggedIn && <Home />}
-      <ArtistSearchContainer />
+      {/* <ArtistSearchContainer /> */}
     </React.Fragment>
   );
 }
