@@ -13,7 +13,7 @@ const useHttp = () => {
         // reset errors to null
         setError(null)
 
-        const searchParameters = {
+        const parameters = {
             // set defaults for all of these, in case nothing's sent
             method: requestConfig.method ? requestConfig.method : 'GET',
             headers: requestConfig.headers ? requestConfig.headers : {},
@@ -22,7 +22,7 @@ const useHttp = () => {
 
         try {
             // GET an artist via search
-            const response = await fetch(requestConfig.url, searchParameters)
+            const response = await fetch(requestConfig.url, parameters)
 
             // if the response fails throw a new error
             if (!response.ok) {

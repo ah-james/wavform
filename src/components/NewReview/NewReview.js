@@ -7,28 +7,33 @@ import useHttp from "../../hooks/use-http"
 
 const NewReview = (props) => {
     // useHttp hook here destructured to bring out loading error and sendRequest
-    const { loading, error, sendRequest } = useHttp()
+    const { sendRequest } = useHttp()
 
     const [mountForm, setMountForm] = useState(false)
 
-    const handleSaveAlbum = async (review) => {
-        try {
-            const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/reviews.json', {
-                method: 'POST',
-                body: JSON.stringify(review),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            })
-            if (!response.ok) {
-                throw new Error('Something went wrong.')
-            }
-
-            const data = await response.json()
-            console.log(data)
-        } catch (error) {
-            setError(error.message)
+    const createReview = (review, reviewName) => {
+        const id = reviewName.name
+        const createdReview= {
+            id: id,
+            artist: review.artist,
+            album: review.album,
+            date: review.date,
+            rating: review.rating
         }
+        props.onAddReview(createdReview)
+    }
+
+    const handleSaveReview = async (review) => {
+
+        // toss sendRequest into here, accepts URL, method, post, body, then function with what to do with data
+        sendRequest({
+            url: 'https://react-bouncr-default-rtdb.firebaseio.com/reviews.json', 
+            method: 'POST', 
+            body: review, 
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }, createReview.bind(null, review))
     }
 
     const handleClick = () => {
@@ -38,7 +43,7 @@ const NewReview = (props) => {
     if (mountForm) {
         return(
             <div className={styles["new-review"]}>
-                <ReviewForm handleClick={handleClick} onSaveAlbum={handleSaveAlbum} />
+                <ReviewForm handleClick={handleClick} onSaveReview={handleSaveReview} />
             </div>
         )
     }

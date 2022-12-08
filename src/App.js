@@ -38,6 +38,10 @@ function App() {
     handleFetchReviews({url: 'https://react-bouncr-default-rtdb.firebaseio.com/reviews.json'}, loadReviews)
   }, [handleFetchReviews])
 
+  const handleAddReview = review => {
+    setReviews((prevReviews) => prevReviews.concat(review))
+  }
+
   // useContext hook to manage state 
   const ctx = useContext(AuthContext)
 
@@ -58,7 +62,7 @@ function App() {
   return (
     <React.Fragment>
       <Header />
-      <NewAlbum />
+      <NewAlbum onAddReview={handleAddReview} />
       {content}
       {/* managing handleLogin & logout functions in auth context now */}
       {!ctx.loggedIn && <Login />}

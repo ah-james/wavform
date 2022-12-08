@@ -50,7 +50,7 @@ const ReviewForm = props => {
             date: enteredDate
         }
 
-        props.onSaveAlbum(reviewData)
+        props.onSaveReview(reviewData)
         // reset by manipulating DOM current value without react (DON'T DO THIS ANYWHERE ELSE)
         artistInputRef.current.value = ''
         albumInputRef.current.value = ''
