@@ -1,15 +1,15 @@
 import React from 'react'
 
-import styles from './AlbumFilter.module.css'
+import styles from './ReviewFilter.module.css'
 
-const AlbumFilter = props => {
+const ReviewFilter = props => {
     const handleChange = (event) => {
         props.handleFilterChange(event.target.value)
     }
 
     return (
-        <div className={styles['album-filter']}>
-            <div className={styles['album-filter-control']}>
+        <div className={styles['review-filter']}>
+            <div className={styles['review-filter-control']}>
                 <label>Filter by Year</label>
                 <select value={props.selectedYear} onChange={handleChange}>
                     {/* change this eventually so it isn't hardcoded but adds new year if new album from that year added */}
@@ -24,4 +24,4 @@ const AlbumFilter = props => {
     )
 }
 
-export default AlbumFilter
+export default ReviewFilter

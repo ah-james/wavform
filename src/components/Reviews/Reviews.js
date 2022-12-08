@@ -1,13 +1,13 @@
 import React, {useState} from 'react';
 
-import styles from './Albums.module.css'
+import styles from './Reviews.module.css'
 
-import AlbumFilter from '../Albums/AlbumFilter';
+import ReviewFilter from '../Reviews/ReviewFilter';
 import Card from '../UI/Card';
-import AlbumsList from './AlbumsList';
-import AlbumsChart from './AlbumsChart';
+import ReviewsList from './ReviewsList';
+import ReviewsChart from './ReviewsChart';
 
-const Albums = props => {
+const Reviews = props => {
     const [filteredYear, setFilteredYear] = useState('')
 
     const handleFilterChange = selectedYear => {
@@ -23,13 +23,13 @@ const Albums = props => {
     })
 
     return(
-        <Card className={styles.albums}>
-            <AlbumFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
+        <Card className={styles.reviews}>
+            <ReviewFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
             {/* Add chart to page, pass in filteredExpenses as a prop */}
-            <AlbumsChart reviews={filteredReviews} />
-            <AlbumsList reviews={filteredReviews} />
+            <ReviewsChart reviews={filteredReviews} />
+            <ReviewsList reviews={filteredReviews} />
         </Card>
     )
 }
 
-export default Albums
+export default Reviews

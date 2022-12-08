@@ -1,12 +1,15 @@
 import React, { useState } from "react"
 
-import styles from './NewAlbum.module.css'
-import AlbumForm from "./AlbumForm"
+import styles from './NewReview.module.css'
+import ReviewForm from "./ReviewForm"
 import Button from "../UI/Button"
+import useHttp from "../../hooks/use-http"
 
-const NewAlbum = (props) => {
+const NewReview = (props) => {
+    // useHttp hook here destructured to bring out loading error and sendRequest
+    const { loading, error, sendRequest } = useHttp()
+
     const [mountForm, setMountForm] = useState(false)
-    const [error, setError] = useState(null)
 
     const handleSaveAlbum = async (review) => {
         try {
@@ -34,14 +37,14 @@ const NewAlbum = (props) => {
 
     if (mountForm) {
         return(
-            <div className={styles["new-album"]}>
-                <AlbumForm handleClick={handleClick} onSaveAlbum={handleSaveAlbum} />
+            <div className={styles["new-review"]}>
+                <ReviewForm handleClick={handleClick} onSaveAlbum={handleSaveAlbum} />
             </div>
         )
     }
 
     return (
-        <div className={styles['new-album']}>
+        <div className={styles['new-review']}>
             <Button handleClick={handleClick}>Add an Album</Button>
         </div>
     )
@@ -49,4 +52,4 @@ const NewAlbum = (props) => {
 
 }
 
-export default NewAlbum
+export default NewReview

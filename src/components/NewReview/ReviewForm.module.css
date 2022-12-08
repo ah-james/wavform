@@ -1,4 +1,4 @@
-.new-album-controls {
+.new-review-controls {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
@@ -6,13 +6,13 @@
   text-align: left;
 }
 
-.new-album-control label {
+.new-review-control label {
   font-weight: bold;
   margin-bottom: 0.5rem;
   display: block;
 }
 
-.new-album-control input {
+.new-review-control input {
   font: inherit;
   padding: 0.5rem;
   border-radius: 6px;
@@ -21,15 +21,15 @@
   max-width: 100%;
 }
 
-/* if new album control is invalid make label color red */
-.new-album-control.invalid label {
+/* if new review control is invalid make label color red */
+.new-review-control.invalid label {
   font-weight: bold;
   margin-bottom: 0.5rem;
   display: block;
   color: red
 }
 
-.new-album-control.invalid input {
+.new-review-control.invalid input {
   font: inherit;
   padding: 0.5rem;
   border-radius: 6px;
@@ -40,6 +40,6 @@
   background-color: salmon;
 }
 
-.new-album-actions {
+.new-review-actions {
   text-align: right;
 }

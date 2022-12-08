@@ -1,11 +1,11 @@
 import React, { useState, useRef } from "react";
 
-import styles from './AlbumForm.module.css'
+import styles from './ReviewForm.module.css'
 import ErrorModal from '../UI/ErrorModal'
 import Button from "../UI/Button";
 import Input from '../UI/Input'
 
-const AlbumForm = props => {
+const ReviewForm = props => {
     // create refs with useRef hook so that state updates when form is submitted
     // one for each input, ref prop in each html input element
     const artistInputRef = useRef()
@@ -43,14 +43,14 @@ const AlbumForm = props => {
             setIsValid(false)
             return
         }
-        const albumData = {
+        const reviewData = {
             artist: enteredArtist,
             album: enteredAlbum,
             rating: enteredRating,
             date: enteredDate
         }
 
-        props.onSaveAlbum(albumData)
+        props.onSaveAlbum(reviewData)
         // reset by manipulating DOM current value without react (DON'T DO THIS ANYWHERE ELSE)
         artistInputRef.current.value = ''
         albumInputRef.current.value = ''
@@ -62,36 +62,19 @@ const AlbumForm = props => {
         <>
             {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
             <form onSubmit={handleSubmit} >
-                <div className={styles["new-album-controls"]}>
-                    {/* dynamic style to determine invalid inputs */}
-                    {/* <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
-                        <label htmlFor="artist">Artist</label>
-                        <input id="artist" type='text' ref={artistInputRef} />
-                    </div> */}
+                <div className={styles["new-review-controls"]}>
                     <Input id="artist" type='text' label="Artist" ref={artistInputRef} />
-                    {/* <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
-                        <label htmlFor="album">Album</label>
-                        <input id="album" type='text' ref={albumInputRef}/>
-                    </div> */}
                     <Input id="album" type='text' label='Album' ref={albumInputRef} />
-                    {/* <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
-                        <label htmlFor="rating">Rating</label>
-                        <input id="rating" type='number' min='0' max='10' ref={ratingInputRef} />
-                    </div> */}
                     <Input id='rating' type='number' label="Rating" ref={ratingInputRef} />
-                    {/* <div className={`${styles['new-album-control']} ${!isValid && styles.invalid}`}>
-                        <label htmlFor="date">Date</label>
-                        <input id="date" type='date' ref={dateInputRef} />
-                    </div> */}
                     <Input id='date' type='date' label='date' ref={dateInputRef} />
                 </div>
-                <div className={styles["new-album-actions"]}>
+                <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>
-                    <Button type="submit">Add Album</Button>
+                    <Button type="submit">Add Review</Button>
                 </div>
             </form>
         </>
     )
 }
 
-export default AlbumForm
+export default ReviewForm

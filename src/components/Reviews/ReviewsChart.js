@@ -1,6 +1,6 @@
 import Chart from "../Chart/Chart"
 
-const AlbumsChart = props => {
+const ReviewsChart = props => {
     // chart data points variable, array containing objects of chart label for each month, value: 0
     const dataPoints = [
         {label: 'Jan', value: 0},
@@ -30,4 +30,4 @@ const AlbumsChart = props => {
 
 }
 
-export default AlbumsChart
+export default ReviewsChart

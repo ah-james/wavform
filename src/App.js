@@ -1,13 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import './App.css';
 
-import NewAlbum from './components/NewAlbum/NewAlbum';
-import Albums from './components/Albums/Albums';
+import NewAlbum from './components/NewReview/NewReview';
+import Reviews from './components/Reviews/Reviews';
 import Login from './components/Users/Login'
 import Home from './components/Users/Home';
 import Header from './components/Header/Header';
 import AuthContext from './store/auth-context';
-import styles from './components/Albums/AlbumsList.module.css'
+import styles from './components/Reviews/ReviewsList.module.css'
 import useHttp from './hooks/use-http';
 
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
@@ -52,7 +52,7 @@ function App() {
   }
 
   if (reviews.length > 0) {
-    content = <Albums reviews={reviews} />
+    content = <Reviews reviews={reviews} />
   }
 
   return (

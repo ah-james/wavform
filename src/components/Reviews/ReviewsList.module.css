@@ -1,9 +1,9 @@
-.albums-list {
+.reviews-list {
   list-style: none;
   padding: 0;
 }
 
-.albums-list-fallback {
+.reviews-list-fallback {
   color: white;
   text-align: center;
 }
