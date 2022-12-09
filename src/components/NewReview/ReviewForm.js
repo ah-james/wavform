@@ -15,10 +15,10 @@ const ReviewForm = props => {
     const [date, setDate] = useState('')
 
     // portion of state to deterimine if user input is valid (not empty)
-    const [artistIsValid, setArtistIsValid] = useState(false)
-    const [albumIsValid, setAlbumIsValid] = useState(false)
-    const [ratingIsValid, setRatingIsValid] = useState(false)
-    const [dateIsValid, setDateIsValid] = useState(false)
+    const [artistIsValid, setArtistIsValid] = useState(true)
+    const [albumIsValid, setAlbumIsValid] = useState(true)
+    const [ratingIsValid, setRatingIsValid] = useState(true)
+    const [dateIsValid, setDateIsValid] = useState(true)
 
     // portion of state to determine if a component has been touched
     const [artistTouched, setArtistTouched] = useState(false)
@@ -54,6 +54,11 @@ const ReviewForm = props => {
     const handleSubmit = event => {
         event.preventDefault()
 
+        setArtistIsValid(true)
+        setAlbumIsValid(true)
+        setRatingIsValid(true)
+        setDateIsValid(true)
+
         // set everything to touched
         setArtistTouched(true)
         setAlbumTouched(true)
@@ -72,6 +77,7 @@ const ReviewForm = props => {
                 title: 'You missed a spot!',
                 message: 'Please enter an artist.'
             })
+            setArtistIsValid(false)
             return
         }
 
@@ -80,6 +86,7 @@ const ReviewForm = props => {
                 title: 'You missed a spot!',
                 message: 'Please enter an album.'
             })
+            setAlbumIsValid(false)
             return
         }
 
@@ -88,6 +95,7 @@ const ReviewForm = props => {
                 title: 'You missed a spot!',
                 message: 'Please enter a rating.'
             })
+            setRatingIsValid(false)
             return
         }
 
@@ -96,14 +104,9 @@ const ReviewForm = props => {
                 title: 'You missed a spot!',
                 message: 'Please enter a date.'
             })
+            setDateIsValid(false)
             return
         }
-
-        setArtistIsValid(true)
-        setAlbumIsValid(true)
-        setRatingIsValid(true)
-        setDateIsValid(true)
-
 
         const reviewData = {
             artist: enteredArtist,
@@ -130,10 +133,10 @@ const ReviewForm = props => {
             {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
-                    <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} isValid={invalidArtist} />
-                    <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} isValid={invalidAlbum}/>
-                    <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} isValid={invalidRating} />
-                    <Input id='date' type='date' label='date' value={date} onChange={handleDateChange} isValid={invalidDate} />
+                    <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} isValid={!invalidArtist} />
+                    <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} isValid={!invalidAlbum}/>
+                    <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} isValid={!invalidRating} />
+                    <Input id='date' type='date' label='date' value={date} onChange={handleDateChange} isValid={!invalidDate} />
                 </div>
                 <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>
