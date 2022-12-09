@@ -6,7 +6,7 @@ import Button from "../UI/Button";
 import Input from '../UI/Input'
 
 const ReviewForm = props => {
-    // create refs with useRef hook so that state updates when form is submitted
+    // can create refs with useRef hook so that state updates when form is submitted
     // one for each input, ref prop in each html input element
     const artistInputRef = useRef()
     const albumInputRef = useRef()
@@ -14,7 +14,10 @@ const ReviewForm = props => {
     const dateInputRef = useRef()
 
     // portion of state to deterimine if user input is valid (not empty)
-    const [isValid, setIsValid] = useState(true)
+    const [artistIsValid, setArtistIsValid] = useState(true)
+    const [albumIsValid, setAlbumIsValid] = useState(true)
+    const [ratingIsValid, setRatingIsValid] = useState(true)
+    const [dateIsValid, setDateIsValid] = useState(true)
     // state to handle errors
     const [error, setError] = useState()
 
@@ -27,22 +30,57 @@ const ReviewForm = props => {
     // create function to handle form submission
     const handleSubmit = event => {
         event.preventDefault()
+        // set valid checkers to true
+        setAlbumIsValid(true)
+        setArtistIsValid(true)
+        setRatingIsValid(true)
+        setDateIsValid(true)
+
+
         // save current values of input refs and use them in error handling
         const enteredArtist = artistInputRef.current.value
         const enteredAlbum = albumInputRef.current.value
         const enteredRating = ratingInputRef.current.value
         const enteredDate = dateInputRef.current.value
 
-        if (enteredArtist.length === 0 || enteredAlbum.length === 0 || enteredRating.length === 0 || enteredDate.length === 0) {
+        if (enteredArtist.length === 0) {
             // set errors
             setError({
                 title: 'You missed a spot!',
-                message: 'Please fill out each form field'
+                message: 'Please enter an artist'
             })
             // set isValid to false
-            setIsValid(false)
+            setArtistIsValid(false)
             return
         }
+
+        if (enteredAlbum.length === 0) {
+            setError({
+                title: 'You missed a spot!',
+                message: 'Please enter an album'
+            })
+            setAlbumIsValid(false)
+            return
+        }
+
+        if (enteredRating.length === 0) {
+            setError({
+                title: 'You missed a spot!',
+                message: 'Please enter a rating'
+            })
+            setRatingIsValid(false)
+            return
+        }
+
+        if (enteredDate.length === 0) {
+            setError({
+                title: 'You missed a spot!',
+                message: 'Please enter a date'
+            })
+            setDateIsValid(false)
+            return
+        }
+
         const reviewData = {
             artist: enteredArtist,
             album: enteredAlbum,
@@ -63,10 +101,10 @@ const ReviewForm = props => {
             {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
-                    <Input id="artist" type='text' label="Artist" ref={artistInputRef} />
-                    <Input id="album" type='text' label='Album' ref={albumInputRef} />
-                    <Input id='rating' type='number' label="Rating" ref={ratingInputRef} />
-                    <Input id='date' type='date' label='date' ref={dateInputRef} />
+                    <Input id="artist" type='text' label="Artist" ref={artistInputRef} isValid={artistIsValid} />
+                    <Input id="album" type='text' label='Album' ref={albumInputRef} isValid={albumIsValid}/>
+                    <Input id='rating' type='number' label="Rating" ref={ratingInputRef} isValid={ratingIsValid} />
+                    <Input id='date' type='date' label='date' ref={dateInputRef} isValid={dateIsValid} />
                 </div>
                 <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>

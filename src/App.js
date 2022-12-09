@@ -38,6 +38,7 @@ function App() {
     handleFetchReviews({url: 'https://react-bouncr-default-rtdb.firebaseio.com/reviews.json'}, loadReviews)
   }, [handleFetchReviews])
 
+  // need to use this when updating state after posting because state won't rerender without it
   const handleAddReview = review => {
     setReviews((prevReviews) => prevReviews.concat(review))
   }

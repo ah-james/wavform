@@ -11,6 +11,7 @@ const NewReview = (props) => {
 
     const [mountForm, setMountForm] = useState(false)
 
+    // first argument via bind = review data, second argument name from firebase
     const createReview = (review, reviewName) => {
         const id = reviewName.name
         const createdReview= {
