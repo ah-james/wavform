@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 
 import styles from './ReviewForm.module.css'
 import ErrorModal from '../UI/ErrorModal'
@@ -36,18 +36,72 @@ const ReviewForm = props => {
 
     const handleArtistChange = event => {
         setArtist(event.target.value)
+
+        // to check when user starts typing in field, check if event value is not equal to an empty string
+        // set valid state to true
+        if (event.target.value !== '') {
+            setArtistIsValid(true)
+        }
     }
 
     const handleAlbumChange = event => {
         setAlbum(event.target.value)
+
+        if (event.target.value !== '') {
+            setAlbumIsValid(true)
+        }
     }
 
     const handleRatingChange = event => {
         setRating(event.target.value)
+
+        if (event.target.value !== '') {
+            setRatingIsValid(true)
+        }
     }
 
     const handleDateChange = event => {
         setDate(event.target.value)
+
+        if (event.target.value !== '') {
+            setDateIsValid(true)
+        }
+    }
+
+    const handleArtistBlur = event => {
+        setArtistTouched(true)
+
+        if (artist.length === 0) {
+            setArtistIsValid(false)
+            return
+        }
+    }
+
+    const handleAlbumBlur = event => {
+        setAlbumTouched(true)
+
+        if (album.length === 0) {
+            setAlbumIsValid(false)
+            return
+        }
+    }
+
+    const handleRatingBlur = event => {
+        setRatingTouched(true)
+
+        if (rating.length === 0) {
+            setRatingIsValid(false)
+            return
+        }
+    }
+
+    const handleDateBlur = event => {
+        setDateTouched(true)
+
+        if (date.length === 0) {
+            setDateIsValid(false)
+            return
+        }
     }
 
     // create function to handle form submission
@@ -133,10 +187,10 @@ const ReviewForm = props => {
             {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
-                    <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} isValid={!invalidArtist} />
-                    <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} isValid={!invalidAlbum}/>
-                    <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} isValid={!invalidRating} />
-                    <Input id='date' type='date' label='date' value={date} onChange={handleDateChange} isValid={!invalidDate} />
+                    <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
+                    <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum}/>
+                    <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
+                    <Input id='date' type='date' label='date' value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
                 </div>
                 <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>
