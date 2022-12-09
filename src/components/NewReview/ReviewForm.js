@@ -14,12 +14,6 @@ const ReviewForm = props => {
     const [rating, setRating] = useState('')
     const [date, setDate] = useState('')
 
-    // portion of state to deterimine if user input is valid (not empty)
-    const [artistIsValid, setArtistIsValid] = useState(true)
-    const [albumIsValid, setAlbumIsValid] = useState(true)
-    const [ratingIsValid, setRatingIsValid] = useState(true)
-    const [dateIsValid, setDateIsValid] = useState(true)
-
     // portion of state to determine if a component has been touched
     const [artistTouched, setArtistTouched] = useState(false)
     const [albumTouched, setAlbumTouched] = useState(false)
@@ -28,7 +22,16 @@ const ReviewForm = props => {
     // state to handle errors
     const [error, setError] = useState()
 
-    // no longer need change handler functions because of refs
+    // save validity as constants, check if artist, album, etc .trim doesn't equal empty string, can remove set function calls then
+    const artistIsValid = artist.trim() !== ''
+    const albumIsValid = album.trim() !== ''
+    const ratingIsValid = rating.trim() !== ''
+    const dateIsValid = date.trim() !== ''
+
+    const invalidArtist = !artistIsValid && artistTouched
+    const invalidAlbum = !albumIsValid && albumTouched
+    const invalidRating = !ratingIsValid && ratingTouched
+    const invalidDate = !dateIsValid && dateTouched
 
     const handleError = () => {
         setError(null)
@@ -36,82 +39,39 @@ const ReviewForm = props => {
 
     const handleArtistChange = event => {
         setArtist(event.target.value)
-
-        // to check when user starts typing in field, check if event value is not equal to an empty string
-        // set valid state to true
-        if (event.target.value !== '') {
-            setArtistIsValid(true)
-        }
     }
 
     const handleAlbumChange = event => {
         setAlbum(event.target.value)
-
-        if (event.target.value !== '') {
-            setAlbumIsValid(true)
-        }
     }
 
     const handleRatingChange = event => {
         setRating(event.target.value)
-
-        if (event.target.value !== '') {
-            setRatingIsValid(true)
-        }
     }
 
     const handleDateChange = event => {
         setDate(event.target.value)
-
-        if (event.target.value !== '') {
-            setDateIsValid(true)
-        }
     }
 
-    const handleArtistBlur = event => {
+    const handleArtistBlur = () => {
         setArtistTouched(true)
-
-        if (artist.length === 0) {
-            setArtistIsValid(false)
-            return
-        }
     }
 
-    const handleAlbumBlur = event => {
+    const handleAlbumBlur = () => {
         setAlbumTouched(true)
-
-        if (album.length === 0) {
-            setAlbumIsValid(false)
-            return
-        }
     }
 
-    const handleRatingBlur = event => {
+    const handleRatingBlur = () => {
         setRatingTouched(true)
-
-        if (rating.length === 0) {
-            setRatingIsValid(false)
-            return
-        }
     }
 
-    const handleDateBlur = event => {
+    const handleDateBlur = () => {
         setDateTouched(true)
-
-        if (date.length === 0) {
-            setDateIsValid(false)
-            return
-        }
     }
 
     // create function to handle form submission
     const handleSubmit = event => {
         event.preventDefault()
-
-        setArtistIsValid(true)
-        setAlbumIsValid(true)
-        setRatingIsValid(true)
-        setDateIsValid(true)
 
         // set everything to touched
         setArtistTouched(true)
@@ -119,68 +79,57 @@ const ReviewForm = props => {
         setRatingTouched(true)
         setDateTouched(true)
 
-        // save current values of input refs and use them in error handling
-        const enteredArtist = artist
-        const enteredAlbum = album
-        const enteredRating = rating
-        const enteredDate = date
-
-        if (enteredArtist.length === 0) {
-            // set errors
+        if (!artistIsValid) {
             setError({
                 title: 'You missed a spot!',
                 message: 'Please enter an artist.'
             })
-            setArtistIsValid(false)
             return
         }
 
-        if (enteredAlbum.length === 0) {
+        if (!albumIsValid) {
             setError({
                 title: 'You missed a spot!',
                 message: 'Please enter an album.'
             })
-            setAlbumIsValid(false)
             return
         }
 
-        if (enteredRating.length === 0) {
+        if (!ratingIsValid) {
             setError({
                 title: 'You missed a spot!',
                 message: 'Please enter a rating.'
             })
-            setRatingIsValid(false)
             return
         }
 
-        if (enteredDate.length === 0) {
+        if (!dateIsValid) {
             setError({
                 title: 'You missed a spot!',
                 message: 'Please enter a date.'
             })
-            setDateIsValid(false)
             return
         }
 
         const reviewData = {
-            artist: enteredArtist,
-            album: enteredAlbum,
-            rating: enteredRating,
-            date: enteredDate
+            artist,
+            album,
+            rating,
+            date
         }
 
         props.onSaveReview(reviewData)
-        // reset by manipulating DOM current value without react (DON'T DO THIS ANYWHERE ELSE)
+
         setAlbum('')
         setArtist('')
         setRating('')  
         setDate('')
-    }
 
-    const invalidArtist = !artistIsValid && artistTouched
-    const invalidAlbum = !albumIsValid && albumTouched
-    const invalidRating = !ratingIsValid && ratingTouched
-    const invalidDate = !dateIsValid && dateTouched
+        setArtistTouched(false)
+        setAlbumTouched(false)
+        setRatingTouched(false)
+        setDateTouched(false)
+    }
 
     return(
         <>
