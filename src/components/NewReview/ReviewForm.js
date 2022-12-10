@@ -5,33 +5,49 @@ import ErrorModal from '../UI/ErrorModal'
 import Button from "../UI/Button";
 import Input from '../UI/Input'
 
-const ReviewForm = props => {
-    // can create refs with useRef hook so that state updates when form is submitted
-    // using useState here for flexibility
-    // one for each input, ref prop in each html input element
-    const [artist, setArtist] = useState('')
-    const [album, setAlbum] = useState('')
-    const [rating, setRating] = useState('')
-    const [date, setDate] = useState('')
+import useInput from "../../hooks/use-input";
 
-    // portion of state to determine if a component has been touched
-    const [artistTouched, setArtistTouched] = useState(false)
-    const [albumTouched, setAlbumTouched] = useState(false)
-    const [ratingTouched, setRatingTouched] = useState(false)
-    const [dateTouched, setDateTouched] = useState(false)
+const ReviewForm = props => {
+
+    // use custom hook to dry up code, destructure out values and functions
+    const { 
+        value: artist, 
+        validValue: validArtist, 
+        hasError: invalidArtist, 
+        handleValueChange: handleArtistChange, 
+        handleValueBlur: handleArtistBlur, 
+        reset: resetArtist 
+    } = useInput(value => value.trim() !== '')
+
+    const {
+        value: album, 
+        validValue: validAlbum, 
+        hasError: invalidAlbum,
+        handleValueChange: handleAlbumChange, 
+        handleValueBlur: handleAlbumBlur, 
+        reset: resetAlbum 
+    } = useInput(value => value.trim() !== '')
+
+    const {
+        value: rating, 
+        validValue: validRating, 
+        hasError: invalidRating, 
+        handleValueChange: handleRatingChange, 
+        handleValueBlur: handleRatingBlur, 
+        reset: resetRating 
+    } = useInput(value => value.trim() !== '')
+
+    const {
+        value: date, 
+        validValue: validDate, 
+        hasError: invalidDate, 
+        handleValueChange: handleDateChange, 
+        handleValueBlur: handleDateBlur, 
+        reset: resetDate 
+    } = useInput(value => value.trim() !== '')
+
     // state to handle errors
     const [error, setError] = useState()
-
-    // save validity as constants, check if artist, album, etc .trim doesn't equal empty string, can remove set function calls then
-    const validArtist = artist.trim() !== ''
-    const validAlbum = album.trim() !== ''
-    const validRating = rating.trim() !== ''
-    const validDate = date.trim() !== ''
-
-    const invalidArtist = !validArtist && artistTouched
-    const invalidAlbum = !validAlbum && albumTouched
-    const invalidRating = !validRating && ratingTouched
-    const invalidDate = !validDate && dateTouched
 
     let validForm = false
 
@@ -43,47 +59,9 @@ const ReviewForm = props => {
         setError(null)
     }
 
-    const handleArtistChange = event => {
-        setArtist(event.target.value)
-    }
-
-    const handleAlbumChange = event => {
-        setAlbum(event.target.value)
-    }
-
-    const handleRatingChange = event => {
-        setRating(event.target.value)
-    }
-
-    const handleDateChange = event => {
-        setDate(event.target.value)
-    }
-
-    const handleArtistBlur = () => {
-        setArtistTouched(true)
-    }
-
-    const handleAlbumBlur = () => {
-        setAlbumTouched(true)
-    }
-
-    const handleRatingBlur = () => {
-        setRatingTouched(true)
-    }
-
-    const handleDateBlur = () => {
-        setDateTouched(true)
-    }
-
     // create function to handle form submission
     const handleSubmit = event => {
         event.preventDefault()
-
-        // set everything to touched
-        setArtistTouched(true)
-        setAlbumTouched(true)
-        setRatingTouched(true)
-        setDateTouched(true)
 
         if (!validArtist) {
             setError({
@@ -126,15 +104,10 @@ const ReviewForm = props => {
 
         props.onSaveReview(reviewData)
 
-        setAlbum('')
-        setArtist('')
-        setRating('')  
-        setDate('')
-
-        setArtistTouched(false)
-        setAlbumTouched(false)
-        setRatingTouched(false)
-        setDateTouched(false)
+        resetArtist()
+        resetAlbum()
+        resetRating()
+        resetDate()
     }
 
     return(
