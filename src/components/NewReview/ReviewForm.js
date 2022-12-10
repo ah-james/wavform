@@ -23,15 +23,21 @@ const ReviewForm = props => {
     const [error, setError] = useState()
 
     // save validity as constants, check if artist, album, etc .trim doesn't equal empty string, can remove set function calls then
-    const artistIsValid = artist.trim() !== ''
-    const albumIsValid = album.trim() !== ''
-    const ratingIsValid = rating.trim() !== ''
-    const dateIsValid = date.trim() !== ''
+    const validArtist = artist.trim() !== ''
+    const validAlbum = album.trim() !== ''
+    const validRating = rating.trim() !== ''
+    const validDate = date.trim() !== ''
 
-    const invalidArtist = !artistIsValid && artistTouched
-    const invalidAlbum = !albumIsValid && albumTouched
-    const invalidRating = !ratingIsValid && ratingTouched
-    const invalidDate = !dateIsValid && dateTouched
+    const invalidArtist = !validArtist && artistTouched
+    const invalidAlbum = !validAlbum && albumTouched
+    const invalidRating = !validRating && ratingTouched
+    const invalidDate = !validDate && dateTouched
+
+    let validForm = false
+
+    if (validAlbum && validArtist && validRating && validDate) {
+        validForm = true
+    }
 
     const handleError = () => {
         setError(null)
@@ -79,7 +85,7 @@ const ReviewForm = props => {
         setRatingTouched(true)
         setDateTouched(true)
 
-        if (!artistIsValid) {
+        if (!validArtist) {
             setError({
                 title: 'You missed a spot!',
                 message: 'Please enter an artist.'
@@ -87,7 +93,7 @@ const ReviewForm = props => {
             return
         }
 
-        if (!albumIsValid) {
+        if (!validAlbum) {
             setError({
                 title: 'You missed a spot!',
                 message: 'Please enter an album.'
@@ -95,7 +101,7 @@ const ReviewForm = props => {
             return
         }
 
-        if (!ratingIsValid) {
+        if (!validRating) {
             setError({
                 title: 'You missed a spot!',
                 message: 'Please enter a rating.'
@@ -103,7 +109,7 @@ const ReviewForm = props => {
             return
         }
 
-        if (!dateIsValid) {
+        if (!validDate) {
             setError({
                 title: 'You missed a spot!',
                 message: 'Please enter a date.'
@@ -143,7 +149,7 @@ const ReviewForm = props => {
                 </div>
                 <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>
-                    <Button type="submit">Add Review</Button>
+                    <Button type="submit" disabled={!validForm}>Add Review</Button>
                 </div>
             </form>
         </>
