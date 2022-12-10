@@ -1,4 +1,4 @@
-button {
+.button {
     font: inherit;
     cursor: pointer;
     padding: 1rem 2rem;
@@ -13,6 +13,13 @@ button:hover,
 button:active {
     background-color: #510674;
     border-color: #510674;
+}
+
+.button.disabled {
+    background-color: #ccc;
+    color: #535353;
+    border-color: #ccc;
+    cursor: not-allowed;
 }
     
 button.alternative {
