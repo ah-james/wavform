@@ -7,6 +7,11 @@ import styles from './Login.module.css'
 
 // finish this when I have the router up and running
 
+const initialState = {
+    value: '', 
+    isValid: undefined
+}
+
 // username reducer function (outside component function because isn't being used to interact with any parts of state)
 // action.type if statements
 const reducer = (state, action) => {
@@ -35,15 +40,9 @@ const Login = props => {
     const [validForm, setValidForm] = useState(false)
 
     // useReducer to combine both username states (takes 2 arguments, usernameReducer function and initial state)
-    const [userState, dispatchUser] = useReducer(reducer, {
-        value: '', 
-        isValid: undefined
-    })
+    const [userState, dispatchUser] = useReducer(reducer, initialState)
 
-    const [passwordState, dispatchPassword] = useReducer(reducer, {
-        value: '',
-        isValid: undefined
-    })
+    const [passwordState, dispatchPassword] = useReducer(reducer, initialState)
 
     // useContext to manage state
     const ctx = useContext(AuthContext)

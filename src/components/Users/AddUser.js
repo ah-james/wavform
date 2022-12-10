@@ -5,6 +5,11 @@ import ErrorModal from "../UI/ErrorModal"
 import Input from "../UI/Input"
 import styles from './AddUser.module.css'
 
+const initialState = {
+    value: '', 
+    isValid: undefined
+}
+
 const reducer = (state, action) => {
     if (action.type === 'USER_CHANGE') {
         return {
@@ -49,20 +54,11 @@ const AddUser = props => {
     const [error, setError] = useState()
 
     // useReducers for username, email, password
-    const [userState, dispatchUser] = useReducer(reducer, {
-        value: '', 
-        isValid: undefined
-    })
+    const [userState, dispatchUser] = useReducer(reducer, initialState)
 
-    const [passwordState, dispatchPassword] = useReducer(reducer, {
-        value: '',
-        isValid: undefined
-    })
+    const [passwordState, dispatchPassword] = useReducer(reducer, initialState)
 
-    const [emailState, dispatchEmail] = useReducer(reducer, {
-        value: '',
-        isValid: undefined
-    })
+    const [emailState, dispatchEmail] = useReducer(reducer, initialState)
 
     // function to handle add user
     const handleAddUser = event => {
@@ -76,9 +72,6 @@ const AddUser = props => {
             return
         }
         console.log(userState.value, emailState.value, passwordState.value)
-        // setUsername('')
-        // setEmail('')
-        // setPassword('')
     }
 
     // handle changes for username, email, password
