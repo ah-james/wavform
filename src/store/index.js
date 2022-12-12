@@ -3,7 +3,7 @@ import reviewSlice from './reviews-slice'
 
 const store = configureStore({
     reducer: {
-        reviews: reviewSlice.reducers
+        reviews: reviewSlice.reducer
     }
 })
 

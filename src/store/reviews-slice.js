@@ -6,9 +6,10 @@ const reviewSlice = createSlice({
     name: 'reviews',
     initialState: [],
     reducers: {
+        // NEVER preform side effects inside here (ex fetch)
         // one to get reviews
         getReviews(state, action) {
-            state = action.payload
+            state.reviews = action.payload.reviews
         },
         // one to add a new review
         addReview(state, action) {
