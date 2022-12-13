@@ -4,12 +4,14 @@ import { createSlice } from '@reduxjs/toolkit'
 const reviewSlice = createSlice({
     // always needs name and initial state
     name: 'reviews',
-    initialState: [],
+    initialState: {
+        albums: []
+    },
     reducers: {
         // NEVER preform side effects inside here (ex fetch)
         // one to get reviews
         getReviews(state, action) {
-            state.reviews = action.payload.reviews
+            state.albums = action.payload
         },
         // one to add a new review
         addReview(state, action) {

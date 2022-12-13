@@ -11,27 +11,24 @@ export const fetchReviews = () => {
 
             const data = await response.json()
 
-            // const loadedReviews = []
-    // 
-            // for (const key in data) {
-            //     loadedReviews.push({
-            //         id: key,
-            //         artist: data[key].artist,
-            //         album: data[key].album,
-            //         date: data[key].date,
-            //         rating: data[key].rating
-            //     })
-            // }
-            // return loadedReviews
-            return data
+            const loadedReviews = []
+    
+            for (const key in data) {
+                loadedReviews.push({
+                    id: key,
+                    artist: data[key].artist,
+                    album: data[key].album,
+                    date: data[key].date,
+                    rating: data[key].rating
+                })
+            }
+            return loadedReviews
         }
 
         try {
             const reviewData = await fetchData()
             dispatch(
-                reviewActions.getReviews({
-                    reviews: reviewData
-                })
+                reviewActions.getReviews(reviewData)
             )
         } catch (error) {
             console.log(error)
