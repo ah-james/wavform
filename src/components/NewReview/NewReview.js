@@ -1,40 +1,20 @@
 import React, { useState } from "react"
+import { useDispatch } from 'react-redux'
+
 
 import styles from './NewReview.module.css'
 import ReviewForm from "./ReviewForm"
 import Button from "../UI/Button"
-import useHttp from "../../hooks/use-http"
+import { addReview } from '../../store/reviews-actions';
 
 const NewReview = (props) => {
-    // useHttp hook here destructured to bring out loading error and sendRequest
-    const { sendRequest } = useHttp()
 
     const [mountForm, setMountForm] = useState(false)
 
-    // first argument via bind = review data, second argument name from firebase
-    const createReview = (review, reviewName) => {
-        const id = reviewName.name
-        const createdReview= {
-            id: id,
-            artist: review.artist,
-            album: review.album,
-            date: review.date,
-            rating: review.rating
-        }
-        props.onAddReview(createdReview)
-    }
+    const dispatch = useDispatch()
 
     const handleSaveReview = async (review) => {
-
-        // toss sendRequest into here, accepts URL, method, post, body, then function with what to do with data
-        sendRequest({
-            url: 'https://react-bouncr-default-rtdb.firebaseio.com/reviews.json', 
-            method: 'POST', 
-            body: review, 
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }, createReview.bind(null, review))
+        dispatch(addReview(review))
     }
 
     const handleClick = () => {

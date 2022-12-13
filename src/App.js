@@ -7,12 +7,12 @@ import Reviews from './components/Reviews/Reviews';
 // import Login from './components/Users/Login'
 // import Home from './components/Users/Home';
 import Header from './components/Header/Header';
+import styles from './components/Reviews/ReviewsList.module.css'
 import { fetchReviews } from './store/reviews-actions';
 
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
 
 function App() {
-  // const [reviews, setReviews] = useState([])
 
   const dispatch = useDispatch()
   const reviews = useSelector((state) => {
@@ -28,11 +28,27 @@ function App() {
     // setReviews((prevReviews) => prevReviews.concat(review))
   }
 
+  let content = <p className={styles["reviews-list-fallback"]}>Loading...</p>
+
+  // I'll figure this out someday \/
+
+  // if (error) {
+  //   content = <p className={styles["reviews-list-fallback"]}>{error}</p>
+  // }
+
+  // if (loading) {
+  //   content = <p className={styles["reviews-list-fallback"]}>Loading...</p>
+  // }
+
+  if (reviews.length > 0) {
+    content = <Reviews reviews={reviews} />
+  }
+
   return (
     <React.Fragment>
       <Header />
       <NewAlbum onAddReview={handleAddReview} />
-      <Reviews reviews={reviews} />
+      {content}
       {/* managing handleLogin & logout functions in auth context now */}
       {/* {!ctx.loggedIn && <Login />}
       {ctx.loggedIn && <Home />} */}

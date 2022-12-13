@@ -15,7 +15,7 @@ const reviewSlice = createSlice({
         },
         // one to add a new review
         addReview(state, action) {
-            state = [...state, action.payload]
+            state.albums = [...state.albums, action.payload]
         }
     }
 })

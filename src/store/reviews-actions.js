@@ -35,3 +35,40 @@ export const fetchReviews = () => {
         }
     }
 }
+
+export const addReview = (review) => {
+    return async dispatch => {
+        const addData = async () => {
+            const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/reviews.json', {
+                method: 'POST',
+                body: JSON.stringify(review),
+                headers: {'Content-Type': 'application/json'}
+            })
+
+            if (!response.ok) {
+                throw new Error('Sending new review failed')
+            }
+
+            const data = await response.json()
+            return data
+        }
+
+        try {
+            const data = await addData()
+
+            const createdReview = {
+                id: data.name,
+                artist: review.artist,
+                album: review.album,
+                date: review.date,
+                rating: review.rating
+            }
+
+            dispatch(
+                reviewActions.addReview(createdReview)
+            )
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
