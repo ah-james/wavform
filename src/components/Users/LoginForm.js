@@ -1,9 +1,8 @@
-import { useContext, useEffect, useReducer, useState } from "react"
-import AuthContext from "../../store/auth-context"
+import { useEffect, useReducer, useState } from "react"
 import Card from "../UI/Card"
 import Input from "../UI/Input"
 import Button from '../UI/Button'
-import styles from './Login.module.css'
+import styles from './LoginForm.module.css'
 
 // finish this when I have the router up and running
 
@@ -45,7 +44,6 @@ const Login = props => {
     const [passwordState, dispatchPassword] = useReducer(reducer, initialState)
 
     // useContext to manage state
-    const ctx = useContext(AuthContext)
 
     // pull out isValid property and save them as constants to use in useEffect
     // won't update every time useReducer updates this way
@@ -89,7 +87,7 @@ const Login = props => {
     const handleLoginSubmit = (event) => {
         event.preventDefault()
         // prop to handle user login
-        ctx.handleLogin(userState.value, passwordState.value)
+        
     }
 
     return(
