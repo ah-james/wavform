@@ -1,6 +1,6 @@
 import LoginForm from '../components/Users/LoginForm'
 
-const LoginContainer = props => {
+const LoginContainer = () => {
 
     return(
         <div>

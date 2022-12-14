@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 
-const ShowReviewContainer = props => {
+const ShowReviewContainer = () => {
     // params gives key-value pairs where keys are segments leading to page
     // ex. here, path is reviews/:id so params.id which would take value from url
     // /reviews/helloworld --> params.id = helloworld

@@ -4,7 +4,7 @@ import styles from './Header.module.css'
 const Header = props => {
     return(
         <header className={styles['main-header']}>
-            <h1>Bouncr: Social Media for Music Fans</h1>
+            <h1>Bouncr: Social Media for Music People</h1>
             <Nav handleLogout={props.handleLogout} />
         </header>
     )

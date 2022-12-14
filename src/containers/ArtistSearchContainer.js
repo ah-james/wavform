@@ -2,7 +2,7 @@ import { useEffect, useState } from "react"
 
 const CLIENT_ID = 'ba847002581743b9975e657bd8ced12b'
 
-const ArtistSearchContainer = props => {
+const ArtistSearchContainer = () => {
     const [search, setSearch] = useState('')
     const [accessToken, setAccessToken] = useState('')
     const [albums, setAlbums] = useState([])
