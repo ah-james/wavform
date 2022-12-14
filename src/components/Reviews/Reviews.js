@@ -22,11 +22,15 @@ const Reviews = props => {
         return date.getFullYear().toString() === filteredYear
     })
 
+    let filter = 
+        <div>
+            <ReviewFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
+            <ReviewsChart reviews={filteredReviews} />
+        </div>
+        
     return(
         <Card className={styles.reviews}>
-            <ReviewFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
-            {/* Add chart to page, pass in filteredExpenses as a prop */}
-            <ReviewsChart reviews={filteredReviews} />
+            {props.showFilter && filter}
             <ReviewsList reviews={filteredReviews} />
         </Card>
     )

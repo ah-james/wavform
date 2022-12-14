@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux'
 
 import Reviews from "../components/Reviews/Reviews"
 
-const ReviewsContainer = props => {
+const ReviewsContainer = () => {
     const reviews = useSelector((state) => {
         return state.reviews.albums
     })

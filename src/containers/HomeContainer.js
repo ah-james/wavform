@@ -5,7 +5,7 @@ import Reviews from '../components/Reviews/Reviews';
 
 import styles from '../components/Reviews/ReviewsList.module.css'
 
-const HomeContainer = (props) => {
+const HomeContainer = () => {
 
     const reviews = useSelector((state) => {
         return state.reviews.albums
@@ -24,7 +24,7 @@ const HomeContainer = (props) => {
     // }
 
     if (reviews.length > 0) {
-        content = <Reviews reviews={reviews} />
+        content = <Reviews reviews={reviews} showFilter={true} />
     }
 
     return(
