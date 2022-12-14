@@ -34,8 +34,7 @@ function App() {
           <Route path='/login'>
             <LoginContainer />
           </Route>
-          {/* use exact prop on /reviews when I add it */}
-          <Route path='/reviews'>
+          <Route path='/reviews' exact>
             <ReviewsContainer />
           </Route>
           <Route path='/reviews/:id'>

@@ -1,4 +1,5 @@
 import { useParams } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const ShowReviewContainer = () => {
     // params gives key-value pairs where keys are segments leading to page
@@ -6,10 +7,20 @@ const ShowReviewContainer = () => {
     // /reviews/helloworld --> params.id = helloworld
     const params = useParams()
 
+    const reviews = useSelector((state) => {
+        return state.reviews.albums
+    })
+
+    const selectedReview = reviews.find(
+        review => review.id === params.id
+    )
+
     return(
         <div>
             <h1>Show Review</h1>
-            <p>{params.id}</p>
+            <p>{selectedReview.artist}</p>
+            <p>{selectedReview.album}</p>
+            <p>{selectedReview.rating}</p>
         </div>
     )
 }

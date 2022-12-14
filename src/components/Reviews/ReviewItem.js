@@ -20,7 +20,7 @@ const ReviewItem = props => {
                 </div>
                 <div className={styles["review-item-description"]}>
                     <h2>{props.artist}</h2>
-                    <Link to={`/reviews/${props.album}`}>{props.album}</Link>
+                    <Link to={`/reviews/${props.id}`}>{props.album}</Link>
                 </div>
                 <div className={styles["review-item-info"]}>
                     <p>{props.rating}/10</p>

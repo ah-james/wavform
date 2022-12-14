@@ -10,7 +10,7 @@ const ReviewsList = props => {
     return(
         <ul className={styles["reviews-list"]}>
             {props.reviews.map((filteredReview) => 
-            <ReviewItem key={filteredReview.id} artist={filteredReview.artist} album={filteredReview.album} date={filteredReview.date} rating={filteredReview.rating} />
+            <ReviewItem key={filteredReview.id} id={filteredReview.id} artist={filteredReview.artist} album={filteredReview.album} date={filteredReview.date} rating={filteredReview.rating} />
             )}
         </ul>
     )
