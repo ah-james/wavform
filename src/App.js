@@ -10,6 +10,7 @@ import HomeContainer from './containers/HomeContainer';
 import LoginContainer from './containers/LoginContainer';
 import ShowReviewContainer from './containers/ShowReviewContainer';
 import ReviewsContainer from './containers/ReviewsContainer';
+import PageNotFound from './containers/PageNotFound';
 
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
 
@@ -39,6 +40,9 @@ function App() {
           </Route>
           <Route path='/reviews/:id'>
             <ShowReviewContainer />
+          </Route>
+          <Route path='*'>
+            <PageNotFound />
           </Route>
         </Switch>
       </main>

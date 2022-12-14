@@ -15,6 +15,10 @@ const ShowReviewContainer = () => {
         review => review.id === params.id
     )
 
+    if (!selectedReview) {
+        return <h1>No Review Found</h1>
+    }
+
     return(
         <div>
             <h1>Show Review</h1>
