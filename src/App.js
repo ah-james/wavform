@@ -2,13 +2,14 @@ import './App.css';
 
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 
 import Header from './components/Header/Header';
 import { fetchReviews } from './store/reviews-actions';
 import HomeContainer from './containers/HomeContainer';
 import LoginContainer from './containers/LoginContainer';
 import ShowReviewContainer from './containers/ShowReviewContainer';
+import ReviewsContainer from './containers/ReviewsContainer';
 
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
 
@@ -24,6 +25,9 @@ function App() {
       <Header />
       <main>
         <Switch>
+          <Route path='/' exact>
+            <Redirect to='/login' />
+          </Route>
           <Route path='/home'>
             <HomeContainer />
           </Route>
@@ -31,6 +35,9 @@ function App() {
             <LoginContainer />
           </Route>
           {/* use exact prop on /reviews when I add it */}
+          <Route path='/reviews'>
+            <ReviewsContainer />
+          </Route>
           <Route path='/reviews/:id'>
             <ShowReviewContainer />
           </Route>
