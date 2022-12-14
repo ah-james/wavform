@@ -2,12 +2,13 @@ import './App.css';
 
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
-import { Route } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 
 import Header from './components/Header/Header';
 import { fetchReviews } from './store/reviews-actions';
 import HomeContainer from './containers/HomeContainer';
 import LoginContainer from './containers/LoginContainer';
+import ShowReviewContainer from './containers/ShowReviewContainer';
 
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
 
@@ -21,12 +22,20 @@ function App() {
   return (
     <div>
       <Header />
-      <Route path='/home'>
-        <HomeContainer />
-      </Route>
-      <Route path='/login'>
-        <LoginContainer />
-      </Route>
+      <main>
+        <Switch>
+          <Route path='/home'>
+            <HomeContainer />
+          </Route>
+          <Route path='/login'>
+            <LoginContainer />
+          </Route>
+          {/* use exact prop on /reviews when I add it */}
+          <Route path='/reviews/:id'>
+            <ShowReviewContainer />
+          </Route>
+        </Switch>
+      </main>
       {/* <ArtistSearchContainer /> */}
     </div>
   );

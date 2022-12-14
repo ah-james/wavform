@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom'
+
 import styles from './ReviewItem.module.css'
 import Card from '../UI/Card'
 
@@ -18,7 +20,7 @@ const ReviewItem = props => {
                 </div>
                 <div className={styles["review-item-description"]}>
                     <h2>{props.artist}</h2>
-                    <h2>{props.album}</h2>
+                    <Link to={`/reviews/${props.album}`}>{props.album}</Link>
                 </div>
                 <div className={styles["review-item-info"]}>
                     <p>{props.rating}/10</p>
