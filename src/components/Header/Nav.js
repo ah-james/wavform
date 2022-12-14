@@ -1,27 +1,23 @@
-// import React, { useContext } from 'react'
+import React from 'react'
+import { NavLink } from 'react-router-dom'
 
-// import Button from '../UI/Button'
-// import styles from './Nav.module.css'
+import styles from './Nav.module.css'
 
-// const Nav = props => {
-//     // save AuthContext in constant with useContext hook
+const Nav = props => {
+    // use NavLink from react-router-dom, prevents page from reloading and can set CSS class on active path
 
-//     return(
-//         <nav className={styles.nav}>
-//             <ul>
-//                 {ctx.loggedIn && (
-//                     <li>
-//                         <a href='/'>Users</a>
-//                     </li>
-//                 )}
-//                 {ctx.loggedIn && (
-//                     <li>
-//                         <Button handleClick={ctx.handleLogout}>Logout</Button>
-//                     </li>
-//                 )}
-//             </ul>
-//         </nav>
-//     )
-// }
+    return(
+        <nav className={styles.nav}>
+            <ul>
+                <li>
+                    <NavLink activeClassName={styles.active} to='/login'>Login</NavLink>
+                </li>
+                <li>
+                    <NavLink activeClassName={styles.active} to='/home'>Home</NavLink>
+                </li>
+            </ul>
+        </nav>
+    )
+}
 
-// export default Nav
+export default Nav

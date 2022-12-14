@@ -17,8 +17,11 @@
 }
   
 .nav a:hover,
-.nav a:active {
-    color: #f3cafb;
+.nav a:active,
+.nav a.active {
+    color: #a892ee;
+    padding-bottom: 0.25rem;
+    border-bottom: 4px solid #a892ee
 }
   
 .nav button {
