@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 
 import styles from './Reviews.module.css'
 
@@ -12,6 +12,11 @@ const Reviews = props => {
     const [filteredYear, setFilteredYear] = useState('')
 
     const history = useHistory()
+    const location = useLocation()
+
+    const queryParams = new URLSearchParams(location.search)
+
+    const isAscending = queryParams.get('sort') === 'asc'
 
     const handleFilterChange = selectedYear => {
         setFilteredYear(selectedYear)
@@ -25,14 +30,20 @@ const Reviews = props => {
         return date.getFullYear().toString() === filteredYear
     })
 
+    const sortReviews = filteredReviews.sort((a,b) => {
+        if (isAscending) {
+            return new Date(a.date) - new Date(b.date)
+        } else {
+            return new Date(b.date) - new Date(a.date)
+        }
+    })
+
     const changeSort = () => {
         let path = 'reviews'
-        if (props.showFilter) {
+        if (props.showChart) {
             path = 'home'
         }
-
-        console.log('sorting')
-        history.push(`/${path}?sort=asc`)
+        history.push(`/${path}?sort=${isAscending ? 'desc' : 'asc'}`)
     }
 
     let chart = 
@@ -42,9 +53,9 @@ const Reviews = props => {
         
     return(
         <Card className={styles.reviews}>
-            <ReviewFilter showFilter={props.showChart} selectedYear={filteredYear} handleFilterChange={handleFilterChange} changeSort={changeSort} />
+            <ReviewFilter ascending={isAscending} showFilter={props.showChart} selectedYear={filteredYear} handleFilterChange={handleFilterChange} changeSort={changeSort} />
             {props.showChart && chart}
-            <ReviewsList reviews={filteredReviews} />
+            <ReviewsList reviews={sortReviews} />
         </Card>
     )
 }

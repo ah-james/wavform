@@ -22,7 +22,7 @@ const ReviewFilter = props => {
         <div className={styles['review-filter']}>
             <div className={styles['review-filter-control']}>
                 <label>{props.showFilter ? 'Filter or Sort by Year' : 'Sort by Year' }</label>
-                <Button handleClick={props.changeSort}>Sort Ascending</Button>
+                <Button handleClick={props.changeSort}>Sort {props.ascending ? 'Descending' : 'Ascending'}</Button>
                 {props.showFilter && filter}
             </div>
         </div>
