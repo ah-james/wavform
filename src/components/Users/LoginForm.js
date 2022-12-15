@@ -1,4 +1,6 @@
 import { useEffect, useReducer, useState } from "react"
+import { useHistory } from "react-router-dom"
+
 import Card from "../UI/Card"
 import Input from "../UI/Input"
 import Button from '../UI/Button'
@@ -31,12 +33,9 @@ const reducer = (state, action) => {
 }
 
 const Login = props => {
-    // username and password state
-    // const [username, setUsername] = useState('')
-    // const [password, setPassword] = useState('')
-    // const [validUsername, setValidUsername] = useState()
-    // const [validPassword, setValidPassword] = useState()
     const [validForm, setValidForm] = useState(false)
+
+    const history = useHistory()
 
     // useReducer to combine both username states (takes 2 arguments, usernameReducer function and initial state)
     const [userState, dispatchUser] = useReducer(reducer, initialState)
@@ -87,6 +86,8 @@ const Login = props => {
     const handleLoginSubmit = (event) => {
         event.preventDefault()
         // prop to handle user login
+        // history to navigate to new page
+        history.push('/home')
         
     }
 
