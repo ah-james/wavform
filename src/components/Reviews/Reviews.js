@@ -53,7 +53,7 @@ const Reviews = props => {
         
     return(
         <Card className={styles.reviews}>
-            <ReviewFilter ascending={isAscending} showFilter={props.showChart} selectedYear={filteredYear} handleFilterChange={handleFilterChange} changeSort={changeSort} />
+            <ReviewFilter ascending={isAscending} showFilter={props.showChart} selectedYear={filteredYear} handleFilterChange={handleFilterChange} reviews={props.reviews} changeSort={changeSort} />
             {props.showChart && chart}
             <ReviewsList reviews={sortReviews} />
         </Card>

@@ -4,18 +4,29 @@ import styles from './ReviewFilter.module.css'
 import Button from '../UI/Button'
 
 const ReviewFilter = props => {
+    const yearsArray = []
+
     const handleChange = (event) => {
         props.handleFilterChange(event.target.value)
     }
 
+    const years = props.reviews.forEach(review => {
+        const date = new Date(review.date)
+        const year = date.getFullYear()
+        yearsArray.push(year)
+    })
+    console.log(years)
+
+    const yearsSet = [...new Set(yearsArray)]
+
+    let dynamicOptions = yearsSet.map(year => {
+        return <option value={`${year}`}>{year}</option>
+    })
+
     let filter = 
     <select value={props.selectedYear} onChange={handleChange}>
-        {/* change this eventually so it isn't hardcoded but adds new year if new album from that year added */}
         <option value=''>Select a Year</option>
-        <option value='2022'>2022</option>
-        <option value='2021'>2021</option>
-        <option value='2020'>2020</option>
-        <option value='2019'>2019</option>
+        {dynamicOptions}
     </select>
 
     return (
@@ -23,6 +34,7 @@ const ReviewFilter = props => {
             <div className={styles['review-filter-control']}>
                 <label>{props.showFilter ? 'Filter or Sort by Year' : 'Sort by Year' }</label>
                 <Button handleClick={props.changeSort}>Sort {props.ascending ? 'Descending' : 'Ascending'}</Button>
+                {/* <Button handleClick={years} /> */}
                 {props.showFilter && filter}
             </div>
         </div>
