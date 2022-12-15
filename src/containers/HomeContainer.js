@@ -24,7 +24,7 @@ const HomeContainer = () => {
     // }
 
     if (reviews.length > 0) {
-        content = <Reviews reviews={reviews} showFilter={true} />
+        content = <Reviews reviews={reviews} showChart={true} />
     }
 
     return(

@@ -1,4 +1,5 @@
 import React, {useState} from 'react';
+import { useHistory } from 'react-router-dom';
 
 import styles from './Reviews.module.css'
 
@@ -9,6 +10,8 @@ import ReviewsChart from './ReviewsChart';
 
 const Reviews = props => {
     const [filteredYear, setFilteredYear] = useState('')
+
+    const history = useHistory()
 
     const handleFilterChange = selectedYear => {
         setFilteredYear(selectedYear)
@@ -22,15 +25,25 @@ const Reviews = props => {
         return date.getFullYear().toString() === filteredYear
     })
 
-    let filter = 
+    const changeSort = () => {
+        let path = 'reviews'
+        if (props.showFilter) {
+            path = 'home'
+        }
+
+        console.log('sorting')
+        history.push(`/${path}?sort=asc`)
+    }
+
+    let chart = 
         <div>
-            <ReviewFilter selectedYear={filteredYear} handleFilterChange={handleFilterChange}/>
             <ReviewsChart reviews={filteredReviews} />
         </div>
         
     return(
         <Card className={styles.reviews}>
-            {props.showFilter && filter}
+            <ReviewFilter showFilter={props.showChart} selectedYear={filteredYear} handleFilterChange={handleFilterChange} changeSort={changeSort} />
+            {props.showChart && chart}
             <ReviewsList reviews={filteredReviews} />
         </Card>
     )
