@@ -1,18 +1,20 @@
 import './App.css';
 
-import React, { useEffect } from 'react';
+import React, { useEffect, Suspense } from 'react';
 import { useDispatch } from 'react-redux'
 import { Route, Routes, Navigate } from 'react-router-dom'
 
 import Header from './components/Header/Header';
 import { fetchReviews } from './store/reviews-actions';
-import HomeContainer from './containers/HomeContainer';
-import LoginContainer from './containers/LoginContainer';
-import ShowReviewContainer from './containers/ShowReviewContainer';
-import ReviewsContainer from './containers/ReviewsContainer';
-import PageNotFound from './containers/PageNotFound';
 
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
+
+// create constants for lazy loading with .lazy (take inline function of import with path for component)
+const HomeContainer = React.lazy(() => import('./containers/HomeContainer'))
+const LoginContainer = React.lazy(() => import('./containers/LoginContainer'))
+const ShowReviewContainer = React.lazy(() => import('./containers/ShowReviewContainer'))
+const ReviewsContainer = React.lazy(() => import('./containers/ReviewsContainer'))
+const PageNotFound = React.lazy(() => import('./containers/PageNotFound'))
 
 function App() {
   const dispatch = useDispatch()
@@ -25,14 +27,16 @@ function App() {
     <div>
       <Header />
       <main>
-        <Routes>
-          <Route path='/' element={<Navigate to='/login' replace />} />
-          <Route path='/home' element={<HomeContainer />} />
-          <Route path='/login' element={<LoginContainer />} />
-          <Route path='/reviews' element={<ReviewsContainer />} />
-          <Route path='/reviews/:id' element={<ShowReviewContainer />} />
-          <Route path='*' element={<PageNotFound />} />
-        </Routes>
+        <Suspense fallback={<p>Loading Page...</p>}>
+          <Routes>
+            <Route path='/' element={<Navigate to='/login' replace />} />
+            <Route path='/home' element={<HomeContainer />} />
+            <Route path='/login' element={<LoginContainer />} />
+            <Route path='/reviews' element={<ReviewsContainer />} />
+            <Route path='/reviews/:id' element={<ShowReviewContainer />} />
+            <Route path='*' element={<PageNotFound />} />
+          </Routes>
+        </Suspense>
       </main>
       {/* <ArtistSearchContainer /> */}
     </div>
