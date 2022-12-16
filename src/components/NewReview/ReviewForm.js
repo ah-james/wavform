@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Prompt } from 'react-router-dom'
 
 import styles from './ReviewForm.module.css'
 import ErrorModal from '../UI/ErrorModal'
@@ -9,7 +8,7 @@ import Input from '../UI/Input'
 import useInput from "../../hooks/use-input";
 
 const ReviewForm = props => {
-    const [focusedForm, setFocusedForm] = useState(false)
+    // const [focusedForm, setFocusedForm] = useState(false)
 
     // use custom hook to dry up code, destructure out values and functions
     const { 
@@ -112,15 +111,17 @@ const ReviewForm = props => {
         resetDate()
     }
 
-    const handleFormFocus = () => {
-        setFocusedForm(true)
-    }
+    // const handleFormFocus = () => {
+    //     setFocusedForm(true)
+    // }
 
     return(
         <>
-            <Prompt when={focusedForm} message={(location) => 'Are you sure you want to leave before submitting?'} />
+        {/* Prompt was removed in version 6, add back in or create a custom hook later */}
+            {/* <Prompt when={focusedForm} message={(location) => 'Are you sure you want to leave before submitting?'} /> */}
             {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
-            <form onFocus={handleFormFocus} onSubmit={handleSubmit} >
+            {/* readd on onFocus={handleFormFocus} after fixing */}
+            <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
                     <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
                     <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum}/>

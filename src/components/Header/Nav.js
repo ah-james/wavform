@@ -10,13 +10,13 @@ const Nav = props => {
         <nav className={styles.nav}>
             <ul>
                 <li>
-                    <NavLink activeClassName={styles.active} to='/login'>Login</NavLink>
+                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/login'>Login</NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName={styles.active} to='/home'>Home</NavLink>
+                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/home'>Home</NavLink>
                 </li>
                 <li>
-                    <NavLink activeClassName={styles.active} to='/reviews'>Reviews</NavLink>
+                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/reviews'>Reviews</NavLink>
                 </li>
             </ul>
         </nav>

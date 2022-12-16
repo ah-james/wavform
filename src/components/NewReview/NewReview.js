@@ -14,7 +14,7 @@ const NewReview = (props) => {
     const dispatch = useDispatch()
 
     const handleSaveReview = async (review) => {
-        // could add useHistory hook in app and history.push() to navigate to new page when
+        // could add useNavigate hook in app and history.push() to navigate to new page when
         // form is submitted? just ideas for the future
         dispatch(addReview(review))
     }

@@ -2,7 +2,7 @@ import './App.css';
 
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Routes, Navigate } from 'react-router-dom'
 
 import Header from './components/Header/Header';
 import { fetchReviews } from './store/reviews-actions';
@@ -25,26 +25,14 @@ function App() {
     <div>
       <Header />
       <main>
-        <Switch>
-          <Route path='/' exact>
-            <Redirect to='/login' />
-          </Route>
-          <Route path='/home'>
-            <HomeContainer />
-          </Route>
-          <Route path='/login'>
-            <LoginContainer />
-          </Route>
-          <Route path='/reviews' exact>
-            <ReviewsContainer />
-          </Route>
-          <Route path='/reviews/:id'>
-            <ShowReviewContainer />
-          </Route>
-          <Route path='*'>
-            <PageNotFound />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route path='/' element={<Navigate to='/login' replace />} />
+          <Route path='/home' element={<HomeContainer />} />
+          <Route path='/login' element={<LoginContainer />} />
+          <Route path='/reviews' element={<ReviewsContainer />} />
+          <Route path='/reviews/:id' element={<ShowReviewContainer />} />
+          <Route path='*' element={<PageNotFound />} />
+        </Routes>
       </main>
       {/* <ArtistSearchContainer /> */}
     </div>
