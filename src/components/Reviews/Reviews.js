@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 
 import styles from './Reviews.module.css'
 
@@ -13,6 +13,7 @@ const Reviews = props => {
 
     const history = useHistory()
     const location = useLocation()
+    const match = useRouteMatch()
 
     const queryParams = new URLSearchParams(location.search)
 
@@ -39,11 +40,7 @@ const Reviews = props => {
     })
 
     const changeSort = () => {
-        let path = 'reviews'
-        if (props.showChart) {
-            path = 'home'
-        }
-        history.push(`/${path}?sort=${isAscending ? 'desc' : 'asc'}`)
+        history.push(`${match.path}?sort=${isAscending ? 'desc' : 'asc'}`)
     }
 
     let chart = 

@@ -20,7 +20,7 @@ const ReviewFilter = props => {
     const yearsSet = [...new Set(yearsArray)]
 
     let dynamicOptions = yearsSet.map(year => {
-        return <option value={`${year}`}>{year}</option>
+        return <option key={year} value={`${year}`}>{year}</option>
     })
 
     let filter = 
