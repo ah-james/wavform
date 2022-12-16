@@ -39,10 +39,6 @@ const Reviews = props => {
     })
 
     const changeSort = () => {
-        let path = 'reviews'
-        if (props.showChart) {
-            path = 'home'
-        }
         navigate(`?sort=${isAscending ? 'desc' : 'asc'}`)
     }
 

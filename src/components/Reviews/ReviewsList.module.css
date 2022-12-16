@@ -7,3 +7,11 @@
   color: white;
   text-align: center;
 }
+
+.reviews-list a {
+  text-decoration: none;
+}
+
+.reviews-list li a:hover {
+  background-color: #757575;
+}
