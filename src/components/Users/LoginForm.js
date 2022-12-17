@@ -75,30 +75,13 @@ const Login = props => {
         // don't use userState etc objects in dependencies, effect function will rerun whenever any property of this changes
     }, [userIsValid, passwordIsValid, emailIsValid, newAccount])
 
-    const handleUsernameChange = event => {
+    const handleChange = (dispatch, event) => {
         // dispatchUsername with keys of type (string explaining what's happening) and value (event.target.value)
-        dispatchUser({ type: "INPUT_CHANGE", value: event.target.value })
+        dispatch({ type: "INPUT_CHANGE", value: event.target.value })
     }
 
-    const handlePasswordChange = event => {
-        dispatchPassword({ type: 'INPUT_CHANGE', value: event.target.value })
-    }
-
-    const handleEmailChange = event => {
-        dispatchEmail({ type: 'INPUT_CHANGE', value: event.target.value })
-    }
-
-    const handleValidateUsername = () => {
-        // dispatchUsername with keys of type (string explaining what's happening for reducer)
-        dispatchUser({ type: 'INPUT_BLUR' });
-    };
-    
-    const handleValidatePassword = () => {
-        dispatchPassword({ type: 'INPUT_BLUR' });
-    };
-
-    const handleValidateEmail = () => {
-        dispatchEmail({ type: 'INPUT_BLUR' })
+    const handleValidate = dispatch => {
+        dispatch({ type: 'INPUT_BLUR' })
     }
 
     const handleLoginSubmit = (event) => {
@@ -116,7 +99,7 @@ const Login = props => {
     let email = null
 
     if (newAccount === true) {
-        email = <Input label="Email" id="email" isValid={emailIsValid} value={emailState.value} onChange={handleEmailChange} onBlur={handleValidateEmail} />
+        email = <Input label="Email" id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => {handleChange(dispatchEmail, event)}} onBlur={() => {handleValidate(dispatchEmail)}} />
     }
 
     return(
@@ -125,8 +108,8 @@ const Login = props => {
             <form onSubmit={handleLoginSubmit}>
                 <div className={styles.controls}>
                     {email}
-                    <Input label="Username" id="username" isValid={userIsValid} value={userState.value} onChange={handleUsernameChange} onBlur={handleValidateUsername} />
-                    <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={handlePasswordChange} onBlur={handleValidatePassword} />
+                    <Input label="Username" id="username" isValid={userIsValid} value={userState.value} onChange={(event) => {handleChange(dispatchUser, event)}} onBlur={() => {handleValidate(dispatchUser)}} />
+                    <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => {handleChange(dispatchPassword, event)}} onBlur={() => {handleValidate(dispatchPassword)}} />
                 </div>
                 <div className={styles.actions}>
                     {/* button for submit */}
