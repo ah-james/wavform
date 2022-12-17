@@ -33,6 +33,8 @@ const reducer = (state, action) => {
     return {value: '', isValid: false}
 }
 
+const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
+
 const Login = props => {
     const [validForm, setValidForm] = useState(false)
     const [newAccount, setNewAccount] = useState(false)
@@ -65,7 +67,6 @@ const Login = props => {
                     userIsValid && passwordIsValid && emailIsValid
                 )
             }
-
             setValidForm( 
                 userIsValid && passwordIsValid
             )
@@ -86,11 +87,35 @@ const Login = props => {
         dispatch({ type: 'INPUT_BLUR' })
     }
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         event.preventDefault()
-
-        navigate('/home')
         
+        if (newAccount) {
+            try {
+                const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`, {
+                    method: 'POST',
+                    body: JSON.stringify({
+                        email: emailState.value,
+                        password: passwordState.value,
+                        username: userState.value,
+                        returnSecureToken: true
+                    }),
+                    headers: {'Content-Type': 'application/json'}
+                })
+    
+                if (!response.ok) {
+                    setError({
+                        title: 'You made a mistake!',
+                        message: 'Try entering your information again?'
+                    }) 
+                }
+
+                
+            } catch (error) {
+                // setError(error)
+                console.log('the error is ' + error)
+            }
+        }
     }
 
     const handleFormChange = () => {
@@ -104,7 +129,7 @@ const Login = props => {
     let email = null
 
     if (newAccount === true) {
-        email = <Input label="Email" id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => {handleChange(dispatchEmail, event)}} onBlur={() => {handleValidate(dispatchEmail)}} />
+        email = <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => {handleChange(dispatchEmail, event)}} onBlur={() => {handleValidate(dispatchEmail)}} />
     }
 
     return(
