@@ -11,7 +11,7 @@ import { fetchReviews } from './store/reviews-actions';
 
 // create constants for lazy loading with .lazy (take inline function of import with path for component)
 const HomeContainer = React.lazy(() => import('./containers/HomeContainer'))
-const LoginContainer = React.lazy(() => import('./containers/LoginContainer'))
+const AuthContainer = React.lazy(() => import('./containers/AuthContainer'))
 const ShowReviewContainer = React.lazy(() => import('./containers/ShowReviewContainer'))
 const ReviewsContainer = React.lazy(() => import('./containers/ReviewsContainer'))
 const PageNotFound = React.lazy(() => import('./containers/PageNotFound'))
@@ -31,7 +31,7 @@ function App() {
           <Routes>
             <Route path='/' element={<Navigate to='/login' replace />} />
             <Route path='/home' element={<HomeContainer />} />
-            <Route path='/login' element={<LoginContainer />} />
+            <Route path='/login' element={<AuthContainer />} />
             <Route path='/reviews' element={<ReviewsContainer />} />
             <Route path='/reviews/:id' element={<ShowReviewContainer />} />
             <Route path='*' element={<PageNotFound />} />

@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import Card from "../UI/Card"
 import Input from "../UI/Input"
 import Button from '../UI/Button'
+import ErrorModal from '../UI/ErrorModal'
 import styles from './LoginForm.module.css'
 
 // finish this when I have the router up and running
@@ -35,8 +36,9 @@ const reducer = (state, action) => {
 const Login = props => {
     const [validForm, setValidForm] = useState(false)
     const [newAccount, setNewAccount] = useState(false)
+    const [error, setError] = useState()
 
-    const navigate = useNavigate()
+    const navigate = useNavigate() 
 
     // useReducer to combine both username states (takes 2 arguments, usernameReducer function and initial state)
     const [userState, dispatchUser] = useReducer(reducer, initialState)
@@ -84,16 +86,19 @@ const Login = props => {
         dispatch({ type: 'INPUT_BLUR' })
     }
 
-    const handleLoginSubmit = (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault()
-        // prop to handle user login
-        // navigate to navigate to new page
+
         navigate('/home')
         
     }
 
     const handleFormChange = () => {
         setNewAccount(current => !current)
+    }
+
+    const handleError = () => {
+        setError(null)
     }
 
     let email = null
@@ -103,21 +108,24 @@ const Login = props => {
     }
 
     return(
-        <Card className={styles["new-user"]}>
-            <h2>{newAccount ? 'Sign Up' : 'Login'}</h2>
-            <form onSubmit={handleLoginSubmit}>
-                <div className={styles.controls}>
-                    {email}
-                    <Input label="Username" id="username" isValid={userIsValid} value={userState.value} onChange={(event) => {handleChange(dispatchUser, event)}} onBlur={() => {handleValidate(dispatchUser)}} />
-                    <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => {handleChange(dispatchPassword, event)}} onBlur={() => {handleValidate(dispatchPassword)}} />
-                </div>
-                <div className={styles.actions}>
-                    {/* button for submit */}
-                    <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p>
-                    <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Login'}</Button>
-                </div>
-            </form>
-        </Card>
+        <>
+            {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
+            <Card className={styles["new-user"]}>
+                <h2>{newAccount ? 'Sign Up' : 'Login'}</h2>
+                <form onSubmit={handleSubmit}>
+                    <div className={styles.controls}>
+                        {email}
+                        <Input label="Username" id="username" isValid={userIsValid} value={userState.value} onChange={(event) => {handleChange(dispatchUser, event)}} onBlur={() => {handleValidate(dispatchUser)}} />
+                        <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => {handleChange(dispatchPassword, event)}} onBlur={() => {handleValidate(dispatchPassword)}} />
+                    </div>
+                    <div className={styles.actions}>
+                        {/* button for submit */}
+                        <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p>
+                        <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Login'}</Button>
+                    </div>
+                </form>
+            </Card>
+        </>
     )
 }
 
