@@ -9,6 +9,7 @@
 }
   
 .modal {
+    background-color: #a892ee;
     position: fixed;
     top: 30vh;
     left: 10%;
@@ -28,11 +29,13 @@
 }
   
 .content {
+    background-color: #a892ee;
     padding: 1rem;
     background-color: white;
 }
   
 .actions {
+    background-color: #a892ee;
     padding: 1rem;
     display: flex;
     justify-content: flex-end;

@@ -3,6 +3,7 @@ import {createPortal} from 'react-dom'
 
 import styles from './ErrorModal.module.css'
 import Card from './Card'
+import Button from './Button'
 
 // new component for portal, overlay div here
 const Backdrop = props => {
@@ -23,7 +24,7 @@ const ModalOverlay = props => {
             </div>
             {/* footer with confirm button */}
             <footer className={styles.actions}>
-                <button type='button' onClick={props.handleError} >Try Again</button>
+                <Button type='button' handleClick={props.handleError} >Try Again</Button>
             </footer>
         </Card>
     )
