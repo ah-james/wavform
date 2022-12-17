@@ -6,7 +6,15 @@
 }
   
 .actions {
-    text-align: right;
+    /* text-align: right;
+    display: flex; */
+    display: grid;
+    grid-auto-flow: column;
+    grid-column-gap: 10px;
+}
+
+.actions p {
+    cursor: pointer;
 }
   
 @media (min-width: 768px) {

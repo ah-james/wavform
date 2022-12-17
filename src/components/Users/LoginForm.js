@@ -58,8 +58,14 @@ const Login = props => {
     useEffect(() => {
         // I think I have a memory leak and I've been told this might help I'm sorry for what I'm about to do
         const identifier = setTimeout(() => {
-            setValidForm(
-                userIsValid && passwordIsValid && emailIsValid
+            if (newAccount === true) {
+                setValidForm( 
+                    userIsValid && passwordIsValid && emailIsValid
+                )
+            }
+
+            setValidForm( 
+                userIsValid && passwordIsValid
             )
         }, 500)
         return () => {
@@ -67,7 +73,7 @@ const Login = props => {
         }
 
         // don't use userState etc objects in dependencies, effect function will rerun whenever any property of this changes
-    }, [userIsValid, passwordIsValid, emailIsValid])
+    }, [userIsValid, passwordIsValid, emailIsValid, newAccount])
 
     const handleUsernameChange = event => {
         // dispatchUsername with keys of type (string explaining what's happening) and value (event.target.value)
@@ -124,10 +130,10 @@ const Login = props => {
                 </div>
                 <div className={styles.actions}>
                     {/* button for submit */}
-                    <Button type='submit' disabled={!validForm}>Login</Button>
+                    <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p>
+                    <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Login'}</Button>
                 </div>
             </form>
-            <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p>
         </Card>
     )
 }
