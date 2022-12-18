@@ -39,11 +39,11 @@ const Login = props => {
     const [validForm, setValidForm] = useState(false)
     const [newAccount, setNewAccount] = useState(false)
     const [error, setError] = useState()
+    const [loading, setLoading] = useState()
 
     const navigate = useNavigate() 
 
     // useReducer to combine both username states (takes 2 arguments, usernameReducer function and initial state)
-    const [userState, dispatchUser] = useReducer(reducer, initialState)
 
     const [passwordState, dispatchPassword] = useReducer(reducer, initialState)
 
@@ -54,7 +54,6 @@ const Login = props => {
     // pull out isValid property and save them as constants to use in useEffect
     // won't update every time useReducer updates this way
 
-    const { isValid: userIsValid } = userState
     const { isValid: passwordIsValid } = passwordState
     const { isValid: emailIsValid } = emailState
 
@@ -64,11 +63,11 @@ const Login = props => {
         const identifier = setTimeout(() => {
             if (newAccount === true) {
                 setValidForm( 
-                    userIsValid && passwordIsValid && emailIsValid
+                    passwordIsValid && emailIsValid
                 )
             }
             setValidForm( 
-                userIsValid && passwordIsValid
+                passwordIsValid
             )
         }, 500)
         return () => {
@@ -76,7 +75,7 @@ const Login = props => {
         }
 
         // don't use userState etc objects in dependencies, effect function will rerun whenever any property of this changes
-    }, [userIsValid, passwordIsValid, emailIsValid, newAccount])
+    }, [passwordIsValid, emailIsValid, newAccount])
 
     const handleChange = (dispatch, event) => {
         // dispatchUsername with keys of type (string explaining what's happening) and value (event.target.value)
@@ -89,32 +88,37 @@ const Login = props => {
 
     const handleSubmit = async (event) => {
         event.preventDefault()
-        
+        setLoading(true)
+        let url
         if (newAccount) {
-            try {
-                const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`, {
-                    method: 'POST',
-                    body: JSON.stringify({
-                        email: emailState.value,
-                        password: passwordState.value,
-                        username: userState.value,
-                        returnSecureToken: true
-                    }),
-                    headers: {'Content-Type': 'application/json'}
-                })
-    
-                if (!response.ok) {
-                    setError({
-                        title: 'You made a mistake!',
-                        message: 'Try entering your information again?'
-                    }) 
-                }
+            url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`
+        } else {
+            url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`
+        }
 
-                
-            } catch (error) {
-                // setError(error)
-                console.log('the error is ' + error)
-            }
+        try {
+            const response = await fetch(url, {
+                method: 'POST',
+                body: JSON.stringify({
+                    email: emailState.value,
+                    password: passwordState.value,
+                    returnSecureToken: true
+                }),
+                headers: {'Content-Type': 'application/json'}
+            })
+
+            setLoading(false)
+
+            if (!response.ok) {
+                const data = await response.json()
+                throw new Error(data.error.message)
+            } 
+            const data = await response.json()
+            console.log(data)
+            navigate('/home')
+
+        } catch (error) {
+            alert(error)
         }
     }
 
@@ -126,12 +130,6 @@ const Login = props => {
         setError(null)
     }
 
-    let email = null
-
-    if (newAccount === true) {
-        email = <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => {handleChange(dispatchEmail, event)}} onBlur={() => {handleValidate(dispatchEmail)}} />
-    }
-
     return(
         <>
             {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
@@ -139,14 +137,13 @@ const Login = props => {
                 <h2>{newAccount ? 'Sign Up' : 'Login'}</h2>
                 <form onSubmit={handleSubmit}>
                     <div className={styles.controls}>
-                        {email}
-                        <Input label="Username" id="username" isValid={userIsValid} value={userState.value} onChange={(event) => {handleChange(dispatchUser, event)}} onBlur={() => {handleValidate(dispatchUser)}} />
+                        <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => {handleChange(dispatchEmail, event)}} onBlur={() => {handleValidate(dispatchEmail)}} />
                         <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => {handleChange(dispatchPassword, event)}} onBlur={() => {handleValidate(dispatchPassword)}} />
                     </div>
                     <div className={styles.actions}>
                         {/* button for submit */}
                         <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p>
-                        <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Login'}</Button>
+                        {loading ? <p>Loading...</p> : <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Login'}</Button>}
                     </div>
                 </form>
             </Card>
