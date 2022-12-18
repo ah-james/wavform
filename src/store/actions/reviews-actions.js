@@ -1,4 +1,4 @@
-import { reviewActions } from "./reviews-slice";
+import { reviewActions } from "../reducers/reviews-slice";
 
 export const fetchReviews = () => {
     return async dispatch => {

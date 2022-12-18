@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import { Route, Routes, Navigate } from 'react-router-dom'
 
 import Header from './components/Header/Header';
-import { fetchReviews } from './store/reviews-actions';
+import { fetchReviews } from './store/actions/reviews-actions';
 
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
 

@@ -5,7 +5,7 @@ import { useDispatch } from 'react-redux'
 import styles from './NewReview.module.css'
 import ReviewForm from "./ReviewForm"
 import Button from "../UI/Button"
-import { addReview } from '../../store/reviews-actions';
+import { addReview } from '../../store/actions/reviews-actions';
 
 const NewReview = (props) => {
 

@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit'
-import reviewSlice from './reviews-slice'
+import reviewSlice from './reducers/reviews-slice'
 
 const store = configureStore({
     reducer: {
