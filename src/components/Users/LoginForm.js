@@ -6,6 +6,8 @@ import Input from "../UI/Input"
 import Button from '../UI/Button'
 import ErrorModal from '../UI/ErrorModal'
 import styles from './LoginForm.module.css'
+import { useDispatch } from "react-redux"
+import { authActions } from "../../store/reducers/auth-slice"
 
 // finish this when I have the router up and running
 
@@ -42,6 +44,7 @@ const Login = props => {
     const [loading, setLoading] = useState()
 
     const navigate = useNavigate() 
+    const dispatch = useDispatch()
 
     // useReducer to combine both username states (takes 2 arguments, usernameReducer function and initial state)
 
@@ -115,6 +118,7 @@ const Login = props => {
             } 
             const data = await response.json()
             console.log(data)
+            dispatch(authActions.setLoggedIn(data.idToken))
             navigate('/home')
 
         } catch (error) {
