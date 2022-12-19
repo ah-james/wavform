@@ -12,6 +12,8 @@ const Nav = () => {
     const logout = (event) => {
         event.preventDefault()
         dispatch(authActions.setLoggedOut())
+        // remove token from local storage
+        localStorage.removeItem('token')
         navigate('/login')
     }
 

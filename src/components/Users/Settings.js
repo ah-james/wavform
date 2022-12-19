@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import { authActions } from "../../store/reducers/auth-slice";
 
 import Button from "../UI/Button";
@@ -19,6 +20,8 @@ const Settings = () => {
         return state.auth.token
     })
 
+    const navigate = useNavigate()
+
     const handleSubmit = async event => {
         event.preventDefault()
 
@@ -34,6 +37,7 @@ const Settings = () => {
 
         const data = await response.json()
         dispatch(authActions.setNewPassword(data.idToken))
+        navigate('/home')
     }
 
     return(

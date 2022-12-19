@@ -37,7 +37,7 @@ const reducer = (state, action) => {
 
 const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
-const Login = props => {
+const Login = () => {
     const [validForm, setValidForm] = useState(false)
     const [newAccount, setNewAccount] = useState(false)
     const [error, setError] = useState()
@@ -118,6 +118,8 @@ const Login = props => {
             } 
             const data = await response.json()
             dispatch(authActions.setLoggedIn(data.idToken))
+            // place token in local storage so that user's session persists reloading page
+            localStorage.setItem('token', data.idToken)
             navigate('/home')
 
         } catch (error) {
