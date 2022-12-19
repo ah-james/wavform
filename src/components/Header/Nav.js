@@ -33,6 +33,9 @@ const Nav = () => {
             <li>
                 <NavLink className={(data) => data.isActive ? styles.active : ''} to='/home'>Home</NavLink>
             </li>
+            <li>
+                <NavLink className={(data) => data.isActive ? styles.active : ''} to='/settings'>Settings</NavLink>
+            </li>
         </>
     }
 

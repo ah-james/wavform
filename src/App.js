@@ -6,7 +6,6 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 
 import Header from './components/Header/Header';
 import { fetchReviews } from './store/actions/reviews-actions';
-
 // import ArtistSearchContainer from './containers/ArtistSearchContainer';
 
 // create constants for lazy loading with .lazy (take inline function of import with path for component)
@@ -15,6 +14,7 @@ const AuthContainer = React.lazy(() => import('./containers/AuthContainer'))
 const ShowReviewContainer = React.lazy(() => import('./containers/ShowReviewContainer'))
 const ReviewsContainer = React.lazy(() => import('./containers/ReviewsContainer'))
 const PageNotFound = React.lazy(() => import('./containers/PageNotFound'))
+const SettingsContainer = React.lazy(() => import('./containers/SettingsContainer'))
 
 function App() {
   const dispatch = useDispatch()
@@ -34,6 +34,7 @@ function App() {
             <Route path='/login' element={<AuthContainer />} />
             <Route path='/reviews' element={<ReviewsContainer />} />
             <Route path='/reviews/:id' element={<ShowReviewContainer />} />
+            <Route path='/settings' element={<SettingsContainer />} />
             <Route path='*' element={<PageNotFound />} />
           </Routes>
         </Suspense>
