@@ -117,7 +117,6 @@ const Login = props => {
                 throw new Error(data.error.message)
             } 
             const data = await response.json()
-            console.log(data)
             dispatch(authActions.setLoggedIn(data.idToken))
             navigate('/home')
 
