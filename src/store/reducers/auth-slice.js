@@ -14,6 +14,10 @@ const authSlice = createSlice({
         setLoggedOut(state, action) {
             state.token = ''
             state.loggedIn = false
+        },
+        setNewPassword(state, action) {
+            state.token = action.payload
+            state.loggedIn = true
         }
     },
 })

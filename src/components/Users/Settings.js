@@ -1,12 +1,48 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { authActions } from "../../store/reducers/auth-slice";
+
+import Button from "../UI/Button";
 import Card from "../UI/Card";
+import Input from "../UI/Input";
+
 import styles from './Settings.module.css'
 
+const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
 const Settings = () => {
+    // to do on this page: build out validations, maybe light/dark mode? delete profile? 
+    const [newPassword, setNewPassword] = useState('')
+
+    const dispatch = useDispatch()
+    const token = useSelector((state) => {
+        return state.auth.token
+    })
+
+    const handleSubmit = async event => {
+        event.preventDefault()
+
+        const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${API_KEY}`, {
+            method: 'POST',
+            body: JSON.stringify({
+                idToken: token,
+                password: newPassword,
+                returnSecureToken: true
+            }),
+            headers: {'Content-Type': 'application/json'}
+        })
+
+        const data = await response.json()
+        dispatch(authActions.setNewPassword(data.idToken))
+    }
 
     return(
         <Card className={styles.home}>
-            <h1>Welcome back!</h1>
+            <h1>Change Password</h1>
+            <form onSubmit={handleSubmit}>
+                <Input label="Password" type="password" id='password' length='6' value={newPassword} onChange={(event) => {setNewPassword(event.target.value)}} />
+                <Button type='submit'>Submit</Button>
+            </form>
         </Card>
     )
 }
