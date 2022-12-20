@@ -39,7 +39,7 @@ const ReviewForm = props => {
         handleValueChange: handleRatingChange, 
         handleValueBlur: handleRatingBlur, 
         reset: resetRating 
-    } = useInput(value => value.trim() !== '')
+    } = useInput(value => value.trim() !== '' && value >= 0 && value <= 10)
 
     const {
         value: date, 
@@ -114,9 +114,12 @@ const ReviewForm = props => {
         resetDate()
     }
 
-    // const handleFormFocus = () => {
-    //     setFocusedForm(true)
-    // }
+    const today = () => {
+        const now = new Date()
+        const dateToday = now.toISOString().substring(0, 10)
+
+        return dateToday
+    }
 
     return(
         <>
@@ -129,7 +132,7 @@ const ReviewForm = props => {
                     <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
                     <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum}/>
                     <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
-                    <Input id='date' type='date' label='date' value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
+                    <Input id='date' type='date' label='date' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
                 </div>
                 <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>
