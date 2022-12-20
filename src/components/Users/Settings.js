@@ -11,8 +11,11 @@ import styles from './Settings.module.css'
 
 const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
+    // to do
+    // build out validations, 
+    // maybe light/dark mode 
+    // delete profile
 const Settings = () => {
-    // to do on this page: build out validations, maybe light/dark mode? delete profile? 
     const [newPassword, setNewPassword] = useState('')
 
     const dispatch = useDispatch()

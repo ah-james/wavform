@@ -7,6 +7,9 @@ import Input from '../UI/Input'
 
 import useInput from "../../hooks/use-input";
 
+// to-do:
+// link with Spotify API to include artist and album dropdown
+// add review text body to form
 const ReviewForm = props => {
     // const [focusedForm, setFocusedForm] = useState(false)
 

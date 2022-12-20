@@ -5,6 +5,9 @@ import Reviews from '../components/Reviews/Reviews';
 
 import styles from '../components/Reviews/ReviewsList.module.css'
 
+
+// to-do:
+// only show reviews with user ID here
 const HomeContainer = () => {
 
     const reviews = useSelector((state) => {

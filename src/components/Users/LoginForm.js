@@ -37,6 +37,8 @@ const reducer = (state, action) => {
 
 const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
+// to-do list:
+//  - implement auto-logout
 const Login = () => {
     const [validForm, setValidForm] = useState(false)
     const [newAccount, setNewAccount] = useState(false)
