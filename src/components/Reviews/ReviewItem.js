@@ -4,7 +4,7 @@ import styles from './ReviewItem.module.css'
 import Card from '../UI/Card'
 
 const ReviewItem = props => {
-    const date = new Date(props.date)
+    const date = new Date(`${props.date}T00:00-0800`)
 
     const month = date.toLocaleString('en-US', { month: 'long' })
     const day = date.toLocaleString('en-US', { day: '2-digit' })
