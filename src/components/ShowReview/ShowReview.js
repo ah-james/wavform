@@ -1,3 +1,5 @@
+import Card from '../UI/Card'
+import styles from './ShowReview.module.css'
 
 
 const ShowReview = props => {
@@ -7,11 +9,11 @@ const ShowReview = props => {
     }
 
     return(
-        <div>
-            <h1>{props.selectedReview.artist}</h1>
-            <h3>{props.selectedReview.album}</h3>
-            <p>{props.selectedReview.rating}</p>
-        </div>
+        <Card className={styles['show-review']}>
+            <h1>{props.selectedReview.album}</h1>
+            <h3>by {props.selectedReview.artist}</h3>
+            <p>{props.selectedReview.rating}/10</p>
+        </Card>
     )
 }
 
