@@ -14,6 +14,16 @@ const HomeContainer = () => {
         return state.reviews.albums
     })
 
+    const user = useSelector((state) => {
+        return state.auth.token
+    })
+
+    let shownReviews = reviews
+
+    if (user) {
+        reviews.filter()
+    }
+
     let content = <p className={styles["reviews-list-fallback"]}>Loading...</p>
 
     // I'll figure this out someday \/

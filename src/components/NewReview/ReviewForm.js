@@ -6,12 +6,16 @@ import Button from "../UI/Button";
 import Input from '../UI/Input'
 
 import useInput from "../../hooks/use-input";
+import { useSelector } from "react-redux";
 
 // to-do:
 // link with Spotify API to include artist and album dropdown
 // add review text body to form
 const ReviewForm = props => {
     // const [focusedForm, setFocusedForm] = useState(false)
+    const user = useSelector(state => {
+        return state.auth.token
+    })
 
     // use custom hook to dry up code, destructure out values and functions
     const { 
@@ -103,7 +107,8 @@ const ReviewForm = props => {
             artist,
             album,
             rating,
-            date
+            date, 
+            user
         }
 
         props.onSaveReview(reviewData)

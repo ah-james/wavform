@@ -19,7 +19,8 @@ export const fetchReviews = () => {
                     artist: data[key].artist,
                     album: data[key].album,
                     date: data[key].date,
-                    rating: data[key].rating
+                    rating: data[key].rating,
+                    user: data[key].user
                 })
             }
             return loadedReviews
@@ -61,7 +62,8 @@ export const addReview = (review) => {
                 artist: review.artist,
                 album: review.album,
                 date: review.date,
-                rating: review.rating
+                rating: review.rating,
+                user: review.user
             }
 
             dispatch(
