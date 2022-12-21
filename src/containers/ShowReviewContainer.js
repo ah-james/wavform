@@ -1,8 +1,8 @@
 import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
+import ShowReview from '../components/ShowReview/ShowReview'
 
 // to-do:
-// create components
 // show who wrote the review
 // allow user who created to delete and edit review
 // styling
@@ -20,16 +20,9 @@ const ShowReviewContainer = () => {
         review => review.id === params.id
     )
 
-    if (!selectedReview) {
-        return <h1>No Review Found</h1>
-    }
-
     return(
         <div>
-            <h1>Show Review</h1>
-            <p>{selectedReview.artist}</p>
-            <p>{selectedReview.album}</p>
-            <p>{selectedReview.rating}</p>
+            <ShowReview selectedReview={selectedReview} />
         </div>
     )
 }

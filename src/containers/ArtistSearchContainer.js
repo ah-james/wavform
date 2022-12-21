@@ -55,7 +55,7 @@ const ArtistSearchContainer = () => {
 
             // want to eventually have a suggestion box that autofills when user starts typing, for now use top artist ID
             // ID not name to add to string to find artist's albums
-            const artistID =  artistData.artists.items[0].id
+            const artistID = artistData.artists.items[0].id
 
             // GET all albums by an artist
             const returnedAlbums = await fetch(`https://api.spotify.com/v1/artists/${artistID}/albums?include_groups=album&market=US&limit=50`, searchParameters)
