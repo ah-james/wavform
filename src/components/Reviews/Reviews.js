@@ -8,6 +8,8 @@ import Card from '../UI/Card';
 import ReviewsList from './ReviewsList';
 import ReviewsChart from './ReviewsChart';
 
+// to do
+// add search bar
 const Reviews = props => {
     const [filteredYear, setFilteredYear] = useState('')
 

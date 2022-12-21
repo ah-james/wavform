@@ -1,11 +1,17 @@
 import Card from '../UI/Card'
 import styles from './ShowReview.module.css'
 
-
+// to do
+// add album art by fetching to spotify
+// add author name along with review text body once that's added to form component
 const ShowReview = props => {
     
     if (!props.selectedReview) {
-        return <h1>No Review Found</h1>
+        return (
+            <Card className={styles['show-review']} >
+                <h1>No Review Found</h1>
+            </Card>
+        )
     }
 
     return(
