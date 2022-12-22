@@ -30,9 +30,10 @@ function App() {
   // run side effect to see if a token already exists in localstorage when page is loaded
   useEffect(() => {
     const token = localStorage.getItem('token')
+    const email = localStorage.getItem('email')
 
     if (token) {
-      dispatch(dispatch(authActions.setLoggedIn(token)))
+      dispatch(dispatch(authActions.setLoggedIn({token, email})))
     }
   }, [dispatch])
 
