@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 const ReviewForm = props => {
     // const [focusedForm, setFocusedForm] = useState(false)
     const user = useSelector(state => {
-        return state.auth.token
+        return state.auth.email
     })
 
     // use custom hook to dry up code, destructure out values and functions

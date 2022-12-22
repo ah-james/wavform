@@ -119,7 +119,7 @@ const Login = () => {
                 throw new Error(data.error.message)
             } 
             const data = await response.json()
-            dispatch(authActions.setLoggedIn(data.idToken))
+            dispatch(authActions.setLoggedIn(data))
             // place token in local storage so that user's session persists reloading page
             localStorage.setItem('token', data.idToken)
             navigate('/home')

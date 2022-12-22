@@ -15,13 +15,17 @@ const HomeContainer = () => {
     })
 
     const user = useSelector((state) => {
-        return state.auth.token
+        return state.auth.email
     })
 
-    let shownReviews = reviews
+    let shownReviews = []
 
     if (user) {
-        reviews.filter()
+        for (let i = 0; i < reviews.length; i++) {
+            if (reviews[i]['user'] === user) {
+                shownReviews.push(reviews[i])
+            }
+        }
     }
 
     let content = <p className={styles["reviews-list-fallback"]}>Loading...</p>
@@ -37,7 +41,7 @@ const HomeContainer = () => {
     // }
 
     if (reviews.length > 0) {
-        content = <Reviews reviews={reviews} showChart={true} />
+        content = <Reviews reviews={user ? shownReviews : reviews} showChart={true} />
     }
 
     return(
