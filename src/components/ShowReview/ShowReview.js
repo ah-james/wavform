@@ -18,6 +18,7 @@ const ShowReview = props => {
         <Card className={styles['show-review']}>
             <h1>{props.selectedReview.album}</h1>
             <h3>by {props.selectedReview.artist}</h3>
+            <p>{props.selectedReview.text}</p>
             <p>{props.selectedReview.rating}/10</p>
         </Card>
     )

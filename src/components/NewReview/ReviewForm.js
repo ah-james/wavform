@@ -54,12 +54,21 @@ const ReviewForm = props => {
         reset: resetDate 
     } = useInput(value => value.trim() !== '')
 
+    const {
+        value: text,
+        validValue: validText,
+        hasError: invalidText,
+        handleValueChange: handleTextChange,
+        handleValueBlur: handleTextBlur,
+        reset: resetText
+    } = useInput(value => value.trim() !== '')
+
     // state to handle errors
     const [error, setError] = useState()
 
     let validForm = false
 
-    if (validAlbum && validArtist && validRating && validDate) {
+    if (validAlbum && validArtist && validRating && validDate && validText) {
         validForm = true
     }
 
@@ -107,7 +116,8 @@ const ReviewForm = props => {
             artist,
             album,
             rating,
-            date, 
+            date,
+            text, 
             user
         }
 
@@ -117,6 +127,7 @@ const ReviewForm = props => {
         resetAlbum()
         resetRating()
         resetDate()
+        resetText()
     }
 
     const today = () => {
@@ -136,8 +147,9 @@ const ReviewForm = props => {
                 <div className={styles["new-review-controls"]}>
                     <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
                     <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum}/>
-                    <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
                     <Input id='date' type='date' label='Date Listened' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
+                    <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
+                    <textarea id='text' name='text' rows='4' cols='50' value={text} onChange={handleTextChange} onBlur={handleTextBlur} isValid={!invalidText}></textarea>
                 </div>
                 <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>

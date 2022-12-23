@@ -20,6 +20,7 @@ export const fetchReviews = () => {
                     album: data[key].album,
                     date: data[key].date,
                     rating: data[key].rating,
+                    text: data[key].text,
                     user: data[key].user
                 })
             }
@@ -63,6 +64,7 @@ export const addReview = (review) => {
                 album: review.album,
                 date: review.date,
                 rating: review.rating,
+                text: review.text,
                 user: review.user
             }
 
