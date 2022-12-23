@@ -10,15 +10,19 @@
   font-weight: bold;
   margin-bottom: 0.5rem;
   display: block;
+  text-align: left;
 }
 
-.new-review-control input {
+.new-review-control textarea {
+  display: flex;
+  justify-content: left;
   font: inherit;
   padding: 0.5rem;
   border-radius: 6px;
   border: 1px solid #ccc;
-  width: 20rem;
+  width: 32rem;
   max-width: 100%;
+  margin-bottom: 15px;
 }
 
 /* if new review control is invalid make label color red */

@@ -147,9 +147,12 @@ const ReviewForm = props => {
                 <div className={styles["new-review-controls"]}>
                     <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
                     <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum}/>
-                    <Input id='date' type='date' label='Date Listened' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
                     <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
-                    <textarea id='text' name='text' rows='4' cols='50' value={text} onChange={handleTextChange} onBlur={handleTextBlur} isValid={!invalidText}></textarea>
+                    <Input id='date' type='date' label='Date Listened' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
+                </div>
+                <div className={styles["new-review-control"]}>
+                    <label htmlFor='text'>Review</label>
+                    <textarea id='text' name='text' rows='10' cols='70' value={text} onChange={handleTextChange} onBlur={handleTextBlur} isValid={!invalidText}></textarea>
                 </div>
                 <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>
