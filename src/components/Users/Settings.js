@@ -15,6 +15,7 @@ const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
     // build out validations, 
     // maybe light/dark mode 
     // delete profile
+    // let user change username from email
 const Settings = () => {
     const [newPassword, setNewPassword] = useState('')
 

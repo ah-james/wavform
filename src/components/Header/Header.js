@@ -1,10 +1,16 @@
+import { Link } from 'react-router-dom'
+
 import Nav from "./Nav"
 import styles from './Header.module.css'
 
 const Header = props => {
+    const loggedIn = localStorage.getItem('token')
+
     return(
         <header className={styles['main-header']}>
-            <h1>Bouncr: Social Media for Music People</h1>
+            <Link to={loggedIn ? '/home' : '/login'}>
+                <h1>Bouncr</h1>
+            </Link>
             <Nav handleLogout={props.handleLogout} />
         </header>
     )

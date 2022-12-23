@@ -3,6 +3,9 @@ import { Link } from 'react-router-dom'
 import styles from './ReviewItem.module.css'
 import Card from '../UI/Card'
 
+// to do
+// move listened date under artist and title
+// replace date box with album art
 const ReviewItem = props => {
     const date = new Date(`${props.date}T00:00-0800`)
 

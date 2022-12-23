@@ -7,7 +7,7 @@ import { Route, Routes, Navigate } from 'react-router-dom'
 import Header from './components/Header/Header';
 import { fetchReviews } from './store/actions/reviews-actions';
 import { authActions } from './store/reducers/auth-slice';
-// import ArtistSearchContainer from './containers/ArtistSearchContainer';
+import styles from './components/Reviews/ReviewsList.module.css'
 
 // create constants for lazy loading with .lazy (take inline function of import with path for component)
 const HomeContainer = React.lazy(() => import('./containers/HomeContainer'))
@@ -16,6 +16,7 @@ const ShowReviewContainer = React.lazy(() => import('./containers/ShowReviewCont
 const ReviewsContainer = React.lazy(() => import('./containers/ReviewsContainer'))
 const PageNotFound = React.lazy(() => import('./containers/PageNotFound'))
 const SettingsContainer = React.lazy(() => import('./containers/SettingsContainer'))
+const ArtistSearchContainer = React.lazy(() => import('./containers/ArtistSearchContainer'))
 
 function App() {
   const dispatch = useDispatch()
@@ -41,7 +42,7 @@ function App() {
     <div>
       <Header />
       <main>
-        <Suspense fallback={<p>Loading Page...</p>}>
+        <Suspense fallback={<p className={styles['reviews-list-fallback']}>Loading Page...</p>}>
           <Routes>
             <Route path='/' element={<Navigate to='/login' replace />} />
             <Route path='/login' element={<AuthContainer />} />
@@ -50,6 +51,7 @@ function App() {
             {loggedIn && <Route path='/settings' element={<SettingsContainer />} />}
             {loggedIn && <Route path='/home' element={<HomeContainer />} />}
             <Route path='*' element={<PageNotFound />} />
+            <Route path='/search' element={<ArtistSearchContainer />} />
           </Routes>
         </Suspense>
       </main>
