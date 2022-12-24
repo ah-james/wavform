@@ -9,14 +9,12 @@ import styles from './LoginForm.module.css'
 import { useDispatch } from "react-redux"
 import { newOrLoginUser } from '../../store/actions/auth-actions'
 
-// finish this when I have the router up and running
-
 const initialState = {
     value: '', 
     isValid: undefined
 }
 
-// username reducer function (outside component function because isn't being used to interact with any parts of state)
+// reducer function (outside component function because isn't being used to interact with any parts of state)
 // action.type if statements
 const reducer = (state, action) => {
     if (action.type === 'INPUT_CHANGE') {
@@ -48,17 +46,11 @@ const Login = () => {
     const navigate = useNavigate()
     const dispatch = useDispatch()
 
-    // useReducer to combine both username states (takes 2 arguments, usernameReducer function and initial state)
-
     const [passwordState, dispatchPassword] = useReducer(reducer, initialState)
-
     const [emailState, dispatchEmail] = useReducer(reducer, initialState)
-
-    // useContext to manage state
 
     // pull out isValid property and save them as constants to use in useEffect
     // won't update every time useReducer updates this way
-
     const { isValid: passwordIsValid } = passwordState
     const { isValid: emailIsValid } = emailState
 
@@ -94,15 +86,13 @@ const Login = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         setLoading(true)
-        let url
+        let url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`
+
         if (newAccount) {
             url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`
-        } else {
-            url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`
         }
 
         dispatch(newOrLoginUser(url, emailState.value, passwordState.value, navigate))
-        setLoading(false)
     }
 
     const handleFormChange = () => {
@@ -126,7 +116,7 @@ const Login = () => {
                     <div className={styles.actions}>
                         {/* button for submit */}
                         <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p>
-                        {loading ? <p>Loading...</p> : <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Login'}</Button>}
+                        {loading ? <Button>Loading...</Button> : <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Login'}</Button>}
                     </div>
                 </form>
             </Card>
