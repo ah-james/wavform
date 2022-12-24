@@ -7,7 +7,7 @@ import Button from '../UI/Button'
 import ErrorModal from '../UI/ErrorModal'
 import styles from './LoginForm.module.css'
 import { useDispatch } from "react-redux"
-import { authActions } from "../../store/reducers/auth-slice"
+import { newOrLoginUser } from '../../store/actions/auth-actions'
 
 // finish this when I have the router up and running
 
@@ -101,33 +101,12 @@ const Login = () => {
             url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`
         }
 
-        try {
-            const response = await fetch(url, {
-                method: 'POST',
-                body: JSON.stringify({
-                    email: emailState.value,
-                    password: passwordState.value,
-                    returnSecureToken: true
-                }),
-                headers: {'Content-Type': 'application/json'}
-            })
-
-            setLoading(false)
-
-            if (!response.ok) {
-                const data = await response.json()
-                throw new Error(data.error.message)
-            } 
-            const data = await response.json()
-            dispatch(authActions.setLoggedIn(data))
-            // place token in local storage so that user's session persists reloading page
-            localStorage.setItem('token', data.idToken)
-            localStorage.setItem('email', data.email)
+        dispatch(newOrLoginUser(url, emailState.value, passwordState.value))
+        setLoading(false)
+        
+        setTimeout(function () {
             navigate('/')
-
-        } catch (error) {
-            alert(error)
-        }
+        }, 500)
     }
 
     const handleFormChange = () => {

@@ -19,8 +19,6 @@ const SettingsContainer = React.lazy(() => import('./containers/SettingsContaine
 const ArtistSearchContainer = React.lazy(() => import('./containers/ArtistSearchContainer'))
 const HomeContainer = React.lazy(() => import('./containers/HomeContainer'))
 
-// to do
-// add actual home landing page
 function App() {
   const dispatch = useDispatch()
   const loggedIn = useSelector((state) => {
