@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import { authActions } from '../reducers/auth-slice'
 
 export const newOrLoginUser = (url, email, password) => {
@@ -28,8 +29,12 @@ export const newOrLoginUser = (url, email, password) => {
             dispatch(authActions.setLoggedIn(userData))
             localStorage.setItem('token', userData.idToken)
             localStorage.setItem('email', userData.email)
+
+            setTimeout(function () {
+                useNavigate('/')
+            }, 500)
         } catch (error) {
-            console.log(error)
+            alert(error)
         }
     }
 

@@ -103,10 +103,7 @@ const Login = () => {
 
         dispatch(newOrLoginUser(url, emailState.value, passwordState.value))
         setLoading(false)
-        
-        setTimeout(function () {
-            navigate('/')
-        }, 500)
+    
     }
 
     const handleFormChange = () => {
