@@ -14,6 +14,7 @@ const Nav = () => {
         dispatch(authActions.setLoggedOut())
         // remove token from local storage
         localStorage.removeItem('token')
+        localStorage.removeItem('email')
         navigate('/')
     }
 

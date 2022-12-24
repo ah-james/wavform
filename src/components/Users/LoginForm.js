@@ -45,7 +45,7 @@ const Login = () => {
     const [error, setError] = useState()
     const [loading, setLoading] = useState()
 
-    const navigate = useNavigate() 
+    const navigate = useNavigate()
     const dispatch = useDispatch()
 
     // useReducer to combine both username states (takes 2 arguments, usernameReducer function and initial state)
@@ -101,9 +101,8 @@ const Login = () => {
             url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`
         }
 
-        dispatch(newOrLoginUser(url, emailState.value, passwordState.value))
+        dispatch(newOrLoginUser(url, emailState.value, passwordState.value, navigate))
         setLoading(false)
-    
     }
 
     const handleFormChange = () => {
