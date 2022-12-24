@@ -4,12 +4,11 @@ import Nav from "./Nav"
 import styles from './Header.module.css'
 
 const Header = props => {
-    const loggedIn = localStorage.getItem('token')
 
     return(
         <header className={styles['main-header']}>
-            <Link to={loggedIn ? '/home' : '/login'}>
-                <h1>Bouncr</h1>
+            <Link to={'/'}>
+                <h1>Wavform</h1>
             </Link>
             <Nav handleLogout={props.handleLogout} />
         </header>

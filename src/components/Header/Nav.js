@@ -14,7 +14,7 @@ const Nav = () => {
         dispatch(authActions.setLoggedOut())
         // remove token from local storage
         localStorage.removeItem('token')
-        navigate('/login')
+        navigate('/')
     }
 
     const loggedIn = useSelector((state) => {
@@ -33,7 +33,7 @@ const Nav = () => {
                 <NavLink className={(data) => data.isActive ? styles.active : ''} to='/login' onClick={logout}>Logout</NavLink>
             </li>
             <li>
-                <NavLink className={(data) => data.isActive ? styles.active : ''} to='/home'>Home</NavLink>
+                <NavLink className={(data) => data.isActive ? styles.active : ''} to='/'>Home</NavLink>
             </li>
             <li>
                 <NavLink className={(data) => data.isActive ? styles.active : ''} to='/settings'>Settings</NavLink>

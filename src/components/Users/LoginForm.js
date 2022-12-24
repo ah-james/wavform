@@ -123,7 +123,7 @@ const Login = () => {
             // place token in local storage so that user's session persists reloading page
             localStorage.setItem('token', data.idToken)
             localStorage.setItem('email', data.email)
-            navigate('/home')
+            navigate('/')
 
         } catch (error) {
             alert(error)
