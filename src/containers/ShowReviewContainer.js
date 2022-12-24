@@ -5,7 +5,6 @@ import ShowReview from '../components/ShowReview/ShowReview'
 // to-do:
 // show who wrote the review
 // allow user who created to delete and edit review
-// styling
 const ShowReviewContainer = () => {
     // params gives key-value pairs where keys are segments leading to page
     // ex. here, path is reviews/:id so params.id which would take value from url

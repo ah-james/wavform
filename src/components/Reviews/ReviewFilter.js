@@ -10,12 +10,11 @@ const ReviewFilter = props => {
         props.handleFilterChange(event.target.value)
     }
 
-    const years = props.reviews.forEach(review => {
+    props.reviews.forEach(review => {
         const date = new Date(review.date)
         const year = date.getFullYear()
         yearsArray.push(year)
     })
-    console.log(years)
 
     const yearsSet = [...new Set(yearsArray)]
 
