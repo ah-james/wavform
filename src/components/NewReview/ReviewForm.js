@@ -10,7 +10,6 @@ import { useSelector } from "react-redux";
 
 // to-do:
 // link with Spotify API to include artist and album dropdown
-// add review text body to form
 const ReviewForm = props => {
     // const [focusedForm, setFocusedForm] = useState(false)
     const user = useSelector(state => {

@@ -3,7 +3,7 @@ import styles from './ShowReview.module.css'
 
 // to do
 // add album art by fetching to spotify
-// add author name along with review text body once that's added to form component
+// add author name
 const ShowReview = props => {
     
     if (!props.selectedReview) {
