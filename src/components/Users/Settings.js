@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { getAuth, deleteUser } from '@firebase/auth'
+// import { getAuth, deleteUser } from '@firebase/auth'
 
 import { setNewPassword } from '../../store/actions/auth-actions'
 

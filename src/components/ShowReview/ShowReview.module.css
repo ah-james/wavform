@@ -1,8 +1,24 @@
 .show-review {
-    text-align: center;
+    text-align: left;
     color: white;
     background-color: rgb(31, 31, 31);
     width: 50rem;
     margin: 2rem auto;
     padding: 1rem;
+}
+
+.album-info h1,
+.album-info h3 {
+    display: inline;
+    clear: none;
+}
+
+hr.rounded {
+    border-top: 1px solid #bbb;
+    border-radius: 5px;
+}
+
+.user-info {
+    text-align: left;
+    color: #acacac;
 }

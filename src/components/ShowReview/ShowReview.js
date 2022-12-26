@@ -16,10 +16,16 @@ const ShowReview = props => {
 
     return(
         <Card className={styles['show-review']}>
-            <h1>{props.selectedReview.album}</h1>
-            <h3>by {props.selectedReview.artist}</h3>
-            <p>{props.selectedReview.text}</p>
+            <p className={styles['user-info']}>Review by {props.selectedReview.user}</p>
+            <hr className={styles.rounded} />
+            <div className={styles['album-info']}>
+                <h1>{props.selectedReview.album}</h1>
+                <h3> by {props.selectedReview.artist}</h3>
+            </div>
             <p>{props.selectedReview.rating}/10</p>
+            <p className={styles['user-info']}>Listened on {props.selectedReview.date}</p>
+            <p>{props.selectedReview.text}</p>
+
         </Card>
     )
 }
