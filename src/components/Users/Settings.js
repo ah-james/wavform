@@ -1,7 +1,8 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-// import { authActions } from "../../store/reducers/auth-slice";
+import { getAuth, deleteUser } from '@firebase/auth'
+
 import { setNewPassword } from '../../store/actions/auth-actions'
 
 import Button from "../UI/Button";
@@ -16,7 +17,7 @@ const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
     // build out validations, 
     // maybe light/dark mode 
     // delete profile
-    // let user change username from email
+    // let user change username
 const Settings = () => {
     const [password, setPassword] = useState('')
 
@@ -34,14 +35,24 @@ const Settings = () => {
         navigate('/')
     }
 
+    const deleteUser = () => {
+        // handle an are you sure? situation
+        // go into firebase, delete user that's currently logged in
+    }
+
     return(
-        <Card className={styles.home}>
-            <h1>Change Password</h1>
-            <form onSubmit={handleSubmit}>
-                <Input label="Password" type="password" id='password' length='6' value={password} onChange={(event) => {setPassword(event.target.value)}} />
-                <Button type='submit'>Submit</Button>
-            </form>
-        </Card>
+        <div>
+            <Card className={styles.home}>
+                <h1>Change Password</h1>
+                <form onSubmit={handleSubmit}>
+                    <Input label="Password" type="password" id='password' length='6' value={password} onChange={(event) => {setPassword(event.target.value)}} />
+                    <Button type='submit'>Submit</Button>
+                </form>
+            </Card>
+            <div className={styles.button}>
+            <Button handleClick={deleteUser}>Delete User</Button>
+            </div>
+        </div>
     )
 }
 
