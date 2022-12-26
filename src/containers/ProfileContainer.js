@@ -6,9 +6,9 @@ import Reviews from '../components/Reviews/Reviews';
 import styles from '../components/Reviews/ReviewsList.module.css'
 
 
-// to-do:
+// to do:
 // only show reviews with user ID here
-const HomeContainer = () => {
+const ProfileContainer = () => {
 
     const reviews = useSelector((state) => {
         return state.reviews.albums
@@ -52,4 +52,4 @@ const HomeContainer = () => {
     )
 }
 
-export default HomeContainer
+export default ProfileContainer

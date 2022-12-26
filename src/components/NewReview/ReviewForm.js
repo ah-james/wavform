@@ -8,7 +8,7 @@ import Input from '../UI/Input'
 import useInput from "../../hooks/use-input";
 import { useSelector } from "react-redux";
 
-// to-do:
+// to do:
 // link with Spotify API to include artist and album dropdown
 const ReviewForm = props => {
     // const [focusedForm, setFocusedForm] = useState(false)
@@ -56,7 +56,6 @@ const ReviewForm = props => {
     const {
         value: text,
         validValue: validText,
-        hasError: invalidText,
         handleValueChange: handleTextChange,
         handleValueBlur: handleTextBlur,
         reset: resetText
@@ -151,7 +150,7 @@ const ReviewForm = props => {
                 </div>
                 <div className={styles["new-review-control"]}>
                     <label htmlFor='text'>Review</label>
-                    <textarea id='text' name='text' rows='10' cols='70' value={text} onChange={handleTextChange} onBlur={handleTextBlur} isValid={!invalidText}></textarea>
+                    <textarea id='text' name='text' rows='10' cols='70' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
                 </div>
                 <div className={styles["new-review-actions"]}>
                     <Button type='button' handleClick={props.handleClick}>Cancel</Button>

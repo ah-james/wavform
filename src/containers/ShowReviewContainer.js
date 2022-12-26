@@ -2,7 +2,7 @@ import { useParams } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import ShowReview from '../components/ShowReview/ShowReview'
 
-// to-do:
+// to do:
 // show who wrote the review
 // allow user who created to delete and edit review
 const ShowReviewContainer = () => {
