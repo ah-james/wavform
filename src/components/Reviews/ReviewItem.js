@@ -5,7 +5,7 @@ import Card from '../UI/Card'
 
 // to do
 // move listened date under artist and title
-// replace date box with album art
+// replace date box with album art Spotify API
 const ReviewItem = props => {
     const date = new Date(`${props.date}T00:00-0800`)
 

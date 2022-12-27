@@ -1,15 +1,20 @@
 import { useParams } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
 import ShowReview from '../components/ShowReview/ShowReview'
+import Button from '../components/UI/Button'
+import { deleteReview } from '../store/actions/reviews-actions'
+
+import styles from '../components/Users/Settings.module.css'
 
 // to do:
-// show who wrote the review
 // allow user who created to delete and edit review
 const ShowReviewContainer = () => {
     // params gives key-value pairs where keys are segments leading to page
     // ex. here, path is reviews/:id so params.id which would take value from url
     // /reviews/helloworld --> params.id = helloworld
     const params = useParams()
+    const dispatch = useDispatch
 
     const reviews = useSelector((state) => {
         return state.reviews.albums
@@ -19,9 +24,18 @@ const ShowReviewContainer = () => {
         review => review.id === params.id
     )
 
+    const user = localStorage.getItem('email') === selectedReview.user
+
+    const handleDeleteReview = () => {
+        console.log('delete review')
+    }
+
     return(
         <div>
             <ShowReview selectedReview={selectedReview} />
+            <div className={styles.button}>
+                {user && <Button handleClick={handleDeleteReview}>Delete Review</Button>}
+            </div>
         </div>
     )
 }

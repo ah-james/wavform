@@ -25,7 +25,6 @@ const ShowReview = props => {
             <p>{props.selectedReview.rating}/10</p>
             <p className={styles['user-info']}>Listened on {props.selectedReview.date}</p>
             <p>{props.selectedReview.text}</p>
-
         </Card>
     )
 }

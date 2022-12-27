@@ -15,7 +15,7 @@ const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
     // to do
     // build out validations, 
-    // maybe light/dark mode 
+    // maybe light/dark mode?
     // delete profile
     // let user change username
 const Settings = () => {
@@ -50,7 +50,7 @@ const Settings = () => {
                 </form>
             </Card>
             <div className={styles.button}>
-            <Button handleClick={deleteUser}>Delete User</Button>
+                <Button handleClick={deleteUser}>Delete User</Button>
             </div>
         </div>
     )
