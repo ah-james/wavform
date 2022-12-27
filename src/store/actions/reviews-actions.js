@@ -76,3 +76,25 @@ export const addReview = (review) => {
         }
     }
 }
+
+export const deleteReview = (review) => {
+    return async dispatch => {
+        try {
+            const response = await fetch(`https://react-bouncr-default-rtdb.firebaseio.com/reviews/${review}.json`, {
+                method: "DELETE",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Accept": "application/json"
+                }
+            })
+
+            if (!response.ok) {
+                throw new Error('Deleting review failed')
+            }
+
+            dispatch(reviewActions.deleteReview(review))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
