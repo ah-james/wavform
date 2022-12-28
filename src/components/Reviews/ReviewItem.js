@@ -15,7 +15,7 @@ const ReviewItem = props => {
 
     return(
         <li key={props.id}>
-            <Link to={`/reviews/${props.id}`}>
+            <Link to={`/reviews/${props.id}`} state={{ creator: props.user }}>
                 <Card className={styles["review-item"]}>
                     <div className={styles["review-description"]}>
                         <div className="review-month">{month}</div>

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { useNavigate, useParams, useLocation } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import ShowReview from '../components/ShowReview/ShowReview'
@@ -20,6 +20,9 @@ const ShowReviewContainer = () => {
     const params = useParams()
     const dispatch = useDispatch()
     const navigate = useNavigate()
+    const location = useLocation()
+
+    const creator = location.state.creator
 
     const reviews = useSelector((state) => {
         return state.reviews.albums
@@ -29,7 +32,7 @@ const ShowReviewContainer = () => {
         review => review.id === params.id
     )
 
-    const user = localStorage.getItem('email') === selectedReview.user
+    const user = localStorage.getItem('email') === creator
 
     const beginDeleteReview = () => {
         setDeleting(true)
