@@ -8,12 +8,14 @@ import { deleteReview } from '../store/actions/reviews-actions'
 import ErrorModal from '../components/UI/Modal'
 
 import styles from '../components/Users/Settings.module.css'
+import EditReview from '../components/ShowReview/EditReview'
 
 // to do:
 // allow user who created to edit review
 // add an alert before deleting review
 const ShowReviewContainer = () => {
-    const [deleting, setDeleting] = useState()
+    const [deleting, setDeleting] = useState(false)
+    const [editing, setEditing] = useState(false)
     // params gives key-value pairs where keys are segments leading to page
     // ex. here, path is reviews/:id so params.id which would take value from url
     // /reviews/helloworld --> params.id = helloworld
@@ -39,7 +41,7 @@ const ShowReviewContainer = () => {
     }
 
     const stopDelete = () => {
-        setDeleting()
+        setDeleting(false)
     }
 
     const handleDeleteReview = async () => {
@@ -47,12 +49,17 @@ const ShowReviewContainer = () => {
         navigate('/')
     }
 
+    const editReview = async () => {
+        setEditing(current => !current)
+    }
+
     return(
         <div>
             {deleting && <ErrorModal title={'Warning!'} message={'Do you want to delete this review?'} handleClick={stopDelete} handleAction={handleDeleteReview} />}
-            <ShowReview selectedReview={selectedReview} />
+            {!editing ? <ShowReview selectedReview={selectedReview} /> : <EditReview selectedReview={selectedReview} />}
             <div className={styles.button}>
-                {user && <Button handleClick={beginDeleteReview}>Delete Review</Button>}
+                {user && !editing && <Button handleClick={beginDeleteReview}>Delete Review</Button>}
+                {user && <Button handleClick={editReview}>{editing ? 'Cancel' : 'Edit Review'}</Button>}
             </div>
         </div>
     )
