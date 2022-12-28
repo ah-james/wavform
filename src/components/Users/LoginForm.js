@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom"
 import Card from "../UI/Card"
 import Input from "../UI/Input"
 import Button from '../UI/Button'
-import ErrorModal from '../UI/ErrorModal'
+import Modal from '../UI/Modal'
 import styles from './LoginForm.module.css'
 import { useDispatch } from "react-redux"
 import { newOrLoginUser } from '../../store/actions/auth-actions'
@@ -105,7 +105,7 @@ const Login = () => {
 
     return(
         <>
-            {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
+            {error && <Modal title={error.title} message={error.message} handleAction={handleError} />}
             <Card className={styles["new-user"]}>
                 <h2>{newAccount ? 'Sign Up' : 'Login'}</h2>
                 <form onSubmit={handleSubmit}>

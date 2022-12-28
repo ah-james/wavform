@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import styles from './ReviewForm.module.css'
-import ErrorModal from '../UI/ErrorModal'
+import Modal from '../UI/Modal'
 import Button from "../UI/Button";
 import Input from '../UI/Input'
 
@@ -137,9 +137,7 @@ const ReviewForm = props => {
 
     return(
         <>
-        {/* Prompt was removed in version 6, add back in or create a custom hook later */}
-            {/* <Prompt when={focusedForm} message={(location) => 'Are you sure you want to leave before submitting?'} /> */}
-            {error && <ErrorModal title={error.title} message={error.message} handleError={handleError} />}
+            {error && <Modal title={error.title} message={error.message} handleAction={handleError} />}
             {/* readd on onFocus={handleFormFocus} after fixing */}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>

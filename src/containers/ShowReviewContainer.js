@@ -1,15 +1,19 @@
+import { useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useDispatch, useSelector } from 'react-redux'
 
 import ShowReview from '../components/ShowReview/ShowReview'
 import Button from '../components/UI/Button'
 import { deleteReview } from '../store/actions/reviews-actions'
+import ErrorModal from '../components/UI/Modal'
 
 import styles from '../components/Users/Settings.module.css'
 
 // to do:
 // allow user who created to edit review
+// add an alert before deleting review
 const ShowReviewContainer = () => {
+    const [deleting, setDeleting] = useState()
     // params gives key-value pairs where keys are segments leading to page
     // ex. here, path is reviews/:id so params.id which would take value from url
     // /reviews/helloworld --> params.id = helloworld
@@ -27,6 +31,14 @@ const ShowReviewContainer = () => {
 
     const user = localStorage.getItem('email') === selectedReview.user
 
+    const beginDeleteReview = () => {
+        setDeleting(true)
+    }
+
+    const stopDelete = () => {
+        setDeleting()
+    }
+
     const handleDeleteReview = async () => {
         dispatch(deleteReview(selectedReview.id))
         navigate('/')
@@ -34,9 +46,10 @@ const ShowReviewContainer = () => {
 
     return(
         <div>
+            {deleting && <ErrorModal title={'Warning!'} message={'Do you want to delete this review?'} handleClick={stopDelete} handleAction={handleDeleteReview} />}
             <ShowReview selectedReview={selectedReview} />
             <div className={styles.button}>
-                {user && <Button handleClick={handleDeleteReview}>Delete Review</Button>}
+                {user && <Button handleClick={beginDeleteReview}>Delete Review</Button>}
             </div>
         </div>
     )
