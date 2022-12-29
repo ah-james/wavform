@@ -49,17 +49,22 @@ const ShowReviewContainer = () => {
         navigate('/')
     }
 
-    const editReview = async () => {
+    const mountReviewForm = () => {
         setEditing(current => !current)
+    }
+
+    const editReview = async () => {
+        console.log('editing review')
     }
 
     return(
         <div>
             {deleting && <ErrorModal title={'Warning!'} message={'Do you want to delete this review?'} handleClick={stopDelete} handleAction={handleDeleteReview} />}
-            {!editing ? <ShowReview selectedReview={selectedReview} /> : <EditReview selectedReview={selectedReview} />}
+            {!editing ? <ShowReview selectedReview={selectedReview} /> : <EditReview editReview={editReview} selectedReview={selectedReview} />}
             <div className={styles.button}>
                 {user && !editing && <Button handleClick={beginDeleteReview}>Delete Review</Button>}
-                {user && <Button handleClick={editReview}>{editing ? 'Cancel' : 'Edit Review'}</Button>}
+                {user && <Button handleClick={mountReviewForm}>{editing ? 'Cancel' : 'Edit Review'}</Button>}
+                {user && editing && <Button form='editForm' handleClick={editReview}>Submit</Button>}
             </div>
         </div>
     )

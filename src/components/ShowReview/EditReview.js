@@ -24,12 +24,12 @@ const EditReview = props => {
 
     const handleSubmit = event => {
         event.preventDefault()
-        console.log('submitted')
+        props.editReview()
     }
 
     // <Input id='date' type='date' max={today()} value={props.selectedReview.date} />
     return(
-        <form onSubmit={handleSubmit}>
+        <form id='editForm' onSubmit={handleSubmit}>
             <Card className={styles['show-review']}>
                 <p className={styles['user-info']}>Editing Review by {props.selectedReview.user}</p>
                 <hr className={styles.rounded} />
