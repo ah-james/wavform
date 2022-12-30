@@ -18,9 +18,10 @@ const ReviewItem = props => {
             <Link to={`/reviews/${props.id}`} state={{ creator: props.user }}>
                 <Card className={styles["review-item"]}>
                     <div className={styles["review-description"]}>
-                        <div className="review-month">{month}</div>
+                        {/* <div className="review-month">{month}</div>
                         <div className="review-day">{day}</div>
-                        <div className="review-year">{year}</div>
+                        <div className="review-year">{year}</div> */}
+                        <img alt={props.album} src={props.art} />
                     </div>
                     <div className={styles["review-item-description"]}>
                         <h2>{props.artist}</h2>
