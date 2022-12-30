@@ -119,18 +119,8 @@ export const editReview = (review) => {
         try {
             const data = await addData()
 
-            const createdReview = {
-                id: data.name,
-                artist: review.artist,
-                album: review.album,
-                date: review.date,
-                rating: review.rating,
-                text: review.text,
-                user: review.user
-            }
-
             dispatch(
-                reviewActions.editReview(createdReview)
+                reviewActions.editReview(data)
             )
         } catch (error) {
             console.log(error)

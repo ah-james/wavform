@@ -55,7 +55,7 @@ const ShowReviewContainer = () => {
 
     const handleEditReview = async (data) => {
         dispatch(editReview(data))
-        navigate(`/reviews/${data.id}`)
+        navigate(`/`)
     }
 
     return(
