@@ -53,8 +53,8 @@ const ShowReviewContainer = () => {
         setEditing(current => !current)
     }
 
-    const editReview = async () => {
-        console.log('editing review')
+    const editReview = async (data) => {
+        console.log(data)
     }
 
     return(
@@ -64,7 +64,7 @@ const ShowReviewContainer = () => {
             <div className={styles.button}>
                 {user && !editing && <Button handleClick={beginDeleteReview}>Delete Review</Button>}
                 {user && <Button handleClick={mountReviewForm}>{editing ? 'Cancel' : 'Edit Review'}</Button>}
-                {user && editing && <Button form='editForm' handleClick={editReview}>Submit</Button>}
+                {user && editing && <Button form='editForm' type='submit'>Submit</Button>}
             </div>
         </div>
     )

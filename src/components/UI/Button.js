@@ -3,6 +3,7 @@ import styles from './Button.module.css'
 const Button = props => {
     return(
         <button 
+        form={props.form}
         className={`${styles.button} ${props.disabled === true ? styles.disabled : ''}`} 
         type={props.type} 
         onClick={props.handleClick} 
