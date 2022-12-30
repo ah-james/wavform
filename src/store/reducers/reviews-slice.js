@@ -19,6 +19,10 @@ const reviewSlice = createSlice({
         },
         deleteReview(state, action) {
             state.albums = [...state.albums.filter(album => album.id !== action.payload)]
+        },
+        editReview(state, action) {
+            const updatedReview = state.albums.map(album => album.id === action.payload.id ? action.payload : album)
+            state.albums = [...state.albums, updatedReview]
         }
     }
 })
