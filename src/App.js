@@ -8,6 +8,7 @@ import Header from './components/Header/Header';
 import { fetchReviews } from './store/actions/reviews-actions';
 import { authActions } from './store/reducers/auth-slice';
 import styles from './components/Reviews/ReviewsList.module.css'
+import { authorizeSpotify } from './store/actions/spotify-actions';
 
 // create constants for lazy loading with .lazy (take inline function of import with path for component)
 const ProfileContainer = React.lazy(() => import('./containers/ProfileContainer'))
@@ -27,6 +28,10 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchReviews())
+  }, [dispatch])
+
+  useEffect(() => {
+    dispatch(authorizeSpotify())
   }, [dispatch])
 
   // run side effect to see if a token already exists in localstorage when page is loaded
