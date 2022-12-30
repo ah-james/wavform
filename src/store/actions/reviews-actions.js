@@ -21,7 +21,8 @@ export const fetchReviews = () => {
                     date: data[key].date,
                     rating: data[key].rating,
                     text: data[key].text,
-                    user: data[key].user
+                    user: data[key].user,
+                    art: data[key].art
                 })
             }
             return loadedReviews
@@ -38,12 +39,46 @@ export const fetchReviews = () => {
     }
 }
 
-export const addReview = (review) => {
+export const addReview = (review, accessToken) => {
     return async dispatch => {
+        const addAlbumArt = async () => {
+            const response = await fetch(`https://api.spotify.com/v1/search?q=${review.album}&type=album`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+
+            const albumData = await response.json()
+            const albumID = albumData.albums.items[0].id
+
+            const returnedAlbum = await fetch(`https://api.spotify.com/v1/albums/${albumID}/`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+
+            const albumResponse = await returnedAlbum.json()
+            return albumResponse.images[2].url
+        }
+
+        const albumArt = await addAlbumArt()
+
         const addData = async () => {
             const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/reviews.json', {
                 method: 'POST',
-                body: JSON.stringify(review),
+                body: JSON.stringify({
+                    artist: review.artist,
+                    album: review.album,
+                    rating: review.rating,
+                    date: review.date,
+                    text: review.text,
+                    user: review.user,
+                    art: albumArt
+                }),
                 headers: {'Content-Type': 'application/json'}
             })
 
@@ -65,7 +100,8 @@ export const addReview = (review) => {
                 date: review.date,
                 rating: review.rating,
                 text: review.text,
-                user: review.user
+                user: review.user,
+                art: albumArt
             }
 
             dispatch(

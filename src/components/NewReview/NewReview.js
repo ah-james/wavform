@@ -1,5 +1,5 @@
 import React, { useState } from "react"
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 
 import styles from './NewReview.module.css'
@@ -13,10 +13,14 @@ const NewReview = (props) => {
 
     const dispatch = useDispatch()
 
+    const accessToken = useSelector(state => {
+        return state.spotify.accessToken
+    })
+
     const handleSaveReview = async (review) => {
         // could add useNavigate hook in app and history.push() to navigate to new page when
         // form is submitted? just ideas for the future
-        dispatch(addReview(review))
+        dispatch(addReview(review, accessToken))
     }
 
     const handleClick = () => {

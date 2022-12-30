@@ -3,7 +3,6 @@ import { useSelector } from "react-redux"
 
 const ArtistSearchContainer = () => {
     const [search, setSearch] = useState('')
-    // const [albums, setAlbums] = useState([])
     const [albums, setAlbums] = useState()
     // bit of state to check if content is currently loading, starting false
     const [loading, setLoading] = useState(false)

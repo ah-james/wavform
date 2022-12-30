@@ -116,7 +116,8 @@ const ReviewForm = props => {
             rating,
             date,
             text, 
-            user
+            user,
+            art: null
         }
 
         props.onSaveReview(reviewData)
