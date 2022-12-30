@@ -10,9 +10,6 @@ import ErrorModal from '../components/UI/Modal'
 import styles from '../components/Users/Settings.module.css'
 import EditReview from '../components/ShowReview/EditReview'
 
-// to do:
-// allow user who created to edit review
-// add an alert before deleting review
 const ShowReviewContainer = () => {
     const [deleting, setDeleting] = useState(false)
     const [editing, setEditing] = useState(false)

@@ -4,8 +4,7 @@ import Input from '../UI/Input'
 import styles from './ShowReview.module.css'
 
 // to do
-// add album art by fetching to spotify
-// navigate to author's reviews when click on name
+// add validation handling for edit form
 const EditReview = props => {
 
 
