@@ -74,7 +74,7 @@ const EditReview = props => {
             user: props.selectedReview.user
         }
 
-        props.editReview(reviewData)
+        props.handleEditReview(reviewData)
     }
         
     if (!props.selectedReview) {

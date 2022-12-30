@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import ShowReview from '../components/ShowReview/ShowReview'
 import Button from '../components/UI/Button'
-import { deleteReview } from '../store/actions/reviews-actions'
+import { deleteReview, editReview } from '../store/actions/reviews-actions'
 import ErrorModal from '../components/UI/Modal'
 
 import styles from '../components/Users/Settings.module.css'
@@ -53,14 +53,15 @@ const ShowReviewContainer = () => {
         setEditing(current => !current)
     }
 
-    const editReview = async (data) => {
-        console.log(data)
+    const handleEditReview = async (data) => {
+        dispatch(editReview(data))
+        navigate(`/reviews/${data.id}`)
     }
 
     return(
         <div>
             {deleting && <ErrorModal title={'Warning!'} message={'Do you want to delete this review?'} handleClick={stopDelete} handleAction={handleDeleteReview} />}
-            {!editing ? <ShowReview selectedReview={selectedReview} /> : <EditReview editReview={editReview} selectedReview={selectedReview} />}
+            {!editing ? <ShowReview selectedReview={selectedReview} /> : <EditReview handleEditReview={handleEditReview} selectedReview={selectedReview} />}
             <div className={styles.button}>
                 {user && !editing && <Button handleClick={beginDeleteReview}>Delete Review</Button>}
                 {user && <Button handleClick={mountReviewForm}>{editing ? 'Cancel' : 'Edit Review'}</Button>}
