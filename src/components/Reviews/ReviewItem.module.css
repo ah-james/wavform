@@ -66,18 +66,10 @@
   }
 }
 
-.review-month {
-  font-size: 0.75rem;
-  font-weight: bold;
-}
-
-.review-year {
-  font-size: 0.75rem;
-}
-
-.review-day {
-  font-size: 1.5rem;
-  font-weight: bold;
+.review-date p {
+  color: #c4c4c4;
+  position: absolute;
+  left: 290px;
 }
 
 .review-description img {
