@@ -7,8 +7,18 @@ const ReviewItem = props => {
     const date = new Date(`${props.date}T00:00-0800`)
 
     const month = date.toLocaleString('en-US', { month: 'long' })
-    const day = date.toLocaleString('en-US', { day: '2-digit' })
+    const day = date.toLocaleString('en-US', { day: 'numeric' })
     const year = date.getFullYear()
+
+    const suffix = (day) => {
+        if (day > 3 && day < 21) return 'th'
+        switch (day % 10) {
+            case 1: return 'st'
+            case 2: return 'nd'
+            case 3: return 'rd'
+            default: return 'th'
+        }
+    }
 
     return(
         <li key={props.id}>
@@ -22,7 +32,7 @@ const ReviewItem = props => {
                         <h2>{props.album}</h2>
                     </div>
                     <div className={styles['review-date']}>
-                        <p>{month} {day} {year}</p>
+                        <p>Listened on {month} {day}{suffix(day)}, {year}</p>
                     </div>
                     <div className={styles["review-item-info"]}>
                         <p>{props.rating}/10</p>
