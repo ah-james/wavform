@@ -18,6 +18,9 @@ const ShowReview = props => {
         <Card className={styles['show-review']}>
             <p className={styles['user-info']}>Review by {props.selectedReview.user}</p>
             <hr className={styles.rounded} />
+            <div className={styles['image-container']}>
+                <img className={styles.image} alt={props.selectedReview.album} src={props.selectedReview.art[1].url} />
+            </div>
             <div className={styles['album-info']}>
                 <h1>{props.selectedReview.album}</h1>
                 <h3> by {props.selectedReview.artist}</h3>
