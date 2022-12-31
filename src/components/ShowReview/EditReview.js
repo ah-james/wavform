@@ -7,7 +7,6 @@ import styles from './ShowReview.module.css'
 // add validation handling for edit form
 const EditReview = props => {
 
-
     const { 
         value: album, 
         // validValue: validAlbum, 
@@ -70,7 +69,8 @@ const EditReview = props => {
             rating,
             date,
             text,
-            user: props.selectedReview.user
+            user: props.selectedReview.user,
+            art: props.selectedReview.art,
         }
 
         props.handleEditReview(reviewData)
