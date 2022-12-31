@@ -50,7 +50,7 @@ const Settings = () => {
                 </form>
             </Card>
             <div className={styles.button}>
-                <Button handleClick={deleteUser}>Delete User</Button>
+                {/* <Button handleClick={deleteUser}>Delete User</Button> */}
             </div>
         </div>
     )
