@@ -62,7 +62,7 @@ export const addReview = (review, accessToken) => {
             })
 
             const albumResponse = await returnedAlbum.json()
-            return albumResponse.images[2].url
+            return albumResponse.images
         }
 
         const albumArt = await addAlbumArt()

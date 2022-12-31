@@ -21,7 +21,7 @@ const ReviewItem = props => {
                         {/* <div className="review-month">{month}</div>
                         <div className="review-day">{day}</div>
                         <div className="review-year">{year}</div> */}
-                        <img alt={props.album} src={props.art} />
+                        <img alt={props.album} src={props.art[2].url} />
                     </div>
                     <div className={styles["review-item-description"]}>
                         <h2>{props.artist}</h2>
