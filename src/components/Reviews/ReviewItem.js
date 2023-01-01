@@ -20,7 +20,7 @@ const ReviewItem = props => {
         }
     }
 
-    return(
+    return (
         <li key={props.id}>
             <Link to={`/reviews/${props.id}`} state={{ creator: props.user }}>
                 <Card className={styles["review-item"]}>
@@ -32,7 +32,7 @@ const ReviewItem = props => {
                         <h2>{props.album}</h2>
                     </div>
                     <div className={styles['review-date']}>
-                        <p>Listened on {month} {day}{suffix(day)}, {year}</p>
+                        <p>{month} {day}{suffix(day)}, {year}</p>
                     </div>
                     <div className={styles["review-item-info"]}>
                         <p>{props.rating}/10</p>

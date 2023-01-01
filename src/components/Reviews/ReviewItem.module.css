@@ -66,11 +66,11 @@
   }
 }
 
-.review-date p {
+.review-date {
   font-size: 14px;
   color: #c4c4c4;
-  position: absolute;
-  left: 290px;
+  clear: both;
+  margin-right: 10px; 
 }
 
 .review-description img {
