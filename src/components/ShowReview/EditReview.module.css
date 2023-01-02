@@ -60,7 +60,16 @@ textarea {
     padding: 0.5rem;
     border-radius: 6px;
     border: 1px solid #ccc;
-    /* width: fit-content; */
     max-width: 100%;
     margin-bottom: 15px;
+}
+
+.text-area.invalid textarea {
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    max-width: 100%;
+    border-color: red;
+    background-color: #fbdada;
   }

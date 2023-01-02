@@ -149,7 +149,9 @@ const EditReview = props => {
                         <p className={styles['user-info']}>Listened on</p>
                         <Input id='date' type='date' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
                     </div>
-                    <textarea id='text' name='text' rows='10' cols='90' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
+                    <div  className={`${styles["text-area"]} ${invalidText ? styles.invalid : ''}`}>
+                        <textarea id='text' name='text' rows='10' cols='90' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
+                    </div>
                 </Card>
             </form>
         </>
