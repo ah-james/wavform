@@ -1,7 +1,7 @@
 import useInput from '../../hooks/use-input'
 import Card from '../UI/Card'
 import Input from '../UI/Input'
-import styles from './ShowReview.module.css'
+import styles from './EditReview.module.css'
 
 // to do
 // add validation handling for edit form
@@ -90,15 +90,19 @@ const EditReview = props => {
                 <p className={styles['user-info']}>Editing Review by {props.selectedReview.user}</p>
                 <hr className={styles.rounded} />
                 <div className={styles['album-info']}>
-                    <Input id="album" type='text' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} />
-                    <label>by</label>
+                    <Input id="album" type='text' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} size='10' />
+                    <h3>by</h3>
                     <Input id="artist" type='text' value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} />
                 </div>
-                <Input id="rating" type='number' value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} />
-                <p>/10</p>
-                <p className={styles['user-info']}>Listened on</p>
-                <Input id='date' type='date' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} />
-                <textarea id='text' name='text' rows='10' cols='70' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
+                <div className={styles['rating-info']}>
+                    <Input id="rating" type='number' value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} />
+                    <h4>/10</h4>
+                </div>
+                <div className={styles['album-info']}>
+                    <p className={styles['user-info']}>Listened on</p>
+                    <Input id='date' type='date' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} />
+                </div>
+                <textarea id='text' name='text' rows='10' cols='90' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
             </Card>
         </form>
 

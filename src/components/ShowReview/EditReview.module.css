@@ -1,0 +1,66 @@
+.show-review {
+    text-align: left;
+    color: white;
+    background-color: rgb(31, 31, 31);
+    width: 50rem;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+.album-info,
+.rating-info {
+    display: flex;
+}
+
+.rating-info input {
+    padding: 2px;
+    margin-right: 3px;
+}
+
+.rating-info h4 {
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+.album-info input {
+    padding: 2px;
+    margin-right: 10px;
+}
+
+.album-info h3,
+.album-info h4 {
+    margin-right: 10px;
+    padding-top: 5px;
+}
+
+hr.rounded {
+    border-top: 1px solid #acacac;
+    border-radius: 5px;
+}
+
+.user-info {
+    text-align: left;
+    color: #acacac;
+    margin-right: 10px;
+    padding-top: 8px;
+}
+
+img.image {
+    float: left;
+    height: 125px;
+    margin-right: 15px;
+    margin-top: 10px;
+    border-radius: 12px;
+}
+
+textarea {
+    display: flex;
+    justify-content: left;
+    font: inherit;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    /* width: fit-content; */
+    max-width: 100%;
+    margin-bottom: 15px;
+  }
