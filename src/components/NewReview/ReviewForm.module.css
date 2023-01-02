@@ -25,13 +25,6 @@
   margin-bottom: 15px;
 }
 
-/* if new review control is invalid make label color red */
-/* .new-review-control.invalid label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  display: block;
-} */
-
 .new-review-control.invalid textarea {
   font: inherit;
   padding: 0.5rem;

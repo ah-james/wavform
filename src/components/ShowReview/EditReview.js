@@ -137,19 +137,19 @@ const EditReview = props => {
                         <img className={styles.image} alt={props.selectedReview.album} src={props.selectedReview.art[1].url} />
                     </div>
                     <div className={styles['album-info']}>
-                        <Input id="album" type='text' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidArtist} size='15' />
+                        <Input id="album" type='text' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum} size='15' />
                         <h3>by</h3>
                         <Input id="artist" type='text' value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
                     </div>
                     <div className={styles['rating-info']}>
-                        <Input id="rating" type='number' value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidArtist} />
+                        <Input id="rating" type='number' value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
                         <h4>/10</h4>
                     </div>
                     <div className={styles['album-info']}>
                         <p className={styles['user-info']}>Listened on</p>
-                        <Input id='date' type='date' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidArtist} />
+                        <Input id='date' type='date' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
                     </div>
-                    <textarea id='text' name='text' rows='10' cols='90' value={text} onChange={handleTextChange} onBlur={handleTextBlur} isValid={!invalidArtist}></textarea>
+                    <textarea id='text' name='text' rows='10' cols='90' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
                 </Card>
             </form>
         </>
