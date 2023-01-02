@@ -56,6 +56,7 @@ const ReviewForm = props => {
     const {
         value: text,
         validValue: validText,
+        hasError: invalidText,
         handleValueChange: handleTextChange,
         handleValueBlur: handleTextBlur,
         reset: resetText
@@ -138,7 +139,7 @@ const ReviewForm = props => {
 
     return(
         <>
-            {error && <Modal title={error.title} message={error.message} handleAction={handleError} />}
+            {error && <Modal title={error.title} message={error.message} handleAction={handleError} error={true} />}
             {/* readd on onFocus={handleFormFocus} after fixing */}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
@@ -147,8 +148,9 @@ const ReviewForm = props => {
                     <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
                     <Input id='date' type='date' label='Date Listened' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
                 </div>
-                <div className={styles["new-review-control"]}>
+                <div className={`${styles["new-review-control"]} ${invalidText ? styles.invalid : ''}`}>
                     <label htmlFor='text'>Review</label>
+                    {/* className={`${styles["new-review-control"]} ${!invalidText ? styles.invalid : ''}`} */}
                     <textarea id='text' name='text' rows='10' cols='70' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
                 </div>
                 <div className={styles["new-review-actions"]}>
