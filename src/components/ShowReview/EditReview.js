@@ -128,7 +128,7 @@ const EditReview = props => {
 
     return(
         <>
-            {error && <Modal title={error.title} message={error.message} handleAction={handleError} />}
+            {error && <Modal title={error.title} message={error.message} handleAction={handleError} error={true} />}
             <form id='editForm' onSubmit={handleSubmit}>
                 <Card className={styles['show-review']}>
                     <p className={styles['user-info']}>Editing Review by {props.selectedReview.user}</p>

@@ -12,6 +12,18 @@ const Backdrop = props => {
 
 // new component for portal, modal body here
 const ModalOverlay = props => {
+
+    let shownButtons = 
+    <>
+        <Button type='button' handleClick={props.handleClick}>No</Button>
+        <Button type='button' handleClick={props.handleAction}>Yes</Button>
+    </>
+
+    if (props.error) {
+        shownButtons = 
+        <Button type='button' handleClick={props.handleAction}>Okay</Button>
+    }
+
     return (
         <Card className={styles.modal} >
             {/* header to contain title of error */}
@@ -22,10 +34,9 @@ const ModalOverlay = props => {
             <div className={styles.content}>
                 <p>{props.message}</p>
             </div>
-            {/* footer with confirm button */}
+            {/* footer with button */}
             <footer className={styles.actions}>
-                <Button type='button' handleClick={props.handleClick}>No</Button>
-                <Button type='button' handleClick={props.handleAction}>Yes</Button>
+                {shownButtons}
             </footer>
         </Card>
     )
@@ -44,7 +55,7 @@ const Modal = props => {
                 document.getElementById('backdrop-root')
             )}
             {createPortal(
-                <ModalOverlay title={props.title} message={props.message} handleAction={props.handleAction} handleClick={props.handleClick} />,
+                <ModalOverlay title={props.title} message={props.message} handleAction={props.handleAction} handleClick={props.handleClick} error={props.error} />,
                 document.getElementById('overlay-root')
             )}
         </>

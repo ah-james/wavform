@@ -5,7 +5,7 @@ import UserShowReviewButtons from './UserShowReviewButtons'
 
 import ShowReview from '../ShowReview/ShowReview'
 import { deleteReview, editReview } from '../../store/actions/reviews-actions'
-import ErrorModal from '../UI/Modal'
+import Modal from '../UI/Modal'
 
 import EditReview from '../ShowReview/EditReview'
 
@@ -41,7 +41,7 @@ const UserShowReview = props => {
 
     return(
         <>
-            {deleting && <ErrorModal title={'Warning!'} message={'Do you want to delete this review?'} handleClick={stopDelete} handleAction={handleDeleteReview} />}
+            {deleting && <Modal title={'Warning!'} message={'Do you want to delete this review?'} handleClick={stopDelete} handleAction={handleDeleteReview} />}
             {!editing ? <ShowReview selectedReview={props.selectedReview} /> : <EditReview handleEditReview={handleEditReview} selectedReview={props.selectedReview} />}
             <UserShowReviewButtons user={props.user} editing={editing} beginDeleteReview={beginDeleteReview} mountReviewForm={mountReviewForm} />
         </>
