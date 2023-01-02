@@ -89,6 +89,9 @@ const EditReview = props => {
             <Card className={styles['show-review']}>
                 <p className={styles['user-info']}>Editing Review by {props.selectedReview.user}</p>
                 <hr className={styles.rounded} />
+                <div className={styles['image-container']}>
+                    <img className={styles.image} alt={props.selectedReview.album} src={props.selectedReview.art[1].url} />
+                </div>
                 <div className={styles['album-info']}>
                     <Input id="album" type='text' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} size='10' />
                     <h3>by</h3>
