@@ -8,7 +8,7 @@ A CRUD music-based social media application, similar to Goodreads or Letterboxd.
 - Fork and clone this repository using ```git clone```.
 - Use ```cd``` to navigate to the project folder and run ```npm install``` followed by ```npm start``` to run the application.
 
-## Usage
+## Usage 
 
 Running ```npm start``` will open [http://localhost:3000](http://localhost:3000) in your browser.
 
