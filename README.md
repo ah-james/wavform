@@ -1,6 +1,6 @@
 # Wavform
 
-A CRUD music-based social media application, similar to Goodreads or Letterboxd. Rate and review your favorite albums and see what others have been listening to. [https://react-bouncr.web.app/](Please test it out here)!
+A CRUD music-based social media application, similar to Goodreads or Letterboxd. Rate and review your favorite albums and see what others have been listening to. [Please test it out here](https://react-bouncr.web.app/)!
 
 ## Installation
 
