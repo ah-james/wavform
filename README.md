@@ -1,10 +1,10 @@
 # Wavform
 
-A CRUD music-based social media application, similar to Goodreads or Letterboxd. Rate and review your favorite albums and see what others have been listening to. [https://react-bouncr.web.app/](Please test it out here)!
+A CRUD music-based social media application, similar to Goodreads or Letterboxd. Rate and review your favorite albums and see what others have been listening to. [Please test it out here](https://react-bouncr.web.app/)!
 
 ## Installation
 
-- This project is built with React.
+- This project is built with React with a Firebase backend, if you just want to try out the application, please use the link above!
 - Fork and clone this repository using ```git clone```.
 - Use ```cd``` to navigate to the project folder and run ```npm install``` followed by ```npm start``` to run the application.
 
