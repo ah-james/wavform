@@ -5,8 +5,6 @@ import Input from '../UI/Input'
 import Modal from '../UI/Modal'
 import styles from './EditReview.module.css'
 
-// to do
-// add validation handling for edit form
 const EditReview = props => {
     const [error, setError] = useState()
 
