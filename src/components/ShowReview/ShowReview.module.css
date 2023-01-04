@@ -7,6 +7,10 @@
     padding: 1rem;
 }
 
+.show-review a {
+    text-decoration: none;
+  }
+
 .album-info h1,
 .album-info h3 {
     display: inline;

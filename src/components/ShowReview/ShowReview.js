@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Card from '../UI/Card'
 import styles from './ShowReview.module.css'
 
@@ -15,7 +16,9 @@ const ShowReview = props => {
 
     return(
         <Card className={styles['show-review']}>
-            <p className={styles['user-info']}>Review by {props.selectedReview.user}</p>
+            <Link to={`/user/${props.selectedReview.user}`}>
+                <p className={styles['user-info']}>Review by {props.selectedReview.user}</p>
+            </Link>
             <hr className={styles.rounded} />
             <div>
                 <img className={styles.image} alt={props.selectedReview.album} src={props.selectedReview.art[1].url} />
