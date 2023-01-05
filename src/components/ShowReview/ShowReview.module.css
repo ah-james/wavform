@@ -9,7 +9,11 @@
 
 .show-review a {
     text-decoration: none;
-  }
+}
+
+.user-info:hover {
+    color: #e9e9e9;
+}
 
 .album-info h1,
 .album-info h3 {
