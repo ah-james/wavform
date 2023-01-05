@@ -6,6 +6,10 @@
   margin: 1rem 0;
   background-color: #4b4b4b;
 }
+
+.review-item:hover {
+  background-color: #666666;
+}
   
 .review-item-description {
   display: flex;
