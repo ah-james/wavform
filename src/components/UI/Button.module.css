@@ -15,6 +15,22 @@ button:active {
     border-color: #510674;
 }
 
+button.destroy {
+    font: inherit;
+    cursor: pointer;
+    padding: 1rem 2rem;
+    border: 1px solid red;
+    background-color: red;
+    color: white;
+    border-radius: 12px;
+    margin-right: 1rem;
+}
+
+button.destroy:hover {
+    background-color: #ff3a3a;
+    border: 1px solid #ff3a3a;
+}
+
 .button.disabled {
     background-color: #ccc;
     color: #535353;
