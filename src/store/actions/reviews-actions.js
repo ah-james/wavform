@@ -42,7 +42,7 @@ export const fetchReviews = () => {
 export const addReview = (review, accessToken) => {
     return async dispatch => {
         const addAlbumArt = async () => {
-            const response = await fetch(`https://api.spotify.com/v1/search?q=${review.album}&type=album`, {
+            const response = await fetch(`https://api.spotify.com/v1/search?q=${review.artist}&type=artist`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
@@ -50,8 +50,24 @@ export const addReview = (review, accessToken) => {
                 }
             })
 
-            const albumData = await response.json()
-            return albumData.albums.items[0].images
+            const artistData = await response.json()
+            const artistId = artistData.artists.items[0].id
+            // return albumData.albums.items[0].images
+
+            const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                }
+            })
+
+            const albumData = await artistResponse.json()
+            const foundAlbum = albumData.items.find(obj => {
+                return obj.name === review.album
+            })
+
+            return foundAlbum.images
         }
 
         const albumArt = await addAlbumArt()
