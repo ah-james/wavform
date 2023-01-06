@@ -52,7 +52,6 @@ export const addReview = (review, accessToken) => {
 
             const artistData = await response.json()
             const artistId = artistData.artists.items[0].id
-            // return albumData.albums.items[0].images
 
             const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album`, {
                 method: 'GET',
