@@ -46,12 +46,12 @@ const ReviewForm = props => {
 
     const {
         value: date, 
-        validValue: validDate, 
-        hasError: invalidDate, 
         handleValueChange: handleDateChange, 
         handleValueBlur: handleDateBlur, 
         reset: resetDate 
     } = useInput(value => value.trim() !== '')
+
+    
 
     const {
         value: text,
@@ -67,7 +67,7 @@ const ReviewForm = props => {
 
     let validForm = false
 
-    if (validAlbum && validArtist && validRating && validDate && validText) {
+    if (validAlbum && validArtist && validRating && validText) {
         validForm = true
     }
 
@@ -103,19 +103,11 @@ const ReviewForm = props => {
             return
         }
 
-        if (!validDate) {
-            setError({
-                title: 'You missed a spot!',
-                message: 'Please enter a date.'
-            })
-            return
-        }
-
         const reviewData = {
             artist,
             album,
             rating,
-            date,
+            setDate,
             text, 
             user,
             art: null
@@ -137,6 +129,12 @@ const ReviewForm = props => {
         return dateToday
     }
 
+    let setDate = date
+
+    if (!setDate) {
+        setDate = today()
+    }
+
     return(
         <>
             {error && <Modal title={error.title} message={error.message} handleAction={handleError} error={true} />}
@@ -146,11 +144,10 @@ const ReviewForm = props => {
                     <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
                     <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum}/>
                     <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
-                    <Input id='date' type='date' label='Date Listened' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
+                    <Input id='date' type='date' label='Listened On' max={today()} value={setDate} onChange={handleDateChange} onBlur={handleDateBlur} />
                 </div>
                 <div className={`${styles["new-review-control"]} ${invalidText ? styles.invalid : ''}`}>
                     <label htmlFor='text'>Review</label>
-                    {/* className={`${styles["new-review-control"]} ${!invalidText ? styles.invalid : ''}`} */}
                     <textarea id='text' name='text' rows='10' cols='70' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
                 </div>
                 <div className={styles["new-review-actions"]}>
