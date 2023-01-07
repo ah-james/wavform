@@ -1,4 +1,5 @@
 import { reviewActions } from "../reducers/reviews-slice";
+import { addAlbumArt } from "./spotify-actions";
 
 export const fetchReviews = () => {
     return async dispatch => {
@@ -41,35 +42,7 @@ export const fetchReviews = () => {
 
 export const addReview = (review, accessToken) => {
     return async dispatch => {
-        const addAlbumArt = async () => {
-            const response = await fetch(`https://api.spotify.com/v1/search?q=${review.artist}&type=artist`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            })
-
-            const artistData = await response.json()
-            const artistId = artistData.artists.items[0].id
-
-            const artistResponse = await fetch(`https://api.spotify.com/v1/artists/${artistId}/albums?include_groups=album`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            })
-
-            const albumData = await artistResponse.json()
-            const foundAlbum = albumData.items.find(obj => {
-                return obj.name === review.album
-            })
-
-            return foundAlbum.images
-        }
-
-        const albumArt = await addAlbumArt()
+        const albumArt = await addAlbumArt(review, accessToken)
 
         const addData = async () => {
             const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/reviews.json', {
