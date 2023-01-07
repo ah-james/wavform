@@ -7,10 +7,10 @@ const ReviewsList = props => {
         return <h2 className={styles["reviews-list-fallback"]}>No Reviews Found</h2>
     }
 
-    return(
+    return (
         <ul className={styles["reviews-list"]}>
-            {props.reviews.map((filteredReview) => 
-            <ReviewItem key={filteredReview.id} id={filteredReview.id} art={filteredReview.art} artist={filteredReview.artist} album={filteredReview.album} date={filteredReview.date} rating={filteredReview.rating} user={filteredReview.user} />
+            {props.reviews.map((filteredReview) =>
+                <ReviewItem key={filteredReview.id} id={filteredReview.id} art={filteredReview.art} artist={filteredReview.artist} album={filteredReview.album} date={filteredReview.date} rating={filteredReview.rating} user={filteredReview.user} />
             )}
         </ul>
     )

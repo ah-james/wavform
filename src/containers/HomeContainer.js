@@ -5,7 +5,7 @@ import styles from './HomeContainer.module.css'
 const HomeContainer = () => {
     const navigate = useNavigate()
 
-    return(
+    return (
         <div className={styles['home-page']}>
             <h2>Track albums you've listened to.</h2>
             <h2>Save those you haven't heard yet.</h2>

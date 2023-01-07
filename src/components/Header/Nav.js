@@ -22,27 +22,27 @@ const Nav = () => {
         return state.auth.loggedIn
     })
 
-    let loginButton = 
+    let loginButton =
     <li>
         <NavLink className={(data) => data.isActive ? styles.active : ''} to='/login'>Login</NavLink>
     </li>
 
     if (loggedIn) {
-        loginButton = 
-        <>
-            <li>
-                <NavLink className={(data) => data.isActive ? styles.active : ''} to='/login' onClick={logout}>Logout</NavLink>
-            </li>
-            <li>
-                <NavLink className={(data) => data.isActive ? styles.active : ''} to='/'>Home</NavLink>
-            </li>
-            <li>
-                <NavLink className={(data) => data.isActive ? styles.active : ''} to='/settings'>Settings</NavLink>
-            </li>
-        </>
+        loginButton =
+            <>
+                <li>
+                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/login' onClick={logout}>Logout</NavLink>
+                </li>
+                <li>
+                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/'>Home</NavLink>
+                </li>
+                <li>
+                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/settings'>Settings</NavLink>
+                </li>
+            </>
     }
 
-    return(
+    return (
         <nav className={styles.nav}>
             <ul>
                 {loginButton}

@@ -7,15 +7,15 @@ const ChartBar = props => {
     // if max value from props is higher than zero convert to percentage and save as barFill
     // also convert to string with % sign at end
     if (props.maxValue > 0) {
-        barFill = Math.round((props.value / props.maxValue) * 100 ) + '%'
+        barFill = Math.round((props.value / props.maxValue) * 100) + '%'
     }
 
-    return(
+    return (
         <div className={styles["chart-bar"]}>
             <div className={styles["chart-bar-inner"]}>
                 {/* dynamically adjust height with barFill variable in style react prop */}
                 {/* value is a javascript object */}
-                <div className={styles["chart-bar-fill"]} style={{height: barFill}} ></div>
+                <div className={styles["chart-bar-fill"]} style={{ height: barFill }} ></div>
             </div>
             {/* put label from props in this one */}
             <div className={styles["chart-bar-label"]}>{props.label}</div>

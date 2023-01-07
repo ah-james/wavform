@@ -10,7 +10,7 @@ import { useDispatch } from "react-redux"
 import { newOrLoginUser } from '../../store/actions/auth-actions'
 
 const initialState = {
-    value: '', 
+    value: '',
     isValid: undefined
 }
 
@@ -30,7 +30,7 @@ const reducer = (state, action) => {
             isValid: state.value.length > 6
         }
     }
-    return {value: '', isValid: false}
+    return { value: '', isValid: false }
 }
 
 const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
@@ -59,11 +59,11 @@ const Login = () => {
         // I think I have a memory leak and I've been told this might help I'm sorry for what I'm about to do
         const identifier = setTimeout(() => {
             if (newAccount === true) {
-                setValidForm( 
+                setValidForm(
                     passwordIsValid && emailIsValid
                 )
             }
-            setValidForm( 
+            setValidForm(
                 passwordIsValid
             )
         }, 500)
@@ -103,15 +103,15 @@ const Login = () => {
         setError(null)
     }
 
-    return(
+    return (
         <>
             {error && <Modal title={error.title} message={error.message} handleAction={handleError} />}
             <Card className={styles["new-user"]}>
                 <h2>{newAccount ? 'Sign Up' : 'Login'}</h2>
                 <form onSubmit={handleSubmit}>
                     <div className={styles.controls}>
-                        <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => {handleChange(dispatchEmail, event)}} onBlur={() => {handleValidate(dispatchEmail)}} />
-                        <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => {handleChange(dispatchPassword, event)}} onBlur={() => {handleValidate(dispatchPassword)}} />
+                        <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => { handleChange(dispatchEmail, event) }} onBlur={() => { handleValidate(dispatchEmail) }} />
+                        <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => { handleChange(dispatchPassword, event) }} onBlur={() => { handleValidate(dispatchPassword) }} />
                     </div>
                     <div className={styles.actions}>
                         {/* button for submit */}

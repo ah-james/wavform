@@ -8,7 +8,7 @@
     border-radius: 12px;
     margin-right: 1rem;
 }
-    
+
 button:hover,
 button:active {
     background-color: #510674;
@@ -37,13 +37,13 @@ button.destroy:hover {
     border-color: #ccc;
     cursor: not-allowed;
 }
-    
+
 button.alternative {
     color: #220131;
     border-color: transparent;
     background-color: transparent;
 }
-  
+
 button.alternative:hover,
 button.alternative:active {
     background-color: #ddb3f8;

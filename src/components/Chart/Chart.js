@@ -7,7 +7,7 @@ const Chart = props => {
     // find biggest value across months with Math.max
     const maxValue = Math.max(...monthValues)
 
-    return(
+    return (
         <div className={styles.chart}>
             {props.dataPoints.map((dataPoint) => (
                 <ChartBar key={dataPoint.label} value={dataPoint.value} maxValue={maxValue} label={dataPoint.label} />

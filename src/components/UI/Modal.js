@@ -1,5 +1,5 @@
 // import react dom for createPortal
-import {createPortal} from 'react-dom'
+import { createPortal } from 'react-dom'
 
 import styles from './Modal.module.css'
 import Card from './Card'
@@ -13,15 +13,15 @@ const Backdrop = props => {
 // new component for portal, modal body here
 const ModalOverlay = props => {
 
-    let shownButtons = 
+    let shownButtons =
     <>
         <Button type='button' handleClick={props.handleClick}>No</Button>
         <Button type='button' handleClick={props.handleAction}>Yes</Button>
     </>
 
     if (props.error) {
-        shownButtons = 
-        <Button type='button' handleClick={props.handleAction}>Okay</Button>
+        shownButtons =
+            <Button type='button' handleClick={props.handleAction}>Okay</Button>
     }
 
     return (
@@ -45,7 +45,7 @@ const ModalOverlay = props => {
 
 const Modal = props => {
 
-    return(
+    return (
         <>
             {/* createPortal takes in two functions above as JSX elements */}
             {/* Backdrop needs props.handleError passed in, second arg document.getElementById for backdrop in html file */}

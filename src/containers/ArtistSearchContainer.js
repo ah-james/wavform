@@ -83,12 +83,12 @@ const ArtistSearchContainer = () => {
     if (albums) {
         content =
             <div key={albums.id}>
-                <p style={{color: 'white'}}>{albums.name}</p>
-                <img alt={albums.name} src={albums.images[1].url}></img> 
+                <p style={{ color: 'white' }}>{albums.name}</p>
+                <img alt={albums.name} src={albums.images[1].url}></img>
             </div>
     }
 
-    return(
+    return (
         <form onSubmit={searchArtists}>
             <input type='text' onChange={event => setSearch(event.target.value)}></input>
             <button type='submit'>Search</button>

@@ -7,8 +7,7 @@ import ReviewForm from "./ReviewForm"
 import Button from "../UI/Button"
 import { addReview } from '../../store/actions/reviews-actions';
 
-const NewReview = (props) => {
-
+const NewReview = () => {
     const [mountForm, setMountForm] = useState(false)
 
     const dispatch = useDispatch()
@@ -28,7 +27,7 @@ const NewReview = (props) => {
     }
 
     if (mountForm) {
-        return(
+        return (
             <div className={styles["new-review"]}>
                 <ReviewForm handleClick={handleClick} onSaveReview={handleSaveReview} />
             </div>

@@ -5,7 +5,7 @@ import styles from './ShowReview.module.css'
 // to do
 // navigate to author's reviews when click on name
 const ShowReview = props => {
-    
+
     if (!props.selectedReview) {
         return (
             <Card className={styles['show-review']} >
@@ -14,7 +14,7 @@ const ShowReview = props => {
         )
     }
 
-    return(
+    return (
         <Card className={styles['show-review']}>
             <Link to={`/user/${props.selectedReview.user}`}>
                 <p className={styles['user-info']}>Review by {props.selectedReview.user}</p>

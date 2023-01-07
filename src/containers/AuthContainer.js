@@ -1,8 +1,7 @@
 import LoginForm from '../components/Users/LoginForm'
 
 const LoginContainer = () => {
-
-    return(
+    return (
         <div>
             <LoginForm />
         </div>

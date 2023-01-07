@@ -13,7 +13,7 @@ export const fetchReviews = () => {
             const data = await response.json()
 
             const loadedReviews = []
-    
+
             for (const key in data) {
                 loadedReviews.push({
                     id: key,
@@ -56,7 +56,7 @@ export const addReview = (review, accessToken) => {
                     user: review.user,
                     art: albumArt
                 }),
-                headers: {'Content-Type': 'application/json'}
+                headers: { 'Content-Type': 'application/json' }
             })
 
             if (!response.ok) {
@@ -118,7 +118,7 @@ export const editReview = (review) => {
             const response = await fetch(`https://react-bouncr-default-rtdb.firebaseio.com/reviews/${review.id}.json`, {
                 method: 'PATCH',
                 body: JSON.stringify(review),
-                headers: {'Content-Type': 'application/json'}
+                headers: { 'Content-Type': 'application/json' }
             })
 
             if (!response.ok) {

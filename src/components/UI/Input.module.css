@@ -4,18 +4,18 @@
     align-items: stretch;
     flex-direction: column;
 }
-  
+
 .control label,
 .control input {
     display: block;
 }
-  
+
 .control label {
-  font-weight: bold;
-  margin-bottom: 0.5rem;
-  display: block;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    display: block;
 }
-  
+
 .control input {
     flex: 3;
     font: inherit;
@@ -23,13 +23,13 @@
     border-radius: 6px;
     border: 1px solid #ccc;
 }
-  
+
 .control input:focus {
     outline: none;
     border-color: #4f005f;
     background: #f6dbfc;
 }
-  
+
 .control.invalid input {
     border-color: red;
     background: #fbdada;

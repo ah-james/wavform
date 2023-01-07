@@ -11,47 +11,46 @@ import { useSelector } from "react-redux";
 // to do:
 // link with Spotify API to include artist and album dropdown
 const ReviewForm = props => {
-    // const [focusedForm, setFocusedForm] = useState(false)
     const user = useSelector(state => {
         return state.auth.email
     })
 
     // use custom hook to dry up code, destructure out values and functions
-    const { 
-        value: artist, 
-        validValue: validArtist, 
-        hasError: invalidArtist, 
-        handleValueChange: handleArtistChange, 
-        handleValueBlur: handleArtistBlur, 
-        reset: resetArtist 
+    const {
+        value: artist,
+        validValue: validArtist,
+        hasError: invalidArtist,
+        handleValueChange: handleArtistChange,
+        handleValueBlur: handleArtistBlur,
+        reset: resetArtist
     } = useInput(value => value.trim() !== '')
 
     const {
-        value: album, 
-        validValue: validAlbum, 
+        value: album,
+        validValue: validAlbum,
         hasError: invalidAlbum,
-        handleValueChange: handleAlbumChange, 
-        handleValueBlur: handleAlbumBlur, 
-        reset: resetAlbum 
+        handleValueChange: handleAlbumChange,
+        handleValueBlur: handleAlbumBlur,
+        reset: resetAlbum
     } = useInput(value => value.trim() !== '')
 
     const {
-        value: rating, 
-        validValue: validRating, 
-        hasError: invalidRating, 
-        handleValueChange: handleRatingChange, 
-        handleValueBlur: handleRatingBlur, 
-        reset: resetRating 
+        value: rating,
+        validValue: validRating,
+        hasError: invalidRating,
+        handleValueChange: handleRatingChange,
+        handleValueBlur: handleRatingBlur,
+        reset: resetRating
     } = useInput(value => value.trim() !== '' && value >= 0 && value <= 10)
 
     const {
-        value: date, 
-        handleValueChange: handleDateChange, 
-        handleValueBlur: handleDateBlur, 
-        reset: resetDate 
+        value: date,
+        handleValueChange: handleDateChange,
+        handleValueBlur: handleDateBlur,
+        reset: resetDate
     } = useInput(value => value.trim() !== '')
 
-    
+
 
     const {
         value: text,
@@ -108,7 +107,7 @@ const ReviewForm = props => {
             album,
             rating,
             date: setDate,
-            text, 
+            text,
             user,
             art: null
         }
@@ -135,14 +134,14 @@ const ReviewForm = props => {
         setDate = today()
     }
 
-    return(
+    return (
         <>
             {error && <Modal title={error.title} message={error.message} handleAction={handleError} error={true} />}
             {/* readd on onFocus={handleFormFocus} after fixing */}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
                     <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
-                    <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum}/>
+                    <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum} />
                     <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
                     <Input id='date' type='date' label='Listened On' max={today()} value={setDate} onChange={handleDateChange} onBlur={handleDateBlur} />
                 </div>

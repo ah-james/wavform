@@ -2,9 +2,7 @@ import Button from '../UI/Button'
 import styles from './Settings.module.css'
 
 const UserShowReviewButtons = props => {
-    
-
-    return(
+    return (
         <div className={styles.buttons}>
             {props.user && !props.editing && <Button destroy={true} handleClick={props.beginDeleteReview}>Delete Review</Button>}
             {props.user && <Button handleClick={props.mountReviewForm}>{props.editing ? 'Cancel' : 'Edit Review'}</Button>}

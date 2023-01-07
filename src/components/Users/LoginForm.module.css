@@ -4,7 +4,7 @@
     margin: 2rem auto;
     padding: 2rem;
 }
-  
+
 .actions {
     /* text-align: right;
     display: flex; */
@@ -16,7 +16,7 @@
 .actions p {
     cursor: pointer;
 }
-  
+
 @media (min-width: 768px) {
     .control {
         align-items: center;

@@ -22,7 +22,7 @@ const ReviewFilter = props => {
         return <option key={year} value={`${year}`}>{year}</option>
     })
 
-    let filter = 
+    let filter =
     <select value={props.selectedYear} onChange={handleChange}>
         <option value=''>Select a Year</option>
         {dynamicOptions}
@@ -31,7 +31,7 @@ const ReviewFilter = props => {
     return (
         <div className={styles['review-filter']}>
             <div className={styles['review-filter-control']}>
-                <label>{props.showFilter ? 'Filter or Sort by Year' : 'Sort by Year' }</label>
+                <label>{props.showFilter ? 'Filter or Sort by Year' : 'Sort by Year'}</label>
                 <Button handleClick={props.changeSort}>Sort {props.ascending ? 'Descending' : 'Ascending'}</Button>
                 {/* <Button handleClick={years} /> */}
                 {props.showFilter && filter}

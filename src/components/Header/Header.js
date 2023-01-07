@@ -5,7 +5,7 @@ import styles from './Header.module.css'
 
 const Header = props => {
 
-    return(
+    return (
         <header className={styles['main-header']}>
             <Link to={'/'}>
                 <h1>Wavform</h1>

@@ -39,7 +39,7 @@ const UserShowReview = props => {
         navigate(`/`)
     }
 
-    return(
+    return (
         <>
             {deleting && <Modal title={'Warning!'} message={'Do you want to delete this review?'} handleClick={stopDelete} handleAction={handleDeleteReview} />}
             {!editing ? <ShowReview selectedReview={props.selectedReview} /> : <EditReview handleEditReview={handleEditReview} selectedReview={props.selectedReview} />}

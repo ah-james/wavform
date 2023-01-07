@@ -12,14 +12,14 @@ const Button = props => {
         disabledButton = styles.disabled
     }
 
-    return(
+    return (
         <button
-        id={props.id} 
-        form={props.form}
-        className={`${buttonColor} ${disabledButton}`}
-        type={props.type} 
-        onClick={props.handleClick} 
-        disabled={props.disabled}>
+            id={props.id}
+            form={props.form}
+            className={`${buttonColor} ${disabledButton}`}
+            type={props.type}
+            onClick={props.handleClick}
+            disabled={props.disabled}>
             {props.children}
         </button>
     )

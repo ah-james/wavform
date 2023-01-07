@@ -13,11 +13,11 @@ import styles from './Settings.module.css'
 
 const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
-    // to do
-    // build out validations, 
-    // maybe light/dark mode?
-    // delete profile
-    // let user change username
+// to do
+// build out validations, 
+// maybe light/dark mode?
+// delete profile
+// let user change username
 const Settings = () => {
     const [password, setPassword] = useState('')
 
@@ -40,12 +40,12 @@ const Settings = () => {
         // go into firebase, delete user that's currently logged in
     }
 
-    return(
+    return (
         <div>
             <Card className={styles.home}>
                 <h1>Change Password</h1>
                 <form onSubmit={handleSubmit}>
-                    <Input label="Password" type="password" id='password' length='6' value={password} onChange={(event) => {setPassword(event.target.value)}} />
+                    <Input label="Password" type="password" id='password' length='6' value={password} onChange={(event) => { setPassword(event.target.value) }} />
                     <Button type='submit'>Submit</Button>
                 </form>
             </Card>

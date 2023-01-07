@@ -9,7 +9,6 @@ import styles from '../components/Reviews/ReviewsList.module.css'
 // to do:
 // only show reviews with user ID here
 const ProfileContainer = () => {
-
     const reviews = useSelector((state) => {
         return state.reviews.albums
     })
@@ -31,11 +30,11 @@ const ProfileContainer = () => {
     let content = <p className={styles["reviews-list-fallback"]}>Loading...</p>
 
     // I'll figure this out someday \/
-  
+
     // if (error) {
     //   content = <p className={styles["reviews-list-fallback"]}>{error}</p>
     // }
-  
+
     // if (loading) {
     //   content = <p className={styles["reviews-list-fallback"]}>Loading...</p>
     // }
@@ -44,7 +43,7 @@ const ProfileContainer = () => {
         content = <Reviews reviews={user ? shownReviews : reviews} showChart={true} />
     }
 
-    return(
+    return (
         <div>
             <NewReview />
             {content}

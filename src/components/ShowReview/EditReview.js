@@ -12,44 +12,44 @@ const EditReview = props => {
         setError(null)
     }
 
-    const { 
-        value: album, 
-        validValue: validAlbum, 
-        hasError: invalidAlbum, 
-        handleValueChange: handleAlbumChange, 
-        handleValueBlur: handleAlbumBlur, 
+    const {
+        value: album,
+        validValue: validAlbum,
+        hasError: invalidAlbum,
+        handleValueChange: handleAlbumChange,
+        handleValueBlur: handleAlbumBlur,
     } = useInput(value => value.trim() !== '', props.selectedReview.album)
 
-    const { 
-        value: artist, 
-        validValue: validArtist, 
-        hasError: invalidArtist, 
-        handleValueChange: handleArtistChange, 
-        handleValueBlur: handleArtistBlur, 
+    const {
+        value: artist,
+        validValue: validArtist,
+        hasError: invalidArtist,
+        handleValueChange: handleArtistChange,
+        handleValueBlur: handleArtistBlur,
     } = useInput(value => value.trim() !== '', props.selectedReview.artist)
 
-    const { 
-        value: rating, 
-        validValue: validRating, 
-        hasError: invalidRating, 
-        handleValueChange: handleRatingChange, 
-        handleValueBlur: handleRatingBlur, 
+    const {
+        value: rating,
+        validValue: validRating,
+        hasError: invalidRating,
+        handleValueChange: handleRatingChange,
+        handleValueBlur: handleRatingBlur,
     } = useInput(value => value.trim() !== '', props.selectedReview.rating)
 
-    const { 
-        value: date, 
-        validValue: validDate, 
-        hasError: invalidDate, 
-        handleValueChange: handleDateChange, 
-        handleValueBlur: handleDateBlur,  
+    const {
+        value: date,
+        validValue: validDate,
+        hasError: invalidDate,
+        handleValueChange: handleDateChange,
+        handleValueBlur: handleDateBlur,
     } = useInput(value => value.trim() !== '', props.selectedReview.date)
 
-    const { 
-        value: text, 
-        validValue: validText, 
-        hasError: invalidText, 
-        handleValueChange: handleTextChange, 
-        handleValueBlur: handleTextBlur, 
+    const {
+        value: text,
+        validValue: validText,
+        hasError: invalidText,
+        handleValueChange: handleTextChange,
+        handleValueBlur: handleTextBlur,
     } = useInput(value => value.trim() !== '', props.selectedReview.text)
 
     const today = () => {
@@ -115,7 +115,7 @@ const EditReview = props => {
 
         props.handleEditReview(reviewData)
     }
-        
+
     if (!props.selectedReview) {
         return (
             <Card className={styles['show-review']} >
@@ -124,7 +124,7 @@ const EditReview = props => {
         )
     }
 
-    return(
+    return (
         <>
             {error && <Modal title={error.title} message={error.message} handleAction={handleError} error={true} />}
             <form id='editForm' onSubmit={handleSubmit}>
@@ -147,7 +147,7 @@ const EditReview = props => {
                         <p className={styles['user-info']}>Listened on</p>
                         <Input id='date' type='date' max={today()} value={date} onChange={handleDateChange} onBlur={handleDateBlur} isValid={!invalidDate} />
                     </div>
-                    <div  className={`${styles["text-area"]} ${invalidText ? styles.invalid : ''}`}>
+                    <div className={`${styles["text-area"]} ${invalidText ? styles.invalid : ''}`}>
                         <textarea id='text' name='text' rows='10' cols='90' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
                     </div>
                 </Card>

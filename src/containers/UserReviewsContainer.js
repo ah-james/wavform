@@ -21,7 +21,7 @@ const UserReviewsContainer = props => {
         }
     }
 
-    return(
+    return (
         <div>
             <h2 className={styles["reviews-list-fallback"]}>Reviews by {user}</h2>
             <Reviews reviews={reviews} />

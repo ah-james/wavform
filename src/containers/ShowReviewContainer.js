@@ -18,7 +18,7 @@ const ShowReviewContainer = () => {
 
     const user = localStorage.getItem('email') === creator
 
-    return(
+    return (
         <div>
             <UserShowReview user={user} selectedReview={selectedReview} />
         </div>

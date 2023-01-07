@@ -1,7 +1,6 @@
 import Settings from "../components/Users/Settings"
 
 const SettingsContainer = () => {
-
     return (
         <div>
             <Settings />

@@ -10,7 +10,7 @@
 .review-item:hover {
   background-color: #666666;
 }
-  
+
 .review-item-description {
   display: flex;
   flex-direction: column;
@@ -33,7 +33,7 @@
   align-items: center;
   justify-content: center;
 }
-  
+
 .review-item h2 {
   color: #3a3a3a;
   font-size: 1rem;
@@ -74,7 +74,7 @@
   font-size: 14px;
   color: #c4c4c4;
   clear: both;
-  margin-right: 10px; 
+  margin-right: 10px;
 }
 
 .review-description img {

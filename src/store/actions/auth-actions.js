@@ -10,7 +10,7 @@ export const newOrLoginUser = (url, email, password, navigate) => {
                     password: password,
                     returnSecureToken: true
                 }),
-                headers: {'Content-Type': 'application/json'}
+                headers: { 'Content-Type': 'application/json' }
             })
 
             // setLoading(false)
@@ -18,7 +18,7 @@ export const newOrLoginUser = (url, email, password, navigate) => {
             if (!response.ok) {
                 const data = await response.json()
                 throw new Error(data.error.message)
-            } 
+            }
             const data = await response.json()
             return data
         }
@@ -42,13 +42,13 @@ export const setNewPassword = (API_KEY, token, password) => {
     return async dispatch => {
         const fetchData = async () => {
             const response = await fetch(`https://identitytoolkit.googleapis.com/v1/accounts:update?key=${API_KEY}`, {
-            method: 'POST',
-            body: JSON.stringify({
-                idToken: token,
-                password: password,
-                returnSecureToken: true
-            }),
-            headers: {'Content-Type': 'application/json'}
+                method: 'POST',
+                body: JSON.stringify({
+                    idToken: token,
+                    password: password,
+                    returnSecureToken: true
+                }),
+                headers: { 'Content-Type': 'application/json' }
             })
 
             const data = await response.json()

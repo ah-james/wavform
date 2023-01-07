@@ -7,7 +7,7 @@
     z-index: 10;
     background: rgba(0, 0, 0, 0.75);
 }
-  
+
 .modal {
     background-color: #a892ee;
     position: fixed;
@@ -17,23 +17,23 @@
     z-index: 100;
     overflow: hidden;
 }
-  
+
 .header {
     background: #4f005f;
     padding: 1rem;
 }
-  
+
 .header h2 {
     margin: 0;
     color: white;
 }
-  
+
 .content {
     background-color: #a892ee;
     padding: 1rem;
     background-color: white;
 }
-  
+
 .actions {
     background-color: #a892ee;
     padding: 1rem;
@@ -41,10 +41,10 @@
     justify-content: flex-end;
     background-color: white;
 }
-  
+
 @media (min-width: 768px) {
     .modal {
-      left: calc(50% - 20rem);
-      width: 40rem;
+        left: calc(50% - 20rem);
+        width: 40rem;
     }
 }
