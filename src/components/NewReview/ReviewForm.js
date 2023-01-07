@@ -107,7 +107,7 @@ const ReviewForm = props => {
             artist,
             album,
             rating,
-            setDate,
+            date: setDate,
             text, 
             user,
             art: null
