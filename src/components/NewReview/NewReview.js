@@ -6,9 +6,11 @@ import styles from './NewReview.module.css'
 import ReviewForm from "./ReviewForm"
 import Button from "../UI/Button"
 import { addReview } from '../../store/actions/reviews-actions';
+import FindAlbum from "./FindAlbum"
 
 const NewReview = () => {
-    const [mountForm, setMountForm] = useState(false)
+    const [mountAlbumForm, setMountAlbumForm] = useState(false)
+    const [mountReviewForm, setMountReviewForm] = useState(false)
 
     const dispatch = useDispatch()
 
@@ -22,11 +24,28 @@ const NewReview = () => {
         dispatch(addReview(review, accessToken))
     }
 
-    const handleClick = () => {
-        setMountForm(current => !current)
+    const handleFindAlbumClick = () => {
+        setMountAlbumForm(current => !current)
     }
 
-    if (mountForm) {
+    const handleReviewFormClick = () => {
+        setMountAlbumForm(current => !current)
+        setMountReviewForm(current => !current)
+    }
+
+    const handleClick = () => {
+        setMountReviewForm(current => !current)
+    }
+
+    if (mountAlbumForm) {
+        return (
+            <div className={styles["new-review"]}>
+                 <FindAlbum handleClick={handleReviewFormClick} />
+             </div>
+        )
+    }
+
+    if (mountReviewForm) {
         return (
             <div className={styles["new-review"]}>
                 <ReviewForm handleClick={handleClick} onSaveReview={handleSaveReview} />
@@ -36,7 +55,7 @@ const NewReview = () => {
 
     return (
         <div className={styles['new-review']}>
-            <Button handleClick={handleClick}>Add an Album</Button>
+            <Button handleClick={handleFindAlbumClick}>Add an Album</Button>
         </div>
     )
 
