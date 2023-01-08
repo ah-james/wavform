@@ -52,19 +52,10 @@ export const addAlbumArt = async (review, accessToken) => {
         }
     })
 
-    try {
-        const albumData = await artistResponse.json()
-        const foundAlbum = albumData.items.find(obj => {
-            return obj.name === review.album
-        })
+    const albumData = await artistResponse.json()
+    const foundAlbum = albumData.items.find(obj => {
+        return obj.name === review.album
+    })
 
-        if (foundAlbum === undefined) {
-            throw new Error(`This album doesn't exist!`)
-        }
-
-        return foundAlbum.images
-    } catch (error) {
-        throw new Error(error)
-    }
-
+    return foundAlbum.images
 }
