@@ -11,6 +11,8 @@ import { useSelector } from "react-redux";
 // to do:
 // link with Spotify API to include artist and album dropdown
 const ReviewForm = props => {
+    const [error, setError] = useState()
+
     const user = useSelector(state => {
         return state.auth.email
     })
@@ -60,9 +62,6 @@ const ReviewForm = props => {
         handleValueBlur: handleTextBlur,
         reset: resetText
     } = useInput(value => value.trim() !== '')
-
-    // state to handle errors
-    const [error, setError] = useState()
 
     let validForm = false
 

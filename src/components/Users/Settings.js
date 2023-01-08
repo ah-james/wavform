@@ -35,10 +35,10 @@ const Settings = () => {
         navigate('/')
     }
 
-    const deleteUser = () => {
-        // handle an are you sure? situation
-        // go into firebase, delete user that's currently logged in
-    }
+    // const deleteUser = () => {
+    //  // handle an are you sure? situation
+    //  // go into firebase, delete user that's currently logged in
+    // }
 
     return (
         <div>
