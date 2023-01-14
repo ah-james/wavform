@@ -17,25 +17,6 @@ const ReviewForm = props => {
         return state.auth.email
     })
 
-    // use custom hook to dry up code, destructure out values and functions
-    // const {
-    //     value: artist,
-    //     validValue: validArtist,
-    //     hasError: invalidArtist,
-    //     handleValueChange: handleArtistChange,
-    //     handleValueBlur: handleArtistBlur,
-    //     reset: resetArtist
-    // } = useInput(value => value.trim() !== '')
-
-    // const {
-    //     value: album,
-    //     validValue: validAlbum,
-    //     hasError: invalidAlbum,
-    //     handleValueChange: handleAlbumChange,
-    //     handleValueBlur: handleAlbumBlur,
-    //     reset: resetAlbum
-    // } = useInput(value => value.trim() !== '')
-
     const {
         value: rating,
         validValue: validRating,
@@ -73,25 +54,8 @@ const ReviewForm = props => {
         setError(null)
     }
 
-    // create function to handle form submission
     const handleSubmit = event => {
         event.preventDefault()
-
-        // if (!validArtist) {
-        //     setError({
-        //         title: 'You missed a spot!',
-        //         message: 'Please enter an artist.'
-        //     })
-        //     return
-        // }
-
-        // if (!validAlbum) {
-        //     setError({
-        //         title: 'You missed a spot!',
-        //         message: 'Please enter an album.'
-        //     })
-        //     return
-        // }
 
         if (!validRating) {
             setError({

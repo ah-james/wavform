@@ -24,6 +24,9 @@ const NewReview = () => {
         // could add useNavigate hook in app and history.push() to navigate to new page when
         // form is submitted? just ideas for the future
         dispatch(addReview(review, accessToken))
+
+        setMountAlbumForm(false)
+        setMountReviewForm(false)
     }
 
     const handleFindAlbumClick = () => {
