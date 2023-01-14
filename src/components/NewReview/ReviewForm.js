@@ -101,8 +101,8 @@ const ReviewForm = props => {
             {/* readd on onFocus={handleFormFocus} after fixing */}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
-                    <Input id="artist" type='text' label="Artist" value={props.artist} />
-                    <Input id="album" type='text' label='Album' value={props.album} />
+                    <Input id="artist" type='text' label="Artist" value={props.artist} readonly={true} />
+                    <Input id="album" type='text' label='Album' value={props.album} readonly={true} />
                     <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
                     <Input id='date' type='date' label='Listened On' max={today()} value={setDate} onChange={handleDateChange} onBlur={handleDateBlur} />
                 </div>
