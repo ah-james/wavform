@@ -1,4 +1,5 @@
 import React from 'react'
+import Input from '../UI/Input'
 
 import styles from './ReviewFilter.module.css'
 
@@ -6,7 +7,7 @@ const ReviewFilter = props => {
 
     return (
         <>
-            <input className={styles['review-filter-control']} type='text' placeholder='search for an album' onChange={props.handleFilterChange}></input>
+            <Input className={styles['review-filter-control']} type='text' placeholder='Search for an album' onChange={props.handleFilterChange}></Input>
         </>
     )
 }
