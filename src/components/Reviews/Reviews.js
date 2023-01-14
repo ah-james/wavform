@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+// import { useLocation } from 'react-router-dom';
 
 import styles from './Reviews.module.css'
 
@@ -11,49 +11,59 @@ import ReviewsChart from './ReviewsChart';
 // to do
 // add search bar
 const Reviews = props => {
-    const [filteredYear, setFilteredYear] = useState('')
+    // const [filteredYear, setFilteredYear] = useState('')
+    const [search, setSearch] = useState('')
 
-    const navigate = useNavigate()
-    const location = useLocation()
+    // const navigate = useNavigate()
+    // const location = useLocation()
 
-    const queryParams = new URLSearchParams(location.search)
+    // const queryParams = new URLSearchParams(location.search)
 
-    const isAscending = queryParams.get('sort') === 'asc'
+    // const isAscending = queryParams.get('sort') === 'asc'
 
-    const handleFilterChange = selectedYear => {
-        setFilteredYear(selectedYear)
+    // const handleFilterChange = selectedYear => {
+    //     setFilteredYear(selectedYear)
+    // }
+
+    const handleFilterChange = event => {
+        setSearch(event.target.value)
     }
 
-    const filteredReviews = props.reviews.filter(review => {
-        const date = new Date(review.date)
-        if (filteredYear === '') {
-            return props.reviews
-        }
-        return date.getFullYear().toString() === filteredYear
-    })
+    // const reviews = props.reviews.filter(review => {
+    //     const date = new Date(review.date)
+    //     if (filteredYear === '') {
+    //         return props.reviews
+    //     }
+    //     return date.getFullYear().toString() === filteredYear
+    // })
 
-    const sortReviews = filteredReviews.sort((a, b) => {
-        if (isAscending) {
-            return new Date(a.date) - new Date(b.date)
-        } else {
-            return new Date(b.date) - new Date(a.date)
-        }
-    })
+    const filteredReviews = search.length === 0 ? props.reviews :
+        props.reviews.filter(review => 
+            review.album.toLowerCase().includes(search.toLowerCase())
+    )
 
-    const changeSort = () => {
-        navigate(`?sort=${isAscending ? 'desc' : 'asc'}`)
-    }
+    // const sortReviews = reviews.sort((a, b) => {
+    //     if (isAscending) {
+    //         return new Date(a.date) - new Date(b.date)
+    //     } else {
+    //         return new Date(b.date) - new Date(a.date)
+    //     }
+    // })
+
+    // const changeSort = () => {
+    //     navigate(`?sort=${isAscending ? 'desc' : 'asc'}`)
+    // }
 
     let chart =
     <div>
-        <ReviewsChart reviews={filteredReviews} />
+        <ReviewsChart reviews={props.reviews} />
     </div>
 
     return (
         <Card className={styles.reviews}>
-            <ReviewFilter ascending={isAscending} showFilter={props.showChart} selectedYear={filteredYear} handleFilterChange={handleFilterChange} reviews={props.reviews} changeSort={changeSort} />
+            <ReviewFilter handleFilterChange={handleFilterChange} />
             {props.showChart && chart}
-            <ReviewsList reviews={sortReviews} />
+            <ReviewsList reviews={filteredReviews} />
         </Card>
     )
 }
