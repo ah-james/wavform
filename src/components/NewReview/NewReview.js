@@ -11,6 +11,8 @@ import FindAlbum from "./FindAlbum"
 const NewReview = () => {
     const [mountAlbumForm, setMountAlbumForm] = useState(false)
     const [mountReviewForm, setMountReviewForm] = useState(false)
+    const [foundArtist, setFoundArtist] = useState()
+    const [foundAlbum, setFoundAlbum] = useState()
 
     const dispatch = useDispatch()
 
@@ -28,7 +30,21 @@ const NewReview = () => {
         setMountAlbumForm(current => !current)
     }
 
-    const handleReviewFormClick = () => {
+    const handleReviewFormClick = async album => {
+        const response = await fetch(`https://api.spotify.com/v1/search?q=${album}&type=album`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            }
+        })
+        
+        const albumData = await response.json()
+        const chosenAlbum = albumData.albums.items[0]
+
+        setFoundAlbum(chosenAlbum.name)
+        setFoundArtist(chosenAlbum.artists[0].name)
+
         setMountAlbumForm(current => !current)
         setMountReviewForm(current => !current)
     }
@@ -48,7 +64,7 @@ const NewReview = () => {
     if (mountReviewForm) {
         return (
             <div className={styles["new-review"]}>
-                <ReviewForm handleClick={handleClick} onSaveReview={handleSaveReview} />
+                <ReviewForm handleClick={handleClick} onSaveReview={handleSaveReview} artist={foundArtist} album={foundAlbum} />
             </div>
         )
     }
