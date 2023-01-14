@@ -18,23 +18,23 @@ const ReviewForm = props => {
     })
 
     // use custom hook to dry up code, destructure out values and functions
-    const {
-        value: artist,
-        validValue: validArtist,
-        hasError: invalidArtist,
-        handleValueChange: handleArtistChange,
-        handleValueBlur: handleArtistBlur,
-        reset: resetArtist
-    } = useInput(value => value.trim() !== '')
+    // const {
+    //     value: artist,
+    //     validValue: validArtist,
+    //     hasError: invalidArtist,
+    //     handleValueChange: handleArtistChange,
+    //     handleValueBlur: handleArtistBlur,
+    //     reset: resetArtist
+    // } = useInput(value => value.trim() !== '')
 
-    const {
-        value: album,
-        validValue: validAlbum,
-        hasError: invalidAlbum,
-        handleValueChange: handleAlbumChange,
-        handleValueBlur: handleAlbumBlur,
-        reset: resetAlbum
-    } = useInput(value => value.trim() !== '')
+    // const {
+    //     value: album,
+    //     validValue: validAlbum,
+    //     hasError: invalidAlbum,
+    //     handleValueChange: handleAlbumChange,
+    //     handleValueBlur: handleAlbumBlur,
+    //     reset: resetAlbum
+    // } = useInput(value => value.trim() !== '')
 
     const {
         value: rating,
@@ -65,7 +65,7 @@ const ReviewForm = props => {
 
     let validForm = false
 
-    if (validAlbum && validArtist && validRating && validText) {
+    if (validRating && validText) {
         validForm = true
     }
 
@@ -77,21 +77,21 @@ const ReviewForm = props => {
     const handleSubmit = event => {
         event.preventDefault()
 
-        if (!validArtist) {
-            setError({
-                title: 'You missed a spot!',
-                message: 'Please enter an artist.'
-            })
-            return
-        }
+        // if (!validArtist) {
+        //     setError({
+        //         title: 'You missed a spot!',
+        //         message: 'Please enter an artist.'
+        //     })
+        //     return
+        // }
 
-        if (!validAlbum) {
-            setError({
-                title: 'You missed a spot!',
-                message: 'Please enter an album.'
-            })
-            return
-        }
+        // if (!validAlbum) {
+        //     setError({
+        //         title: 'You missed a spot!',
+        //         message: 'Please enter an album.'
+        //     })
+        //     return
+        // }
 
         if (!validRating) {
             setError({
@@ -102,8 +102,8 @@ const ReviewForm = props => {
         }
 
         const reviewData = {
-            artist,
-            album,
+            artist: props.artist,
+            album: props.album,
             rating,
             date: setDate,
             text,
@@ -113,8 +113,6 @@ const ReviewForm = props => {
 
         props.onSaveReview(reviewData)
 
-        resetArtist()
-        resetAlbum()
         resetRating()
         resetDate()
         resetText()
@@ -139,8 +137,8 @@ const ReviewForm = props => {
             {/* readd on onFocus={handleFormFocus} after fixing */}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
-                    <Input id="artist" type='text' label="Artist" value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
-                    <Input id="album" type='text' label='Album' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum} />
+                    <Input id="artist" type='text' label="Artist" value={props.artist} />
+                    <Input id="album" type='text' label='Album' value={props.album} />
                     <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
                     <Input id='date' type='date' label='Listened On' max={today()} value={setDate} onChange={handleDateChange} onBlur={handleDateBlur} />
                 </div>
