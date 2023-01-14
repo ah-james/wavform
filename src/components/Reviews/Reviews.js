@@ -5,7 +5,7 @@ import styles from './Reviews.module.css'
 import ReviewFilter from '../Reviews/ReviewFilter';
 import Card from '../UI/Card';
 import ReviewsList from './ReviewsList';
-import ReviewsChart from './ReviewsChart';
+// import ReviewsChart from './ReviewsChart';
 
 // to do
 // style search bar
@@ -21,15 +21,15 @@ const Reviews = props => {
             review.album.toLowerCase().includes(search.toLowerCase())
     )
 
-    let chart =
-    <div>
-        <ReviewsChart reviews={props.reviews} />
-    </div>
+    // let chart =
+    // <div>
+    //     <ReviewsChart reviews={props.reviews} />
+    // </div>
 
     return (
         <Card className={styles.reviews}>
             <ReviewFilter handleFilterChange={handleFilterChange} />
-            {props.showChart && chart}
+            {/* {props.showChart && chart} */}
             <ReviewsList reviews={filteredReviews} />
         </Card>
     )

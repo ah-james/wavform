@@ -1,7 +1,6 @@
 import React from 'react'
 
 import styles from './ReviewFilter.module.css'
-// import Button from '../UI/Button'
 
 const ReviewFilter = props => {
 
