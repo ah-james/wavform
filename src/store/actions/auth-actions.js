@@ -1,6 +1,6 @@
 import { authActions } from '../reducers/auth-slice'
 
-export const newOrLoginUser = (url, email, password, navigate) => {
+export const newOrLoginUser = (url, email, password, navigate, setLoading) => {
     return async dispatch => {
         const fetchData = async () => {
             const response = await fetch(url, {
@@ -32,6 +32,7 @@ export const newOrLoginUser = (url, email, password, navigate) => {
                 navigate('/')
             }, 500)
         } catch (error) {
+            setLoading(false)
             alert(error)
         }
     }

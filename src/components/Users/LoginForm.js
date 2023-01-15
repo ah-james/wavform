@@ -92,7 +92,7 @@ const Login = () => {
             url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`
         }
 
-        dispatch(newOrLoginUser(url, emailState.value, passwordState.value, navigate))
+        dispatch(newOrLoginUser(url, emailState.value, passwordState.value, navigate, setLoading))
     }
 
     const handleFormChange = () => {
