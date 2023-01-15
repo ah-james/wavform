@@ -52,10 +52,16 @@ export const addAlbumArt = async (review, accessToken) => {
         }
     })
 
-    const albumData = await artistResponse.json()
-    const foundAlbum = albumData.items.find(obj => {
-        return obj.name === review.album
-    })
 
-    return foundAlbum.images
+    try {
+        const albumData = await artistResponse.json()
+        const foundAlbum = albumData.items.find(obj => {
+            return obj.name === review.album
+        })
+    
+        return foundAlbum.images
+    } catch (error) {
+        alert(error)
+    }
+    
 }
