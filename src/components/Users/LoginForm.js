@@ -1,13 +1,16 @@
 import { useEffect, useReducer, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import { useDispatch } from "react-redux"
+import zxcvbn from "zxcvbn"
 
 import Card from "../UI/Card"
 import Input from "../UI/Input"
 import Button from '../UI/Button'
 import Modal from '../UI/Modal'
-import styles from './LoginForm.module.css'
-import { useDispatch } from "react-redux"
+
 import { newOrLoginUser } from '../../store/actions/auth-actions'
+
+import styles from './LoginForm.module.css'
 
 const initialState = {
     value: '',
@@ -42,7 +45,6 @@ const Login = () => {
     const [newAccount, setNewAccount] = useState(false)
     const [error, setError] = useState()
     const [loading, setLoading] = useState()
-    const [meterValue, setMeterValue] = useState(0)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -104,25 +106,7 @@ const Login = () => {
         setError(null)
     }
 
-    useEffect(() => {
-
-        if (passwordState.value.length > 6) {
-            setMeterValue(1)
-        }
-
-        if (passwordState.value.length > 6 && /[A-Z]/.test(passwordState.value)) {
-            setMeterValue(2)
-        }
-
-        if (passwordState.value.length > 6 && /[A-Z]/.test(passwordState.value) && /[0-9]/.test(passwordState.value)) {
-            setMeterValue(3)
-        }
-
-        if (passwordState.value.length > 6 && /[A-Z]/.test(passwordState.value) && /[0-9]/.test(passwordState.value) && /[@$!%*#?&]/.test(passwordState.value)) {
-            setMeterValue(4)
-        }
-
-    }, [passwordState.value.length, passwordState.value])
+    const meterValue = zxcvbn(passwordState.value)
 
     return (
         <>
@@ -133,7 +117,7 @@ const Login = () => {
                     <div className={styles.controls}>
                         <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => { handleChange(dispatchEmail, event) }} onBlur={() => { handleValidate(dispatchEmail) }} />
                         <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => { handleChange(dispatchPassword, event) }} onBlur={() => { handleValidate(dispatchPassword) }} />
-                        <meter max="4" value={meterValue} className={styles["password-strength-meter"]}></meter>
+                        <meter max="4" value={meterValue.score} className={styles["password-strength-meter"]}></meter>
                         {/* <p className={styles["password-strength-text"]}></p>  */} {/* eventually add a checklist of things that you should have in a password here */}
                     </div>
                     <div className={styles.actions}>
