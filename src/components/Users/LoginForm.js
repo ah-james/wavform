@@ -42,6 +42,7 @@ const Login = () => {
     const [newAccount, setNewAccount] = useState(false)
     const [error, setError] = useState()
     const [loading, setLoading] = useState()
+    const [meterValue, setMeterValue] = useState(0)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -103,13 +104,25 @@ const Login = () => {
         setError(null)
     }
 
-    let meterValue = 0
+    useEffect(() => {
 
-    if (passwordState.value > 6) {
-        meterValue = 1
-    }
+        if (passwordState.value.length > 6) {
+            setMeterValue(1)
+        }
 
-    let meterText = ''
+        if (passwordState.value.length > 6 && /[A-Z]/.test(passwordState.value)) {
+            setMeterValue(2)
+        }
+
+        if (passwordState.value.length > 6 && /[A-Z]/.test(passwordState.value) && /[0-9]/.test(passwordState.value)) {
+            setMeterValue(3)
+        }
+
+        if (passwordState.value.length > 6 && /[A-Z]/.test(passwordState.value) && /[0-9]/.test(passwordState.value) && /[@$!%*#?&]/.test(passwordState.value)) {
+            setMeterValue(4)
+        }
+
+    }, [passwordState.value.length, passwordState.value])
 
     return (
         <>
@@ -121,7 +134,7 @@ const Login = () => {
                         <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => { handleChange(dispatchEmail, event) }} onBlur={() => { handleValidate(dispatchEmail) }} />
                         <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => { handleChange(dispatchPassword, event) }} onBlur={() => { handleValidate(dispatchPassword) }} />
                         <meter max="4" value={meterValue} className={styles["password-strength-meter"]}></meter>
-                        <p className={styles["password-strength-text"]}>{meterText}</p>
+                        {/* <p className={styles["password-strength-text"]}></p>  */} {/* eventually add a checklist of things that you should have in a password here */}
                     </div>
                     <div className={styles.actions}>
                         {/* button for submit */}
