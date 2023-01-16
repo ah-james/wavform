@@ -103,6 +103,14 @@ const Login = () => {
         setError(null)
     }
 
+    let meterValue = 0
+
+    if (passwordState.value > 6) {
+        meterValue = 1
+    }
+
+    let meterText = ''
+
     return (
         <>
             {error && <Modal title={error.title} message={error.message} handleAction={handleError} />}
@@ -112,6 +120,8 @@ const Login = () => {
                     <div className={styles.controls}>
                         <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => { handleChange(dispatchEmail, event) }} onBlur={() => { handleValidate(dispatchEmail) }} />
                         <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => { handleChange(dispatchPassword, event) }} onBlur={() => { handleValidate(dispatchPassword) }} />
+                        <meter max="4" value={meterValue} className={styles["password-strength-meter"]}></meter>
+                        <p className={styles["password-strength-text"]}>{meterText}</p>
                     </div>
                     <div className={styles.actions}>
                         {/* button for submit */}
