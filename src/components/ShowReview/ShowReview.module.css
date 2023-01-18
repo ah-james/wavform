@@ -26,7 +26,8 @@ hr.rounded {
     border-radius: 5px;
 }
 
-.user-info {
+.user-info,
+.listened-info {
     text-align: left;
     color: #acacac;
 }

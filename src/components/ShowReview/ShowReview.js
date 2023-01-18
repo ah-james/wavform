@@ -28,7 +28,7 @@ const ShowReview = props => {
                 <h3> by {props.selectedReview.artist}</h3>
             </div>
             <p>{props.selectedReview.rating}/10</p>
-            <p className={styles['user-info']}>Listened on {props.selectedReview.date}</p>
+            <p className={styles['listened-info']}>Listened on {props.selectedReview.date}</p>
             <p>{props.selectedReview.text}</p>
         </Card>
     )
