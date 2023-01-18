@@ -117,8 +117,7 @@ const Login = () => {
                     <div className={styles.controls}>
                         <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => { handleChange(dispatchEmail, event) }} onBlur={() => { handleValidate(dispatchEmail) }} />
                         <Input label="Password" type="password" id='password' isValid={passwordIsValid} value={passwordState.value} onChange={(event) => { handleChange(dispatchPassword, event) }} onBlur={() => { handleValidate(dispatchPassword) }} />
-                        <meter max="4" value={meterValue.score} className={styles["password-strength-meter"]}></meter>
-                        {/* <p className={styles["password-strength-text"]}></p>  */} {/* eventually add a checklist of things that you should have in a password here */}
+                        {newAccount && <p className={styles["password-strength-text"]}>Password Strength: <meter max="4" value={meterValue.score} className={styles["password-strength-meter"]}></meter></p>} 
                     </div>
                     <div className={styles.actions}>
                         {/* button for submit */}

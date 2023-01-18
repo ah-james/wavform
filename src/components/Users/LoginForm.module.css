@@ -53,10 +53,7 @@
     text-align: left;
 }
 
-.password-strength-meter {
-
-}
-
 .password-strength-text {
-    
+    font: inherit;
+    font-weight: bold;
 }
