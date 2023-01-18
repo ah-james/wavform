@@ -5,6 +5,8 @@ import Input from '../UI/Input'
 import Modal from '../UI/Modal'
 import styles from './EditReview.module.css'
 
+// to do
+// make it so you can't edit artist or album
 const EditReview = props => {
     const [error, setError] = useState()
 
@@ -135,9 +137,8 @@ const EditReview = props => {
                         <img className={styles.image} alt={props.selectedReview.album} src={props.selectedReview.art[1].url} />
                     </div>
                     <div className={styles['album-info']}>
-                        <Input id="album" type='text' value={album} onChange={handleAlbumChange} onBlur={handleAlbumBlur} isValid={!invalidAlbum} size='15' />
-                        <h3>by</h3>
-                        <Input id="artist" type='text' value={artist} onChange={handleArtistChange} onBlur={handleArtistBlur} isValid={!invalidArtist} />
+                        <h1>{props.selectedReview.album}</h1>
+                        <h3> by {props.selectedReview.artist}</h3>
                     </div>
                     <div className={styles['rating-info']}>
                         <Input id="rating" type='number' value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
