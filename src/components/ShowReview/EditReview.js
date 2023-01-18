@@ -15,22 +15,6 @@ const EditReview = props => {
     }
 
     const {
-        value: album,
-        validValue: validAlbum,
-        hasError: invalidAlbum,
-        handleValueChange: handleAlbumChange,
-        handleValueBlur: handleAlbumBlur,
-    } = useInput(value => value.trim() !== '', props.selectedReview.album)
-
-    const {
-        value: artist,
-        validValue: validArtist,
-        hasError: invalidArtist,
-        handleValueChange: handleArtistChange,
-        handleValueBlur: handleArtistBlur,
-    } = useInput(value => value.trim() !== '', props.selectedReview.artist)
-
-    const {
         value: rating,
         validValue: validRating,
         hasError: invalidRating,
@@ -64,22 +48,6 @@ const EditReview = props => {
     const handleSubmit = event => {
         event.preventDefault()
 
-        if (!validArtist) {
-            setError({
-                title: 'You missed a spot!',
-                message: 'Please enter an artist.'
-            })
-            return
-        }
-
-        if (!validAlbum) {
-            setError({
-                title: 'You missed a spot!',
-                message: 'Please enter an album.'
-            })
-            return
-        }
-
         if (!validRating) {
             setError({
                 title: 'You missed a spot!',
@@ -106,8 +74,8 @@ const EditReview = props => {
 
         const reviewData = {
             id: props.selectedReview.id,
-            album,
-            artist,
+            album: props.selectedReview.album,
+            artist: props.selectedReview.artist,
             rating,
             date,
             text,
