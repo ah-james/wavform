@@ -109,7 +109,7 @@ const EditReview = props => {
                         <h3> by {props.selectedReview.artist}</h3>
                     </div>
                     <div className={styles['rating-info']}>
-                        <Input id="rating" type='number' value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
+                        <Input id="rating" type='number' max={10} min={0} value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
                         <h4>/10</h4>
                     </div>
                     <div className={styles['album-info']}>
