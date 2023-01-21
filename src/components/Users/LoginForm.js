@@ -102,10 +102,6 @@ const Login = props => {
         dispatch(newOrLoginUser(url, emailState.value, passwordState.value, navigate, setLoading))
     }
 
-    const handleFormChange = () => {
-        setNewAccount(current => !current)
-    }
-
     const handleError = () => {
         setError(null)
     }
@@ -125,7 +121,6 @@ const Login = props => {
                     </div>
                     <div className={styles.actions}>
                         {/* button for submit */}
-                        {/* <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p> */}
                         {loading ? <Button>Loading...</Button> : <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Sign In'}</Button>}
                     </div>
                 </form>
