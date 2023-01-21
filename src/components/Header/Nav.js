@@ -22,22 +22,30 @@ const Nav = () => {
         return state.auth.loggedIn
     })
 
+    const activeButton = (data) => data.isActive ? styles.active : ''
+    
+
     let loginButton =
-    <li>
-        <NavLink className={(data) => data.isActive ? styles.active : ''} to='/login'>Login</NavLink>
-    </li>
+    <>
+        <li>
+            <NavLink className={activeButton} to='/login'>Sign In</NavLink>
+        </li>
+        <li>
+            <NavLink className={activeButton} to='/signup'>Create Account</NavLink>
+        </li>
+    </>
 
     if (loggedIn) {
         loginButton =
             <>
                 <li>
-                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/login' onClick={logout}>Logout</NavLink>
+                    <NavLink className={activeButton} to='/login' onClick={logout}>Logout</NavLink>
                 </li>
                 <li>
-                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/'>Home</NavLink>
+                    <NavLink className={activeButton} to='/'>Home</NavLink>
                 </li>
                 <li>
-                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/settings'>Settings</NavLink>
+                    <NavLink className={activeButton} to='/settings'>Settings</NavLink>
                 </li>
             </>
     }
@@ -47,7 +55,10 @@ const Nav = () => {
             <ul>
                 {loginButton}
                 <li>
-                    <NavLink className={(data) => data.isActive ? styles.active : ''} to='/reviews'>Reviews</NavLink>
+                    <NavLink className={activeButton} to='/reviews'>Reviews</NavLink>
+                </li>
+                <li>
+                    <NavLink className={activeButton} to='/reviews'>Users</NavLink>
                 </li>
             </ul>
         </nav>
