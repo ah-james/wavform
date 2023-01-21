@@ -40,9 +40,9 @@ const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
 // to do list:
 //  - implement auto-logout
-const Login = () => {
+const Login = props => {
     const [validForm, setValidForm] = useState(false)
-    const [newAccount, setNewAccount] = useState(false)
+    const [newAccount, setNewAccount] = useState(props.newAccount)
     const [error, setError] = useState()
     const [loading, setLoading] = useState()
 
@@ -56,6 +56,10 @@ const Login = () => {
     // won't update every time useReducer updates this way
     const { isValid: passwordIsValid } = passwordState
     const { isValid: emailIsValid } = emailState
+
+    useEffect(() => {
+        setNewAccount(props.newAccount)
+    }, [props.newAccount])
 
     // add useEffect to handle form validations
     useEffect(() => {
@@ -112,7 +116,7 @@ const Login = () => {
         <>
             {error && <Modal title={error.title} message={error.message} handleAction={handleError} />}
             <Card className={styles["new-user"]}>
-                <h2>{newAccount ? 'Sign Up' : 'Login'}</h2>
+                <h2>{newAccount ? 'Sign Up' : 'Sign In'}</h2>
                 <form onSubmit={handleSubmit}>
                     <div className={styles.controls}>
                         <Input label="Email" type='email' id="email" isValid={emailIsValid} value={emailState.value} onChange={(event) => { handleChange(dispatchEmail, event) }} onBlur={() => { handleValidate(dispatchEmail) }} />
@@ -121,8 +125,8 @@ const Login = () => {
                     </div>
                     <div className={styles.actions}>
                         {/* button for submit */}
-                        <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p>
-                        {loading ? <Button>Loading...</Button> : <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Login'}</Button>}
+                        {/* <p onClick={handleFormChange}>{newAccount ? 'Login to your Account' : 'Create New Account'}</p> */}
+                        {loading ? <Button>Loading...</Button> : <Button type='submit' disabled={!validForm}>{newAccount ? 'Sign Up' : 'Sign In'}</Button>}
                     </div>
                 </form>
             </Card>

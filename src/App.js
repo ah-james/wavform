@@ -57,7 +57,8 @@ function App() {
       <main>
         <Suspense fallback={<p className={styles['reviews-list-fallback']}>Loading Page...</p>}>
           <Routes>
-            <Route path='/login' element={<AuthContainer />} />
+            <Route path='/login' element={<AuthContainer newAccount={false} />} />
+            <Route path='/signup' element={<AuthContainer newAccount={true} />} />
             <Route path='/reviews' element={<ReviewsContainer />} />
             <Route path='/reviews/:id' element={<ShowReviewContainer />} />
             {loggedIn && <Route path='/settings' element={<SettingsContainer />} />}
