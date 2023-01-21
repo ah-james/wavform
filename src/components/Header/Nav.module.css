@@ -23,17 +23,3 @@
     padding-bottom: 0.25rem;
     border-bottom: 4px solid #a892ee
 }
-
-.nav button {
-    background: #a892ee
-}
-
-.nav button:focus {
-    outline: none;
-}
-
-.nav button:hover,
-.nav button:active {
-    background: #9b80f5;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.26);
-}

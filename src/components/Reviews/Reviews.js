@@ -1,11 +1,13 @@
+// libraries
 import React, { useState } from 'react';
-
-import styles from './Reviews.module.css'
-
-import ReviewFilter from '../Reviews/ReviewFilter';
-import Card from '../UI/Card';
+// components
 import ReviewsList from './ReviewsList';
 import ReviewsChart from './ReviewsChart';
+import ReviewFilter from '../Reviews/ReviewFilter';
+// UI components
+import Card from '../UI/Card';
+// styling
+import styles from './Reviews.module.css'
 
 // to do
 // style search bar

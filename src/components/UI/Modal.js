@@ -1,9 +1,10 @@
 // import react dom for createPortal
 import { createPortal } from 'react-dom'
-
-import styles from './Modal.module.css'
+// UI components
 import Card from './Card'
 import Button from './Button'
+// styling
+import styles from './Modal.module.css'
 
 // new component for portal, overlay div here
 const Backdrop = props => {

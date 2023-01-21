@@ -1,14 +1,17 @@
+// libraries
 import './App.css';
 import React, { useEffect, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { Route, Routes } from 'react-router-dom'
-
-import styles from './components/Reviews/ReviewsList.module.css'
+// components
 import Header from './components/Header/Header';
-
+// redux store
 import { fetchReviews } from './store/actions/reviews-actions';
 import { authActions } from './store/reducers/auth-slice';
 import { authorizeSpotify } from './store/actions/spotify-actions';
+// styling
+import styles from './components/Reviews/ReviewsList.module.css'
+
 
 // create constants for lazy loading with .lazy (take inline function of import with path for component)
 const ProfileContainer = React.lazy(() => import('./containers/ProfileContainer'))

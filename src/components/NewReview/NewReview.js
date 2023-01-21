@@ -1,12 +1,15 @@
+// libraries
 import React, { useState } from "react"
 import { useDispatch, useSelector } from 'react-redux'
-
-
-import styles from './NewReview.module.css'
+// components
 import ReviewForm from "./ReviewForm"
-import Button from "../UI/Button"
-import { addReview } from '../../store/actions/reviews-actions';
 import FindAlbum from "./FindAlbum"
+// UI components
+import Button from "../UI/Button"
+// redux store
+import { addReview } from '../../store/actions/reviews-actions';
+// styling
+import styles from './NewReview.module.css'
 
 const NewReview = () => {
     const [mountAlbumForm, setMountAlbumForm] = useState(false)

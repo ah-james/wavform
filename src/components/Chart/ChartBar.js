@@ -1,3 +1,4 @@
+// styles
 import styles from './ChartBar.module.css'
 
 const ChartBar = props => {

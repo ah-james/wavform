@@ -1,4 +1,6 @@
+// UI components
 import Button from '../UI/Button'
+// styling
 import styles from './Settings.module.css'
 
 const UserShowReviewButtons = props => {

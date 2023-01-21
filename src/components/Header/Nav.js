@@ -1,8 +1,9 @@
-import React from 'react'
+// libraries
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, useNavigate } from 'react-router-dom'
+// redux store
 import { authActions } from '../../store/reducers/auth-slice'
-
+// styles
 import styles from './Nav.module.css'
 
 const Nav = () => {
@@ -58,7 +59,7 @@ const Nav = () => {
                     <NavLink className={activeButton} to='/reviews'>Reviews</NavLink>
                 </li>
                 <li>
-                    <NavLink className={activeButton} to='/reviews'>Users</NavLink>
+                    <NavLink className={activeButton} to='*'>Users</NavLink>
                 </li>
             </ul>
         </nav>

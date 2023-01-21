@@ -1,15 +1,16 @@
+// libraries
 import { useEffect, useReducer, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import zxcvbn from "zxcvbn"
-
+// UI components
 import Card from "../UI/Card"
 import Input from "../UI/Input"
 import Button from '../UI/Button'
 import Modal from '../UI/Modal'
-
+// redux store
 import { newOrLoginUser } from '../../store/actions/auth-actions'
-
+// styling
 import styles from './LoginForm.module.css'
 
 const initialState = {

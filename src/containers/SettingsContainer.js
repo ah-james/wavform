@@ -1,3 +1,4 @@
+// components
 import Settings from "../components/Users/Settings"
 
 const SettingsContainer = () => {

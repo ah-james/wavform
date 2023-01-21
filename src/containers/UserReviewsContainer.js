@@ -1,8 +1,10 @@
+// libraries
 import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+// components
 import Reviews from "../components/Reviews/Reviews"
-
+// styling
 import styles from '../components/Reviews/ReviewsList.module.css'
 
 const UserReviewsContainer = props => {

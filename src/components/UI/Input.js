@@ -1,5 +1,4 @@
-import React from 'react'
-
+// styling
 import styles from './Input.module.css'
 
 const Input = props => {

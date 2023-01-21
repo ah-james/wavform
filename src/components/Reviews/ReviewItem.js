@@ -1,7 +1,9 @@
+// libraries
 import { Link } from 'react-router-dom'
-
-import styles from './ReviewItem.module.css'
+// UI components
 import Card from '../UI/Card'
+// styling
+import styles from './ReviewItem.module.css'
 
 const ReviewItem = props => {
     const date = new Date(`${props.date}T00:00-0800`)

@@ -1,4 +1,6 @@
+// chart components
 import ChartBar from './ChartBar'
+// styles
 import styles from './Chart.module.css'
 
 const Chart = props => {

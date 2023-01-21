@@ -1,9 +1,10 @@
+// libraries
 import { Link } from 'react-router-dom'
+// UI Components
 import Card from '../UI/Card'
+// styling
 import styles from './ShowReview.module.css'
 
-// to do
-// navigate to author's reviews when click on name
 const ShowReview = props => {
 
     if (!props.selectedReview) {

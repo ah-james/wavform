@@ -1,13 +1,11 @@
+// libraries
 import { useSelector } from 'react-redux'
-
+// components
 import NewReview from '../components/NewReview/NewReview';
 import Reviews from '../components/Reviews/Reviews';
-
+// styling
 import styles from '../components/Reviews/ReviewsList.module.css'
 
-
-// to do:
-// only show reviews with user ID here
 const ProfileContainer = () => {
     const reviews = useSelector((state) => {
         return state.reviews.albums

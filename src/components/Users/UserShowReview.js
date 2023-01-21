@@ -1,14 +1,15 @@
+// libraries
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+// components
 import UserShowReviewButtons from './UserShowReviewButtons'
-
 import ShowReview from '../ShowReview/ShowReview'
-import { deleteReview, editReview } from '../../store/actions/reviews-actions'
-import Modal from '../UI/Modal'
-
 import EditReview from '../ShowReview/EditReview'
-
+// UI components
+import Modal from '../UI/Modal'
+// redux store
+import { deleteReview, editReview } from '../../store/actions/reviews-actions'
 
 const UserShowReview = props => {
     const [deleting, setDeleting] = useState(false)

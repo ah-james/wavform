@@ -1,7 +1,8 @@
-import useInput from "../../hooks/use-input"
+// UI components
 import Button from "../UI/Button"
 import Input from "../UI/Input"
-
+// custom hooks
+import useInput from "../../hooks/use-input"
 
 const FindAlbum = props => {
 

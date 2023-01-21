@@ -1,5 +1,6 @@
+// libraries
 import { useSelector } from 'react-redux'
-
+// components
 import Reviews from "../components/Reviews/Reviews"
 
 const ReviewsContainer = () => {

@@ -1,12 +1,14 @@
+// libraries
 import { useState } from 'react'
-import useInput from '../../hooks/use-input'
+// UI components
 import Card from '../UI/Card'
 import Input from '../UI/Input'
 import Modal from '../UI/Modal'
+// custom hooks
+import useInput from '../../hooks/use-input'
+// styling
 import styles from './EditReview.module.css'
 
-// to do
-// make it so you can't edit artist or album
 const EditReview = props => {
     const [error, setError] = useState()
 

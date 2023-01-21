@@ -1,12 +1,14 @@
+// libraries
 import React, { useState } from "react";
-
-import styles from './ReviewForm.module.css'
+import { useSelector } from "react-redux";
+// UI components
 import Modal from '../UI/Modal'
 import Button from "../UI/Button";
 import Input from '../UI/Input'
-
+// custom hooks
 import useInput from "../../hooks/use-input";
-import { useSelector } from "react-redux";
+// styling
+import styles from './ReviewForm.module.css'
 
 // to do:
 // link with Spotify API to include artist and album dropdown

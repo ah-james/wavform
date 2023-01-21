@@ -1,4 +1,6 @@
+// components
 import ReviewItem from "./ReviewItem"
+// styling
 import styles from './ReviewsList.module.css'
 
 const ReviewsList = props => {

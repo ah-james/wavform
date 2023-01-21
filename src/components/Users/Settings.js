@@ -1,14 +1,15 @@
+// libraries
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 // import { getAuth, deleteUser } from '@firebase/auth'
-
-import { setNewPassword } from '../../store/actions/auth-actions'
-
+// UI components
 import Button from "../UI/Button";
 import Card from "../UI/Card";
 import Input from "../UI/Input";
-
+// redux store
+import { setNewPassword } from '../../store/actions/auth-actions'
+// styling
 import styles from './Settings.module.css'
 
 const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'

@@ -1,6 +1,8 @@
+// libraries
 import { Link } from 'react-router-dom'
-
+// components
 import Nav from "./Nav"
+// styling
 import styles from './Header.module.css'
 
 const Header = props => {

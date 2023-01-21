@@ -1,5 +1,8 @@
+// libraries
 import { useNavigate } from 'react-router-dom'
+// UI components
 import Button from '../components/UI/Button'
+// styling
 import styles from './HomeContainer.module.css'
 
 const HomeContainer = () => {
