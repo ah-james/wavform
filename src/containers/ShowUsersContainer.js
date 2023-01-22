@@ -1,4 +1,6 @@
+// libraries
 import { useSelector } from "react-redux"
+import UsersList from "../components/Users/UsersList"
 
 const ShowUsersContainer = () => {
     const reviews = useSelector((state) => {
@@ -15,11 +17,7 @@ const ShowUsersContainer = () => {
 
     return (
         <div>
-            <ul>
-                {displayUsers.map((user) => 
-                    <li>{user}</li>
-                )}
-            </ul>
+            <UsersList users={displayUsers} />
         </div>
     )
 }
