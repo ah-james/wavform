@@ -1,10 +1,25 @@
-// components
-// import Settings from "../components/Users/Settings"
+import { useSelector } from "react-redux"
 
 const ShowUsersContainer = () => {
+    const reviews = useSelector((state) => {
+        return state.reviews.albums
+    })
+
+    let users = []
+
+    for (let i = 0; i < reviews.length; i++) {
+        users.push(reviews[i].user)
+    }
+
+    const displayUsers = [...new Set(users)]
+
     return (
         <div>
-            <h1>Yum show umesers</h1>
+            <ul>
+                {displayUsers.map((user) => 
+                    <li>{user}</li>
+                )}
+            </ul>
         </div>
     )
 }
