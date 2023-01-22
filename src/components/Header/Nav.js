@@ -59,7 +59,7 @@ const Nav = () => {
                     <NavLink className={activeButton} to='/reviews'>Reviews</NavLink>
                 </li>
                 <li>
-                    <NavLink className={activeButton} to='*'>Users</NavLink>
+                    <NavLink className={activeButton} to='/users'>Users</NavLink>
                 </li>
             </ul>
         </nav>

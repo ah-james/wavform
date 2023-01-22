@@ -23,6 +23,7 @@ const SettingsContainer = React.lazy(() => import('./containers/SettingsContaine
 const ArtistSearchContainer = React.lazy(() => import('./containers/ArtistSearchContainer'))
 const HomeContainer = React.lazy(() => import('./containers/HomeContainer'))
 const UserReviewsContainer = React.lazy(() => import('./containers/UserReviewsContainer'))
+const ShowUsersContainer = React.lazy(() => import('./containers/ShowUsersContainer'))
 
 function App() {
   const dispatch = useDispatch()
@@ -69,6 +70,7 @@ function App() {
             <Route path='*' element={<PageNotFound />} />
             <Route path='/search' element={<ArtistSearchContainer />} />
             <Route path='/user/:user' element={<UserReviewsContainer />} />
+            <Route path='/users' element={<ShowUsersContainer />} />
           </Routes>
         </Suspense>
       </main>
