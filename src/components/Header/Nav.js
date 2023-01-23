@@ -58,9 +58,9 @@ const Nav = () => {
                 <li>
                     <NavLink className={activeButton} to='/reviews'>Reviews</NavLink>
                 </li>
-                <li>
+                {/* <li>
                     <NavLink className={activeButton} to='/users'>Users</NavLink>
-                </li>
+                </li> */}
             </ul>
         </nav>
     )
