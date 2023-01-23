@@ -5,7 +5,7 @@ const CLIENT_ID = 'ba847002581743b9975e657bd8ced12b'
 export const authorizeSpotify = () => {
     return async dispatch => {
         const fetchData = async () => {
-            const response = await fetch('http://accounts.spotify.com/api/token', {
+            const response = await fetch('https://accounts.spotify.com/api/token', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
