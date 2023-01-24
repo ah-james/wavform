@@ -1,23 +1,12 @@
 // libraries
-import { useDispatch, useSelector } from 'react-redux'
-import { NavLink, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
+import { NavLink } from 'react-router-dom'
 // redux store
-import { authActions } from '../../store/reducers/auth-slice'
 // styles
 import styles from './Nav.module.css'
 
-const Nav = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
+const Nav = props => {
     // use NavLink from react-router-dom, prevents page from reloading and can set CSS class on active path
-    const logout = (event) => {
-        event.preventDefault()
-        dispatch(authActions.setLoggedOut())
-        // remove token from local storage
-        localStorage.removeItem('token')
-        localStorage.removeItem('email')
-        navigate('/')
-    }
 
     const loggedIn = useSelector((state) => {
         return state.auth.loggedIn
@@ -40,7 +29,7 @@ const Nav = () => {
         loginButton =
             <>
                 <li>
-                    <NavLink className={activeButton} to='/login' onClick={logout}>Logout</NavLink>
+                    <NavLink className={activeButton} to='/login' onClick={props.logout}>Logout</NavLink>
                 </li>
                 <li>
                     <NavLink className={activeButton} to='/'>Home</NavLink>
