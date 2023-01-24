@@ -52,6 +52,9 @@ export const autoLogout = navigate => {
    
       setTimeout(() => {
         dispatch(authActions.setLoggedOut());
+        localStorage.removeItem('token')
+        localStorage.removeItem('email')
+        localStorage.removeItem('expirationTime')
         navigate('/')
       }, remainingTime);
     };

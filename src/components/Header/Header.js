@@ -17,6 +17,7 @@ const Header = () => {
         // remove token from local storage
         localStorage.removeItem('token')
         localStorage.removeItem('email')
+        localStorage.removeItem('expirationTime')
         navigate('/')
     }
 
