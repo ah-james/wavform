@@ -1,5 +1,6 @@
 import { authActions } from '../reducers/auth-slice'
 
+
 export const newOrLoginUser = (url, email, password, navigate, setLoading) => {
     return async dispatch => {
         const fetchData = async () => {
@@ -25,9 +26,12 @@ export const newOrLoginUser = (url, email, password, navigate, setLoading) => {
 
         try {
             const userData = await fetchData()
+            
+
             dispatch(authActions.setLoggedIn(userData))
             localStorage.setItem('token', userData.idToken)
             localStorage.setItem('email', userData.email)
+            localStorage.setItem('expirationTime', Date.now() + userData.expiresIn * 1000)
             setTimeout(function () {
                 navigate('/')
             }, 500)
@@ -38,6 +42,20 @@ export const newOrLoginUser = (url, email, password, navigate, setLoading) => {
     }
 
 }
+
+export const autoLogout = navigate => {
+    const expirationTime = localStorage.getItem('expirationTime')
+    const calculateRemainingTime = expirationTime => expirationTime - Date.now()
+
+    return (dispatch) => {
+      const remainingTime = calculateRemainingTime(expirationTime);
+   
+      setTimeout(() => {
+        dispatch(authActions.setLoggedOut());
+        navigate('/')
+      }, remainingTime);
+    };
+  };
 
 export const setNewPassword = (API_KEY, token, password) => {
     return async dispatch => {

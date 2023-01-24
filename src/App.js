@@ -2,11 +2,12 @@
 import './App.css';
 import React, { useEffect, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
-import { Route, Routes } from 'react-router-dom'
+import { Route, Routes, useNavigate } from 'react-router-dom'
 // components
 import Header from './components/Header/Header';
 // redux store
 import { fetchReviews } from './store/actions/reviews-actions';
+import { autoLogout } from './store/actions/auth-actions';
 import { authActions } from './store/reducers/auth-slice';
 import { authorizeSpotify } from './store/actions/spotify-actions';
 // styling
@@ -27,15 +28,14 @@ const ShowUsersContainer = React.lazy(() => import('./containers/ShowUsersContai
 
 function App() {
   const dispatch = useDispatch()
+  const navigate = useNavigate()
+
   const loggedIn = useSelector((state) => {
     return state.auth.loggedIn
   })
 
   useEffect(() => {
     dispatch(fetchReviews())
-  }, [dispatch])
-
-  useEffect(() => {
     dispatch(authorizeSpotify())
   }, [dispatch])
 
@@ -48,6 +48,10 @@ function App() {
       dispatch(dispatch(authActions.setLoggedIn({token, email})))
     }
   }, [dispatch])
+
+  useEffect(() => {
+    dispatch(autoLogout(navigate))
+  }, [dispatch, navigate])
 
   let homePage = <Route path='/' element={<HomeContainer />} />
 
