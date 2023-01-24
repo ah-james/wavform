@@ -13,7 +13,7 @@ const HomeContainer = () => {
             <h2>Track albums you've listened to.</h2>
             <h2>Save those you haven't heard yet.</h2>
             <h2>Tell your friends what's good.</h2>
-            <Button handleClick={() => navigate('/login')}>Get Started - It's Free!</Button>
+            <Button handleClick={() => navigate('/signup')}>Get Started - It's Free!</Button>
         </div>
     )
 }
