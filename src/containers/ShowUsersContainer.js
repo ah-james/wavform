@@ -1,6 +1,8 @@
 // libraries
 import { useSelector } from "react-redux"
 import UsersList from "../components/Users/UsersList"
+// styling
+import styles from './Container.module.css'
 
 const ShowUsersContainer = () => {
     const reviews = useSelector((state) => {
@@ -17,6 +19,7 @@ const ShowUsersContainer = () => {
 
     return (
         <div>
+            <h1 className={styles['center-text']}>Users</h1>
             <UsersList users={displayUsers} />
         </div>
     )
