@@ -1,6 +1,6 @@
 // libraries
 import { useSelector } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 // UI components
 import Button from '../components/UI/Button'
 // styling
@@ -8,6 +8,7 @@ import styles from './Container.module.css'
 
 const HomeContainer = () => {
     const navigate = useNavigate()
+
     const reviews = useSelector((state) => {
         return state.reviews.albums.slice(-4)
     })
@@ -19,10 +20,11 @@ const HomeContainer = () => {
             <h2>Tell your friends what's good.</h2>
             <Button handleClick={() => navigate('/signup')}>Get Started - It's Free!</Button>
             <h2>Recent Reviews</h2>
-            {reviews.map((review) => 
-                // console.log(review)
-                <img alt={review.album} src={review.art[1].url} />
-            )}
+            <div className={styles.images}>
+                {reviews.map((review) => 
+                    <Link key={review.id} to={`/reviews/${review.id}`} state={{ creator: review.user }}><img alt={review.album} src={review.art[1].url} /></Link>
+                )}
+            </div>
         </div>
     )
 }
