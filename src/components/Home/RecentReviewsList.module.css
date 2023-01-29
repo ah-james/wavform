@@ -3,7 +3,7 @@ ul {
     text-align: center;
 }
 
-.images li {
+.images {
     display: inline;
     list-style: none;
     padding-top: 5px;
@@ -17,4 +17,39 @@ ul {
 
 .recent {
     margin-top: 125px;
+}
+
+.container {
+    position: relative;
+    width: 400px;
+    height: auto;
+}
+  
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: #6d6d6d;
+}
+  
+.container:hover .overlay {
+    opacity: .4;
+}
+  
+.overlayLeft {
+    height: 100%;
+    width: 0;
+    top: 0;
+    left: 75px;
+    background-color: #6d6d6d;;
+}
+  
+.container:hover .overlayLeft{
+width: 250px;
 }
