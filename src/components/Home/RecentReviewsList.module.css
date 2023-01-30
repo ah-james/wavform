@@ -3,7 +3,7 @@ ul {
     text-align: center;
 }
 
-.images {
+.images li {
     display: inline;
     list-style: none;
     padding-top: 5px;
@@ -19,13 +19,14 @@ ul {
     margin-top: 125px;
 }
 
-.container {
+/* .container {
     position: relative;
     width: 400px;
     height: auto;
 }
   
 .overlay {
+    border-radius: 12px;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -40,16 +41,4 @@ ul {
   
 .container:hover .overlay {
     opacity: .4;
-}
-  
-.overlayLeft {
-    height: 100%;
-    width: 0;
-    top: 0;
-    left: 75px;
-    background-color: #6d6d6d;;
-}
-  
-.container:hover .overlayLeft{
-width: 250px;
-}
+} */
