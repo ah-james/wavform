@@ -36,6 +36,9 @@ function App() {
 
   useEffect(() => {
     dispatch(fetchReviews())
+  }, [dispatch])
+
+  useEffect(() => {
     dispatch(authorizeSpotify())
   }, [dispatch])
 
@@ -46,17 +49,14 @@ function App() {
 
     if (token) {
       dispatch(dispatch(authActions.setLoggedIn({token, email})))
+      dispatch(autoLogout(navigate))
     }
-  }, [dispatch])
-
-  useEffect(() => {
-    dispatch(autoLogout(navigate))
   }, [dispatch, navigate])
 
-  let homePage = <Route path='/' element={<HomeContainer />} />
+  let homePage = <Route exact path='/' element={<HomeContainer />} />
 
   if (loggedIn) {
-    homePage = <Route path='/' element={<ProfileContainer />} />
+    homePage = <Route exact path='/' element={<ProfileContainer />} />
   }
 
   return (

@@ -46,10 +46,9 @@ export const newOrLoginUser = (url, email, password, navigate, setLoading) => {
 export const autoLogout = navigate => {
     const expirationTime = localStorage.getItem('expirationTime')
     const calculateRemainingTime = expirationTime => expirationTime - Date.now()
+    const remainingTime = calculateRemainingTime(expirationTime);
 
     return (dispatch) => {
-      const remainingTime = calculateRemainingTime(expirationTime);
-   
       setTimeout(() => {
         dispatch(authActions.setLoggedOut());
         localStorage.removeItem('token')
@@ -58,7 +57,7 @@ export const autoLogout = navigate => {
         navigate('/')
       }, remainingTime);
     };
-  };
+};
 
 export const setNewPassword = (API_KEY, token, password) => {
     return async dispatch => {
