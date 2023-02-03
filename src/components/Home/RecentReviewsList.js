@@ -7,11 +7,11 @@ const RecentReviewsList = props => {
     return (
         <div className={styles.recent}>
             <h2>Recent Reviews</h2>
-            <ul className={styles.images}>
+            <ul>
                 {props.reviews.map((review) =>
                     <li className={styles.container} key={review.id} >
                         <Link to={`/reviews/${review.id}`} state={{ creator: review.user }}>
-                            <img alt={review.album} src={review.art[1].url} />
+                            <img alt={review.album} src={review.art[1].url} className={styles.image} />
                             <div className={styles.overlay}>{review.album}</div>
                         </Link>
                     </li>
