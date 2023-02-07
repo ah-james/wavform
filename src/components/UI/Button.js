@@ -1,27 +1,27 @@
 // styling
 import styles from './Button.module.css'
 
-const Button = props => {
+const Button = ({destroy, disabled, id, form, type, handleClick, children}) => {
     let buttonColor = styles.button
     let disabledButton
 
-    if (props.destroy) {
+    if (destroy) {
         buttonColor = styles.destroy
     }
 
-    if (props.disabled) {
+    if (disabled) {
         disabledButton = styles.disabled
     }
 
     return (
         <button
-            id={props.id}
-            form={props.form}
+            id={id}
+            form={form}
             className={`${buttonColor} ${disabledButton}`}
-            type={props.type}
-            onClick={props.handleClick}
-            disabled={props.disabled}>
-            {props.children}
+            type={type}
+            onClick={handleClick}
+            disabled={disabled}>
+            {children}
         </button>
     )
 }
