@@ -9,7 +9,7 @@ import useInput from '../../hooks/use-input'
 // styling
 import styles from './EditReview.module.css'
 
-const EditReview = props => {
+const EditReview = ({handleEditReview, selectedReview}) => {
     const [error, setError] = useState()
 
     const handleError = () => {
@@ -22,7 +22,7 @@ const EditReview = props => {
         hasError: invalidRating,
         handleValueChange: handleRatingChange,
         handleValueBlur: handleRatingBlur,
-    } = useInput(value => value.trim() !== '', props.selectedReview.rating)
+    } = useInput(value => value.trim() !== '', selectedReview.rating)
 
     const {
         value: date,
@@ -30,7 +30,7 @@ const EditReview = props => {
         hasError: invalidDate,
         handleValueChange: handleDateChange,
         handleValueBlur: handleDateBlur,
-    } = useInput(value => value.trim() !== '', props.selectedReview.date)
+    } = useInput(value => value.trim() !== '', selectedReview.date)
 
     const {
         value: text,
@@ -38,7 +38,7 @@ const EditReview = props => {
         hasError: invalidText,
         handleValueChange: handleTextChange,
         handleValueBlur: handleTextBlur,
-    } = useInput(value => value.trim() !== '', props.selectedReview.text)
+    } = useInput(value => value.trim() !== '', selectedReview.text)
 
     const today = () => {
         const now = new Date()
@@ -75,20 +75,20 @@ const EditReview = props => {
         }
 
         const reviewData = {
-            id: props.selectedReview.id,
-            album: props.selectedReview.album,
-            artist: props.selectedReview.artist,
+            id: selectedReview.id,
+            album: selectedReview.album,
+            artist: selectedReview.artist,
             rating,
             date,
             text,
-            user: props.selectedReview.user,
-            art: props.selectedReview.art,
+            user: selectedReview.user,
+            art: selectedReview.art,
         }
 
-        props.handleEditReview(reviewData)
+        handleEditReview(reviewData)
     }
 
-    if (!props.selectedReview) {
+    if (!selectedReview) {
         return (
             <Card className={styles['show-review']} >
                 <h1>No Review Found</h1>
@@ -101,14 +101,14 @@ const EditReview = props => {
             {error && <Modal title={error.title} message={error.message} handleAction={handleError} error={true} />}
             <form id='editForm' onSubmit={handleSubmit}>
                 <Card className={styles['show-review']}>
-                    <p className={styles['user-info']}>Editing Review by {props.selectedReview.user}</p>
+                    <p className={styles['user-info']}>Editing Review by {selectedReview.user}</p>
                     <hr className={styles.rounded} />
                     <div className={styles['image-container']}>
-                        <img className={styles.image} alt={props.selectedReview.album} src={props.selectedReview.art[1].url} />
+                        <img className={styles.image} alt={selectedReview.album} src={selectedReview.art[1].url} />
                     </div>
                     <div className={styles['album-info']}>
-                        <h1>{props.selectedReview.album}</h1>
-                        <h3> by {props.selectedReview.artist}</h3>
+                        <h1>{selectedReview.album}</h1>
+                        <h3> by {selectedReview.artist}</h3>
                     </div>
                     <div className={styles['rating-info']}>
                         <Input id="rating" type='number' max={10} min={0} value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />

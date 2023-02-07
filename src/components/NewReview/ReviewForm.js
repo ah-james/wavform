@@ -12,7 +12,7 @@ import styles from './ReviewForm.module.css'
 
 // to do:
 // link with Spotify API to include artist and album dropdown
-const ReviewForm = props => {
+const ReviewForm = ({handleClick, onSaveReview, artist, album}) => {
     const [error, setError] = useState()
 
     const user = useSelector(state => {
@@ -68,8 +68,8 @@ const ReviewForm = props => {
         }
 
         const reviewData = {
-            artist: props.artist,
-            album: props.album,
+            artist: artist,
+            album: album,
             rating,
             date: setDate,
             text,
@@ -77,7 +77,7 @@ const ReviewForm = props => {
             art: null
         }
 
-        props.onSaveReview(reviewData)
+        onSaveReview(reviewData)
 
         resetRating()
         resetDate()
@@ -103,8 +103,8 @@ const ReviewForm = props => {
             {/* readd on onFocus={handleFormFocus} after fixing */}
             <form onSubmit={handleSubmit} >
                 <div className={styles["new-review-controls"]}>
-                    <Input id="artist" type='text' label="Artist" value={props.artist} readonly={true} />
-                    <Input id="album" type='text' label='Album' value={props.album} readonly={true} />
+                    <Input id="artist" type='text' label="Artist" value={artist} readonly={true} />
+                    <Input id="album" type='text' label='Album' value={album} readonly={true} />
                     <Input id='rating' type='number' label="Rating" value={rating} onChange={handleRatingChange} onBlur={handleRatingBlur} isValid={!invalidRating} />
                     <Input id='date' type='date' label='Listened On' max={today()} value={setDate} onChange={handleDateChange} onBlur={handleDateBlur} />
                 </div>
@@ -113,7 +113,7 @@ const ReviewForm = props => {
                     <textarea id='text' name='text' rows='10' cols='70' value={text} onChange={handleTextChange} onBlur={handleTextBlur}></textarea>
                 </div>
                 <div className={styles["new-review-actions"]}>
-                    <Button type='button' handleClick={props.handleClick}>Cancel</Button>
+                    <Button type='button' handleClick={handleClick}>Cancel</Button>
                     <Button type="submit" disabled={!validForm}>Add Review</Button>
                 </div>
             </form>

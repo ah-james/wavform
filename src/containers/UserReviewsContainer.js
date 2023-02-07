@@ -7,7 +7,7 @@ import Reviews from "../components/Reviews/Reviews"
 // styling
 import styles from '../components/Reviews/ReviewsList.module.css'
 
-const UserReviewsContainer = props => {
+const UserReviewsContainer = () => {
     const [reviews] = useState([])
     const params = useParams()
 

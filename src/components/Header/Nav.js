@@ -5,7 +5,7 @@ import { NavLink } from 'react-router-dom'
 // styles
 import styles from './Nav.module.css'
 
-const Nav = props => {
+const Nav = ({logout}) => {
     // use NavLink from react-router-dom, prevents page from reloading and can set CSS class on active path
 
     const loggedIn = useSelector((state) => {
@@ -29,7 +29,7 @@ const Nav = props => {
         loginButton =
             <>
                 <li>
-                    <NavLink className={activeButton} to='/login' onClick={props.logout}>Logout</NavLink>
+                    <NavLink className={activeButton} to='/login' onClick={logout}>Logout</NavLink>
                 </li>
                 <li>
                     <NavLink className={activeButton} to='/'>Home</NavLink>

@@ -11,7 +11,7 @@ import Modal from '../UI/Modal'
 // redux store
 import { deleteReview, editReview } from '../../store/actions/reviews-actions'
 
-const UserShowReview = props => {
+const UserShowReview = ({user, selectedReview}) => {
     const [deleting, setDeleting] = useState(false)
     const [editing, setEditing] = useState(false)
 
@@ -27,7 +27,7 @@ const UserShowReview = props => {
     }
 
     const handleDeleteReview = async () => {
-        dispatch(deleteReview(props.selectedReview.id))
+        dispatch(deleteReview(selectedReview.id))
         navigate('/')
     }
 
@@ -43,8 +43,8 @@ const UserShowReview = props => {
     return (
         <>
             {deleting && <Modal title={'Warning!'} message={'Do you want to delete this review?'} handleClick={stopDelete} handleAction={handleDeleteReview} />}
-            {!editing ? <ShowReview selectedReview={props.selectedReview} /> : <EditReview handleEditReview={handleEditReview} selectedReview={props.selectedReview} />}
-            <UserShowReviewButtons user={props.user} editing={editing} beginDeleteReview={beginDeleteReview} mountReviewForm={mountReviewForm} />
+            {!editing ? <ShowReview selectedReview={selectedReview} /> : <EditReview handleEditReview={handleEditReview} selectedReview={selectedReview} />}
+            <UserShowReviewButtons user={user} editing={editing} beginDeleteReview={beginDeleteReview} mountReviewForm={mountReviewForm} />
         </>
     )
 }

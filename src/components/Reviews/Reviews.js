@@ -11,27 +11,27 @@ import styles from './Reviews.module.css'
 
 // to do
 // style search bar
-const Reviews = props => {
+const Reviews = ({reviews, showChart}) => {
     const [search, setSearch] = useState('')
 
     const handleFilterChange = event => {
         setSearch(event.target.value)
     }
 
-    const filteredReviews = search.length === 0 ? props.reviews :
-        props.reviews.filter(review => 
+    const filteredReviews = search.length === 0 ? reviews :
+        reviews.filter(review => 
             review.album.toLowerCase().includes(search.toLowerCase())
     )
 
     let chart =
     <div>
-        <ReviewsChart reviews={props.reviews} />
+        <ReviewsChart reviews={reviews} />
     </div>
 
     return (
         <Card className={styles.reviews}>
             <ReviewFilter handleFilterChange={handleFilterChange} />
-            {props.showChart && chart}
+            {showChart && chart}
             <ReviewsList reviews={filteredReviews} />
         </Card>
     )

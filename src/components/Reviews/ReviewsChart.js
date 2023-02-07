@@ -1,12 +1,12 @@
 // components
 import Chart from "../Chart/Chart"
 
-const ReviewsChart = props => {
+const ReviewsChart = ({reviews}) => {
     const dataPoints = {}
 
     const arrayOfYears = []
 
-    for (const review of props.reviews) {
+    for (const review of reviews) {
         const date = new Date(review.date)
         const albumYear = date.getFullYear()
         arrayOfYears.push(albumYear)

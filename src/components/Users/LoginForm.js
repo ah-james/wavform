@@ -39,9 +39,9 @@ const reducer = (state, action) => {
 
 const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
-const Login = props => {
+const Login = ({newAccount}) => {
     const [validForm, setValidForm] = useState(false)
-    const [newAccount, setNewAccount] = useState(props.newAccount)
+    const [signUp, setsignUp] = useState(newAccount)
     const [error, setError] = useState()
     const [loading, setLoading] = useState()
 
@@ -57,14 +57,14 @@ const Login = props => {
     const { isValid: emailIsValid } = emailState
 
     useEffect(() => {
-        setNewAccount(props.newAccount)
-    }, [props.newAccount])
+        setsignUp(newAccount)
+    }, [newAccount])
 
     // add useEffect to handle form validations
     useEffect(() => {
         // I think I have a memory leak and I've been told this might help I'm sorry for what I'm about to do
         const identifier = setTimeout(() => {
-            if (newAccount === true) {
+            if (signUp === true) {
                 setValidForm(
                     passwordIsValid && emailIsValid
                 )
@@ -78,7 +78,7 @@ const Login = props => {
         }
 
         // don't use userState etc objects in dependencies, effect function will rerun whenever any property of this changes
-    }, [passwordIsValid, emailIsValid, newAccount])
+    }, [passwordIsValid, emailIsValid, signUp])
 
     const handleChange = (dispatch, event) => {
         // dispatchUsername with keys of type (string explaining what's happening) and value (event.target.value)

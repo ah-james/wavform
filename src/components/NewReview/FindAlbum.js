@@ -4,7 +4,7 @@ import Input from "../UI/Input"
 // custom hooks
 import useInput from "../../hooks/use-input"
 
-const FindAlbum = props => {
+const FindAlbum = ({handleClick}) => {
 
     const {
         value: album,
@@ -14,7 +14,7 @@ const FindAlbum = props => {
     const handleFoundAlbum = event => {
         event.preventDefault()
 
-        props.handleClick(album)
+        handleClick(album)
     }
 
     return(
