@@ -7,36 +7,27 @@
 .centered {
     display: flex;
     justify-content: center;
-  }
+    padding-left: 0;
+    list-style: none;
+}
 
 li {
     margin: 10px;
-    list-style: none;
 }
 
 .container {
     position: relative;
-    float: right;
-    /* display: inline; */
-    width: 300px;
     height: 308px;
     padding-top: 5px;
 }
 
 .container img {
-    margin: 10px;
     border: 1px solid #ececec;
     border-radius: 12px;
     opacity: 1;
-    /* display: block; */
-    /* width: 100%; */
-    height: auto;
-    transition: .5s ease;
-    backface-visibility: hidden;
 }
 
 .overlay {
-    margin: 10px;
     border-radius: 12px;
     position: absolute;
     height: 98%;
