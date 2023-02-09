@@ -41,6 +41,13 @@ li {
     -ms-transform: translate(-50%, -50%);
 }
 
+.text {
+    color: white;
+    text-align: center;
+    padding: 100px 0;
+    line-height: 10px;
+}
+
 .container:hover .overlay {
-    opacity: .6;
+    opacity: .7;
 }
