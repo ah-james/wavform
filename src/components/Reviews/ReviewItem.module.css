@@ -9,6 +9,7 @@
 
 .review-item:hover {
   background-color: #666666;
+  transition: .5s ease;
 }
 
 .review-item-description {

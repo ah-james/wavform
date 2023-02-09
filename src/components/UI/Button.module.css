@@ -11,8 +11,9 @@
 
 button:hover,
 button:active {
-    background-color: #510674;
-    border-color: #510674;
+    background-color: #510475;
+    border-color: #510475;
+    transition: .5s ease;
 }
 
 button.destroy {

@@ -14,4 +14,5 @@
 
 .reviews-list li a:hover {
   background-color: #757575;
+  transition: .5s ease;
 }

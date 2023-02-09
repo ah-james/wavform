@@ -9,6 +9,11 @@
     text-decoration: none;
 }
 
+.user-link a:hover {
+    color: #aaaaaa;
+    transition: .5s ease;
+}
+
 ul {
     padding-left: 0;
     text-align: center;
