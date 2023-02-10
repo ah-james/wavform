@@ -1,7 +1,7 @@
 // styling
 import styles from './Input.module.css'
 
-const Input = ({isValid, id, label, readonly, placeholder,size, type, min, max, value, onChange, onBlur, length}) => {
+const Input = ({isValid, id, label, readonly, placeholder,size, type, min, max, value, onChange, onBlur, length, list}) => {
     return (
         <div className={`${styles.control} ${isValid === false ? styles.invalid : ''}`}>
             {/* label and input for username */}
@@ -17,7 +17,8 @@ const Input = ({isValid, id, label, readonly, placeholder,size, type, min, max, 
                 value={value} 
                 onChange={onChange} 
                 onBlur={onBlur} 
-                minLength={length} 
+                minLength={length}
+                list={list}
             />
         </div>
     )

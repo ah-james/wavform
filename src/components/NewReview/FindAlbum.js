@@ -1,26 +1,51 @@
+// libraries
+import { useState } from "react"
+import { useSelector } from "react-redux"
 // UI components
 import Button from "../UI/Button"
 import Input from "../UI/Input"
-// custom hooks
-import useInput from "../../hooks/use-input"
 
-const FindAlbum = ({handleClick}) => {
+const FindAlbum = ({ handleClick }) => {
+    // useState: current queried input and holding response data returned from API
+    const [query, setQuery] = useState('')
+    const [options, setOptions] = useState([])
 
-    const {
-        value: album,
-        handleValueChange: handleAlbumChange,
-    } = useInput(value => value.trim() !== '')
+    const accessToken = useSelector(state => {
+        return state.spotify.accessToken
+    })
+
+    const getAlbumOptions = async query => {
+        const response = await fetch(`https://api.spotify.com/v1/search?q=${query}&type=album&limit=5`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            }
+        })
+
+        if (!response.ok) {
+            throw new Error(`Couldn't fetch albums data`)
+        }
+
+        const data = await response.json()
+
+        setOptions(data.albums.items)
+    }
 
     const handleFoundAlbum = event => {
         event.preventDefault()
-
-        handleClick(album)
+        handleClick(query)
     }
 
-    return(
+    return (
         <>
             <form onSubmit={handleFoundAlbum}>
-                <Input id="album" type='text' label='Add an Album' value={album} onChange={handleAlbumChange} />
+                <Input list="albums" id="album" type='text' placeholder='Add an Album' value={query} onChange={e => { setQuery(e.target.value); getAlbumOptions(query) }} />
+                <datalist id='albums'>
+                    {query.length > 0 && options?.map((album, id) => {
+                        return <option key={id}>{album.name} by {album.artists[0].name}</option>
+                    })}
+                </datalist>
                 <Button>Find Album</Button>
             </form>
         </>
