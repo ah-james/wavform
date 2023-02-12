@@ -12,6 +12,10 @@
   transition: .5s ease;
 }
 
+.review-item:not(:hover) {
+  transition: .5s ease;
+}
+
 .review-item-description {
   display: flex;
   flex-direction: column;

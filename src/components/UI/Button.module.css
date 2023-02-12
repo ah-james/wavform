@@ -11,8 +11,12 @@
 
 button:hover,
 button:active {
-    background-color: #510475;
-    border-color: #510475;
+    background-color: #5d0885;
+    border-color: #5d0885;
+    transition: .5s ease;
+}
+
+button:not(:hover) {
     transition: .5s ease;
 }
 
@@ -28,8 +32,8 @@ button.destroy {
 }
 
 button.destroy:hover {
-    background-color: #ff3a3a;
-    border: 1px solid #ff3a3a;
+    background-color: #ff4444;
+    border: 1px solid #ff4444;
 }
 
 .button.disabled {

@@ -16,3 +16,7 @@
   background-color: #757575;
   transition: .5s ease;
 }
+
+.reviews-list li a:not(:hover) {
+  transition: .5s ease;
+}
