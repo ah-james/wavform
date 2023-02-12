@@ -1,4 +1,5 @@
 import { authActions } from '../reducers/auth-slice'
+import { authorizeSpotify } from './spotify-actions'
 
 
 export const newOrLoginUser = (url, email, password, navigate, setLoading) => {
@@ -29,6 +30,7 @@ export const newOrLoginUser = (url, email, password, navigate, setLoading) => {
             
 
             dispatch(authActions.setLoggedIn(userData))
+            dispatch(authorizeSpotify())
             localStorage.setItem('token', userData.idToken)
             localStorage.setItem('email', userData.email)
             localStorage.setItem('expirationTime', Date.now() + userData.expiresIn * 1000)

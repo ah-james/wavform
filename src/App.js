@@ -13,7 +13,6 @@ import { authorizeSpotify } from './store/actions/spotify-actions';
 // styling
 import styles from './components/Reviews/ReviewsList.module.css'
 
-
 // create constants for lazy loading with .lazy (take inline function of import with path for component)
 const ProfileContainer = React.lazy(() => import('./containers/ProfileContainer'))
 const AuthContainer = React.lazy(() => import('./containers/AuthContainer'))
