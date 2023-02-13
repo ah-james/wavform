@@ -9,11 +9,7 @@ const ShowUsersContainer = () => {
         return state.reviews.albums
     })
 
-    let users = []
-
-    for (let i = 0; i < reviews.length; i++) {
-        users.push(reviews[i].user)
-    }
+    const users = Object.entries(reviews).map(review => review[1].user)
 
     const displayUsers = [...new Set(users)]
 
