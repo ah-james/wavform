@@ -12,20 +12,17 @@ export const fetchReviews = () => {
 
             const data = await response.json()
 
-            const loadedReviews = []
+            const loadedReviews = Object.entries(data).map((key, value) => ({
+                id: key[0],
+                artist: key[1].artist,
+                album: key[1].album,
+                date: key[1].date,
+                rating: key[1].rating,
+                text: key[1].text,
+                user: key[1].user,
+                art: key[1].art
+            }))
 
-            for (const key in data) {
-                loadedReviews.push({
-                    id: key,
-                    artist: data[key].artist,
-                    album: data[key].album,
-                    date: data[key].date,
-                    rating: data[key].rating,
-                    text: data[key].text,
-                    user: data[key].user,
-                    art: data[key].art
-                })
-            }
             return loadedReviews
         }
 
