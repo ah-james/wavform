@@ -1,5 +1,4 @@
 // libraries
-import { useState } from "react"
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 // components
@@ -8,20 +7,12 @@ import Reviews from "../components/Reviews/Reviews"
 import styles from '../components/Reviews/ReviewsList.module.css'
 
 const UserReviewsContainer = () => {
-    const [reviews] = useState([])
     const params = useParams()
-
     const user = params.user
 
     const allReviews = useSelector(state => state.reviews.albums)
 
-    if (reviews.length === 0) {
-        for (let i = 0; i < allReviews.length; i++) {
-            if (allReviews[i]['user'] === user) {
-                reviews.push(allReviews[i])
-            }
-        }
-    }
+    const reviews = allReviews.filter(review => review.user === user)
 
     return (
         <div>
