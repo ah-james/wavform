@@ -4,13 +4,11 @@ import Chart from "../Chart/Chart"
 const ReviewsChart = ({reviews}) => {
     const dataPoints = {}
 
-    const arrayOfYears = []
-
-    for (const review of reviews) {
-        const date = new Date(review.date)
+    const arrayOfYears = reviews.map((key, value) => {
+        const date = new Date(key.date)
         const albumYear = date.getFullYear()
-        arrayOfYears.push(albumYear)
-    }
+        return albumYear
+    })
 
     arrayOfYears.sort()
 
