@@ -15,15 +15,7 @@ const ProfileContainer = () => {
         return state.auth.email
     })
 
-    let shownReviews = []
-
-    if (user) {
-        for (let i = 0; i < reviews.length; i++) {
-            if (reviews[i]['user'] === user) {
-                shownReviews.push(reviews[i])
-            }
-        }
-    }
+    const shownReviews = reviews.filter(review => review.user === user)
 
     let content = <p className={styles["reviews-list-fallback"]}>Loading...</p>
 
