@@ -2,6 +2,7 @@
 import { useState } from 'react'
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
+import PropTypes from "prop-types";
 // components
 import UserShowReviewButtons from './UserShowReviewButtons'
 import ShowReview from '../ShowReview/ShowReview'
@@ -47,6 +48,11 @@ const UserShowReview = ({user, selectedReview}) => {
             <UserShowReviewButtons user={user} editing={editing} beginDeleteReview={beginDeleteReview} mountReviewForm={mountReviewForm} />
         </>
     )
+}
+
+UserShowReview.propTypes = {
+    user: PropTypes.object,
+    selectedReview: PropTypes.object
 }
 
 export default UserShowReview

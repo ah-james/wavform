@@ -1,4 +1,5 @@
 // libraries
+import PropTypes from "prop-types";
 import { Link } from 'react-router-dom'
 // UI components
 import Card from '../UI/Card'
@@ -43,6 +44,16 @@ const ReviewItem = ({id, user, artist, album, art, date, rating}) => {
             </Link>
         </li>
     )
+}
+
+ReviewItem.propTypes = {
+    id: PropTypes.string, 
+    user: PropTypes.string, 
+    artist: PropTypes.string, 
+    album: PropTypes.string, 
+    art: PropTypes.object, 
+    date: PropTypes.string, 
+    rating: PropTypes.number
 }
 
 export default ReviewItem

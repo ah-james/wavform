@@ -1,3 +1,5 @@
+import PropTypes from "prop-types";
+
 const FindAlbumDatalist = ({query, options}) => {
     return (
         <datalist id='albums'>
@@ -6,6 +8,11 @@ const FindAlbumDatalist = ({query, options}) => {
             })}
         </datalist>
     )
+}
+
+FindAlbumDatalist.propTypes = {
+    query: PropTypes.string,
+    options: PropTypes.object
 }
 
 export default FindAlbumDatalist

@@ -1,5 +1,6 @@
 // libraries
 import { useState } from 'react'
+import PropTypes from "prop-types";
 // UI components
 import Card from '../UI/Card'
 import Input from '../UI/Input'
@@ -125,6 +126,11 @@ const EditReview = ({handleEditReview, selectedReview}) => {
             </form>
         </>
     )
+}
+
+EditReview.propTypes = {
+    handleEditReview: PropTypes.func, 
+    selectedReview: PropTypes.object
 }
 
 export default EditReview

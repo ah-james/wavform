@@ -1,5 +1,6 @@
 // libraries
 import { Link } from 'react-router-dom'
+import PropTypes from "prop-types";
 // UI Components
 import Card from '../UI/Card'
 // styling
@@ -33,6 +34,10 @@ const ShowReview = ({selectedReview}) => {
             <p>{selectedReview.text}</p>
         </Card>
     )
+}
+
+ShowReview.propTypes = {
+    selectedReview: PropTypes.object
 }
 
 export default ShowReview

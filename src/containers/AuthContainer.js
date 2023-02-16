@@ -1,3 +1,5 @@
+// libraries
+import PropTypes from "prop-types";
 // components
 import LoginForm from '../components/Users/LoginForm'
 
@@ -7,6 +9,10 @@ const LoginContainer = ({newAccount}) => {
             <LoginForm newAccount={newAccount} />
         </div>
     )
+}
+
+LoginContainer.propTypes = {
+    newAccount: PropTypes.bool
 }
 
 export default LoginContainer 

@@ -1,5 +1,6 @@
 // libraries
 import { Link } from "react-router-dom"
+import PropTypes from "prop-types";
 // styles
 import styles from './UsersList.module.css'
 
@@ -14,6 +15,10 @@ const UsersList = ({users}) => {
             </ul>
         </div>
     )
+}
+
+UsersList.propTypes = {
+    users: PropTypes.object
 }
 
 export default UsersList

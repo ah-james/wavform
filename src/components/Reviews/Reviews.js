@@ -1,5 +1,6 @@
 // libraries
 import React, { useState } from 'react';
+import PropTypes from "prop-types";
 // components
 import ReviewsList from './ReviewsList';
 import ReviewsChart from './ReviewsChart';
@@ -35,6 +36,11 @@ const Reviews = ({reviews, showChart}) => {
             <ReviewsList reviews={filteredReviews} />
         </Card>
     )
+}
+
+Reviews.propTypes = {
+    reviews: PropTypes.object, 
+    showChart: PropTypes.bool
 }
 
 export default Reviews

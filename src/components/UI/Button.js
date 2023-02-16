@@ -1,3 +1,5 @@
+// libraries
+import PropTypes from "prop-types";
 // styling
 import styles from './Button.module.css'
 
@@ -25,5 +27,15 @@ const Button = ({destroy, disabled, id, form, type, handleClick, children}) => {
         </button>
     )
 }
+
+Button.propTypes = {
+    destroy: PropTypes.bool,
+    disabled: PropTypes.bool,
+    id: PropTypes.string,
+    form: PropTypes.string,
+    type: PropTypes.string,
+    handleClick: PropTypes.func
+}
+// destroy, disabled, id, form, type, handleClick, children
 
 export default Button

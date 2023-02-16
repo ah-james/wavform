@@ -1,3 +1,5 @@
+// libraries
+import PropTypes from "prop-types";
 // components
 import Chart from "../Chart/Chart"
 
@@ -21,6 +23,10 @@ const ReviewsChart = ({reviews}) => {
     // return Chart component
     return <Chart dataPoints={dataPoints} />
 
+}
+
+ReviewsChart.propTypes = {
+    reviews: PropTypes.object
 }
 
 export default ReviewsChart

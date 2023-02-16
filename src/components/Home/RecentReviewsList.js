@@ -1,4 +1,5 @@
 // libraries
+import PropTypes from "prop-types";
 import { Link } from "react-router-dom"
 // styling
 import styles from './RecentReviewsList.module.css'
@@ -27,6 +28,10 @@ const RecentReviewsList = ({ reviews }) => {
             </div>
         </div>
     )
+}
+
+RecentReviewsList.propTypes = {
+    reviews: PropTypes.object
 }
 
 export default RecentReviewsList

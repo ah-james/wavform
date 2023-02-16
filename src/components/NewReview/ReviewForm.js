@@ -1,5 +1,6 @@
 // libraries
 import React, { useState } from "react";
+import PropTypes from "prop-types";
 import { useSelector } from "react-redux";
 // UI components
 import Modal from '../UI/Modal'
@@ -119,6 +120,13 @@ const ReviewForm = ({handleClick, onSaveReview, artist, album}) => {
             </form>
         </>
     )
+}
+
+ReviewForm.propTypes = {
+    handleClick: PropTypes.func,
+    onSaveReview: PropTypes.func, 
+    artist: PropTypes.string, 
+    album: PropTypes.string
 }
 
 export default ReviewForm

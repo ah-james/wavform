@@ -1,4 +1,5 @@
 // libraries
+import PropTypes from "prop-types";
 import { useSelector } from 'react-redux'
 import { NavLink } from 'react-router-dom'
 // redux store
@@ -53,6 +54,10 @@ const Nav = ({logout}) => {
             </ul>
         </nav>
     )
+}
+
+Nav.propTypes = {
+    logout: PropTypes.func
 }
 
 export default Nav

@@ -1,4 +1,5 @@
 // libraries
+import PropTypes from "prop-types";
 import { useState } from "react"
 import { useSelector } from "react-redux"
 // UI components
@@ -49,6 +50,10 @@ const FindAlbum = ({ handleClick }) => {
             </form>
         </>
     )
+}
+
+FindAlbum.propTypes = {
+    handleClick: PropTypes.func
 }
 
 export default FindAlbum

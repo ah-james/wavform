@@ -1,3 +1,5 @@
+// libraries
+import PropTypes from "prop-types";
 // chart components
 import ChartBar from "./ChartBar";
 // styles
@@ -27,5 +29,9 @@ const Chart = ({ dataPoints }) => {
     </div>
   );
 };
+
+ChartBar.propTypes = {
+  dataPoints: PropTypes.array
+}
 
 export default Chart;

@@ -1,5 +1,6 @@
-// import react dom for createPortal
+// libraries
 import { createPortal } from 'react-dom'
+import PropTypes from "prop-types";
 // UI components
 import Card from './Card'
 import Button from './Button'
@@ -9,6 +10,10 @@ import styles from './Modal.module.css'
 // new component for portal, overlay div here
 const Backdrop = ({handleClick}) => {
     return <div className={styles.backdrop} onClick={handleClick} />
+}
+
+Backdrop.propTypes = {
+    handleClick: PropTypes.func
 }
 
 // new component for portal, modal body here
@@ -43,6 +48,13 @@ const ModalOverlay = ({handleClick, handleAction, error, title, message}) => {
     )
 }
 
+ModalOverlay.propTypes = {
+    handleClick: PropTypes.func,
+    handleAction: PropTypes.func,
+    error: PropTypes.bool,
+    title: PropTypes.string,
+    message: PropTypes.string
+}
 
 const Modal = ({handleError, handleClick, title, message, handleAction, error}) => {
 
@@ -61,6 +73,15 @@ const Modal = ({handleError, handleClick, title, message, handleAction, error}) 
             )}
         </>
     )
+}
+
+Modal.propTypes = {
+    handleError: PropTypes.func,
+    handleClick: PropTypes.func,
+    title: PropTypes.string,
+    message: PropTypes.string,
+    handleAction: PropTypes.func,
+    error: PropTypes.bool
 }
 
 export default Modal

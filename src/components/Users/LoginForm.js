@@ -1,5 +1,6 @@
 // libraries
 import { useEffect, useReducer, useState } from "react"
+import PropTypes from "prop-types";
 import { useNavigate } from "react-router-dom"
 import { useDispatch } from "react-redux"
 import zxcvbn from "zxcvbn"
@@ -39,7 +40,7 @@ const reducer = (state, action) => {
 
 const API_KEY = 'AIzaSyCGjnmwkZY5oITWnh_LmZel4LrXpkrFyzw'
 
-const Login = ({newAccount}) => {
+const LoginForm = ({newAccount}) => {
     const [validForm, setValidForm] = useState(false)
     const [signUp, setsignUp] = useState(newAccount)
     const [error, setError] = useState()
@@ -128,4 +129,8 @@ const Login = ({newAccount}) => {
     )
 }
 
-export default Login
+LoginForm.propTypes = {
+    newAccount: PropTypes.bool
+}
+
+export default LoginForm

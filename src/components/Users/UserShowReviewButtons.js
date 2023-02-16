@@ -1,3 +1,5 @@
+// libraries
+import PropTypes from "prop-types";
 // UI components
 import Button from '../UI/Button'
 // styling
@@ -11,6 +13,13 @@ const UserShowReviewButtons = ({user, editing, beginDeleteReview, mountReviewFor
             {user && editing && <Button form='editForm' type='submit'>Submit</Button>}
         </div>
     )
+}
+
+UserShowReviewButtons.propTypes = {
+    user: PropTypes.object,
+    editing: PropTypes.bool,
+    beginDeleteReview: PropTypes.func,
+    mountReviewForm: PropTypes.func
 }
 
 export default UserShowReviewButtons

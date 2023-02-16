@@ -1,3 +1,5 @@
+// libraries
+import PropTypes from "prop-types";
 // UI components
 import Input from '../UI/Input'
 // styling
@@ -10,6 +12,10 @@ const ReviewFilter = ({handleFilterChange}) => {
             <Input className={styles['review-filter']} type='text' placeholder='Search for an album' onChange={handleFilterChange}></Input>
         </>
     )
+}
+
+ReviewFilter.propTypes = {
+    handleFilterChange: PropTypes.func
 }
 
 export default ReviewFilter

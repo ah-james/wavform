@@ -1,3 +1,5 @@
+// libraries
+import PropTypes from "prop-types";
 // components
 import ReviewItem from "./ReviewItem"
 // styling
@@ -16,6 +18,10 @@ const ReviewsList = ({reviews}) => {
             )}
         </ul>
     )
+}
+
+ReviewsList.propTypes = {
+    reviews: PropTypes.object
 }
 
 export default ReviewsList
