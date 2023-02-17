@@ -22,10 +22,14 @@ const Reviews = ({reviews, showChart}) => {
             review.album.toLowerCase().includes(search.toLowerCase())
     )
 
-    let chart =
-    <div>
-        <ReviewsChart reviews={reviews} />
-    </div>
+    let chart
+
+    if (showChart && (reviews.length > 0)) {
+        chart =
+        <div>
+            <ReviewsChart reviews={reviews} />
+        </div>
+    }
 
     return (
         <Card className={styles.reviews}>
@@ -37,7 +41,7 @@ const Reviews = ({reviews, showChart}) => {
 }
 
 Reviews.propTypes = {
-    reviews: PropTypes.object, 
+    reviews: PropTypes.array, 
     showChart: PropTypes.bool
 }
 
