@@ -16,7 +16,7 @@ const UserShowReviewButtons = ({user, editing, beginDeleteReview, mountReviewFor
 }
 
 UserShowReviewButtons.propTypes = {
-    user: PropTypes.object,
+    user: PropTypes.bool,
     editing: PropTypes.bool,
     beginDeleteReview: PropTypes.func,
     mountReviewForm: PropTypes.func

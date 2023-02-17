@@ -18,7 +18,7 @@ const UsersList = ({users}) => {
 }
 
 UsersList.propTypes = {
-    users: PropTypes.object
+    users: PropTypes.array
 }
 
 export default UsersList

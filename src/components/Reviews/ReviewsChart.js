@@ -26,7 +26,7 @@ const ReviewsChart = ({reviews}) => {
 }
 
 ReviewsChart.propTypes = {
-    reviews: PropTypes.object
+    reviews: PropTypes.array
 }
 
 export default ReviewsChart

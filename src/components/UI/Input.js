@@ -34,12 +34,10 @@ Input.propTypes = {
     placeholder: PropTypes.string,
     size: PropTypes.number,
     type: PropTypes.string,
-    min: PropTypes.number,
-    max: PropTypes.number,
     value: PropTypes.string,
     onChange: PropTypes.func,
     onBlur: PropTypes.func,
-    length: PropTypes.number,
+    length: PropTypes.string,
     list: PropTypes.string
 }
 

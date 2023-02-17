@@ -12,7 +12,7 @@ const FindAlbumDatalist = ({query, options}) => {
 
 FindAlbumDatalist.propTypes = {
     query: PropTypes.string,
-    options: PropTypes.object
+    options: PropTypes.array
 }
 
 export default FindAlbumDatalist

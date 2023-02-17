@@ -51,9 +51,9 @@ ReviewItem.propTypes = {
     user: PropTypes.string, 
     artist: PropTypes.string, 
     album: PropTypes.string, 
-    art: PropTypes.object, 
+    art: PropTypes.array, 
     date: PropTypes.string, 
-    rating: PropTypes.number
+    rating: PropTypes.string
 }
 
 export default ReviewItem

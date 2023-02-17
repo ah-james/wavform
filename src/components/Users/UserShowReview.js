@@ -51,7 +51,7 @@ const UserShowReview = ({user, selectedReview}) => {
 }
 
 UserShowReview.propTypes = {
-    user: PropTypes.object,
+    user: PropTypes.bool,
     selectedReview: PropTypes.object
 }
 

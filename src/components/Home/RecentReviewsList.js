@@ -31,7 +31,7 @@ const RecentReviewsList = ({ reviews }) => {
 }
 
 RecentReviewsList.propTypes = {
-    reviews: PropTypes.object
+    reviews: PropTypes.array
 }
 
 export default RecentReviewsList
