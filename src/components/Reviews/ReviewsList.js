@@ -20,8 +20,12 @@ const ReviewsList = ({reviews}) => {
     )
 }
 
+ReviewsList.defaultProps = {
+    reviews: [],
+  };
+
 ReviewsList.propTypes = {
-    reviews: PropTypes.object
+    reviews: PropTypes.array
 }
 
 export default ReviewsList
