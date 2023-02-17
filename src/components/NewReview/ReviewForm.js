@@ -11,8 +11,6 @@ import useInput from "../../hooks/use-input";
 // styling
 import styles from './ReviewForm.module.css'
 
-// to do:
-// link with Spotify API to include artist and album dropdown
 const ReviewForm = ({handleClick, onSaveReview, artist, album}) => {
     const [error, setError] = useState()
 

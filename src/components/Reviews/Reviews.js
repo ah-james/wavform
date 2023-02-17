@@ -10,8 +10,6 @@ import Card from '../UI/Card';
 // styling
 import styles from './Reviews.module.css'
 
-// to do
-// style search bar
 const Reviews = ({reviews, showChart}) => {
     const [search, setSearch] = useState('')
 
