@@ -58,10 +58,28 @@ export const addAlbumArt = async (review, accessToken) => {
         const foundAlbum = albumData.items.find(obj => {
             return obj.name === review.album
         })
-    
+
         return foundAlbum.images
     } catch (error) {
         alert(error)
     }
-    
+
+}
+
+const populateDatalist = async (query, accessToken) => {
+    const response = await fetch(`https://api.spotify.com/v1/search?q=${query}&type=album&limit=5`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+
+    if (!response.ok) {
+        throw new Error(`Couldn't fetch albums data`)
+    }
+
+    const data = await response.json()
+
+    return data.albums.items
 }
