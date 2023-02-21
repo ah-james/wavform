@@ -66,7 +66,7 @@ export const addAlbumArt = async (review, accessToken) => {
 
 }
 
-const populateDatalist = async (query, accessToken) => {
+export const populateDatalist = async (query, accessToken) => {
     const response = await fetch(`https://api.spotify.com/v1/search?q=${query}&type=album&limit=5`, {
         method: 'GET',
         headers: {

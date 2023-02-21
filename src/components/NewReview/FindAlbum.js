@@ -1,16 +1,20 @@
 // libraries
 import PropTypes from "prop-types";
 import { useCallback, useMemo, useState } from "react"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 // UI components
 import Button from "../UI/Button"
 import Input from "../UI/Input"
 import FindAlbumDatalist from "./FindAlbumDatalist"
+// store
+import { populateDatalist } from '../../store/actions/spotify-actions'
 
 const FindAlbum = ({ handleClick }) => {
     // useState: current queried input and holding response data returned from API
     const [query, setQuery] = useState('')
     const [options, setOptions] = useState([])
+
+    const dispatch = useDispatch()
 
     const accessToken = useSelector(state => {
         return state.spotify.accessToken
@@ -19,23 +23,10 @@ const FindAlbum = ({ handleClick }) => {
     const getAlbumOptions = useCallback (async (event) => {
         setQuery(event.target.value)
         if (query.length > 0) {
-            const response = await fetch(`https://api.spotify.com/v1/search?q=${query}&type=album&limit=5`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            })
-
-            if (!response.ok) {
-                throw new Error(`Couldn't fetch albums data`)
-            }
-
-            const data = await response.json()
-
-            setOptions(data.albums.items)
+            const albumOptions = dispatch(populateDatalist(query, accessToken))
+            setOptions(albumOptions)
         }
-    }, [query, accessToken])
+    }, [query, accessToken, dispatch])
 
     // use debounce function to avoid making too many calls to Spotify API
     const debounce = (callback, wait) => {
