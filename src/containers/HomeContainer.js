@@ -11,7 +11,13 @@ const HomeContainer = () => {
     const navigate = useNavigate()
 
     const reviews = useSelector((state) => {
-        return state.reviews.albums.slice(-4)
+        return state.reviews.albums
+    })
+
+    const recentReviews = reviews.slice(-4)
+
+    const backgroundArt = reviews.map(review => {
+        return review.art[0].url
     })
 
     return (
@@ -23,7 +29,7 @@ const HomeContainer = () => {
                 <Button handleClick={() => navigate('/signup')}>Get Started - It's Free!</Button>
             </div>
             <div>
-                <RecentReviewsList reviews={reviews} />
+                <RecentReviewsList reviews={recentReviews} />
             </div>
         </>
 
