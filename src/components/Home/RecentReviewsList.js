@@ -10,8 +10,8 @@ const RecentReviewsList = ({ reviews }) => {
             <h2>Recent Reviews</h2>
             <div>
                 <ul className={styles.centered}>
-                    {reviews.map((review) =>
-                        <RecentAlbumCard review={review} />
+                    {reviews.map((review, index) => 
+                        <RecentAlbumCard review={review} key={index} />
                     )}
                 </ul>
             </div>

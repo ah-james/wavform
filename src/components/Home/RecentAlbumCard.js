@@ -3,10 +3,9 @@ import { Link } from "react-router-dom"
 // styling
 import styles from './RecentReviewsList.module.css'
 
-const RecentAlbumCard = ({review}) => {
-
+const RecentAlbumCard = ({review, index}) => {
     return (
-        <li className={styles.container} key={review.id} >
+        <li className={styles.container} key={index}>
             <Link to={`/reviews/${review.id}`} state={{ creator: review.user }}>
                 <img alt={review.album} src={review.art[1].url} className={styles.image} />
                 <div className={styles.overlay}>
