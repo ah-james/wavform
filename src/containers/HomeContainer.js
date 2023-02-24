@@ -29,8 +29,12 @@ const HomeContainer = () => {
     }, [backgroundArt])
 
     return (
-        <div style={{backgroundImage: `url(${backgroundImage})`}}>
-            <div className={styles['center-text']}>
+        <div style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundRepeat: 'no-repeat',
+            backgroundPosition: "center",
+        }}>
+            <div className={styles['home-center-text']}>
                 <h2>Track albums you've listened to.</h2>
                 <h2>Save those you haven't heard yet.</h2>
                 <h2>Tell your friends what's good.</h2>
