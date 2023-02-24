@@ -1,4 +1,5 @@
 // libraries
+import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import RecentReviewsList from '../components/Home/RecentReviewsList'
@@ -8,6 +9,8 @@ import Button from '../components/UI/Button'
 import styles from './Container.module.css'
 
 const HomeContainer = () => {
+    const [backgroundImage, setBackgroundImage] = useState('')
+
     const navigate = useNavigate()
 
     const reviews = useSelector((state) => {
@@ -20,8 +23,13 @@ const HomeContainer = () => {
         return review.art[0].url
     })
 
+    useEffect(() => {
+        const randomIndex =  Math.floor(Math.random() * backgroundArt.length)
+        setBackgroundImage(backgroundArt[randomIndex])
+    }, [backgroundArt])
+
     return (
-        <>
+        <div style={{backgroundImage: `url(${backgroundImage})`}}>
             <div className={styles['center-text']}>
                 <h2>Track albums you've listened to.</h2>
                 <h2>Save those you haven't heard yet.</h2>
@@ -31,7 +39,7 @@ const HomeContainer = () => {
             <div>
                 <RecentReviewsList reviews={recentReviews} />
             </div>
-        </>
+        </div>
 
     )
 }
