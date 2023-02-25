@@ -24,16 +24,19 @@ const HomeContainer = () => {
     })
 
     useEffect(() => {
-        const randomIndex =  Math.floor(Math.random() * backgroundArt.length)
+        const randomIndex = Math.floor(Math.random() * backgroundArt.length)
         setBackgroundImage(backgroundArt[randomIndex])
     }, [backgroundArt])
 
     return (
-        <div style={{
-            backgroundImage: `url(${backgroundImage})`,
-            backgroundRepeat: 'no-repeat',
-            backgroundPosition: "center",
-        }}>
+        <>
+            <div style={{
+                backgroundImage: `url(${backgroundImage})`,
+                backgroundRepeat: 'no-repeat',
+                backgroundPosition: "center",
+                backgroundSize: 'cover',
+                height: '600px',
+            }}></div>
             <div className={styles['home-center-text']}>
                 <h2>Track albums you've listened to.</h2>
                 <h2>Save those you haven't heard yet.</h2>
@@ -43,8 +46,7 @@ const HomeContainer = () => {
             <div>
                 <RecentReviewsList reviews={recentReviews} />
             </div>
-        </div>
-
+        </>
     )
 }
 
