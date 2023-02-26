@@ -7,7 +7,6 @@ import styles from './RecentReviewsList.module.css'
 const RecentReviewsList = ({ reviews }) => {
     return (
         <div className={styles.recent}>
-            <h2>Recent Reviews</h2>
             <div>
                 <ul className={styles.centered}>
                     {reviews.map((review, index) => 
