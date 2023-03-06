@@ -16,7 +16,14 @@ const UserReviewsContainer = () => {
 
     return (
         <div>
-            <h2 className={styles["reviews-list-fallback"]}>Reviews by {user}</h2>
+            <h2 className={styles["reviews-list-fallback"]}>{user}</h2>
+            <ul className={styles["centered"]}>
+                <li>Films</li>
+                <li>This Year</li>
+                <li>List</li>
+                <li>Following</li>
+                <li>Followers</li>
+            </ul>
             <Reviews reviews={reviews} showChart />
         </div>
     )

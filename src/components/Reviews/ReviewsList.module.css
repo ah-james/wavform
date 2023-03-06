@@ -3,6 +3,18 @@
   padding: 0;
 }
 
+.centered {
+  color: white;
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+}
+
+.centered li {
+  margin-left: 15px;
+}
+
 .reviews-list-fallback {
   color: white;
   text-align: center;
