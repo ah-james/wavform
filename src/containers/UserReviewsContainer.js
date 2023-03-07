@@ -14,12 +14,19 @@ const UserReviewsContainer = () => {
 
     const reviews = allReviews.filter(review => review.user === user)
 
+    const currentYear = new Date().getFullYear()
+
+    let count = reviews.filter(review => {
+        let reviewYear = new Date(review.date).getFullYear()
+        return reviewYear === currentYear
+    })
+
     return (
         <div>
             <h2 className={styles["reviews-list-fallback"]}>{user}</h2>
             <ul className={styles["centered"]}>
                 <li>{`Films: ${reviews.length}`}</li>
-                <li>{`This Year: 0`}</li>
+                <li>{`This Year: ${count.length}`}</li>
                 <li>{`List: 0`}</li>
                 <li>{`Following: 0`}</li>
                 <li>{`Followers: 0`}</li>
