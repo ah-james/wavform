@@ -25,7 +25,7 @@ const UserReviewsContainer = () => {
         <div>
             <h2 className={styles["reviews-list-fallback"]}>{user}</h2>
             <ul className={styles["centered"]}>
-                <li>{`Films: ${reviews.length}`}</li>
+                <li>{`Albums: ${reviews.length}`}</li>
                 <li>{`This Year: ${count.length}`}</li>
                 <li>{`List: 0`}</li>
                 <li>{`Following: 0`}</li>
