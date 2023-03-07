@@ -14,9 +14,8 @@ const UserReviewsContainer = () => {
 
     const reviews = allReviews.filter(review => review.user === user)
 
-    const currentYear = new Date().getFullYear()
-
     let count = reviews.filter(review => {
+        const currentYear = new Date().getFullYear()
         let reviewYear = new Date(review.date).getFullYear()
         return reviewYear === currentYear
     })
