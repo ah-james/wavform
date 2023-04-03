@@ -26,7 +26,7 @@ const UserReviewsContainer = () => {
             <ul className={styles["centered"]}>
                 <li>{`Albums: ${reviews.length}`}</li>
                 <li>{`This Year: ${count.length}`}</li>
-                <li>{`List: 0`}</li>
+                <li>{`Lists: 0`}</li>
                 <li>{`Following: 0`}</li>
                 <li>{`Followers: 0`}</li>
             </ul>
