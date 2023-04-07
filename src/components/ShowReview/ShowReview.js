@@ -5,6 +5,7 @@ import PropTypes from "prop-types";
 import Card from '../UI/Card'
 // styling
 import styles from './ShowReview.module.css'
+import Button from '../UI/Button';
 
 const ShowReview = ({ selectedReview }) => {
 
@@ -33,8 +34,10 @@ const ShowReview = ({ selectedReview }) => {
             <p className={styles['listened-info']}>Listened on {selectedReview.date}</p>
             <p>{selectedReview.text}</p>
             <div>
-                <p className={styles['user-info']}>comments</p>
+                <p className={styles['user-info']}>Comments</p>
                 <hr className={styles.rounded} />
+                <textarea id='text' name='text' rows='4' cols='40'/>
+                <Button>Post</Button>
             </div>
         </Card>
     )
