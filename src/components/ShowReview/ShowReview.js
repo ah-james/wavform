@@ -6,7 +6,7 @@ import Card from '../UI/Card'
 // styling
 import styles from './ShowReview.module.css'
 
-const ShowReview = ({selectedReview}) => {
+const ShowReview = ({ selectedReview }) => {
 
     if (!selectedReview) {
         return (
@@ -32,6 +32,10 @@ const ShowReview = ({selectedReview}) => {
             <p>{selectedReview.rating}/10</p>
             <p className={styles['listened-info']}>Listened on {selectedReview.date}</p>
             <p>{selectedReview.text}</p>
+            <div>
+                <p className={styles['user-info']}>comments</p>
+                <hr className={styles.rounded} />
+            </div>
         </Card>
     )
 }
