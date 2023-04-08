@@ -33,7 +33,7 @@ const ShowReview = ({ selectedReview }) => {
             <p>{selectedReview.rating}/10</p>
             <p className={styles['listened-info']}>Listened on {selectedReview.date}</p>
             <p>{selectedReview.text}</p>
-            <div>
+            <div className={styles.comments}>
                 <p className={styles['user-info']}>Comments</p>
                 <hr className={styles.rounded} />
                 <textarea id='text' name='text' rows='4' cols='40'/>

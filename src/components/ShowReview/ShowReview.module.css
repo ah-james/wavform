@@ -44,3 +44,15 @@ img.image {
     margin-top: 10px;
     border-radius: 12px;
 }
+
+textarea {
+    background: gray;
+}
+
+div.comments {
+    padding-top: 25px;
+}
+
+button {
+
+}
