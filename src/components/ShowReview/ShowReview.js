@@ -37,7 +37,7 @@ const ShowReview = ({ selectedReview }) => {
                 <p className={styles['user-info']}>Comments</p>
                 <hr className={styles.rounded} />
                 <textarea id='text' name='text' rows='4' cols='40'/>
-                <Button>Post</Button>
+                <button>Post</button>
             </div>
         </Card>
     )
