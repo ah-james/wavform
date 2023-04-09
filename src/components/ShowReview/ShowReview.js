@@ -1,11 +1,12 @@
 // libraries
 import { Link } from 'react-router-dom'
 import PropTypes from "prop-types";
+// Components
+import CommentsForm from './CommentsForm';
 // UI Components
 import Card from '../UI/Card'
 // styling
 import styles from './ShowReview.module.css'
-import Button from '../UI/Button';
 
 const ShowReview = ({ selectedReview }) => {
 
@@ -33,12 +34,7 @@ const ShowReview = ({ selectedReview }) => {
             <p>{selectedReview.rating}/10</p>
             <p className={styles['listened-info']}>Listened on {selectedReview.date}</p>
             <p>{selectedReview.text}</p>
-            <div className={styles.comments}>
-                <p className={styles['user-info']}>Comments</p>
-                <hr className={styles.rounded} />
-                <textarea id='text' name='text' rows='4' cols='40'/>
-                <button>Post</button>
-            </div>
+            <CommentsForm />
         </Card>
     )
 }
