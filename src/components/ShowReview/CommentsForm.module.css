@@ -1,5 +1,11 @@
 textarea {
-    background: gray;
+    background: rgb(92, 92, 92);
+    color: white
+}
+
+textarea:focus {
+    background: white;
+    color: black;
 }
 
 div.comments {
