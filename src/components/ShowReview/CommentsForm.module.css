@@ -8,7 +8,7 @@ textarea:focus {
     color: black;
 }
 
-div.comments {
+div.comment_form {
     padding-top: 25px;
 }
 
@@ -22,4 +22,8 @@ button {
     color: white;
     border-radius: 12px;
     margin-right: 1rem;
+}
+
+comments {
+    
 }
