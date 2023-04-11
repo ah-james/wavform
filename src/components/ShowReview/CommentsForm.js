@@ -23,8 +23,8 @@ const CommentsForm = props => {
                 <button onClick={handleClick}>Post</button>
             </div>
             <ul className={styles.commentField}>
-                {comments.map(comment => {
-                    return <li>{comment}</li>
+                {comments.map((comment, i) => {
+                    return <li key={i}>{comment}</li>
                 })}
             </ul>
         </>
