@@ -4,10 +4,10 @@ import styles from './CommentsForm.module.css'
 
 const CommentsForm = props => {
     const [text, setText] = useState('')
-    const [comments, setComments] = useState({})
+    const [comments, setComments] = useState([])
 
     const handleClick = () => {
-        setComments(text)
+        setComments([...comments, text])
     }
 
     const handleTextChange = (event) => {
@@ -22,11 +22,11 @@ const CommentsForm = props => {
                 <textarea id='text' name='text' rows='4' cols='40' value={text} onChange={handleTextChange} />
                 <button onClick={handleClick}>Post</button>
             </div>
-            <div className={styles.comments}>
-                {comments.map = (comment) => {
-                    <p>{comment}</p>
-                }}
-            </div>
+            <ul className={styles.commentField}>
+                {comments.map(comment => {
+                    return <li>{comment}</li>
+                })}
+            </ul>
         </>
     )
 }
