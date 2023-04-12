@@ -24,8 +24,14 @@ button {
     margin-right: 1rem;
 }
 
-li {
+ul {
     list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+li {
+    
     color: #b6b6b6;
     padding-bottom: 25px;
 }
