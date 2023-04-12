@@ -16,17 +16,22 @@ const CommentsForm = props => {
 
     return (
         <>
+            <p className={styles['user-info']}>{comments.length === 1 ? `${comments.length} Comment` : `${comments.length} Comments`}</p>
+            <hr />
+            <ul className={styles.commentField}>
+                {comments.map((comment, i) => {
+                    return (
+                        <div>
+                            <li key={i}>{comment}</li>
+                            <hr className={styles.commentLine} />
+                        </div>
+                    )
+                })}
+            </ul>
             <div className={styles.comment_form}>
-                <p className={styles['user-info']}>{comments.length === 1 ? `${comments.length} Comment` : `${comments.length} Comments`}</p>
-                <hr className={styles.rounded} />
                 <textarea id='text' name='text' rows='4' cols='40' value={text} onChange={handleTextChange} />
                 <button onClick={handleClick}>Post</button>
             </div>
-            <ul className={styles.commentField}>
-                {comments.map((comment, i) => {
-                    return <li key={i}>{comment}</li>
-                })}
-            </ul>
         </>
     )
 }
