@@ -24,16 +24,15 @@ button {
     margin-right: 1rem;
 }
 
-ul {
+ul.commentField {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
 }
 
-li {
-    
+li.comment {
     color: #b6b6b6;
-    padding-bottom: 25px;
+    padding-bottom: 35px;
 }
 
 .commentLine {
