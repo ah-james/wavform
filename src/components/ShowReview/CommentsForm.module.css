@@ -24,6 +24,12 @@ button {
     margin-right: 1rem;
 }
 
-commentFIeld {
+li {
+    list-style-type: none;
+    color: #b6b6b6;
+    padding-bottom: 25px;
+}
 
+.commentLine {
+    border: 1px solid #6b6b6b;
 }
