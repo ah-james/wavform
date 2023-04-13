@@ -22,7 +22,7 @@ const CommentsForm = props => {
                 {comments.map((comment, i) => {
                     return (
                         <div>
-                            <li className={comment} key={i}>{comment}</li>
+                            <li className={styles.comment} key={i}>{comment}</li>
                             <hr className={styles.commentLine} />
                         </div>
                     )
