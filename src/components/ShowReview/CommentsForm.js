@@ -8,6 +8,8 @@ const CommentsForm = props => {
 
     const handleClick = () => {
         setComments([...comments, text])
+        // dispatch to firebase, set new branch of comments
+        // send comment text, username, and review ID
     }
 
     const handleTextChange = (event) => {
