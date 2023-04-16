@@ -2,7 +2,7 @@ import { useState } from 'react'
 // styling
 import styles from './CommentsForm.module.css'
 
-const CommentsForm = ({userName, }) => {
+const CommentsForm = ({ userName, id }) => {
     const [text, setText] = useState('')
     const [comments, setComments] = useState([])
 
@@ -11,15 +11,15 @@ const CommentsForm = ({userName, }) => {
         setText('')
         // dispatch to firebase, set new branch of comments
         // send comment text, username, and review ID
-        const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/comments.json', {
-                method: 'POST',
-                body: JSON.stringify({
-                    reviewId: id,
-                    text: text,
-                    userName: userName,
-                }),
-                headers: { 'Content-Type': 'application/json' }
-            })
+        await fetch('https://react-bouncr-default-rtdb.firebaseio.com/comments.json', {
+            method: 'POST',
+            body: JSON.stringify({
+                reviewId: id,
+                text: text,
+                userName: userName,
+            }),
+            headers: { 'Content-Type': 'application/json' }
+        })
     }
 
     const handleTextChange = (event) => {
