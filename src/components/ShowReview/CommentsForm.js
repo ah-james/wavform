@@ -51,7 +51,7 @@ const CommentsForm = ({ userName, id }) => {
                 {comments.length > 0 ? comments.map((comment, i) => {
                     return (
                         <div>
-                            <li className={styles.comment} key={i}>{comment}</li>
+                            <li className={styles.comment} key={i}>{comment.text}</li>
                             <hr className={styles.commentLine} />
                         </div>
                     )
