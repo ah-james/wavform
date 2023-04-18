@@ -1,27 +1,19 @@
 import { useEffect, useState } from 'react'
 // styling
 import styles from './CommentsForm.module.css'
+import { useDispatch } from 'react-redux'
+import { fetchComments } from '../../store/actions/comments-actions'
 
 const CommentsForm = ({ userName, id }) => {
+    const dispatch = useDispatch()
+
     const [text, setText] = useState('')
     const [comments, setComments] = useState([])
 
     useEffect(() => {
-        const fetchComments = async () => {
-            const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/comments.json')
+        dispatch(fetchComments())
 
-            const data = await response.json()
-
-            const loadedComments = Object.entries(data).map((key, value) => ({
-                reviewId: key[0],
-                text: key[1].text,
-                userName: key[1].userName,
-            }))
-
-            setComments(loadedComments)
-        } 
-
-    }, [setComments])
+    }, [dispatch])
 
     const handleClick = async () => {
         setComments([...comments, text])
