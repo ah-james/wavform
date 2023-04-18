@@ -8,7 +8,8 @@ export const fetchComments = async () => {
             const data = await response.json()
     
             const loadedComments = Object.entries(data).map((key, value) => ({
-                reviewId: key[0],
+                id: key[0],
+                reviewId: key[1].reviewId,
                 text: key[1].text,
                 userName: key[1].userName,
             }))
@@ -19,6 +20,40 @@ export const fetchComments = async () => {
         try {
             const commentData = fetchComments()
             dispatch(commentActions.getComments(commentData))
+        } catch (error) {
+            console.log(error)
+        }
+    }
+}
+
+export const addComment = async (comment) => {
+    return async dispatch => {
+        const addData = async () => {
+            const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/comments.json', {
+                method: 'POST',
+                body: JSON.stringify({
+                    reviewId: comment.reviewId,
+                    text: comment.text,
+                    userName: comment.userName,
+                }),
+                headers: { 'Content-Type': 'application/json' }
+            })
+
+            const data = await response.json()
+            return data
+        }
+
+        try {
+            const data = await addData()
+
+            const createdComment = {
+                id: data.name,
+                reviewId: comment.reviewId,
+                text: comment.text,
+                userName: comment.userName,
+            }
+
+            dispatch(commentActions.addComment(createdComment))
         } catch (error) {
             console.log(error)
         }
