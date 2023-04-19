@@ -6,6 +6,7 @@ import { Route, Routes, useNavigate } from 'react-router-dom'
 // components
 import Header from './components/Header/Header';
 // redux store
+import { fetchComments } from './store/actions/comments-actions'
 import { fetchReviews } from './store/actions/reviews-actions';
 import { autoLogout } from './store/actions/auth-actions';
 import { authActions } from './store/reducers/auth-slice';
@@ -34,6 +35,10 @@ function App() {
   })
 
   useEffect(() => {
+    dispatch(fetchComments())
+  }, [dispatch])
+
+  useEffect(() => {
     dispatch(fetchReviews())
   }, [dispatch])
 
@@ -47,7 +52,7 @@ function App() {
     const email = localStorage.getItem('email')
 
     if (token) {
-      dispatch(dispatch(authActions.setLoggedIn({token, email})))
+      dispatch(dispatch(authActions.setLoggedIn({ token, email })))
       dispatch(autoLogout(navigate))
     }
   }, [dispatch, navigate])

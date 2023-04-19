@@ -1,19 +1,11 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 // styling
 import styles from './CommentsForm.module.css'
-import { useDispatch } from 'react-redux'
-import { fetchComments } from '../../store/actions/comments-actions'
 
 const CommentsForm = ({ userName, id }) => {
-    const dispatch = useDispatch()
 
     const [text, setText] = useState('')
     const [comments, setComments] = useState([])
-
-    useEffect(() => {
-        dispatch(fetchComments())
-
-    }, [dispatch])
 
     const handleClick = async () => {
         setComments([...comments, text])
