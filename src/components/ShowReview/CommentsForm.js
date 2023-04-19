@@ -36,8 +36,8 @@ const CommentsForm = ({ userName, id }) => {
             <ul className={styles.commentField}>
                 {comments.length > 0 ? comments.map((comment) => {
                     return (
-                        <div>
-                            <li className={styles.comment} key={comment.id}>{comment.text}</li>
+                        <div key={comment.id}>
+                            <li className={styles.comment} >{comment.text}</li>
                             <hr className={styles.commentLine} />
                         </div>
                     )
