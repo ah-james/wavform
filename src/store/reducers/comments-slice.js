@@ -7,10 +7,10 @@ const commentSlice = createSlice({
     },
     reducers: {
         getComments(state, action) {
-            state.albums = action.payload
+            state.comments = action.payload
         },
         addComment(state, action) {
-            state.albums = [...state.albums, action.payload]
+            state.comments = [...state.comments, action.payload]
         }
     }
 })
