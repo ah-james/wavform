@@ -1,14 +1,16 @@
 import { useState } from 'react'
 // styling
 import styles from './CommentsForm.module.css'
+import { useSelector } from 'react-redux'
 
 const CommentsForm = ({ userName, id }) => {
-
     const [text, setText] = useState('')
-    const [comments, setComments] = useState([])
+
+    const comments = useSelector((state) => {
+        return state.comments.comments
+    })
 
     const handleClick = async () => {
-        setComments([...comments, text])
         setText('')
         // dispatch to firebase, set new branch of comments
         // send comment text, username, and review ID
@@ -32,10 +34,10 @@ const CommentsForm = ({ userName, id }) => {
             <p className={styles['user-info']}>{comments.length === 1 ? `${comments.length} Comment` : `${comments.length} Comments`}</p>
             <hr />
             <ul className={styles.commentField}>
-                {comments.length > 0 ? comments.map((comment, i) => {
+                {comments.length > 0 ? comments.map((comment) => {
                     return (
                         <div>
-                            <li className={styles.comment} key={i}>{comment.text}</li>
+                            <li className={styles.comment} key={comment.id}>{comment.text}</li>
                             <hr className={styles.commentLine} />
                         </div>
                     )
