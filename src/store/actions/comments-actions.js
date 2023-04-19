@@ -1,9 +1,13 @@
 import { commentActions } from '../reducers/comments-slice'
 
-export const fetchComments = async () => {
+export const fetchComments = () => {
     return async dispatch => {
         const fetchComments = async () => {
             const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/comments.json')
+
+            if (!response.ok) {
+                throw new Error(`Couldn't fetch review data`)
+            }
     
             const data = await response.json()
     
@@ -18,7 +22,7 @@ export const fetchComments = async () => {
         }
 
         try {
-            const commentData = fetchComments()
+            const commentData = await fetchComments()
             dispatch(commentActions.getComments(commentData))
         } catch (error) {
             console.log(error)
