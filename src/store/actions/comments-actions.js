@@ -30,15 +30,15 @@ export const fetchComments = () => {
     }
 }
 
-export const addComment = async (comment) => {
+export const addComment = async (text, userName, reviewId) => {
     return async dispatch => {
         const addData = async () => {
             const response = await fetch('https://react-bouncr-default-rtdb.firebaseio.com/comments.json', {
                 method: 'POST',
                 body: JSON.stringify({
-                    reviewId: comment.reviewId,
-                    text: comment.text,
-                    userName: comment.userName,
+                    reviewId: reviewId,
+                    text: text,
+                    userName: userName,
                 }),
                 headers: { 'Content-Type': 'application/json' }
             })
@@ -52,9 +52,9 @@ export const addComment = async (comment) => {
 
             const createdComment = {
                 id: data.name,
-                reviewId: comment.reviewId,
-                text: comment.text,
-                userName: comment.userName,
+                reviewId: reviewId,
+                text: text,
+                userName: userName,
             }
 
             dispatch(commentActions.addComment(createdComment))

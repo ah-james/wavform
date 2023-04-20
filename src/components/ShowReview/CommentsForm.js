@@ -16,7 +16,7 @@ const CommentsForm = ({ userName, id }) => {
         
         // dispatch to firebase, set new branch of comments
         // send comment text, username, and review ID
-        dispatch(addComment(text))
+        dispatch(addComment(text, userName, id))
         setText('')
     }
 
