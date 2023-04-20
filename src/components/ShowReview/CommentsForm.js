@@ -1,9 +1,11 @@
 import { useState } from 'react'
 // styling
 import styles from './CommentsForm.module.css'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { addComment } from '../../store/actions/comments-actions'
 
 const CommentsForm = ({ userName, id }) => {
+    const dispatch = useDispatch()
     const [text, setText] = useState('')
 
     const comments = useSelector((state) => {
@@ -11,18 +13,11 @@ const CommentsForm = ({ userName, id }) => {
     })
 
     const handleClick = async () => {
-        setText('')
+        
         // dispatch to firebase, set new branch of comments
         // send comment text, username, and review ID
-        await fetch('https://react-bouncr-default-rtdb.firebaseio.com/comments.json', {
-            method: 'POST',
-            body: JSON.stringify({
-                reviewId: id,
-                text: text,
-                userName: userName,
-            }),
-            headers: { 'Content-Type': 'application/json' }
-        })
+        dispatch(addComment(text))
+        setText('')
     }
 
     const handleTextChange = (event) => {
