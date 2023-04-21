@@ -4,9 +4,7 @@ import { useSelector } from 'react-redux'
 import Reviews from "../components/Reviews/Reviews"
 
 const ReviewsContainer = () => {
-    const reviews = useSelector((state) => {
-        return state.reviews.albums
-    })
+    const reviews = useSelector((state) => state.reviews.albums)
 
     return (
         <div>

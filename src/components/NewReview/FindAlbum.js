@@ -12,9 +12,7 @@ const FindAlbum = ({ handleClick }) => {
     const [query, setQuery] = useState('')
     const [options, setOptions] = useState([])
 
-    const accessToken = useSelector(state => {
-        return state.spotify.accessToken
-    })
+    const accessToken = useSelector(state => state.spotify.accessToken)
 
     const getAlbumOptions = useCallback (async (event) => {
         setQuery(event.target.value)

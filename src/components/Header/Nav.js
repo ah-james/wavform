@@ -9,9 +9,7 @@ import styles from './Nav.module.css'
 const Nav = ({logout}) => {
     // use NavLink from react-router-dom, prevents page from reloading and can set CSS class on active path
 
-    const loggedIn = useSelector((state) => {
-        return state.auth.loggedIn
-    })
+    const loggedIn = useSelector((state) => state.auth.loggedIn)
 
     const activeButton = (data) => data.isActive ? styles.active : ''
     

@@ -13,9 +13,7 @@ const HomeContainer = () => {
 
     const navigate = useNavigate()
 
-    const reviews = useSelector((state) => {
-        return state.reviews.albums
-    })
+    const reviews = useSelector((state) => state.reviews.albums)
 
     const recentReviews = reviews.slice(-4)
 

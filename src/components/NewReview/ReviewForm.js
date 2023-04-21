@@ -14,9 +14,7 @@ import styles from './ReviewForm.module.css'
 const ReviewForm = ({handleClick, onSaveReview, artist, album}) => {
     const [error, setError] = useState()
 
-    const user = useSelector(state => {
-        return state.auth.email
-    })
+    const user = useSelector(state => state.auth.email)
 
     const {
         value: rating,

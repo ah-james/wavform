@@ -30,9 +30,7 @@ function App() {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const loggedIn = useSelector((state) => {
-    return state.auth.loggedIn
-  })
+  const loggedIn = useSelector((state) => state.auth.loggedIn)
 
   useEffect(() => {
     dispatch(fetchComments())

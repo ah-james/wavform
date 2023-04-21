@@ -7,13 +7,9 @@ import Reviews from '../components/Reviews/Reviews';
 import styles from '../components/Reviews/ReviewsList.module.css'
 
 const ProfileContainer = () => {
-    const reviews = useSelector((state) => {
-        return state.reviews.albums
-    })
+    const reviews = useSelector((state) => state.reviews.albums)
 
-    const user = useSelector((state) => {
-        return state.auth.email
-    })
+    const user = useSelector((state) => state.auth.email)
 
     const shownReviews = reviews.filter(review => review.user === user)
 

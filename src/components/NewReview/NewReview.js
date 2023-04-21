@@ -19,9 +19,7 @@ const NewReview = () => {
 
     const dispatch = useDispatch()
 
-    const accessToken = useSelector(state => {
-        return state.spotify.accessToken
-    })
+    const accessToken = useSelector(state => state.spotify.accessToken)
 
     const handleSaveReview = async (review) => {
         // could add useNavigate hook in app and history.push() to navigate to new page when

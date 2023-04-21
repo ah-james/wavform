@@ -10,9 +10,7 @@ const ArtistSearchContainer = () => {
     // error state to handle HTTP errors
     const [error, setError] = useState(null)
 
-    const accessToken = useSelector(state => {
-        return state.spotify.accessToken
-    })
+    const accessToken = useSelector(state => state.spotify.accessToken)
 
     // adding fetch request for spotify api to get albums
     async function searchArtists(event) {

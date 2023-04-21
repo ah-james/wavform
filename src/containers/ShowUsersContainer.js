@@ -5,9 +5,7 @@ import UsersList from "../components/Users/UsersList"
 import styles from './Container.module.css'
 
 const ShowUsersContainer = () => {
-    const reviews = useSelector((state) => {
-        return state.reviews.albums
-    })
+    const reviews = useSelector((state) => state.reviews.albums)
 
     const users = Object.entries(reviews).map(review => review[1].user)
 

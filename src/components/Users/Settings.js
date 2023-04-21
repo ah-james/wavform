@@ -23,9 +23,7 @@ const Settings = () => {
     const [password, setPassword] = useState('')
 
     const dispatch = useDispatch()
-    const token = useSelector((state) => {
-        return state.auth.token
-    })
+    const token = useSelector((state) => state.auth.token)
 
     const navigate = useNavigate()
 
