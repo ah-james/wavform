@@ -12,7 +12,11 @@ const CommentsForm = ({ userName, id }) => {
         return state.comments.comments
     })
 
-    const reviewComments = comments.map(comment =>  comment.userName === userName)
+    const reviewComments = comments.map(comment => {
+        if (comment.userName === userName) {
+            return comment
+        }
+    })
 
     const handleClick = async () => {
         
