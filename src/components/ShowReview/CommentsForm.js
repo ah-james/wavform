@@ -12,6 +12,8 @@ const CommentsForm = ({ userName, id }) => {
         return state.comments.comments
     })
 
+    const reviewComments = comments.map(comment =>  comment.userName === userName)
+
     const handleClick = async () => {
         
         // dispatch to firebase, set new branch of comments
@@ -29,7 +31,7 @@ const CommentsForm = ({ userName, id }) => {
             <p className={styles['user-info']}>{comments.length === 1 ? `${comments.length} Comment` : `${comments.length} Comments`}</p>
             <hr />
             <ul className={styles.commentField}>
-                {comments.length > 0 ? comments.map((comment) => {
+                {reviewComments.length > 0 ? reviewComments.map((comment) => {
                     return (
                         <div key={comment.id}>
                             <li className={styles.comment} >{comment.text}</li>
