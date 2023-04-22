@@ -28,7 +28,7 @@ const CommentsForm = ({ userName, id }) => {
 
     return (
         <>
-            <p className={styles['user-info']}>{comments.length === 1 ? `${comments.length} Comment` : `${comments.length} Comments`}</p>
+            <p className={styles['user-info']}>{reviewComments.length === 1 ? `${reviewComments.length} Comment` : `${reviewComments.length} Comments`}</p>
             <hr />
             <ul className={styles.commentField}>
                 {reviewComments.length > 0 ? reviewComments.map((comment) => {
