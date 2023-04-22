@@ -1,5 +1,5 @@
 // libraries
-import { useEffect, useState } from 'react'
+// import { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import RecentReviewsList from '../components/Home/RecentReviewsList'
@@ -9,7 +9,7 @@ import Button from '../components/UI/Button'
 import styles from './Container.module.css'
 
 const HomeContainer = () => {
-    const [backgroundImage, setBackgroundImage] = useState('')
+    // const [backgroundImage, setBackgroundImage] = useState('')
 
     const navigate = useNavigate()
 
@@ -17,14 +17,14 @@ const HomeContainer = () => {
 
     const recentReviews = reviews.slice(-4)
 
-    const backgroundArt = reviews.map(review => {
-        return review.art[0].url
-    })
+    // const backgroundArt = reviews.map(review => {
+    //     return review.art[0].url
+    // })
 
-    useEffect(() => {
-        const randomIndex = Math.floor(Math.random() * backgroundArt.length)
-        setBackgroundImage(backgroundArt[randomIndex])
-    }, [backgroundArt])
+    // useEffect(() => {
+    //     const randomIndex = Math.floor(Math.random() * backgroundArt.length)
+    //     setBackgroundImage(backgroundArt[randomIndex])
+    // }, [backgroundArt])
 
     return (
         <>
