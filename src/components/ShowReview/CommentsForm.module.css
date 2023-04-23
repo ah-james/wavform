@@ -32,12 +32,16 @@ ul.commentField {
 
 li.comment {
     color: #b6b6b6;
-    padding-bottom: 35px;
+    padding-bottom: 10px;
     display: flex;
 }
 
 li.comment p {
     padding-right: 150px;
+}
+
+p.bold {
+    font-weight: bold;
 }
 
 .commentLine {

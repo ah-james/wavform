@@ -35,7 +35,7 @@ const CommentsForm = ({ userName, id }) => {
                     return (
                         <div key={comment.id}>
                             <li className={styles.comment} >
-                                <p>{comment.userName}</p>
+                                <p className={styles.bold}>{comment.userName}</p>
                                 <p>{comment.text}</p>
                             </li>
                             <hr className={styles.commentLine} />
