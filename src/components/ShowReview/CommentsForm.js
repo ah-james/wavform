@@ -4,13 +4,15 @@ import styles from './CommentsForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addComment } from '../../store/actions/comments-actions'
 
-const CommentsForm = ({ userName, id }) => {
+const CommentsForm = ({ id }) => {
     const dispatch = useDispatch()
     const [text, setText] = useState('')
 
     const comments = useSelector((state) => {
         return state.comments.comments
     })
+
+    const userName = localStorage.getItem('email')
 
     const reviewComments = comments.filter(comment => comment.reviewId === id)
 
