@@ -34,9 +34,9 @@ const CommentsForm = ({ id }) => {
             <p className={styles['user-info']}>{reviewComments.length === 1 ? `${reviewComments.length} Comment` : `${reviewComments.length} Comments`}</p>
             <hr />
             <ul className={styles.commentField}>
-                {reviewComments.length > 0 ? reviewComments.map((comment) => {
+                {reviewComments.length > 0 ? reviewComments.map((comment) => 
                     <CommentItem comment={comment} />
-                }) : 'No Comments Yet'}
+                ) : 'No Comments Yet'}
             </ul>
             <div className={styles.comment_form}>
                 <textarea id='text' name='text' rows='4' cols='40' value={text} onChange={handleTextChange} />
