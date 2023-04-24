@@ -4,8 +4,10 @@ li.comment {
     display: flex;
 }
 
-li.comment p {
-    padding-right: 150px;
+p.text {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 p.bold {
