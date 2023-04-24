@@ -3,6 +3,7 @@ import { useState } from 'react'
 import styles from './CommentsForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addComment } from '../../store/actions/comments-actions'
+import CommentItem from './CommentItem'
 
 const CommentsForm = ({ id }) => {
     const dispatch = useDispatch()
@@ -34,15 +35,7 @@ const CommentsForm = ({ id }) => {
             <hr />
             <ul className={styles.commentField}>
                 {reviewComments.length > 0 ? reviewComments.map((comment) => {
-                    return (
-                        <div key={comment.id}>
-                            <li className={styles.comment} >
-                                <p className={styles.bold}>{comment.userName}</p>
-                                <p>{comment.text}</p>
-                            </li>
-                            <hr className={styles.commentLine} />
-                        </div>
-                    )
+                    <CommentItem comment={comment} />
                 }) : 'No Comments Yet'}
             </ul>
             <div className={styles.comment_form}>
