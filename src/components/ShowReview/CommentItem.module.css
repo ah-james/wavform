@@ -4,6 +4,25 @@ li.comment {
     display: flex;
 }
 
+p.bold {
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.bold a {
+    color: #b6b6b6;
+    text-decoration: none;
+}
+
+.bold a:hover {
+    color: #ebebeb;
+    transition: .5s ease;
+}
+
+.bold a:not(:hover) {
+    transition: .5s ease;
+}
+
 div.text {
     width: 100%;
     text-align: center;
@@ -14,11 +33,6 @@ div.text p {
     display: inline-block;
 }
 
-p.bold {
-    font-size: 13px;
-    font-weight: bold;
-}
-
-.commentLine {
+.comment-line {
     border: 1px solid #6b6b6b;
 }
