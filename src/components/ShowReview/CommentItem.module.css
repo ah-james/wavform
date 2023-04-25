@@ -6,14 +6,16 @@ li.comment {
 
 div.text {
     width: 100%;
-  text-align: center;
+    text-align: center;
 }
 
 div.text p {
+    font-size: 13px;
     display: inline-block;
 }
 
 p.bold {
+    font-size: 13px;
     font-weight: bold;
 }
 

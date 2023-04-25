@@ -31,14 +31,14 @@ const CommentsForm = ({ id }) => {
 
     return (
         <>
-            <p className={styles['user-info']}>{reviewComments.length === 1 ? `${reviewComments.length} Comment` : `${reviewComments.length} Comments`}</p>
+            <p className={styles['comment-number']}>{reviewComments.length === 1 ? `${reviewComments.length} Comment` : `${reviewComments.length} Comments`}</p>
             <hr />
-            <ul className={styles.commentField}>
+            <ul className={styles['comment-field']}>
                 {reviewComments.length > 0 ? reviewComments.map((comment) => 
                     <CommentItem comment={comment} />
                 ) : 'No Comments Yet'}
             </ul>
-            <div className={styles.comment_form}>
+            <div className={styles['comment-form']}>
                 <textarea id='text' name='text' rows='4' cols='40' value={text} onChange={handleTextChange} />
                 <button onClick={handleClick}>Post</button>
             </div>
