@@ -4,10 +4,13 @@ li.comment {
     display: flex;
 }
 
-p.text {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
+div.text {
+    width: 100%;
+  text-align: center;
+}
+
+div.text p {
+    display: inline-block;
 }
 
 p.bold {

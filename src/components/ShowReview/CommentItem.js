@@ -6,7 +6,9 @@ const CommentItem = ({ comment }) => {
         <div key={comment.id}>
             <li className={styles.comment} >
                 <p className={styles.bold}>{comment.userName}</p>
-                <p className={styles.text}>{comment.text}</p>
+                <div className={styles.text}>
+                    <p>{comment.text}</p>
+                </div>
             </li>
             <hr className={styles.commentLine} />
         </div>
