@@ -31,8 +31,8 @@ const ShowReview = ({ selectedReview }) => {
                 <h1>{selectedReview.album}</h1>
                 <h3> by {selectedReview.artist}</h3>
             </div>
-            <p>{selectedReview.rating}/10</p>
-            <p className={styles['listened-info']}>Listened on {selectedReview.date}</p>
+            <div>{selectedReview.rating}/10</div>
+            <div className={styles['listened-info']}>Listened on {selectedReview.date}</div>
             <p className={styles['review-text']}>{selectedReview.text}</p>
             <CommentsForm id={selectedReview.id} />
         </Card>

@@ -31,10 +31,13 @@ hr.rounded {
     border-radius: 5px;
 }
 
-.user-info,
+.user-info, 
 .listened-info {
     text-align: left;
     color: #acacac;
+}
+
+.listened-info {
     font-size: 13px;
 }
 
@@ -47,6 +50,6 @@ img.image {
 }
 
 p.review-text {
-    padding-top: 10px;
+    padding-top: 40px;
     padding-bottom: 15px;
 }
