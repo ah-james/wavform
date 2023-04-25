@@ -12,7 +12,7 @@ const CommentItem = ({ comment }) => {
                     <p>{comment.text}</p>
                 </div>
             </li>
-            <hr className={styles.commentLine} />
+            <hr className={styles['comment-line']} />
         </div>
     )
 }
