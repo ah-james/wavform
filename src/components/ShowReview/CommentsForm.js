@@ -41,14 +41,20 @@ const CommentsForm = ({ id }) => {
         buttonForm = <p>Please <Link to={'/login'}>sign in</Link> to reply.</p>
     }
 
+    let numberComments = reviewComments.length === 1 ? `${reviewComments.length} Comment` : `${reviewComments.length} Comments`
+
+    if (reviewComments.length === 0) {
+        numberComments = 'Comment?'
+    }
+
     return (
         <>
-            <p className={styles['comment-number']}>{reviewComments.length === 1 ? `${reviewComments.length} Comment` : `${reviewComments.length} Comments`}</p>
+            <p className={styles['comment-number']}>{numberComments}</p>
             <hr />
             <ul className={styles['comment-field']}>
-                {reviewComments.length > 0 ? reviewComments.map((comment) =>
+                {reviewComments.map((comment) =>
                     <CommentItem comment={comment} />
-                ) : 'No Comments Yet'}
+                )}
             </ul>
             {buttonForm}
         </>
