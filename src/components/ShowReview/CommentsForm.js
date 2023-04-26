@@ -18,7 +18,7 @@ const CommentsForm = ({ id }) => {
     const reviewComments = comments.filter(comment => comment.reviewId === id)
 
     const handleClick = async () => {
-        
+
         // dispatch to firebase, set new branch of comments
         // send comment text, username, and review ID
         dispatch(addComment(text, userName, id))
@@ -29,19 +29,27 @@ const CommentsForm = ({ id }) => {
         setText(event.target.value)
     }
 
+
+    let buttonForm = 
+    <div className={styles['comment-form']}>
+        <textarea id='text' name='text' rows='4' cols='40' value={text} onChange={handleTextChange} />
+        <button onClick={handleClick}>Post</button>
+    </div>
+
+    if (!userName) {
+        buttonForm = <p>Please sign in to reply.</p>
+    }
+
     return (
         <>
             <p className={styles['comment-number']}>{reviewComments.length === 1 ? `${reviewComments.length} Comment` : `${reviewComments.length} Comments`}</p>
             <hr />
             <ul className={styles['comment-field']}>
-                {reviewComments.length > 0 ? reviewComments.map((comment) => 
+                {reviewComments.length > 0 ? reviewComments.map((comment) =>
                     <CommentItem comment={comment} />
                 ) : 'No Comments Yet'}
             </ul>
-            <div className={styles['comment-form']}>
-                <textarea id='text' name='text' rows='4' cols='40' value={text} onChange={handleTextChange} />
-                <button onClick={handleClick}>Post</button>
-            </div>
+            {buttonForm}
         </>
     )
 }
