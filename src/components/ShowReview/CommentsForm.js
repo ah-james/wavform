@@ -4,6 +4,7 @@ import styles from './CommentsForm.module.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { addComment } from '../../store/actions/comments-actions'
 import CommentItem from './CommentItem'
+import { Link } from 'react-router-dom'
 
 const CommentsForm = ({ id }) => {
     const dispatch = useDispatch()
@@ -37,7 +38,7 @@ const CommentsForm = ({ id }) => {
     </div>
 
     if (!userName) {
-        buttonForm = <p>Please sign in to reply.</p>
+        buttonForm = <p>Please <Link to={'/login'}>sign in</Link> to reply.</p>
     }
 
     return (
