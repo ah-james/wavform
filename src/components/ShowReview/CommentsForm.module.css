@@ -28,8 +28,23 @@ ul.comment-field {
     list-style-type: none;
     padding: 0px;
     margin: 0px;
+    margin-bottom: 40px;
 }
 
 p.comment-number {
     font-size: 14px;
+}
+
+a {
+    color: #b6b6b6;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #ebebeb;
+    transition: .5s ease;
+}
+
+a:not(:hover) {
+    transition: .5s ease;
 }
