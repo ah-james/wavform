@@ -25,6 +25,7 @@ const ArtistSearchContainer = React.lazy(() => import('./containers/ArtistSearch
 const HomeContainer = React.lazy(() => import('./containers/HomeContainer'))
 const UserReviewsContainer = React.lazy(() => import('./containers/UserReviewsContainer'))
 const ShowUsersContainer = React.lazy(() => import('./containers/ShowUsersContainer'))
+const AlbumContainer = React.lazy(() => import('./containers/AlbumContainer'))
 
 function App() {
   const dispatch = useDispatch()
@@ -77,6 +78,7 @@ function App() {
             <Route path='/search' element={<ArtistSearchContainer />} />
             <Route path='/user/:user' element={<UserReviewsContainer />} />
             <Route path='/users' element={<ShowUsersContainer />} />
+            <Route path='/album/:title' element={<AlbumContainer />} />
           </Routes>
         </Suspense>
       </main>
