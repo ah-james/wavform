@@ -27,10 +27,12 @@ const ShowReview = ({ selectedReview }) => {
             <div>
                 <img className={styles.image} alt={selectedReview.album} src={selectedReview.art[1].url} />
             </div>
-            <div className={styles['album-info']}>
-                <h1>{selectedReview.album}</h1>
-                <h3> by {selectedReview.artist}</h3>
-            </div>
+            <Link to={`/album/${selectedReview.album}`}>
+                <div className={styles['album-info']}>
+                    <h1>{selectedReview.album}</h1>
+                    <h3> by {selectedReview.artist}</h3>
+                </div>
+            </Link>
             <div>{selectedReview.rating}/10</div>
             <div className={styles['listened-info']}>Listened on {selectedReview.date}</div>
             <p className={styles['review-text']}>{selectedReview.text}</p>
