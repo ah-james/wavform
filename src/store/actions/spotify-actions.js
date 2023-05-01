@@ -59,7 +59,7 @@ export const addAlbumArt = async (review, accessToken) => {
             return obj.name === review.album
         })
 
-        return foundAlbum.images
+        return [foundAlbum.images, foundAlbum.id]
     } catch (error) {
         alert(error)
     }

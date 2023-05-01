@@ -51,7 +51,8 @@ export const addReview = (review, accessToken) => {
                     date: review.date,
                     text: review.text,
                     user: review.user,
-                    art: albumArt
+                    art: albumArt[0],
+                    albumId: albumArt[1],
                 }),
                 headers: { 'Content-Type': 'application/json' }
             })
@@ -75,7 +76,8 @@ export const addReview = (review, accessToken) => {
                 rating: review.rating,
                 text: review.text,
                 user: review.user,
-                art: albumArt
+                art: albumArt[0],
+                albumId: albumArt[1],
             }
 
             dispatch(
