@@ -13,12 +13,12 @@ const AlbumShowPage = () => {
     const albumReviews = reviews.filter(review => review.album === selectedAlbum)
 
     return (
-        <div>
+        <div className={styles['album-info']}>
             <img src={albumInfo.art[1].url} />
             <h1>{albumInfo.album} by {albumInfo.artist}</h1>
             <ul>
                 {albumReviews.map((review) => 
-                    <li>{review.user}: {review.rating}/10</li>
+                    <li key={review.id}>{review.user}: {review.rating}/10</li>
                 )}
             </ul>
         </div>

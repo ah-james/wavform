@@ -1,0 +1,8 @@
+div.album-info {
+    color: white;
+    text-align: center;
+}
+
+.album-info li {
+    list-style: none;
+}
