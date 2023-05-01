@@ -5,15 +5,20 @@ const AlbumShowPage = () => {
     const params = useParams()
     const selectedAlbum = params.title
 
-    const allReviews = useSelector(state => state.reviews.albums)
+    const reviews = useSelector(state => state.reviews.albums)
 
-    const albumInfo = allReviews.find(review => {
-        return review.album === selectedAlbum
-    })
+    const albumInfo = reviews.find(review => review.album === selectedAlbum)
+
+    const albumReviews = reviews.filter(review => review.album === selectedAlbum)
 
     return (
         <div>
             <h1>{albumInfo.album} by {albumInfo.artist}</h1>
+            <ul>
+                {albumReviews.map((review) => 
+                    <li>{review.user}</li>
+                )}
+            </ul>
         </div>
     )
 }
