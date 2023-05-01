@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
+import styles from './AlbumShowPage.module.css'
 
 const AlbumShowPage = () => {
     const params = useParams()
@@ -13,10 +14,11 @@ const AlbumShowPage = () => {
 
     return (
         <div>
+            <img src={albumInfo.art[1].url} />
             <h1>{albumInfo.album} by {albumInfo.artist}</h1>
             <ul>
                 {albumReviews.map((review) => 
-                    <li>{review.user}</li>
+                    <li>{review.user}: {review.rating}/10</li>
                 )}
             </ul>
         </div>
