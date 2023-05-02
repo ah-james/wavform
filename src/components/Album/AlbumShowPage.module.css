@@ -7,3 +7,10 @@ div.album-info {
 .album-info li {
     list-style: none;
 }
+
+img.image {
+    border: 1px solid #acacac;
+    margin-right: 15px;
+    margin-top: 10px;
+    border-radius: 12px;
+}

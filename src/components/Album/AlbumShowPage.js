@@ -14,7 +14,7 @@ const AlbumShowPage = () => {
 
     return (
         <div className={styles['album-info']}>
-            <img src={albumInfo.art[1].url} />
+            <img className={styles.image} src={albumInfo.art[1].url} />
             <h1>{albumInfo.album} by {albumInfo.artist}</h1>
             <ul>
                 {albumReviews.map((review) => 
