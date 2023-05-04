@@ -7,8 +7,10 @@ import CommentsForm from './CommentsForm';
 import Card from '../UI/Card'
 // styling
 import styles from './ShowReview.module.css'
+import { useSelector } from 'react-redux';
 
 const ShowReview = ({ selectedReview }) => {
+    const accessToken = useSelector(state => state.spotify.accessToken)
 
     if (!selectedReview) {
         return (
@@ -27,7 +29,7 @@ const ShowReview = ({ selectedReview }) => {
             <div>
                 <img className={styles.image} alt={selectedReview.album} src={selectedReview.art[1].url} />
             </div>
-            <Link to={`/album/${selectedReview.album}`}>
+            <Link to={`/album/${selectedReview.album}`} state={{ accessToken: accessToken, albumId: selectedReview.albumId }}>
                 <div className={styles['album-info']}>
                     <h1>{selectedReview.album}</h1>
                     <h3> by {selectedReview.artist}</h3>
