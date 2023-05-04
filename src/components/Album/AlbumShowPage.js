@@ -2,9 +2,11 @@ import { useSelector } from "react-redux"
 import { useLocation, useParams } from "react-router-dom"
 import styles from './AlbumShowPage.module.css'
 import { useEffect, useState } from "react"
+import { fetchAlbumData } from "../../store/actions/spotify-actions"
 
 const AlbumShowPage = () => {
     const [album, setAlbum] = useState()
+    const [loading, setLoading] = useState(true)
 
     const params = useParams()
     const selectedAlbum = params.title
@@ -18,31 +20,24 @@ const AlbumShowPage = () => {
     const albumInfo = reviews.find(review => review.album === selectedAlbum)
 
     useEffect(() => {
-        async function fetchData(albumId, accessToken) {
-            const response = await fetch(`https://api.spotify.com/v1/albums/${albumId}`, {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${accessToken}`
-                }
-            })
+        const data = fetchAlbumData(albumId, accessToken)
+        setAlbum(data)
+        setLoading(false)
 
-            const data = await response.json()
-            return data
-        }
-
-        setAlbum(fetchData())
-
-    }, [setAlbum,albumInfo])
-
-
+    }, [albumId, accessToken])
 
     const albumReviews = reviews.filter(review => review.album === selectedAlbum)
+
+    if (loading) {
+        return (
+            <div>Loading...</div>
+        )
+    }
 
     return (
         <div className={styles['album-info']}>
             <img className={styles.image} src={albumInfo.art[1].url} />
-            <h1>{albumInfo.album} by {albumInfo.artist}</h1>
+            <h1>{album.name} by {album.artists[0].name}</h1>
             <ul>
                 {albumReviews.map((review) =>
                     <li key={review.id}>{review.user}: {review.rating}/10</li>

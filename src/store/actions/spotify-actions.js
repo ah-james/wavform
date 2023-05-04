@@ -65,3 +65,16 @@ export const addAlbumArt = async (review, accessToken) => {
     }
 
 }
+
+export const fetchAlbumData = async (albumId, accessToken) => {
+    const response = await fetch(`https://api.spotify.com/v1/albums/${albumId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`
+        }
+    })
+    
+    const data = await response.json()
+    return data
+}
