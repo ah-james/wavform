@@ -20,7 +20,8 @@ export const fetchReviews = () => {
                 rating: key[1].rating,
                 text: key[1].text,
                 user: key[1].user,
-                art: key[1].art
+                art: key[1].art,
+                albumId: key[1].albumId
             }))
 
             return loadedReviews
