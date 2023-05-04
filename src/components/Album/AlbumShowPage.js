@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import styles from './AlbumShowPage.module.css'
 import { useEffect, useState } from "react"
 
@@ -9,15 +9,17 @@ const AlbumShowPage = () => {
     const params = useParams()
     const selectedAlbum = params.title
 
-    const reviews = useSelector(state => state.reviews.albums)
+    const location = useLocation()
 
-    const accessToken = useSelector(state => state.spotify.accessToken)
+    const { accessToken, albumId } = location.state 
+
+    const reviews = useSelector(state => state.reviews.albums)
 
     const albumInfo = reviews.find(review => review.album === selectedAlbum)
 
     useEffect(() => {
-        async function fetchData(albumInfo, accessToken) {
-            const response = await fetch(`https://api.spotify.com/v1/albums/${albumInfo.albumId}`, {
+        async function fetchData(albumId, accessToken) {
+            const response = await fetch(`https://api.spotify.com/v1/albums/${albumId}`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',
