@@ -28,34 +28,34 @@ const AlbumShowPage = () => {
                     'Authorization': `Bearer ${accessToken}`
                 }
             })
-            
+
             const data = await response.json()
-            return data
+            setAlbum(data)
         }
 
-        const albumData = fetchData(albumId, accessToken)
+        fetchData(albumId, accessToken)
 
-}, [albumId, accessToken])
+    }, [albumId, accessToken])
 
-const albumReviews = reviews.filter(review => review.album === selectedAlbum)
+    const albumReviews = reviews.filter(review => review.album === selectedAlbum)
 
-if (album === undefined) {
+    if (album === undefined) {
+        return (
+            <div>Loading...</div>
+        )
+    }
+
     return (
-        <div>Loading...</div>
+        <div className={styles['album-info']}>
+            <img className={styles.image} src={albumInfo.art[1].url} alt={albumInfo.name} />
+            <h1>{albumInfo.name} by {albumInfo.artist}</h1>
+            <ul>
+                {albumReviews.map((review) =>
+                    <li key={review.id}>{review.user}: {review.rating}/10</li>
+                )}
+            </ul>
+        </div>
     )
-}
-
-return (
-    <div className={styles['album-info']}>
-        <img className={styles.image} src={albumInfo.art[1].url} alt={albumInfo.name} />
-        <h1>{albumInfo.name} by {albumInfo.artist}</h1>
-        <ul>
-            {albumReviews.map((review) =>
-                <li key={review.id}>{review.user}: {review.rating}/10</li>
-            )}
-        </ul>
-    </div>
-)
 }
 
 export default AlbumShowPage
