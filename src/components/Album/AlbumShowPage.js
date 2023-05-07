@@ -16,8 +16,6 @@ const AlbumShowPage = () => {
 
     const reviews = useSelector(state => state.reviews.albums)
 
-    const albumInfo = reviews.find(review => review.album === selectedAlbum)
-
     useEffect(() => {
         // const data = fetchAlbumData(albumId, accessToken)
         const fetchData = async (albumId, accessToken) => {
@@ -47,8 +45,8 @@ const AlbumShowPage = () => {
 
     return (
         <div className={styles['album-info']}>
-            <img className={styles.image} src={albumInfo.art[1].url} alt={albumInfo.name} />
-            <h1>{albumInfo.name} by {albumInfo.artist}</h1>
+            <img className={styles.image} src={album.images[1].url} alt={album.name} />
+            <h1>{album.name} by {album.artists[0].name}</h1>
             <ul>
                 {albumReviews.map((review) =>
                     <li key={review.id}>{review.user}: {review.rating}/10</li>
