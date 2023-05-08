@@ -2,6 +2,7 @@ import { useSelector } from "react-redux"
 import { useLocation, useParams } from "react-router-dom"
 import styles from './AlbumShowPage.module.css'
 import { useEffect, useState } from "react"
+import AlbumReviewsList from "./AlbumReviewsList"
 // import { fetchAlbumData } from "../../store/actions/spotify-actions"
 
 const AlbumShowPage = () => {
@@ -49,7 +50,7 @@ const AlbumShowPage = () => {
             <h1>{album.name} by {album.artists[0].name}</h1>
             <ul>
                 {albumReviews.map((review) =>
-                    <li key={review.id}>{review.user}: {review.rating}/10</li>
+                    <AlbumReviewsList review={review} />
                 )}
             </ul>
         </div>
