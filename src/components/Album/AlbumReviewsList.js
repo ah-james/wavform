@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom"
 
 
 const AlbumReviewsList = ({review}) => {
 
     return(
-        <li key={review.id}>{review.user}: {review.rating}/10</li>
+        <Link to={`/user/${review.user}`} key={review.id}>
+            <li>{review.user}: {review.rating}/10</li>
+        </Link>
     )
 }
 
