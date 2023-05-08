@@ -40,7 +40,7 @@ const AlbumShowPage = () => {
 
     if (album === undefined) {
         return (
-            <div>Loading...</div>
+            <div className={styles.loading}><p>Loading...</p></div>
         )
     }
 

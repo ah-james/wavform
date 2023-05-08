@@ -14,3 +14,11 @@ img.image {
     margin-top: 10px;
     border-radius: 12px;
 }
+
+div.loading {
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 400px;
+}
