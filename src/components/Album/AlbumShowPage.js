@@ -47,8 +47,10 @@ const AlbumShowPage = () => {
     return (
         <div className={styles['album-info']}>
             <img className={styles.image} src={album.images[1].url} alt={album.name} />
-            <h1>{album.name} by {album.artists[0].name}</h1>
-            <p>{new Date(album.release_date).getFullYear()}</p>
+            <div className={styles.row}>
+                <h1>{album.name} by {album.artists[0].name}</h1>
+                <p>{new Date(album.release_date).getFullYear()}</p>
+            </div>
             <ul>
                 {albumReviews.map((review) =>
                     <AlbumReviewsList review={review} />

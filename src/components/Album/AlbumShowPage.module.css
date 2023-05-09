@@ -22,3 +22,13 @@ div.loading {
     align-items: center;
     height: 400px;
 }
+
+.row h1 {
+    display: inline;
+    margin: 18px;
+}
+
+.row p {
+    display: inline;
+    font-size: 20px;
+}
