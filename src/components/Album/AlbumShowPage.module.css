@@ -32,3 +32,8 @@ div.loading {
     display: inline;
     font-size: 20px;
 }
+
+ul {
+    padding: 0;
+    list-style-type: none;
+}
