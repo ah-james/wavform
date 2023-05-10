@@ -9,6 +9,8 @@ div.album-info {
 }
 
 img.image {
+    float: left;
+    height: 220px;
     border: 1px solid #acacac;
     margin-right: 15px;
     margin-top: 10px;
