@@ -3,6 +3,7 @@ import { useLocation, useParams } from "react-router-dom"
 import styles from './AlbumShowPage.module.css'
 import { useEffect, useState } from "react"
 import AlbumReviewsList from "./AlbumReviewsList"
+import Card from "../UI/Card"
 // import { fetchAlbumData } from "../../store/actions/spotify-actions"
 
 const AlbumShowPage = () => {
@@ -45,7 +46,7 @@ const AlbumShowPage = () => {
     }
 
     return (
-        <div className={styles['album-info']}>
+        <Card className={styles['album-info']}>
             <img className={styles.image} src={album.images[1].url} alt={album.name} />
             <div className={styles.row}>
                 <h1>{album.name} by {album.artists[0].name}</h1>
@@ -56,7 +57,7 @@ const AlbumShowPage = () => {
                     <AlbumReviewsList review={review} />
                 )}
             </ul>
-        </div>
+        </Card>
     )
 }
 
