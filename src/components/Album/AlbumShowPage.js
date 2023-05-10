@@ -52,6 +52,10 @@ const AlbumShowPage = () => {
                 <h1>{album.name} by {album.artists[0].name}</h1>
                 <p>{new Date(album.release_date).getFullYear()}</p>
             </div>
+            <div className={styles.switch}>
+                <p>Artists Details Genres</p>
+                <hr className={styles.rounded} />
+            </div>
             <ul>
                 {albumReviews.map((review) =>
                     <AlbumReviewsList review={review} />
