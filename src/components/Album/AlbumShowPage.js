@@ -8,6 +8,7 @@ import Card from "../UI/Card"
 
 const AlbumShowPage = () => {
     const [album, setAlbum] = useState()
+    const [content, setContent] = useState('artists')
 
     const params = useParams()
     const selectedAlbum = params.title
@@ -45,6 +46,20 @@ const AlbumShowPage = () => {
         )
     }
 
+    let displayContent
+
+    if (content === 'artists') {
+        displayContent = <p>artists</p>
+    }
+
+    if (content === 'details') {
+        displayContent = <p>details</p>
+    }
+
+    if (content === 'genres') {
+        displayContent = <p>genres</p>
+    }
+
     return (
         <Card className={styles['album-info']}>
             <img className={styles.image} src={album.images[1].url} alt={album.name} />
@@ -54,11 +69,14 @@ const AlbumShowPage = () => {
             </div>
             <div className={styles.switch}>
                 <ul>
-                    <li>Artists</li>
-                    <li>Details</li>
-                    <li>Genres</li>
+                    <li onClick={() => setContent('artists')}>Artists</li>
+                    <li onClick={() => setContent('details')}>Details</li>
+                    <li onClick={() => setContent('genres')}>Genres</li>
                 </ul>
                 <hr className={styles.rounded} />
+                <div>
+                    {displayContent}
+                </div>
             </div>
             <ul>
                 {albumReviews.map((review) =>
