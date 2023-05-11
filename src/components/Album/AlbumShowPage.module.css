@@ -19,7 +19,7 @@ img.image {
     float: left;
     height: 220px;
     border: 1px solid #acacac;
-    margin-right: 15px;
+    margin-right: 20px;
     margin-top: 10px;
     border-radius: 12px;
 }
@@ -34,16 +34,11 @@ div.loading {
 
 .row h1 {
     display: inline;
-    margin: 18px;
 }
 
 .row p {
     display: inline;
     font-size: 20px;
-}
-
-div.switch {
-    margin-left: 18px;
 }
 
 ul {
@@ -55,4 +50,8 @@ hr.rounded {
     margin: auto 200px;
     border: 1px solid #6b6b6b;
     border-radius: 5px;
+}
+
+.switch p {
+    margin-bottom: 3px;
 }
