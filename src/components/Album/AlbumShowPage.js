@@ -53,7 +53,11 @@ const AlbumShowPage = () => {
                 <p>{new Date(album.release_date).getFullYear()}</p>
             </div>
             <div className={styles.switch}>
-                <p>Artists Details Genres</p>
+                <ul>
+                    <li>Artists</li>
+                    <li>Details</li>
+                    <li>Genres</li>
+                </ul>
                 <hr className={styles.rounded} />
             </div>
             <ul>
