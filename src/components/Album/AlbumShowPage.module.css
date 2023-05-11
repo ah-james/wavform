@@ -58,3 +58,8 @@ hr.rounded {
     margin-right: 12px;
     margin-bottom: 2px;
 }
+
+.switch ul li:hover {
+    color: #aaaaaa;
+    transition: .5s ease;
+}
