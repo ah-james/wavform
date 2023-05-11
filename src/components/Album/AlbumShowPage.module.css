@@ -39,6 +39,7 @@ div.loading {
 .row p {
     display: inline;
     font-size: 20px;
+    margin-left: 15px;
 }
 
 ul {
@@ -52,6 +53,8 @@ hr.rounded {
     border-radius: 5px;
 }
 
-.switch p {
-    margin-bottom: 3px;
+.switch ul li {
+    display: inline;
+    margin-right: 12px;
+    margin-bottom: 2px;
 }
