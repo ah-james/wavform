@@ -46,6 +46,10 @@ const AlbumShowPage = () => {
         )
     }
 
+    const changeSelect = clicked => {
+        setContent(clicked)
+    }
+
     let displayContent
 
     if (content === 'artists') {
@@ -69,9 +73,9 @@ const AlbumShowPage = () => {
             </div>
             <div className={styles.switch}>
                 <ul>
-                    <li onClick={() => setContent('artists')}>Artists</li>
-                    <li onClick={() => setContent('details')}>Details</li>
-                    <li onClick={() => setContent('genres')}>Genres</li>
+                    <li onClick={() => changeSelect('artists')}>Artists</li>
+                    <li onClick={() => changeSelect('details')}>Details</li>
+                    <li onClick={() => changeSelect('genres')}>Genres</li>
                 </ul>
                 <hr className={styles.rounded} />
                 <div>
