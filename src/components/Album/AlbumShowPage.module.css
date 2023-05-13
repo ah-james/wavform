@@ -68,3 +68,7 @@ hr.rounded {
 .switch ul li:not(:hover) {
     transition: .5s ease;
 }
+
+.selected {
+    color: #aaaaaa;
+}
