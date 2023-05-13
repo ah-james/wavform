@@ -94,9 +94,9 @@ const AlbumShowPage = () => {
             </div>
             <div className={styles.switch}>
                 <ul>
-                    <li onClick={() => changeSelect('artists')}>Artists</li>
-                    <li onClick={() => changeSelect('details')}>Details</li>
-                    <li onClick={() => changeSelect('genres')}>Genres</li>
+                    <li className={artistsActive ? styles.selected : ''} onClick={() => changeSelect('artists')}>Artists</li>
+                    <li className={detailsActive ? styles.selected : ''} onClick={() => changeSelect('details')}>Details</li>
+                    <li className={genresActive ? styles.selected : ''} onClick={() => changeSelect('genres')}>Genres</li>
                 </ul>
                 <hr className={styles.rounded} />
                 <div>
