@@ -9,6 +9,9 @@ import Card from "../UI/Card"
 const AlbumShowPage = () => {
     const [album, setAlbum] = useState()
     const [content, setContent] = useState('artists')
+    const [artistsActive, setArtistsActive] = useState(true)
+    const [detailsActive, setDetailsActive] = useState(false)
+    const [genresActive, setGenresActive] = useState(false)
 
     const params = useParams()
     const selectedAlbum = params.title
@@ -48,6 +51,24 @@ const AlbumShowPage = () => {
 
     const changeSelect = clicked => {
         setContent(clicked)
+
+        if (clicked === 'artists') {
+            setArtistsActive(true)
+            setDetailsActive(false)
+            setGenresActive(false)
+        }
+
+        if (clicked === 'details') {
+            setArtistsActive(false)
+            setDetailsActive(true)
+            setGenresActive(false)
+        }
+
+        if (clicked === 'genres') {
+            setArtistsActive(false)
+            setDetailsActive(false)
+            setGenresActive(true)
+        }
     }
 
     let displayContent
