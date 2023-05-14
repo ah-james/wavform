@@ -74,7 +74,12 @@ const AlbumShowPage = () => {
     let displayContent
 
     if (content === 'artists') {
-        displayContent = <p>artists</p>
+        // displayContent = <p>artists</p>
+        displayContent = <ul>
+            {album.artists.map(artist => 
+                <li>{artist.name}</li>
+            )}
+        </ul>
     }
 
     if (content === 'details') {
