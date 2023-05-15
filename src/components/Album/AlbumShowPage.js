@@ -100,7 +100,7 @@ const AlbumShowPage = () => {
                 <h1>{album.name} by {album.artists[0].name}</h1>
                 <p>{new Date(album.release_date).getFullYear()}</p>
             </div>
-            <div className={styles.switch}>
+            <div>
                 <ul className={styles.switch}>
                     <li className={artistsActive ? styles.selected : ''} onClick={() => changeSelect('artists')}>Artists</li>
                     <li className={detailsActive ? styles.selected : ''} onClick={() => changeSelect('details')}>Details</li>
