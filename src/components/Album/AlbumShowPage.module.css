@@ -53,19 +53,19 @@ hr.rounded {
     border-radius: 5px;
 }
 
-.switch ul li {
+.switch li {
     display: inline;
     margin-right: 12px;
     margin-bottom: 2px;
 }
 
-.switch ul li:hover {
+.switch li:hover {
     color: #aaaaaa;
     transition: .5s ease;
     cursor: pointer;
 }
 
-.switch ul li:not(:hover) {
+.switch li:not(:hover) {
     transition: .5s ease;
 }
 

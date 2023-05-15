@@ -101,7 +101,7 @@ const AlbumShowPage = () => {
                 <p>{new Date(album.release_date).getFullYear()}</p>
             </div>
             <div className={styles.switch}>
-                <ul>
+                <ul className={styles.switch}>
                     <li className={artistsActive ? styles.selected : ''} onClick={() => changeSelect('artists')}>Artists</li>
                     <li className={detailsActive ? styles.selected : ''} onClick={() => changeSelect('details')}>Details</li>
                     <li className={genresActive ? styles.selected : ''} onClick={() => changeSelect('genres')}>Genres</li>
