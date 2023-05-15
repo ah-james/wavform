@@ -75,7 +75,7 @@ const AlbumShowPage = () => {
 
     if (content === 'artists') {
         // displayContent = <p>artists</p>
-        displayContent = <ul>
+        displayContent = <ul className={styles.selection}>
             {album.artists.map(artist => 
                 <li>{artist.name}</li>
             )}
@@ -83,9 +83,9 @@ const AlbumShowPage = () => {
     }
 
     if (content === 'details') {
-        displayContent = <ul>
-            <li>Release Date: {new Date(album.release_date).toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</li>
-            <li>Label: {album.label}</li>
+        displayContent = <ul className={styles.selection}>
+            <li>Release Date.......... <p className={styles.box}>{new Date(album.release_date).toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p></li>
+            <li>Label.......... <p className={styles.box}>{album.label}</p></li>
         </ul>
     }
 
