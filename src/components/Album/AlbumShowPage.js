@@ -85,6 +85,7 @@ const AlbumShowPage = () => {
     if (content === 'details') {
         displayContent = <ul>
             <li>Release Date: {new Date(album.release_date).toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</li>
+            <li>Label: {album.label}</li>
         </ul>
     }
 
