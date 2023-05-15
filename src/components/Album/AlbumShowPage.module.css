@@ -72,3 +72,12 @@ hr.rounded {
 .selected {
     color: #aaaaaa;
 }
+
+.box {
+    border: 1px solid #6b6b6b;
+    border-radius: 5px;
+}
+
+li .box {
+    display: inline
+}
