@@ -83,7 +83,9 @@ const AlbumShowPage = () => {
     }
 
     if (content === 'details') {
-        displayContent = <p>details</p>
+        displayContent = <ul>
+            <li>Release Date: {new Date(album.release_date).toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</li>
+        </ul>
     }
 
     if (content === 'genres') {
