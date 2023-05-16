@@ -39,6 +39,8 @@ div.loading {
 .row p {
     display: inline;
     font-size: 20px;
+    margin-left: 6px;
+    margin-right: 6px;
     margin-left: 15px;
 }
 

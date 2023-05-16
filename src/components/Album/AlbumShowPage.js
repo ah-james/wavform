@@ -97,8 +97,8 @@ const AlbumShowPage = () => {
         <Card className={styles['album-info']}>
             <img className={styles.image} src={album.images[1].url} alt={album.name} />
             <div className={styles.row}>
-                <h1>{album.name} by {album.artists[0].name}</h1>
-                <p>{new Date(album.release_date).getFullYear()}</p>
+                <h1>{album.name}</h1><p>by</p><h1>{album.artists[0].name}</h1>
+                <p className={styles.date}>{new Date(album.release_date).getFullYear()}</p>
             </div>
             <div>
                 <ul className={styles.switch}>
