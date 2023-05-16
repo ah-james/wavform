@@ -63,6 +63,10 @@ hr.rounded {
     font-size: 15px;
 }
 
+.switch {
+    margin-bottom: 5px;
+}
+
 .switch li {
     display: inline;
     margin-right: 12px;
