@@ -100,11 +100,11 @@ const AlbumShowPage = () => {
                 <h1>{album.name}</h1><p>by</p><h1>{album.artists[0].name}</h1>
                 <p className={styles.date}>{new Date(album.release_date).getFullYear()}</p>
             </div>
-            <div>
+            <div className={styles.selector}>
                 <ul className={styles.switch}>
-                    <li className={artistsActive ? styles.selected : ''} onClick={() => changeSelect('artists')}>Artists</li>
-                    <li className={detailsActive ? styles.selected : ''} onClick={() => changeSelect('details')}>Details</li>
-                    <li className={genresActive ? styles.selected : ''} onClick={() => changeSelect('genres')}>Genres</li>
+                    <li className={artistsActive ? styles.selectedItem : ''} onClick={() => changeSelect('artists')}>Artists</li>
+                    <li className={detailsActive ? styles.selectedItem : ''} onClick={() => changeSelect('details')}>Details</li>
+                    <li className={genresActive ? styles.selectedItem : ''} onClick={() => changeSelect('genres')}>Genres</li>
                 </ul>
                 <hr className={styles.rounded} />
                 <div>
