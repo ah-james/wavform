@@ -77,7 +77,7 @@ const AlbumShowPage = () => {
         // displayContent = <p>artists</p>
         displayContent = <ul className={styles.selection}>
             {album.artists.map(artist => 
-                <li>{artist.name}</li>
+                <li><p className={styles.box}>{artist.name}</p></li>
             )}
         </ul>
     }
