@@ -87,11 +87,16 @@ hr.rounded {
     color: #aaaaaa;
 }
 
+.inlineArtists {
+    display: inline
+}
+
 .box {
     border: 1px solid #6b6b6b;
     border-radius: 5px;
     background-color: #858585;
     padding: 2px;
+    margin-right: 5px;
 }
 
 li .box {
