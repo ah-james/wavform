@@ -75,18 +75,18 @@ const AlbumShowPage = () => {
 
     if (content === 'artists') {
         // displayContent = <p>artists</p>
-        displayContent = <ul className={styles.selection}>
-            {album.artists.map(artist => 
-                <li className={styles.inlineArtists}><p className={styles.box}>{artist.name}</p></li>
-            )}
-        </ul>
+        displayContent =
+            album.artists.map((artist, i) =>
+                <li className={styles.inlineArtists} key={i}><p className={styles.box}>{artist.name}</p></li>
+            )
     }
 
     if (content === 'details') {
-        displayContent = <ul className={styles.selection}>
-            <li>Release Date.......... <p className={styles.box}>{new Date(album.release_date).toLocaleDateString(undefined, {weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p></li>
-            <li>Label.......... <p className={styles.box}>{album.label}</p></li>
-        </ul>
+        displayContent =
+            <>
+                <li key={'release-date'}>Release Date.......... <p className={styles.box}>{new Date(album.release_date).toLocaleDateString(undefined, { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</p></li>
+                <li key={'label'}>Label.......... <p className={styles.box}>{album.label}</p></li>
+            </>
     }
 
     if (content === 'genres') {
@@ -107,9 +107,9 @@ const AlbumShowPage = () => {
                     <li className={genresActive ? styles.selectedItem : ''} onClick={() => changeSelect('genres')}>Genres</li>
                 </ul>
                 <hr className={styles.rounded} />
-                <div>
+                <ul className={styles.selection}>
                     {displayContent}
-                </div>
+                </ul>
             </div>
             <ul>
                 {albumReviews.map((review) =>
