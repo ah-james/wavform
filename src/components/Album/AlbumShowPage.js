@@ -77,7 +77,9 @@ const AlbumShowPage = () => {
         // displayContent = <p>artists</p>
         displayContent =
             album.artists.map((artist, i) =>
-                <li className={styles.inlineArtists} key={i}><p className={styles.box}>{artist.name}</p></li>
+                <li className={styles.inlineArtists} key={artist.name}>
+                    <p className={styles.box}>{artist.name}</p>
+                </li>
             )
     }
 
@@ -107,7 +109,7 @@ const AlbumShowPage = () => {
                     <li className={genresActive ? styles.selectedItem : ''} onClick={() => changeSelect('genres')}>Genres</li>
                 </ul>
                 <hr className={styles.rounded} />
-                <ul className={styles.selection}>
+                <ul className={styles.selection} key={'display-content'}>
                     {displayContent}
                 </ul>
             </div>
