@@ -104,9 +104,9 @@ const AlbumShowPage = () => {
             </div>
             <div className={styles.selector}>
                 <ul className={styles.switch}>
-                    <li className={artistsActive ? styles.selectedItem : ''} onClick={() => changeSelect('artists')}>Artists</li>
-                    <li className={detailsActive ? styles.selectedItem : ''} onClick={() => changeSelect('details')}>Details</li>
-                    <li className={genresActive ? styles.selectedItem : ''} onClick={() => changeSelect('genres')}>Genres</li>
+                    <li key={'artists-button'} className={artistsActive ? styles.selectedItem : ''} onClick={() => changeSelect('artists')}>Artists</li>
+                    <li key={'details-button'}  className={detailsActive ? styles.selectedItem : ''} onClick={() => changeSelect('details')}>Details</li>
+                    <li key={'genres-button'}  className={genresActive ? styles.selectedItem : ''} onClick={() => changeSelect('genres')}>Genres</li>
                 </ul>
                 <hr className={styles.rounded} />
                 <ul className={styles.selection} key={'display-content'}>
