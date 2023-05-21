@@ -8,6 +8,7 @@ import Card from "../UI/Card"
 
 const AlbumShowPage = () => {
     const [album, setAlbum] = useState()
+    const [genres, setGenres] = useState()
     const [content, setContent] = useState('artists')
     const [artistsActive, setArtistsActive] = useState(true)
     const [detailsActive, setDetailsActive] = useState(false)
@@ -40,6 +41,21 @@ const AlbumShowPage = () => {
         fetchData(albumId, accessToken)
 
     }, [albumId, accessToken])
+
+    // const fetchGenres = async (artistId, accessToken) => {
+    //     const response = await fetch(`https://api.spotify.com/v1/artists/${artistId}`, {
+    //         method: 'GET',
+    //         headers: {
+    //             'Content-Type': 'application/json',
+    //             'Authorization': `Bearer ${accessToken}`
+    //         }
+    //     })
+
+    //     const data = await response.json()
+    //     setGenres(data)
+    // }
+
+    // fetchGenres(album.artists[0].id, accessToken)
 
     const albumReviews = reviews.filter(review => review.album === selectedAlbum)
 
@@ -115,7 +131,7 @@ const AlbumShowPage = () => {
             </div>
             <ul>
                 {albumReviews.map((review) =>
-                    <AlbumReviewsList review={review} />
+                    <AlbumReviewsList review={review} key={review.id} />
                 )}
             </ul>
         </Card>
