@@ -8,6 +8,7 @@ import Card from "../UI/Card"
 
 const AlbumShowPage = () => {
     const [album, setAlbum] = useState()
+    const [loadedAlbum, setLoadedAlbum] = useState(false)
     const [genres, setGenres] = useState()
     const [content, setContent] = useState('artists')
     const [artistsActive, setArtistsActive] = useState(true)
@@ -36,6 +37,7 @@ const AlbumShowPage = () => {
 
             const data = await response.json()
             setAlbum(data)
+            setLoadedAlbum(true)
         }
 
         fetchData(albumId, accessToken)
