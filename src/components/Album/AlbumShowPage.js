@@ -118,7 +118,12 @@ const AlbumShowPage = () => {
     }
 
     if (content === 'genres') {
-        displayContent = <p>genres</p>
+        displayContent =
+            genres.map((genre) =>
+                <li className={styles.inlineArtists} key={genre}>
+                    <p className={styles.box}>{genre}</p>
+                </li>
+            )
     }
 
     return (
