@@ -4,7 +4,6 @@ import styles from './AlbumShowPage.module.css'
 import { useEffect, useState } from "react"
 import AlbumReviewsList from "./AlbumReviewsList"
 import Card from "../UI/Card"
-// import { fetchAlbumData } from "../../store/actions/spotify-actions"
 
 const AlbumShowPage = () => {
     const [album, setAlbum] = useState()
@@ -25,7 +24,6 @@ const AlbumShowPage = () => {
     const reviews = useSelector(state => state.reviews.albums)
 
     useEffect(() => {
-        // const data = fetchAlbumData(albumId, accessToken)
         const fetchData = async (albumId, accessToken) => {
             const response = await fetch(`https://api.spotify.com/v1/albums/${albumId}`, {
                 method: 'GET',
