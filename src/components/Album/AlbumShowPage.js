@@ -101,7 +101,7 @@ const AlbumShowPage = () => {
         // displayContent = <p>artists</p>
         displayContent =
             album.artists.map((artist, i) =>
-                <li className={styles.inlineArtists} key={artist.name}>
+                <li className={styles.inline} key={artist.name}>
                     <p className={styles.box}>{artist.name}</p>
                 </li>
             )
@@ -118,7 +118,7 @@ const AlbumShowPage = () => {
     if (content === 'genres') {
         displayContent =
             genres.map((genre) =>
-                <li className={styles.inlineArtists} key={genre}>
+                <li className={styles.inline} key={genre}>
                     <p className={styles.box}>{genre}</p>
                 </li>
             )
@@ -128,7 +128,7 @@ const AlbumShowPage = () => {
         <Card className={styles['album-info']}>
             <img className={styles.image} src={album.images[1].url} alt={album.name} />
             <div className={styles.row}>
-                <h1>{album.name}</h1><p>by</p><h1>{album.artists[0].name}</h1>
+                <h1 className={styles.inline}>{album.name}</h1><p>by</p><h1 className={styles.inline}>{album.artists[0].name}</h1>
                 <p className={styles.date}>{new Date(album.release_date).getFullYear()}</p>
             </div>
             <div className={styles.selector}>

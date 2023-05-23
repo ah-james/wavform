@@ -29,7 +29,7 @@ div.loading {
     height: 400px;
 }
 
-.row h1 {
+.inline {
     display: inline;
 }
 
@@ -43,11 +43,6 @@ div.loading {
 p.date {
     margin-left: 15px;
     color: #aaaaaa;
-}
-
-ul {
-    padding: 0;
-    list-style-type: none;
 }
 
 hr.rounded {
