@@ -2,3 +2,12 @@ a.review-item {
     text-decoration: none;
     color: #aaaaaa;
 }
+
+a.review-item :hover {
+    color: white;
+    transition: .5s ease;
+}
+
+a.review-item :not(:hover) {
+    transition: .5s ease;
+}
