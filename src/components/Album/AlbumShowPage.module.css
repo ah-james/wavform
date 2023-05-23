@@ -1,9 +1,6 @@
 div.album-info {
     margin-top: 20px;
     color: white;
-    text-align: center;
-    text-align: left;
-    color: white;
     background-color: rgb(31, 31, 31);
     width: 50rem;
     height: 17rem;
@@ -85,10 +82,6 @@ hr.rounded {
 
 .selectedItem {
     color: #aaaaaa;
-}
-
-.inlineArtists {
-    display: inline
 }
 
 .box {
