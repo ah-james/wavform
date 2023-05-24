@@ -1,9 +1,10 @@
 import { useSelector } from "react-redux"
 import { useLocation, useParams } from "react-router-dom"
-import styles from './AlbumShowPage.module.css'
 import { useEffect, useState } from "react"
+
 import AlbumReviewsList from "./AlbumReviewsList"
 import Card from "../UI/Card"
+import styles from './AlbumShowPage.module.css'
 
 const AlbumShowPage = () => {
     const [album, setAlbum] = useState()
