@@ -90,6 +90,7 @@ hr.rounded {
 li .box {
     display: inline;
     margin-bottom: 10px;
+    cursor: default;
 }
 
 ul.selection li {
