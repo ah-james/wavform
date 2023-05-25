@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux"
-import { useLocation, useParams } from "react-router-dom"
+import { Link, useLocation, useParams } from "react-router-dom"
 import { useEffect, useState } from "react"
 
 import AlbumReviewsList from "./AlbumReviewsList"
@@ -146,11 +146,12 @@ const AlbumShowPage = () => {
                 </div>
 
             </Card>
+            {/* <ul>
                 {albumReviews.map((review) =>
                     <AlbumReviewsList review={review} key={review.id} />
                 )}
-            </ul>
-        </Card>
+            </ul> */}
+            <AlbumReviewsList reviews={albumReviews} />
             
         </>
     )
