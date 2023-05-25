@@ -126,29 +126,33 @@ const AlbumShowPage = () => {
     }
 
     return (
-        <Card className={styles['album-info']}>
-            <img className={styles.image} src={album.images[1].url} alt={album.name} />
-            <div className={styles.row}>
-                <h1 className={styles.inline}>{album.name}</h1><p>by</p><h1 className={styles.inline}>{album.artists[0].name}</h1>
-                <p className={styles.date}>{new Date(album.release_date).getFullYear()}</p>
-            </div>
-            <div className={styles.selector}>
-                <ul className={styles.switch}>
-                    <li key={'artists-button'} className={artistsActive ? styles.selectedItem : ''} onClick={() => changeSelect('artists')}>Artists</li>
-                    <li key={'details-button'} className={detailsActive ? styles.selectedItem : ''} onClick={() => changeSelect('details')}>Details</li>
-                    <li key={'genres-button'} className={genresActive ? styles.selectedItem : ''} onClick={() => changeSelect('genres')}>Genres</li>
-                </ul>
-                <hr className={styles.rounded} />
-                <ul className={styles.selection} key={'display-content'}>
-                    {displayContent}
-                </ul>
-            </div>
-            <ul>
+        <>
+            <Card className={styles['album-info']}>
+                <img className={styles.image} src={album.images[1].url} alt={album.name} />
+                <div className={styles.row}>
+                    <h1 className={styles.inline}>{album.name}</h1><p>by</p><h1 className={styles.inline}>{album.artists[0].name}</h1>
+                    <p className={styles.date}>{new Date(album.release_date).getFullYear()}</p>
+                </div>
+                <div className={styles.selector}>
+                    <ul className={styles.switch}>
+                        <li key={'artists-button'} className={artistsActive ? styles.selectedItem : ''} onClick={() => changeSelect('artists')}>Artists</li>
+                        <li key={'details-button'} className={detailsActive ? styles.selectedItem : ''} onClick={() => changeSelect('details')}>Details</li>
+                        <li key={'genres-button'} className={genresActive ? styles.selectedItem : ''} onClick={() => changeSelect('genres')}>Genres</li>
+                    </ul>
+                    <hr className={styles.rounded} />
+                    <ul className={styles.selection} key={'display-content'}>
+                        {displayContent}
+                    </ul>
+                </div>
+
+            </Card>
                 {albumReviews.map((review) =>
                     <AlbumReviewsList review={review} key={review.id} />
                 )}
             </ul>
         </Card>
+            
+        </>
     )
 }
 
