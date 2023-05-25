@@ -1,13 +1,33 @@
-a.review-item {
+div.review-item {
+    color: white;
+    width: 50rem;
+    height: 17rem;
+    margin: auto;
+    /* padding: 1rem; */
+}
+
+a.review-info {
     text-decoration: none;
     color: #aaaaaa;
 }
 
-a.review-item :hover {
+a.review-info li {
+    list-style-type: none;
+    color: #aaaaaa;
+}
+
+a.review-info :hover {
     color: white;
     transition: .5s ease;
 }
 
-a.review-item :not(:hover) {
+a.review-info :not(:hover) {
     transition: .5s ease;
 }
+
+hr.rounded {
+    margin: auto 350px 10px 0px;
+    border: 1px solid #6b6b6b;
+    border-radius: 5px;
+}
+
