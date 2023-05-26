@@ -53,7 +53,7 @@ const CommentsForm = ({ id }) => {
             <hr />
             <ul className={styles['comment-field']}>
                 {reviewComments.map((comment) =>
-                    <CommentItem comment={comment} />
+                    <CommentItem comment={comment} key={comment.id} />
                 )}
             </ul>
             {buttonForm}
