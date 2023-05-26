@@ -10,7 +10,7 @@ const AlbumReviewsList = ({ reviews }) => {
             <ul className={styles['reviews-list']}>
                 {reviews.map((review) =>
                     <Link to={`/reviews/${review.id}`} key={review.id} state={{ creator: review.user }} className={styles['review-info']}>
-                        <li>Review by {review.user} {review.rating}/10</li>
+                        <li>Review by <b>{review.user}</b> {review.rating}/10</li>
                     </Link>
                 )}
             </ul>
