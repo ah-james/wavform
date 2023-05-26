@@ -2,7 +2,7 @@
 import { Link } from 'react-router-dom'
 import PropTypes from "prop-types";
 // Components
-import CommentsForm from './CommentsForm';
+import CommentsForm from '../Comments/CommentsForm';
 // UI Components
 import Card from '../UI/Card'
 // styling
