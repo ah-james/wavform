@@ -7,7 +7,7 @@ const AlbumReviewsList = ({ reviews }) => {
         <div className={styles['review-item']}>
             <p>Popular Reviews</p>
             <hr className={styles.rounded} ></hr>
-            <ul>
+            <ul className={styles['reviews-list']}>
                 {reviews.map((review) =>
                     <Link to={`/reviews/${review.id}`} key={review.id} state={{ creator: review.user }} className={styles['review-info']}>
                         <li>Review by {review.user} {review.rating}/10</li>

@@ -11,9 +11,15 @@ a.review-info {
     color: #aaaaaa;
 }
 
+ul.reviews-list {
+    padding: 0px;
+    margin: 0px;
+}
+
 a.review-info li {
     list-style-type: none;
     color: #aaaaaa;
+
 }
 
 a.review-info :hover {
