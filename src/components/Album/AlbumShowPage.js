@@ -146,13 +146,7 @@ const AlbumShowPage = () => {
                 </div>
 
             </Card>
-            {/* <ul>
-                {albumReviews.map((review) =>
-                    <AlbumReviewsList review={review} key={review.id} />
-                )}
-            </ul> */}
-            <AlbumReviewsList reviews={albumReviews} />
-            
+            <AlbumReviewsList reviews={albumReviews} />    
         </>
     )
 }
