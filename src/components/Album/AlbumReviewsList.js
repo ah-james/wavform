@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import styles from './AlbumReviewsList.module.css'
+import AlbumReviewItem from "./AlbumReviewItem"
 
 const AlbumReviewsList = ({ reviews }) => {
 
@@ -10,7 +11,7 @@ const AlbumReviewsList = ({ reviews }) => {
             <ul className={styles['reviews-list']}>
                 {reviews.map((review) =>
                     <Link to={`/reviews/${review.id}`} key={review.id} state={{ creator: review.user }} className={styles['review-info']}>
-                        <li>Review by <b>{review.user}</b> {review.rating}/10</li>
+                        <AlbumReviewItem review={review} />
                     </Link>
                 )}
             </ul>
