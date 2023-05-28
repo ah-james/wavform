@@ -23,7 +23,8 @@ ul.reviews-list {
 a.review-info li {
     list-style-type: none;
     color: #aaaaaa;
-    padding-bottom: 5px;
+    padding-bottom: 10px;
+    margin-top: 20px;
 }
 
 a.review-info :hover {
