@@ -1,4 +1,4 @@
-import styles from './AlbumReviewIttem.module.css'
+import styles from './AlbumReviewItem.module.css'
 
 const AlbumReviewItem = ({ review }) => {
 
