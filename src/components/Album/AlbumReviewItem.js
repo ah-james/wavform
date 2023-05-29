@@ -1,3 +1,4 @@
+import PropTypes from "prop-types";
 import styles from './AlbumReviewItem.module.css'
 
 const AlbumReviewItem = ({ review }) => {
@@ -11,3 +12,7 @@ const AlbumReviewItem = ({ review }) => {
 }
 
 export default AlbumReviewItem
+
+AlbumReviewItem.propTypes = {
+    review: PropTypes.object
+}
